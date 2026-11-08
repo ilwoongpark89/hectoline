@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """run.py TASKS.json WORK RESULTS [--task ID]... [--arm plain|hectoline] [--setup-only] [--pybin DIR]
+       [--pause-after N --worklog FILE [--pause-minutes M]]
 
 One run = one task × one arm: a fresh folder with the repository fetched at base_commit and a TASK.md,
 one headless Claude Code session with the caps of design.json, then the prediction (the diff of the
@@ -279,6 +280,38 @@ def run_one(task, arm, work, results, env, setup_only=False):
     return line
 
 
+def mid_report(results, worklog, done_tasks, minutes):
+    """After the first tasks: the run lines, the patches of the first task and the wall-clock per run go into the work log.
+    Then the harness waits the given minutes for a line that starts with «stop» in that file, and continues when none comes."""
+    runs = [json.loads(l) for l in open(os.path.join(results, 'runs.jsonl')) if l.strip()]
+    runs = [r for r in runs if r['instance_id'] in done_tasks]
+    first = done_tasks[0]
+    parts = [f'\n## Mid report by harness/run.py, {now()}: {len(runs)} runs of the first {len(done_tasks)} tasks\n']
+    parts.append('Wall-clock per run:\n')
+    parts += [f'- {r["instance_id"]} {r["arm"]}: {r.get("wall_s")} s, {r.get("turns")} turns, claimed {r.get("claimed")}, patch {r.get("patch_lines")} lines, timed out {r.get("timed_out")}\n' for r in runs]
+    parts.append('\nRun lines, as in results/runs.jsonl:\n')
+    parts += [f'- `{json.dumps(r)}`\n' for r in runs]
+    for arm in ('plain', 'hectoline'):
+        path = os.path.join(results, 'patches', f'{first}.{arm}.diff')
+        patch = open(path, encoding='utf8').read() if os.path.exists(path) else '(no patch file)'
+        parts.append(f'\n### Patch of {first}, {arm}, {len(patch.splitlines())} lines\n\n```diff\n{patch}\n```\n')
+    marker = f'The harness waits {minutes} minutes from {now()} for a line that starts with «stop» below this line, then continues with the other tasks.'
+    parts.append(f'\n{marker}\n')
+    with open(worklog, 'a', encoding='utf8') as f:
+        f.write(''.join(parts))
+    log(results, f'mid report written to {worklog}, waiting {minutes} minutes for a stop line')
+    deadline = time.time() + minutes * 60
+    while time.time() < deadline:
+        text = open(worklog, encoding='utf8').read()
+        after = text.split(marker, 1)[1] if marker in text else ''
+        if re.search(r'^\s*[«"\'-]*\s*stop\b', after, re.M | re.I):
+            log(results, 'stop line found in the work log, the harness ends here')
+            return False
+        time.sleep(30)
+    log(results, 'no stop line, the harness continues')
+    return True
+
+
 def main(argv):
     tasks_path, work, results = (os.path.abspath(a) for a in argv[:3])
     rest = argv[3:]
@@ -286,6 +319,9 @@ def main(argv):
     arms = [rest[i + 1] for i, a in enumerate(rest) if a == '--arm'] or ['plain', 'hectoline']
     setup_only = '--setup-only' in rest
     given = next((rest[i + 1] for i, a in enumerate(rest) if a == '--pybin'), None)
+    pause_after = int(next((rest[i + 1] for i, a in enumerate(rest) if a == '--pause-after'), 0))
+    pause_minutes = int(next((rest[i + 1] for i, a in enumerate(rest) if a == '--pause-minutes'), 10))
+    worklog = next((rest[i + 1] for i, a in enumerate(rest) if a == '--worklog'), None)
     os.makedirs(work, exist_ok=True)
     os.makedirs(results, exist_ok=True)
     env = session_env(work, pybin(work, given))
@@ -295,9 +331,11 @@ def main(argv):
     if os.path.exists(runs) and not setup_only:
         done = {(json.loads(l)['instance_id'], json.loads(l)['arm']) for l in open(runs) if l.strip()}
     log(results, f'harness start: {len(tasks)} tasks, arms {arms}, model {CONFIG["model"]}, max-turns {CONFIG["max_turns"]}, wall {CONFIG["wall_s"]} s, {len(done)} runs already recorded')
+    finished = []
     for task in tasks:
         todo = [a for a in arms if (task['instance_id'], a) not in done]
         if not todo:
+            finished.append(task['instance_id'])
             continue
         if not setup_only:
             wait_for_load(results)
@@ -316,6 +354,9 @@ def main(argv):
             time.sleep(5)
         for t in threads:
             t.join()
+        finished.append(task['instance_id'])
+        if pause_after and worklog and len(finished) == pause_after and task is not tasks[-1] and not mid_report(results, worklog, finished, pause_minutes):
+            return 4
     log(results, 'harness end')
     return 0
 
