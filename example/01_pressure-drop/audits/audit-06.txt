@@ -1,0 +1,14 @@
+# audit 6 · 6 blocks · 5 final · 0 failed
+
+## check rerun on a copy: 3 of 5 closed units fail a clause now · cmd: unit.load + subprocess per clause in a copy · U0001[1, 0, 0] U0003[1, 0] U0004[0, 1]
+## clauses that hold the separator by the split heuristic: 0 ·  · the validate guard is the rule
+## tracked files no files key names: 0 · cmd: git ls-files minus files keys
+## goal measures by unit.py status: G1 0
+## composition: hooks active 3 Claude Code groups, 0 Codex block, pre-commit link True · product sizes against caps RULE.md 101/500 unit.py 277/500 measure.py 226/500 audit.py 59/500 measures.py 30/500 calc.py 14/500 · over: [] · not found: [] · binary bytes: {} · units over 100 lines 0 · missing generation markers 0 final blocks since the tool · failed units 0 · review rounds 0 over 5 final units · denies 0 in the log · piles 0 · audits 0 of 5 final
+## active A rows that name no RULE §, U or S: 0
+## steps open with every unit final: 0
+## steps with no unit: 0
+## goal leaves with no unit under any step: 0
+## duplicate lines over 60 characters in two or more .py files: 0  · unused defs, named once in every .py: 1 unit.py:pile_count · cmd: a count over git ls-files *.py
+## piles: 0 · cmd: unit.py pile
+## non-audit final units: 5 · audits: 

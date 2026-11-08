@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""hooks/pre-commit — the git gate of a hectoline room. Refuses with exit 1 when the ledgers do not validate, a pile exists,
+or not exactly one block turns final in the index against HEAD, so only unit.py close commits. Chains to .husky/pre-commit when present."""
+import os, re, subprocess, sys
+
+ROOM = subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True).stdout.strip()
+UNIT = os.path.join(ROOM, 'unit.py')
+
+
+def refuse(reason):
+    print(f'pre-commit: {reason}', file=sys.stderr)
+    return 1
+
+
+def main():
+    if not os.path.exists(UNIT):
+        return 0
+    for cmd in ('validate', 'pile'):
+        res = subprocess.run([sys.executable, '-I', '-B', UNIT, cmd, ROOM], capture_output=True, text=True)
+        if res.returncode:
+            return refuse(res.stdout.strip().splitlines()[-1] if res.stdout.strip() else cmd + ' failed')
+    staged = subprocess.run(['git', 'show', ':UNITS.md'], capture_output=True, text=True, cwd=ROOM).stdout
+    before = dict(re.findall(r'^## (U\d{4}) · \S+ · \w+ · (\w+)$', subprocess.run(['git', 'show', 'HEAD:UNITS.md'], capture_output=True, text=True, cwd=ROOM).stdout, re.M))
+    moved = [u for u, s in re.findall(r'^## (U\d{4}) · \S+ · \w+ · (\w+)$', staged, re.M) if s in ('closed', 'failed') and before.get(u) not in ('closed', 'failed')]
+    if len(moved) != 1:
+        return refuse(f'{len(moved)} units turn final in the index, commit through unit.py close')
+    husky = os.path.join(ROOM, '.husky', 'pre-commit')
+    if os.path.exists(husky):
+        return subprocess.run([husky], cwd=ROOM).returncode
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
