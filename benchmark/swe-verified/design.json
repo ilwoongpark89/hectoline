@@ -1,0 +1,17 @@
+{
+  "model": "claude-opus-5",
+  "max_turns": 150,
+  "wall_s": 3600,
+  "reviewer_max_turns": 20,
+  "reviewer_wall_s": 600,
+  "parallel_runs": 2,
+  "cpu_limit_percent": 600,
+  "memory_free_min_percent": 20,
+  "arms": {"plain": "A", "hectoline": "B"},
+  "task_text": "Fix the issue in TASK.md in this repository. You may write and run tests. Do not read or modify files outside this folder. Your last message must end with one line, FIXED: yes or FIXED: no, stating whether you believe the issue is fixed.",
+  "hectoline_text": "Work by RULE.md. Every change enters through `python3 -B unit.py open` and `python3 -B unit.py close`, at most 100 added or modified lines per unit, one check clause that fails before the unit and passes after, and a review key before each close.",
+  "allowed_tools": ["Bash", "Edit", "Write", "Read", "Glob", "Grep", "MultiEdit", "NotebookEdit", "TodoWrite"],
+  "disallowed_tools": ["WebSearch", "WebFetch", "Agent"],
+  "git_exclude": [".claude/", ".venv/", "venv/", "env/", "*.egg-info/", "build/", ".pytest_cache/", ".mypy_cache/", "__pycache__/", ".tox/", ".eggs/", "dist/", ".hypothesis/", "node_modules/", ".ruff_cache/", "*.pyc", ".DS_Store"],
+  "ledger_paths": ["UNITS.md", "GOAL.md", "PLAN.md", "PRODUCTS.md", "RESEARCH.md", "OWNER.md", "unit.log", "RULE.md", "unit.py", "measure.py", "audit.py", "TASK.md", "audits", "reviews"]
+}
