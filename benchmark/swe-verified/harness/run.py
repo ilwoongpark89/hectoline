@@ -141,7 +141,7 @@ def make_room(task, folder, run, env):
     import install
     install.claude_hooks(settings)
     data = json.load(open(settings))
-    data['hooks'].setdefault('PreToolUse', []).append({'matcher': 'Bash', 'hooks': [{'type': 'command', 'command': f'python3 -I -B {os.path.join(HERE, "review.py")} hook', 'timeout': 30}]})
+    data['hooks'].setdefault('PreToolUse', []).append({'matcher': 'Bash|Read|Edit|Write|MultiEdit|NotebookEdit|Glob|Grep', 'hooks': [{'type': 'command', 'command': f'python3 -I -B {os.path.join(HERE, "review.py")} hook', 'timeout': 30}]})
     json.dump(data, open(settings, 'w'), indent=2)
     git = lambda *a: sh(['git', '-C', folder, *a], env=env)
     git('add', 'GOAL.md', 'OWNER.md', 'PLAN.md', 'PRODUCTS.md', 'RESEARCH.md', 'UNITS.md', 'unit.log', 'RULE.md', 'measure.py', 'audit.py', 'unit.py', 'TASK.md')
@@ -174,10 +174,13 @@ def session(folder, arm, env, out_path):
             timed_out = True
             os.killpg(proc.pid, signal.SIGTERM)
             try:
-                out, _ = proc.communicate(timeout=30)
+                out, _ = proc.communicate(timeout=15)
             except subprocess.TimeoutExpired:
                 os.killpg(proc.pid, signal.SIGKILL)
-                out, _ = proc.communicate()
+                try:
+                    out, _ = proc.communicate(timeout=60)
+                except subprocess.TimeoutExpired:  # a grandchild holds the pipe, the run is over anyway
+                    out = ''
     wall = round(time.time() - start, 1)
     try:
         data = json.loads(out)
@@ -247,6 +250,10 @@ def run_one(task, arm, work, results, env, setup_only=False):
     line = {'instance_id': task['instance_id'], 'repo': task['repo'], 'arm': arm, 'model': CONFIG['model'], 'max_turns': CONFIG['max_turns'], 'wall_cap_s': CONFIG['wall_s'], 'started': now()}
     subject = f'base {task["base_commit"]} with TASK.md'
     base = fetch(task, folder, subject)
+    if arm == 'plain':  # the confinement hook of both arms: no read or write outside the folder, as the task text says
+        settings = os.path.join(folder, '.claude', 'settings.json')
+        os.makedirs(os.path.dirname(settings), exist_ok=True)
+        json.dump({'hooks': {'PreToolUse': [{'matcher': 'Bash|Read|Edit|Write|MultiEdit|NotebookEdit|Glob|Grep', 'hooks': [{'type': 'command', 'command': f'python3 -I -B {os.path.join(HERE, "review.py")} hook', 'timeout': 30}]}]}}, open(settings, 'w'), indent=2)
     if arm == 'hectoline':
         base, validate, pile = make_room(task, folder, run, env)
         line.update(room_validate=validate, room_pile=pile)
@@ -267,6 +274,11 @@ def run_one(task, arm, work, results, env, setup_only=False):
                 is_error=data.get('is_error'), terminal_reason=data.get('terminal_reason'))
     if arm == 'hectoline':
         line.update(room_measures(folder, run))
+        events = os.path.join(results, 'review-events.jsonl')
+        mine = [json.loads(l) for l in open(events, encoding='utf8') if l.strip()] if os.path.exists(events) else []
+        mine = [e for e in mine if e.get('run') == run]
+        line.update(reviews_pass=sum(e.get('verdict') == 'pass' for e in mine), reviews_fail=sum(e.get('verdict') == 'fail' for e in mine),
+                    reviews_none=sum(e.get('verdict') == 'none' for e in mine), tamper_events=sum(e.get('kind') == 'tamper' for e in mine))
         keep = os.path.join(results, 'ledgers', task['instance_id'])
         os.makedirs(keep, exist_ok=True)
         for name in ('UNITS.md', 'GOAL.md', 'PLAN.md', 'PRODUCTS.md', 'OWNER.md', 'RESEARCH.md', 'unit.log'):

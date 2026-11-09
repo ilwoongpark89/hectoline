@@ -5,24 +5,33 @@ review.py review U#### ROOM RUN   the room's unit.py calls this at each close re
                                   Claude Code session that reads the diff, the nine keys and RULE.md, runs the
                                   check, and answers pass or fail with one reason. The verdict enters the review
                                   key of the block as round r<n>; the reviewer log goes to RUN/reviews/. Exit 0
-                                  when a verdict was recorded, 3 when the reviewer did not answer.
-review.py hook                    a Claude Code PreToolUse hook: denies a Bash line that runs unit.py close by a
-                                  path other than the room's own unit.py, or a git commit outside unit.py close.
+                                  when a verdict was recorded, 3 when the reviewer did not answer. A session that
+                                  ends without a verdict is kept under no_verdict and takes no round number.
+                                  Every event also goes to RESULTS/review-events.jsonl, outside the run folder;
+                                  the review key is rebuilt from that record, so an edit of the state file by the
+                                  author changes nothing and is reported as a tamper event.
+review.py hook                    a Claude Code PreToolUse hook for both arms: denies a Bash line that runs unit.py
+                                  close by a path other than the room's own unit.py, a git commit outside unit.py
+                                  close, and any read or write of a path under the pilot folder that is not the
+                                  session's own folder, which keeps the harness and the reviewer record out of reach.
                                   Exit 2 denies. Every other call passes.
 The harness never shows the reviewer the gold patch or the hidden tests; it holds neither."""
 import json, os, re, subprocess, sys, time
 
 HERE = os.path.dirname(os.path.realpath(__file__))
-CONFIG = json.load(open(os.path.join(HERE, '..', 'design.json')))
-HECTOLINE = os.path.realpath(os.path.join(HERE, '..', '..', '..'))
+BENCH = os.path.dirname(HERE)
+CONFIG = json.load(open(os.path.join(BENCH, 'design.json')))
+HECTOLINE = os.path.dirname(os.path.dirname(BENCH))
+PILOT = os.path.dirname(HECTOLINE)
+EVENTS = os.path.join(BENCH, 'results', 'review-events.jsonl')
 sys.path.insert(0, HECTOLINE)
-from ledger import load, set_key, write, review_record  # noqa: E402
+from ledger import load, set_key, write  # noqa: E402
 
 PROMPT = '''You are the independent reviewer of one unit in a hectoline room. The author is another agent session. You decide whether the unit may close. Read the unit block, the diff and the rule text below. Then, in the room folder {room}, run every clause of the check key yourself with Bash and read any file you need. Do not edit, write, move or delete any file, and do not run git commands that change the repository.
 
 Fail grades, from RULE.md §4: a rule or field that cannot work; a false field; a false claim about another file; a quote that is not verbatim; a status outside the set; a check that passes at the base; a step that names no leaf move; a check clause that only proves that text exists; a change that is not what the sentence says; a diff that leaves the interface of its step. Weak style never fails a unit. Also ask: does the change stay behind the interface of its step, and does the check prove the outcome the sentence claims?
 
-Your last line must be exactly one of:
+You have at most {turns} tool calls. Spend them on the check clauses and the files the block names, not on exploration. If a clause cannot run inside that budget, the verdict is fail with that reason. Your last message must end with exactly one of these two lines, and you must write it before the budget ends:
 VERDICT: pass — <one reason, one sentence>
 VERDICT: fail — <one reason, one sentence>
 
@@ -89,6 +98,27 @@ def ask(room, prompt):
     return data
 
 
+def events_of(run, uid):
+    """The harness record of this unit's reviewer sessions, from the append-only events file."""
+    rounds, none = [], []
+    if os.path.exists(EVENTS):
+        for line in open(EVENTS, encoding='utf8'):
+            if not line.strip():
+                continue
+            e = json.loads(line)
+            if e.get('run') != run or e.get('uid') != uid or e.get('kind') != 'round':
+                continue
+            (rounds if e['verdict'] in ('pass', 'fail') else none).append(e)
+    return rounds, none
+
+
+def event(**e):
+    os.makedirs(os.path.dirname(EVENTS), exist_ok=True)
+    e['time'] = time.strftime('%Y-%m-%d %H:%M:%S')
+    with open(EVENTS, 'a', encoding='utf8') as f:
+        f.write(json.dumps(e) + '\n')
+
+
 def review(uid, room, run):
     room = os.path.abspath(room)
     text, bl = load(room)
@@ -96,48 +126,77 @@ def review(uid, room, run):
     if vals is None:
         print(f'review: {uid} not in UNITS.md', file=sys.stderr)
         return 3
-    record = review_record(vals.get('review', ''))
-    rounds = {n for n, _, _ in record['rounds'] if n > 0}
+    rounds, none = events_of(run, uid)
     state_path = os.path.join(run, 'reviews', f'{uid.lower()}.json')
     os.makedirs(os.path.dirname(state_path), exist_ok=True)
-    state = json.load(open(state_path)) if os.path.exists(state_path) else {'uid': uid, 'rounds': []}
-    n = max(max(rounds, default=0), len(state['rounds'])) + 1
+    if os.path.exists(state_path):
+        try:
+            shown = json.load(open(state_path))
+        except ValueError:
+            shown = None
+        mine = {'uid': uid, 'rounds': [strip(r) for r in rounds], 'no_verdict': [strip(r) for r in none]}
+        if shown != mine:
+            event(kind='tamper', run=run, uid=uid, note='the state file differs from the harness record, the record wins')
+    n = len(rounds) + 1
     diff, untracked = diff_of(room)
     rule = open(os.path.join(HECTOLINE, 'RULE.md'), encoding='utf8').read()
-    prompt = PROMPT.format(room=room, uid=uid, block=block_of(room, uid), diff=diff or '(empty)', untracked=untracked, rule=rule)
+    prompt = PROMPT.format(room=room, uid=uid, turns=CONFIG['reviewer_max_turns'], block=block_of(room, uid), diff=diff or '(empty)', untracked=untracked, rule=rule)
     data = ask(room, prompt)
     result = str(data.get('result', ''))
     found = re.search(r'VERDICT:\s*(pass|fail)\s*[—-]*\s*(.*)', result, re.I)
-    log = os.path.join(run, 'reviews', f'agent-review-{uid.lower()}-r{n}.md')
+    tag = f'r{n}' if found else f'none{len(none) + 1}'
+    log = os.path.join(run, 'reviews', f'agent-review-{uid.lower()}-{tag}.md')
     with open(log, 'w', encoding='utf8') as f:
-        f.write(f'# agent-review-{uid.lower()} round {n}\n\nmodel {CONFIG["model"]} · session {data.get("session_id", "?")} · turns {data.get("num_turns", "?")} · wall {data.get("wall_s")} s · exit {data.get("exit_code")}\n\n## Answer\n\n{result}\n')
-    entry = {'round': n, 'session': data.get('session_id'), 'wall_s': data.get('wall_s'), 'turns': data.get('num_turns'), 'log': log}
+        f.write(f'# agent-review-{uid.lower()} {tag}\n\nmodel {CONFIG["model"]} · session {data.get("session_id", "?")} · turns {data.get("num_turns", "?")} · wall {data.get("wall_s")} s · exit {data.get("exit_code")}\n\n## Answer\n\n{result}\n')
+    entry = dict(kind='round', run=run, uid=uid, round=n if found else None, session=data.get('session_id'), wall_s=data.get('wall_s'), turns=data.get('num_turns'), exit_code=data.get('exit_code'), log=log)
     if not found:
-        state['rounds'].append(dict(entry, verdict='none'))
-        json.dump(state, open(state_path, 'w'), indent=1)
-        print(f'review: round {n} gave no verdict, close refused, ask again', file=sys.stderr)
+        entry['verdict'] = 'none'
+        event(**entry)
+        none.append(entry)
+        json.dump({'uid': uid, 'rounds': [strip(r) for r in rounds], 'no_verdict': [strip(r) for r in none]}, open(state_path, 'w'), indent=1)
+        print(f'review: the reviewer session ended without a verdict ({len(none)} so far), close refused, ask again', file=sys.stderr)
         return 3
-    verdict = found.group(1).lower()
-    reason = re.sub(r'[«»`\n]+', ' ', found.group(2)).strip()[:300] or 'no reason given'
-    state['rounds'].append(dict(entry, verdict=verdict, reason=reason))
-    json.dump(state, open(state_path, 'w'), indent=1)
+    entry['verdict'] = found.group(1).lower()
+    entry['reason'] = re.sub(r'[«»`\n]+', ' ', found.group(2)).strip()[:300] or 'no reason given'
+    event(**entry)
+    rounds.append(entry)
+    json.dump({'uid': uid, 'rounds': [strip(r) for r in rounds], 'no_verdict': [strip(r) for r in none]}, open(state_path, 'w'), indent=1)
     # the review key is rebuilt from the harness record alone, so an author-written verdict never counts
-    key = ' · '.join(f'r{r["round"]} {r["verdict"]}, «{r.get("reason", "no verdict")}», model {CONFIG["model"]}, session {r.get("session")}, {os.path.relpath(r["log"], room)}'
-                     for r in state['rounds'] if r['verdict'] in ('pass', 'fail'))
+    key = ' · '.join(f'r{r["round"]} {r["verdict"]}, «{r.get("reason", "no reason")}», model {CONFIG["model"]}, session {r.get("session")}, {os.path.relpath(r["log"], room)}' for r in rounds)
     write(room, set_key(load(room)[0], uid, 'review', key))
-    print(f'review: round {n} {verdict}, {reason}')
+    print(f'review: round {n} {entry["verdict"]}, {entry["reason"]}')
     return 0
+
+
+def strip(r):
+    return {k: v for k, v in r.items() if k not in ('kind', 'run', 'time') and v is not None}
 
 
 def hook():
     payload = json.load(sys.stdin) if not sys.stdin.isatty() else {}
-    if payload.get('hook_event_name') != 'PreToolUse' or payload.get('tool_name') != 'Bash':
+    if payload.get('hook_event_name') != 'PreToolUse':
         return 0
-    cmd = payload.get('tool_input', {}).get('command', '')
+    tool, inp = payload.get('tool_name', ''), payload.get('tool_input', {})
+    room = os.path.realpath(payload.get('cwd') or os.getcwd())
+    outside = lambda p: p.startswith(PILOT + os.sep) and not (p + os.sep).startswith(room + os.sep)
+    if tool in ('Read', 'Edit', 'Write', 'MultiEdit', 'NotebookEdit', 'Glob', 'Grep'):
+        for key in ('file_path', 'path', 'notebook_path'):
+            p = inp.get(key)
+            if p and outside(os.path.realpath(os.path.join(room, os.path.expanduser(p)))):
+                print(f'deny: {p} is outside this folder, the task text says so', file=sys.stderr)
+                return 2
+        return 0
+    if tool != 'Bash':
+        return 0
+    cmd = inp.get('command', '')
+    for m in re.finditer(re.escape(PILOT) + r'\S*', cmd):
+        if outside(os.path.realpath(m.group(0).rstrip('/\'"`;)'))):
+            print(f'deny: {m.group(0)} is outside this folder, the task text says so', file=sys.stderr)
+            return 2
     if re.search(r'\S*/\S*unit\.py\s+close\b', cmd):
         print('deny: unit.py close runs only as the room\'s own «python3 -B unit.py close U#### .», the harness reviewer answers there', file=sys.stderr)
         return 2
-    if re.search(r'\bgit\b[^|;&\n]*\bcommit\b', cmd) and 'unit.py' not in cmd:
+    if re.search(r'\bgit\b[^|;&\n]*\bcommit\b', cmd) and 'unit.py' not in cmd and os.path.exists(os.path.join(room, 'UNITS.md')):
         print('deny: only unit.py close commits in this room, RULE §4', file=sys.stderr)
         return 2
     return 0
