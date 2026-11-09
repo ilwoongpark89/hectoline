@@ -1,8 +1,8 @@
 #!/bin/sh
 # grade.sh PREDICTIONS.jsonl RUN_ID GRADING_DIR [SWEBENCH_BIN]
 # The official grader on the predictions of one arm, in batches of at most five instances. After each batch the
-# evaluation containers of the run are removed with `swebench images clean` and the instance images of the batch
-# with `docker rmi`, so only the log folders stay. Before each batch the free space of / is checked against the
+# evaluation containers of the run are removed with `swebench images clean`; with RM_IMAGES=1 the instance images
+# of the batch go too, so only the log folders stay. Instances already graded under RUN_ID are skipped by the grader. Before each batch the free space of / is checked against the
 # owner's floor of 150 GB by `diskutil info /`; the script stops when the floor would be crossed.
 # Results: GRADING_DIR/logs/run_evaluation/RUN_ID/<arm>/<instance>/report.json per instance and the run report
 # GRADING_DIR/<arm>.RUN_ID.json that the harness writes at the end of each batch.
@@ -30,9 +30,11 @@ run_batch() {
   # shellcheck disable=SC2086
   "$SWEBENCH" eval verified -p "$PRED" --run-id "$RUN_ID" -j 2 -t 3600 $args || echo "grader exit $? on batch $*" >&2
   "$SWEBENCH" images clean --run-id "$RUN_ID" || true
-  for i in "$@"; do
-    docker images --format '{{.Repository}}:{{.Tag}}' | grep -i "$(echo "$i" | sed 's/__/_1776_/')" | xargs -r docker rmi -f >/dev/null 2>&1 || true
-  done
+  if [ "${RM_IMAGES:-0}" = 1 ]; then  # both arms share the instance images, so the caller removes them after the second arm
+    for i in "$@"; do
+      docker images --format '{{.Repository}}:{{.Tag}}' | grep -i "$(echo "$i" | sed 's/__/_1776_/')" | xargs docker rmi -f >/dev/null 2>&1 || true
+    done
+  fi
 }
 for id in $ids; do
   batch="$batch $id"
