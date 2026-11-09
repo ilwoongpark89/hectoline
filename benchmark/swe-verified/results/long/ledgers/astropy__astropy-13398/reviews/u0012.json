@@ -1,0 +1,17 @@
+{
+ "uid": "U0012",
+ "rounds": [
+  {
+   "uid": "U0012",
+   "round": 1,
+   "session": "731931d9-8abc-4c6f-b09c-4c6a8255e481",
+   "wall_s": 184.3,
+   "turns": 17,
+   "exit_code": 0,
+   "log": "WORK/astropy__astropy-13398/hectoline-long/reviews/agent-review-u0012-r1.md",
+   "verdict": "pass",
+   "reason": "both clauses run clean at HEAD and fail at base 46985cf, the four tests provably traverse the one-hop direct transform, and every field, quote and cross-file claim reproduces from the repo."
+  }
+ ],
+ "no_verdict": []
+}

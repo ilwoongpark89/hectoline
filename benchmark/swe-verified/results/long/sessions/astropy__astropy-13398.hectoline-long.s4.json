@@ -1,0 +1,126 @@
+{
+ "duration_api_ms": 1251801,
+ "stop_reason": "tool_use",
+ "session_id": "b49aecda-0b33-4538-b6c8-11fc135228b1",
+ "total_cost_usd": 13.261720000000004,
+ "usage": {
+  "input_tokens": 300,
+  "cache_creation_input_tokens": 184535,
+  "cache_read_input_tokens": 18152890,
+  "output_tokens": 93537,
+  "output_tokens_details": {
+   "thinking_tokens": 48253
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 184535,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 136,
+    "cache_read_input_tokens": 197992,
+    "cache_creation_input_tokens": 408,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 408
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 300,
+   "outputTokens": 93537,
+   "cacheReadInputTokens": 18152890,
+   "cacheCreationInputTokens": 184535,
+   "webSearchRequests": 0,
+   "costUSD": 13.261720000000004,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 48253,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 184535,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [
+  {
+   "tool_name": "Read",
+   "tool_use_id": "toolu_01HESbZN4SWXoVnequVHbeSB",
+   "tool_input": {
+    "file_path": "WORK/astropy__astropy-13398/hectoline-long/repo/RULE.md"
+   }
+  },
+  {
+   "tool_name": "Bash",
+   "tool_use_id": "toolu_01VYkqybWWidHoeAY9GDHDvc",
+   "tool_input": {
+    "command": "ls -la RULE.md TASK.md UNITS.md PLAN.md GOAL.md OWNER.md unit.py unit.log",
+    "description": "Check ledger file types"
+   }
+  },
+  {
+   "tool_name": "Bash",
+   "tool_use_id": "toolu_014m8cCjpUKbU7M74T76NBrx",
+   "tool_input": {
+    "command": "python3 -I -B - <<'PYEOF'\nimport io\np = 'UNITS.md'\ns = io.open(p, encoding='utf-8').read()\nreps = [\n ('files      : astropy/coordinates/tests/test_itrs_observed_transforms.py:\u226480 \u00b7 UNITS.md:\u226422',\n  'files      : astropy/coordinates/tests/test_itrs_observed_transforms.py:1-76 \u00b7 UNITS.md:213-232 \u00b7 unit.log:562-659, from git diff -U0 at close'),\n ('lines      : \u2264100',\n  'lines      : +76 ~18 \u22120 moved 0, by git diff --numstat at close, 76 added in the new module and 18 modified in UNITS.md, 94 under the 100 of RULE \u00a71'),\n ('result     : \\nreview     : \\napproval   : owner 11-09 \u00abFix the issue in TASK.md in this repository\u00bb, the A0001 row',\n  'result     : check exits 0 \u00b7 0, the two clauses in their order \u00b7 clause 1 prints nothing, clause 2 prints 4 passed in 0.15s with the progress line .... and the two notes Internet access disabled and the numpy.ndarray size changed RuntimeWarning of this checkout \u00b7 UNITS.md +14 \u221214 before this key, +18 \u221218 with it, the review and the two budget keys \u00b7 astropy/coordinates/tests/test_itrs_observed_transforms.py +76 \u22120\\nreview     : \\napproval   : owner 11-09 \u00abFix the issue in TASK.md in this repository\u00bb, the A0001 row'),\n]\nfor old, new in reps:\n    assert s.count(old) == 1, old[:40]\n    s = s.replace(old, new)\nio.open(p, 'w', encoding='utf-8').write(s)\nprint('ok')\nPYEOF\ngit diff --numstat -- UNITS.md",
+    "description": "Fill files, lines and result keys"
+   }
+  }
+ ],
+ "terminal_reason": "max_turns",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": true,
+ "num_turns": 151,
+ "subtype": "error_max_turns",
+ "errors": [
+  "Reached maximum number of turns (150)"
+ ],
+ "type": "result",
+ "duration_ms": 3100763,
+ "uuid": "d4af2d05-1ad8-4daf-9880-0d23144c52e8",
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:54.548Z",
+ "wall_s": 3101.5,
+ "timed_out": false,
+ "exit_code": 1
+}

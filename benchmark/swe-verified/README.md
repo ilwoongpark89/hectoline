@@ -16,4 +16,6 @@ Does the 100-line unit method change what a coding agent fixes and what it claim
 
 Run order: `select.py`, commit, `run.py`, `grade.sh` per arm, `claims.py --write`, `table.py`, `ledger_audit.py`, commit.
 
+Second run, 2026-11-10, `results/long/`: one task, astropy__astropy-13398, arm B alone, six chained sessions in the same room, 5 h 52 min: resolved by the grader, 14 units closed, no FIXED line. The plain agent resolved it in 16.5 minutes. Design and numbers in `design.md`, «Second run».
+
 Result, 2026-11-09: on 10 SWE-bench Verified tasks the plain agent claimed 9 fixes and the hidden tests confirmed 7. Under the unit method it claimed 0 and the tests confirmed 1. The unit method spent its hour and its 150 turns on planning units: 14 units closed in 10 runs, 11 of them on a reviewer pass, and in 8 of 10 runs no code unit reached the repository.
