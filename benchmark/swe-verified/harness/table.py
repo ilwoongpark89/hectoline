@@ -9,7 +9,7 @@ import glob, json, os, sys
 def resolved_of(grading):
     out = {}
     for path in glob.glob(os.path.join(grading, 'logs', 'run_evaluation', '*', '*', '*', 'report.json')):
-        arm, instance = path.split(os.sep)[-3], path.split(os.sep)[-2]
+        arm, instance = path.split(os.sep)[-3].split('-')[0], path.split(os.sep)[-2]  # the chained run's grader folder is hectoline-long, the arm is hectoline
         data = json.load(open(path))
         entry = data.get(instance, data)
         out[(instance, arm)] = bool(entry.get('resolved'))
