@@ -19,6 +19,9 @@ def resolved_of(grading):
 def main(runs_path, grading, out):
     runs = [json.loads(l) for l in open(runs_path) if l.strip()]
     resolved = resolved_of(grading)
+    for r in runs:  # an empty patch cannot resolve a task; the grader lists it under empty_patch_ids and writes no report
+        if r.get('patch_lines') == 0:
+            resolved.setdefault((r['instance_id'], r['arm']), False)
     arms = ['plain', 'hectoline']
     lines = ['# SWE-bench Verified under hectoline — results', '']
     lines.append('Every cell is a count over runs.jsonl and the report.json files of the official grader. «graded» counts the runs the grader reported on.')

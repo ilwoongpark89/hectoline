@@ -76,7 +76,9 @@ def diff_of(room):
 
 
 def ask(room, prompt):
-    """One Claude Code session, read-only by instruction and by the room hooks, with the caps of design.json."""
+    """One Claude Code session, read-only by its tool list, with the caps of design.json. It runs from the run folder beside
+    the room, not inside it, so the room's hooks, the pile check at Stop among them, do not act on the reviewer."""
+    run = os.path.dirname(room)
     cmd = ['claude', '-p', prompt, '--model', CONFIG['model'], '--max-turns', str(CONFIG['reviewer_max_turns']),
            '--output-format', 'json', '--permission-mode', 'dontAsk',
            '--allowedTools', 'Read', 'Glob', 'Grep', 'Bash',
@@ -84,7 +86,7 @@ def ask(room, prompt):
            '--setting-sources', 'project', '--no-session-persistence']
     start = time.time()
     try:
-        proc = subprocess.run(cmd, cwd=room, capture_output=True, text=True, timeout=CONFIG['reviewer_wall_s'])
+        proc = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=CONFIG['reviewer_wall_s'])
         out, err, code = proc.stdout, proc.stderr, proc.returncode
     except subprocess.TimeoutExpired as e:
         out = e.stdout.decode() if isinstance(e.stdout, bytes) else (e.stdout or '')
@@ -154,6 +156,8 @@ def review(uid, room, run):
         event(**entry)
         none.append(entry)
         json.dump({'uid': uid, 'rounds': [strip(r) for r in rounds], 'no_verdict': [strip(r) for r in none]}, open(state_path, 'w'), indent=1)
+        if not rounds:  # the key is rebuilt here too, so an author-written verdict never stands while the reviewer has not answered
+            write(room, set_key(load(room)[0], uid, 'review', f'no verdict yet: {len(none)} reviewer session(s) ended without an answer, close waits for a round'))
         print(f'review: the reviewer session ended without a verdict ({len(none)} so far), close refused, ask again', file=sys.stderr)
         return 3
     entry['verdict'] = found.group(1).lower()
@@ -178,7 +182,8 @@ def hook():
         return 0
     tool, inp = payload.get('tool_name', ''), payload.get('tool_input', {})
     room = os.path.realpath(payload.get('cwd') or os.getcwd())
-    outside = lambda p: p.startswith(PILOT + os.sep) and not (p + os.sep).startswith(room + os.sep)
+    fences = [PILOT, os.path.dirname(os.path.dirname(room))]  # the harness folder and the run folder WORK/<task>, which holds the reviewer record
+    outside = lambda p: any(p.startswith(f + os.sep) for f in fences) and not (p + os.sep).startswith(room + os.sep)
     if tool in ('Read', 'Edit', 'Write', 'MultiEdit', 'NotebookEdit', 'Glob', 'Grep'):
         for key in ('file_path', 'path', 'notebook_path'):
             p = inp.get(key)
