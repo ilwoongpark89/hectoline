@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 176189,
+ "stop_reason": "end_turn",
+ "session_id": "d16e2820-ab5f-43b5-9793-5c51ba145e9d",
+ "total_cost_usd": 1.6440865000000002,
+ "usage": {
+  "input_tokens": 74,
+  "cache_creation_input_tokens": 54237,
+  "cache_read_input_tokens": 1604343,
+  "output_tokens": 11967,
+  "output_tokens_details": {
+   "thinking_tokens": 5284
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 54237,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 901,
+    "cache_read_input_tokens": 62083,
+    "cache_creation_input_tokens": 3361,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3361
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 74,
+   "outputTokens": 11967,
+   "cacheReadInputTokens": 1604343,
+   "cacheCreationInputTokens": 54237,
+   "webSearchRequests": 0,
+   "costUSD": 1.6440865000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 5284,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 54237,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 37,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "Implemented PEP 484 type-hint support in pyreverse (matching upstream pylint's fix for issue #1548):\n\n**`pylint/pyreverse/utils.py`** \u2014 new helpers:\n- `get_annotation_label()` \u2014 renders a `Name` or `Subscript` annotation as text.\n- `get_annotation()` \u2014 resolves the annotation for an `AssignName` (from `AnnAssign`) or an `AssignAttr` (by zipping `__init__`'s locals with its arg annotations); wraps it as `Optional[...]` when the inferred default is `None`.\n- `infer_node()` \u2014 returns the annotation when available, otherwise falls back to `node.infer()`, returning an empty set on `InferenceError`.\n\n**`pylint/pyreverse/inspector.py`** \u2014 `visit_assignname` and `handle_assignattr_type` now use `utils.infer_node(node)` instead of raw `node.infer()`, so annotations take precedence over inferred types (previously `NoneType` for `a: str = None`).\n\n**`pylint/pyreverse/diagrams.py`** \u2014 `class_names` accepts `astroid.Name`/`astroid.Subscript` nodes so annotation-derived types get labeled.\n\n**`pylint/pyreverse/writer.py`** \u2014 method signatures in dot output now include parameter annotations and return types.\n\nPlus ChangeLog / `doc/whatsnew/2.9.rst` entries, and the upstream unit tests for `get_annotation`/`infer_node` in `tests/unittest_pyreverse_writer.py`.\n\nVerification (Python 3.12 venv with astroid 2.6.6):\n- `tests/unittest_pyreverse_{inspector,writer,diadefs}.py`: 23 \u2192 35 tests, all pass (12 new annotation tests included).\n- Functional check on the issue's example produced `a : Optional[str]`, `b : Optional[List[int]]`, `c : Optional[int]`, `d : float`, `meth(x: int, y): bool` \u2014 previously these showed as `NoneType`.\n- `tests/test_self.py` has 20 failures both before and after the change (pre-existing Python 3.12 incompatibilities in this environment), so no regression there.\n\nFIXED: yes",
+ "ttft_ms": 2347,
+ "type": "result",
+ "duration_ms": 208530,
+ "uuid": "7400affc-2791-41d7-ac7f-a066d9000491",
+ "ttft_stream_ms": 1850,
+ "time_to_request_ms": 47,
+ "first_content_frame_ms": 1850,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:54.548Z",
+ "wall_s": 209.4,
+ "timed_out": false,
+ "exit_code": 0
+}

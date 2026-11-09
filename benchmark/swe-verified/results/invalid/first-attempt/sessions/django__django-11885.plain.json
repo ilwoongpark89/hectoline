@@ -1,0 +1,110 @@
+{
+ "duration_api_ms": 384091,
+ "stop_reason": "end_turn",
+ "session_id": "d7081401-9d22-4d17-8a18-759a816e68b4",
+ "total_cost_usd": 3.627684999999999,
+ "usage": {
+  "input_tokens": 8,
+  "cache_creation_input_tokens": 2255,
+  "cache_read_input_tokens": 367754,
+  "output_tokens": 1894,
+  "output_tokens_details": {
+   "thinking_tokens": 288
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2255,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 958,
+    "cache_read_input_tokens": 92862,
+    "cache_creation_input_tokens": 252,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 252
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 140,
+   "outputTokens": 27668,
+   "cacheReadInputTokens": 4232430,
+   "cacheCreationInputTokens": 81907,
+   "webSearchRequests": 0,
+   "costUSD": 3.627684999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 10481,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 81907,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "origin": {
+  "kind": "task-notification",
+  "producer": "session-task",
+  "runId": "0mw8l8fx5-a59dd463"
+ },
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 4,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "\uc644\ub8cc. fast delete \ucffc\ub9ac\ub97c \uac19\uc740 \ud14c\uc774\ube14 \uae30\uc900\uc73c\ub85c \ubb36\uc5b4 OR \uc870\uac74 \ud55c \uac74\uc73c\ub85c \ubcf4\ub0b8\ub2e4.\n\n**\ubc14\uafbc \uac83**\n- `django/db/models/deletion.py:216` \u2014 `collect()`\uac00 fast-delete \ub300\uc0c1 \uad00\uacc4\ub97c `model_fast_deletes`\uc5d0 \ubaa8\ub378\ubcc4\ub85c \ubaa8\uc73c\uace0, \ubaa8\ub378\ub2f9 \ud55c \ubc88\ub9cc `related_objects()`\ub97c \ub9cc\ub4e4\uc5b4 `fast_deletes`\uc5d0 \ub123\ub294\ub2e4.\n- `django/db/models/deletion.py:255` \u2014 `related_objects(related_model, related_fields, objs)`\ub85c \uc11c\uba85 \ubcc0\uacbd. \uac01 \ud544\ub4dc\uc758 `__in` \uc870\uac74\uc744 `Q`\ub85c OR \uacb0\ud569\ud55c\ub2e4.\n- `django/db/models/deletion.py:140` \u2014 `can_fast_delete()`\uac00 \ubaa8\ub378 \ud074\ub798\uc2a4\ub3c4 \ubc1b\ub3c4\ub85d `objs._meta.model` \uc0ac\uc6a9. `get_del_batches()`\ub294 \ud544\ub4dc \ub9ac\uc2a4\ud2b8\ub97c \ubc1b\uc544 \ubc30\uce58 \ud06c\uae30\ub97c \uacc4\uc0b0\ud55c\ub2e4. `data`, `field_updates`\ub294 `defaultdict`\ub85c \ub2e8\uc21c\ud654\ud588\ub2e4.\n- `django/contrib/admin/utils.py:185` \u2014 `NestedObjects.related_objects()`\ub97c \uc0c8 \uc11c\uba85\uacfc \ub2e4\uc911 `select_related()`\uc5d0 \ub9de\ucdc4\ub2e4.\n- `tests/delete/tests.py:586` \u2014 `test_fast_delete_combined_relationships` \ucd94\uac00. \uc218\uc815 \uc804 \uc2e4\ud328, \uc218\uc815 \ud6c4 \ud1b5\uacfc\ub97c `git stash`\ub85c \ud655\uc778\ud588\ub2e4.\n- `docs/releases/3.1.txt:168` \u2014 \ub9b4\ub9ac\uc2a4 \ub178\ud2b8 \ud55c \uc904.\n\n**\uac80\uc99d**\n- \uc2e4\uc81c SQL \ud655\uc778: `DELETE FROM delete_person_friends WHERE (from_person_id IN (1) OR to_person_id IN (1))`, `DELETE FROM delete_entry WHERE (created_by_id IN (1) OR updated_by_id IN (1))`. \uacfc\uc81c \uc124\uba85\uc758 \uc138 \uc608\uc2dc \ubaa8\ub450 \ucffc\ub9ac 2\uac74\uc73c\ub85c \uc904\uc5c8\ub2e4.\n- `runtests.py delete delete_regress admin_utils admin_views generic_relations contenttypes_tests model_inheritance m2m_through many_to_many one_to_one proxy_models queries` \ub4f1 1202\uac74 OK.\n- \uc804\uccb4 \uc2a4\uc704\ud2b8 13,062\uac74\uc744 \uc218\uc815 \uc804\ud6c4\ub85c \uac01\uac01 \ub3cc\ub824 \uc2e4\ud328 \ubaa9\ub85d\uc774 197\uac74\uc73c\ub85c \uc644\uc804\ud788 \ub3d9\uc77c\ud558\ub2e4. \uc989 \ud68c\uadc0 0\uac74. \uc774 197\uac74\uc740 Python 3.11 \ud658\uacbd \ubb38\uc81c\ub2e4. \uc608: `memoryview` \ucc98\ub9ac, \uc11c\ube0c\ud504\ub85c\uc138\uc2a4\uc758 `asgiref` \ubbf8\uc124\uce58, unittest \ud14c\uc2a4\ud2b8\uba85 \ud615\uc2dd.\n- \uc784\uc2dc \ud30c\uc77c, \uc758\uc874\uc131 \uc124\uce58 \ud3f4\ub354, \ubcd1\ub82c \uc2e4\ud589 \uc794\uc5ec\ubb3c\uc740 \ubaa8\ub450 \uc0ad\uc81c\ud588\ub2e4. \uc791\uc5c5 \ud2b8\ub9ac\uc5d0\ub294 \uc704 4\uac1c \uc218\uc815 \ud30c\uc77c\ub9cc \ub0a8\uc558\ub2e4.\n\nFIXED: yes",
+ "ttft_ms": 5036,
+ "type": "result",
+ "duration_ms": 27500,
+ "uuid": "c305c01c-a576-4e5a-83cc-2294da148a6e",
+ "ttft_stream_ms": 1403,
+ "time_to_request_ms": 50,
+ "first_content_frame_ms": 1403,
+ "queued_turn_count": 0,
+ "result_index": 2,
+ "credential_expires_at": "2026-12-08T19:43:55.545Z",
+ "wall_s": 924.4,
+ "timed_out": false,
+ "exit_code": 0
+}

@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 280603,
+ "stop_reason": "end_turn",
+ "session_id": "ee6ade7f-842c-4775-bd93-b516c414fdc9",
+ "total_cost_usd": 2.384700999999999,
+ "usage": {
+  "input_tokens": 98,
+  "cache_creation_input_tokens": 61532,
+  "cache_read_input_tokens": 2381332,
+  "output_tokens": 23129,
+  "output_tokens_details": {
+   "thinking_tokens": 5198
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 61532,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 718,
+    "cache_read_input_tokens": 72375,
+    "cache_creation_input_tokens": 363,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 363
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 98,
+   "outputTokens": 23129,
+   "cacheReadInputTokens": 2381332,
+   "cacheCreationInputTokens": 61532,
+   "webSearchRequests": 0,
+   "costUSD": 2.384700999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 5198,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 61532,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 49,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "Implemented `violation_error_code` support for constraints.\n\n**`django/db/models/constraints.py`**\n- `BaseConstraint`: new `violation_error_code` class attribute (default `None`) and `violation_error_code` keyword argument; included in `deconstruct()` (so it survives `clone()`/migrations).\n- `CheckConstraint`, `UniqueConstraint`: accept and forward `violation_error_code`; included in `__eq__` and `__repr__`.\n- `ValidationError`s raised by `CheckConstraint.validate()` and by `UniqueConstraint.validate()` (expressions path and condition path) now pass `code=self.violation_error_code`. The fields-without-condition path still uses `instance.unique_error_message()` for backward compatibility, as it already did for `violation_error_message`.\n\n**`django/contrib/postgres/constraints.py`** \u2014 same treatment for `ExclusionConstraint` (init, `__eq__`, `__repr__`, both `validate()` raises).\n\n**Docs** \u2014 `violation_error_code` documented for `BaseConstraint`, `UniqueConstraint`, `ExclusionConstraint`, class signatures updated, plus a 5.0 release note.\n\n**Tests** (`tests/constraints/tests.py`) \u2014 custom code on `BaseConstraint` (incl. clone and deconstruct), `__eq__`/`__repr__` coverage for check and unique constraints, and validation tests asserting `ValidationError.code` for check constraints, expression-based unique constraints, conditional unique constraints, plus a test documenting that the fields-only unique path keeps the `unique_together` code.\n\nVerified: `constraints`, `validation`, `model_forms`, `migrations`, `schema`, `invalid_models_tests`, `postgres_tests` all pass on SQLite (postgres-specific tests skip \u2014 no server available; the `ExclusionConstraint` repr/deconstruct/clone behavior was checked directly in a script instead).\n\nFIXED: yes",
+ "ttft_ms": 1846,
+ "type": "result",
+ "duration_ms": 290620,
+ "uuid": "1fd25d10-a70d-4ae2-9509-ed7e98fc89ab",
+ "ttft_stream_ms": 1291,
+ "time_to_request_ms": 209,
+ "first_content_frame_ms": 1291,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:55.545Z",
+ "wall_s": 291.2,
+ "timed_out": false,
+ "exit_code": 0
+}

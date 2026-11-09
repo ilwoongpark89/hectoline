@@ -1,0 +1,39 @@
+{
+ "uid": "U0003",
+ "rounds": [
+  {
+   "uid": "U0003",
+   "round": 1,
+   "session": "6ab978e8-2e06-45e5-88e1-345ce3d2813d",
+   "wall_s": 360.2,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "WORK/pylint-dev__pylint-4551/hectoline/reviews/agent-review-u0003-r1.md",
+   "verdict": "fail",
+   "reason": "the diff makes the measure product P10 under step S02, whose declared product and interface are the annotation reader of pyreverse, and P10's uses field names P05 instead of the P11 files the script actually imports."
+  },
+  {
+   "uid": "U0003",
+   "round": 2,
+   "session": "f663ffd6-9216-4cf2-afa9-653a5402a674",
+   "wall_s": 166.1,
+   "turns": 14,
+   "exit_code": 0,
+   "log": "WORK/pylint-dev__pylint-4551/hectoline/reviews/agent-review-u0003-r2.md",
+   "verdict": "fail",
+   "reason": "lines.py diff .  exits 1 on  measures.py:44 , an added line over the 10-word cap, so RULE \u00a74 forces  unit.py close  to refuse this diff."
+  },
+  {
+   "uid": "U0003",
+   "round": 3,
+   "session": "ea047760-33c2-42e1-a6eb-716fdf00a912",
+   "wall_s": 203.5,
+   "turns": 18,
+   "exit_code": 0,
+   "log": "WORK/pylint-dev__pylint-4551/hectoline/reviews/agent-review-u0003-r3.md",
+   "verdict": "fail",
+   "reason": "the P11 product row this diff adds separates its files with   \u00b7  , which  measure.py  cannot parse, so  unit.py status  reports the three pyreverse files as one not-found path and the \u00a70 line cap stops covering them."
+  }
+ ],
+ "no_verdict": []
+}

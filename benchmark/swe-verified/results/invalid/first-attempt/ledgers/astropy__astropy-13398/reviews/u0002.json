@@ -1,0 +1,32 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "round": 1,
+   "session": "fb67a243-8483-41a2-8881-60e48966afe3",
+   "wall_s": 481.5,
+   "turns": 21,
+   "log": "PILOT/work/astropy__astropy-13398/hectoline/reviews/agent-review-u0002-r1.md",
+   "verdict": "fail",
+   "reason": "the round gave no verdict, the reviewer session stopped at its turn cap with exit 1"
+  },
+  {
+   "round": 2,
+   "session": "4872f093-aab9-47ee-9fc0-a2f1cb024360",
+   "wall_s": 250.8,
+   "turns": 28,
+   "log": "PILOT/work/astropy__astropy-13398/hectoline/reviews/agent-review-u0002-r2.md",
+   "verdict": "pass",
+   "reason": "every check clause fails at 11b06f8 and passes now through real step-eligibility and measure outcomes, and every field holds against the files it names."
+  },
+  {
+   "round": 3,
+   "session": "317d40e3-e46b-485f-8bf3-08a6dd562bc7",
+   "wall_s": 254.9,
+   "turns": 32,
+   "log": "PILOT/work/astropy__astropy-13398/hectoline/reviews/agent-review-u0002-r3.md",
+   "verdict": "pass",
+   "reason": "every check clause fails at the base and passes now through real step-eligibility and measure outcomes, and every field holds against the files and logs it names."
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 350298,
+ "stop_reason": "end_turn",
+ "session_id": "d8680982-ad49-4c5f-a856-20be10df755c",
+ "total_cost_usd": 2.7969149999999994,
+ "usage": {
+  "input_tokens": 100,
+  "cache_creation_input_tokens": 71331,
+  "cache_read_input_tokens": 2987510,
+  "output_tokens": 23574,
+  "output_tokens_details": {
+   "thinking_tokens": 11605
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 71331,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 711,
+    "cache_read_input_tokens": 82584,
+    "cache_creation_input_tokens": 605,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 605
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 100,
+   "outputTokens": 23574,
+   "cacheReadInputTokens": 2987510,
+   "cacheCreationInputTokens": 71331,
+   "webSearchRequests": 0,
+   "costUSD": 2.7969149999999994,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 11605,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 71331,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 50,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "**\uc6d0\uc778: CDS \ub2e8\uc704 \ubb38\ubc95\uc774 \ub098\ub217\uc148\uc744 \uc624\ub978\ucabd\ubd80\ud130 \ubb36\uc5c8\ub2e4.** `unit_expression DIVISION combined_units` \uaddc\uce59 \ub54c\ubb38\uc5d0 `J/m/s/kpc2` \uac00 `J/(m/(s/kpc2))` \ub85c \uc77d\ud614\ub2e4.\n\n- **\uc218\uc815** \u2014 `astropy/units/format/cds.py` \uc758 \ubb38\ubc95\uc744 \uc67c\ucabd \uc7ac\uadc0\ub85c \ubc14\uafe8\ub2e4. \uacf1\uacfc \ub098\ub217\uc148\uc774 \uc67c\ucabd\uc5d0\uc11c \uc624\ub978\ucabd\uc73c\ub85c \uc801\uc6a9\ub41c\ub2e4. LALR \ucda9\ub3cc\uc740 0\uac74\uc774\ub2e4.\n- **\ud30c\uc11c \ud45c \uc7ac\uc0dd\uc131** \u2014 `astropy/units/format/cds_parsetab.py`. PLY \uac00 `optimize=True` \ub85c \uc11c\uba85\uc744 \ud655\uc778\ud558\uc9c0 \uc54a\uc544, \uc774 \ud30c\uc77c\uc774 \uc5c6\uc73c\uba74 \uc61b \ud45c\ub97c \uacc4\uc18d \uc4f4\ub2e4.\n- **\ud655\uc778** \u2014 \uc774\uc288\uc758 MRT \ud30c\uc77c\uc744 \uc77d\uc73c\uba74 `1000 J / (kpc2 m s)` \uc640 `1e-07 J / (kpc2 s)` \uac00 \ub098\uc628\ub2e4. \uc804\uc5d0\ub294 `1000 J s / (kpc2 m)`, `1e-07 J kpc2 / s` \uc600\ub2e4.\n- **\ud14c\uc2a4\ud2b8** \u2014 `astropy/units/tests/test_format.py` \uc5d0 \ubb38\ubc95 \uc0ac\ub840 3\uac1c, `astropy/io/ascii/tests/test_cds.py` \uc5d0 MRT \uc77d\uae30 \ud68c\uadc0 \ud14c\uc2a4\ud2b8 1\uac1c\ub97c \ub123\uc5c8\ub2e4. `astropy/units/tests/test_format.py` + `astropy/io/ascii/tests/` + `astropy/io/votable/tests/` 1815\uac74 \uc804\ubd80 \ud1b5\uacfc\ud588\ub2e4. `astropy/units/tests/` \uc804\uccb4\uc5d0\uc11c 18\uac74\uc774 \uc2e4\ud328\ud558\ub294\ub370, \ubaa8\ub450 numpy 1.26 \uacfc pyerfa \ubc84\uc804 \ubb38\uc81c\uc774\uace0 cds \uc640 \ubb34\uad00\ud558\ub2e4.\n- **\ubcc0\uacbd \uae30\ub85d** \u2014 `docs/changes/units/14369.bugfix.rst`.\n- **\uc815\ub9ac** \u2014 \uac80\uc99d\uc6a9 venv \uc640 in-place \ube4c\ub4dc \uc0b0\ubb3c\uc740 \ubaa8\ub450 \uc9c0\uc6e0\ub2e4. \uc791\uc5c5 \ud3f4\ub354\ub294 \uc18c\uc2a4 \ubcc0\uacbd 4\uac1c\uc640 \uc0c8 \ubcc0\uacbd \uae30\ub85d 1\uac1c\ub9cc \ub0a8\uc558\ub2e4.\n\nFIXED: yes",
+ "ttft_ms": 2008,
+ "type": "result",
+ "duration_ms": 422406,
+ "uuid": "de7d9334-82ef-4b53-b07f-c7269a6b3896",
+ "ttft_stream_ms": 1501,
+ "time_to_request_ms": 330,
+ "first_content_frame_ms": 1501,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:55.545Z",
+ "wall_s": 574.4,
+ "timed_out": false,
+ "exit_code": 0
+}

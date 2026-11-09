@@ -10,6 +10,10 @@ Does the 100-line unit method change what a coding agent fixes and what it claim
 - `harness/review.py` — the independent reviewer of arm B and the hook that keeps `close` on the room's own gate.
 - `harness/grade.sh` — the official grader in batches of five, images removed after each batch.
 - `harness/table.py` — the result table and the sentence, counted from `runs.jsonl` and the grader reports.
-- `results/` — empty at the design commit. The runs fill it.
+- `harness/claims.py` — the FIXED line of a run whose session returned no final message, from its transcript.
+- `harness/ledger_audit.py` — the closed units of arm B matched against the reviewer record.
+- `results/table.md` — the four cells per arm, the per-run rows and the sentence. `results/runs.jsonl` — one line per run. `results/patches/` — the 20 predictions as diffs. `results/grading/` — the official grader's logs and reports. `results/ledgers/` — the ledgers, logs and reviewer logs of every arm B room. `results/sessions/` — the Claude Code result records. `results/review-events.jsonl` — every reviewer round. `results/invalid/` — the discarded first attempt of tasks 1 to 3, with its reason.
 
-Run order: `select.py`, commit, `run.py`, `grade.sh` per arm, `table.py`, commit.
+Run order: `select.py`, commit, `run.py`, `grade.sh` per arm, `claims.py --write`, `table.py`, `ledger_audit.py`, commit.
+
+Result, 2026-11-09: on 10 SWE-bench Verified tasks the plain agent claimed 9 fixes and the hidden tests confirmed 7. Under the unit method it claimed 0 and the tests confirmed 1. The unit method spent its hour and its 150 turns on planning units: 14 units closed in 10 runs, 11 of them on a reviewer pass, and in 8 of 10 runs no code unit reached the repository.

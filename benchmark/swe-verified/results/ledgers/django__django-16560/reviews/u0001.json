@@ -1,0 +1,17 @@
+{
+ "uid": "U0001",
+ "rounds": [
+  {
+   "uid": "U0001",
+   "round": 1,
+   "session": "96613bd7-9d9f-470e-8514-6cc40aa7594e",
+   "wall_s": 119.4,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "WORK/django__django-16560/hectoline/reviews/agent-review-u0001-r1.md",
+   "verdict": "fail",
+   "reason": "the  lines  key reports +84 \"by numstat of the bootstrap commit\" when that numstat is 991,551 overall and 114 across the eleven files it names, and two of the three check clauses only test that a file exists."
+  }
+ ],
+ "no_verdict": []
+}

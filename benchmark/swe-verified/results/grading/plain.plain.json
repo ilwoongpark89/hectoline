@@ -1,0 +1,55 @@
+{
+    "total_instances": 5,
+    "submitted_instances": 10,
+    "completed_instances": 5,
+    "resolved_instances": 4,
+    "unresolved_instances": 1,
+    "infra_failure_instances": 0,
+    "ambiguous_failure_instances": 0,
+    "empty_patch_instances": 0,
+    "error_instances": 0,
+    "completed_ids": [
+        "django__django-16263",
+        "pydata__xarray-3993",
+        "pylint-dev__pylint-4551",
+        "sphinx-doc__sphinx-8548",
+        "sphinx-doc__sphinx-9461"
+    ],
+    "incomplete_ids": [],
+    "empty_patch_ids": [],
+    "submitted_ids": [
+        "astropy__astropy-13398",
+        "astropy__astropy-14369",
+        "django__django-11885",
+        "django__django-16263",
+        "django__django-16560",
+        "pydata__xarray-3993",
+        "pylint-dev__pylint-4551",
+        "sphinx-doc__sphinx-8548",
+        "sphinx-doc__sphinx-9461",
+        "sympy__sympy-16597"
+    ],
+    "resolved_ids": [
+        "pydata__xarray-3993",
+        "pylint-dev__pylint-4551",
+        "sphinx-doc__sphinx-8548",
+        "sphinx-doc__sphinx-9461"
+    ],
+    "unresolved_ids": [
+        "django__django-16263"
+    ],
+    "infra_failure_ids": [],
+    "ambiguous_failure_ids": [],
+    "failure_reasons": {},
+    "error_ids": [],
+    "schema_version": 2,
+    "unstopped_instances": 0,
+    "unstopped_containers": [],
+    "unremoved_images": [
+        "swebench/sweb.eval.x86_64.django_1776_django-16263:latest",
+        "swebench/sweb.eval.x86_64.pydata_1776_xarray-3993:latest",
+        "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-4551:latest",
+        "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8548:latest",
+        "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9461:latest"
+    ]
+}

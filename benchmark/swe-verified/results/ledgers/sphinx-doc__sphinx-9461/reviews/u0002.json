@@ -1,0 +1,39 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "uid": "U0002",
+   "round": 1,
+   "session": "8c7a7ef9-223f-4fed-a85e-9f8b815a0608",
+   "wall_s": 182.7,
+   "turns": 11,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0002-r1.md",
+   "verdict": "fail",
+   "reason": "the one check clause only counts three row prefixes in PLAN.md, proving that text exists rather than the sentence's outcome, and never tests the planned first blocks that are 84 of the unit's 87 added lines."
+  },
+  {
+   "uid": "U0002",
+   "round": 2,
+   "session": "050b05c0-4855-48c0-b23e-1578f8dd718d",
+   "wall_s": 103.5,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0002-r2.md",
+   "verdict": "fail",
+   "reason": "the check clause pins the transient  planned  and  todo  statuses, which RULE \u00a72 forbids for a planning clause, and it exits 1 once U0003 opens, so the field cannot work."
+  },
+  {
+   "uid": "U0002",
+   "round": 3,
+   "session": "0e4e8af8-7dc2-43df-9672-7d48d0805660",
+   "wall_s": 413.5,
+   "turns": 1,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0002-r3.md",
+   "verdict": "fail",
+   "reason": "the room's first planning unit added no pilot row ( unit.py status  reports  no pilot step 1 ) and no measurable G0 leaf ( 0 / 0 leaves ), so RULE \u00a73 lets none of its three planned blocks open and \u00a72 lets none of S02\u2013S04 ever reach done."
+  }
+ ],
+ "no_verdict": []
+}

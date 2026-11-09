@@ -1,0 +1,670 @@
+2026-11-09 15:47:24 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:24 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:37 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:37 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:43 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:43 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:45 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:47:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:49:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:49:54 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:49:54 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:50:35 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:50:35 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:50:39 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:50:39 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:50:46 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:50:46 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:51:30 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:51:30 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:26 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:26 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:31 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:31 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:33 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:33 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:35 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:36 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:43 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:43 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:49 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:50 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:54 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:52:55 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:53:00 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:53:01 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:53:04 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:53:05 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:53:15 | check | - | allow | ../../../../dj16263-scratch/probe.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:53:16 | check | - | allow | ../../../../dj16263-scratch/probe.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:54:14 | check | - | allow | ../../../../dj16263-scratch/probe.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:54:15 | check | - | allow | ../../../../dj16263-scratch/probe.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:54:51 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:54:52 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:00 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:00 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:28 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:28 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:30 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:31 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:33 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:33 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 15:55:33 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:40 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:55:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:55 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:55:55 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:07 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:07 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:56:07 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:56:07 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:56:07 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:35 | check | - | deny | UNITS.md: no open unit | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:45 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:45 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:56:45 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 15:56:45 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 15:56:46 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:53 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:53 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:56:58 | check | - | deny | PLAN.md: no open unit | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:09 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:09 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:09 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:09 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:10 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:10 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:14 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:14 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:43 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:43 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:43 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:44 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:58 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:57:58 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:58 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:58 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:58 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:57:58 | open | U0003 | deny | U0003: no planned block | 
+2026-11-09 15:57:58 | open | U0002a | deny | U0002a: no planned block | 
+2026-11-09 15:57:58 | open | P0001 | deny | P0001: no planned block | 
+2026-11-09 15:57:59 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:58:15 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:58:18 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:58:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:58:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:01 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:01 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 15:59:01 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:10 | check | - | deny | PLAN.md: no open unit | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:15 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:15 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 15:59:40 | check | - | deny | django/db/models/sql/query.py: no open unit | 
+2026-11-09 15:59:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:05 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:05 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 16:00:05 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 16:00:05 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 16:00:05 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:15 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:15 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:15 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:26 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:26 | open | U0002 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:26 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:26 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:26 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:26 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:26 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:27 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:27 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:27 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:27 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:40 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:40 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:40 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:40 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:41 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:48 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:48 | open | U0002 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:00:48 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:48 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:48 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 16:00:48 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:01:14 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:01:14 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:02:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:02:47 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:02:50 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:02:53 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:02:53 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:20 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:20 | open | U0002 | deny | U0002: plan names no existing step | 
+2026-11-09 16:03:20 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:25 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:25 | open | U0002 | deny | U0002: S02 names no leaf move in its text, RULE §2 | 
+2026-11-09 16:03:25 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:36 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:36 | open | U0002 | deny | U0002: S02 names no leaf move in its text, RULE §2 | 
+2026-11-09 16:03:36 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:51 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:03:51 | open | U0002 | deny | U0002: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:03:51 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:04:21 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:04:21 | open | U0002 | deny | U0002: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:04:21 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:04:37 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:04:37 | open | U0002 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:04:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:02 | check | U0002 | deny | measures.py: not in the files key of U0002 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:09 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:24 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:24 | open | U0002 | deny | U0002: S02 names no leaf move in its text, RULE §2 | 
+2026-11-09 16:06:25 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:30 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:30 | open | U0002 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:30 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:46 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:46 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:56 | check | U0002 | allow | measures.py in U0002 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:56 | check | U0002 | allow | measures.py in U0002 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:06:59 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:07:00 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:07:05 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:07:05 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:07:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:07:23 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:23 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:40 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:40 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:51 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:51 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:56 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:07:56 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:08:07 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:08:07 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:08:45 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:09:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:09:39 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:09:40 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:10:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:10:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:10:26 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:10:28 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:10:28 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:10:45 | check | U0002 | allow | no file | 3595a87f-33a8-46fb-bdb0-1edbb1584153
+2026-11-09 16:11:01 | check | U0002 | allow | ../../../../dj16263-scratch/patched.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:02 | check | U0002 | allow | ../../../../dj16263-scratch/patched.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:06 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:06 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:33 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:36 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:11:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:03 | check | U0002 | deny | UNITS.md: not in the files key of U0002 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:08 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:08 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:22 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:22 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:23 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:23 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:29 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:29 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:29 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:29 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:34 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:34 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:39 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:39 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:40 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:40 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:44 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:44 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:52 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:53 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:54 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:54 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:12:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:58 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:12:58 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:22 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:22 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:29 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:13:29 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:13:31 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:13:31 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:13:35 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:44 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:49 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:13:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:04 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:24 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:26 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:27 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:31 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:31 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:36 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:38 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:38 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:41 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:14:43 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:43 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:44 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:14:44 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:14:44 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:14:44 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:14:48 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:50 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:50 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:14:59 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:01 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:01 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:14 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:14 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:22 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:15:22 | check | U0002 | allow | no file | 0d48cc70-24bf-42a9-aac8-8e040cb68048
+2026-11-09 16:15:23 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:25 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:25 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:29 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:15:30 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:22 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:23 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:24 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:24 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:24 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:24 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:28 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:28 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:31 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:31 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:33 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:33 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:33 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:36 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:41 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:41 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:41 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:41 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:45 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:45 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:16:58 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:16:58 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:00 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:00 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:01 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:07 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:07 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:12 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:12 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:26 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:26 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:30 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:30 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:31 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:32 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:33 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:42 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:42 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:46 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:47 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:48 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:48 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:49 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:49 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:17:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:51 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:17:56 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:00 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:00 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:01 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:18:01 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:18:05 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:05 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:09 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:13 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:18:14 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:14 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:18 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:22 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:22 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:27 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:27 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:31 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:31 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:36 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:40 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:40 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:44 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:44 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:48 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:49 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:54 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:54 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:58 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:18:58 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:02 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:02 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:07 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:07 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:19 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:19 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:23 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:23 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:28 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:28 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:32 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:32 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:41 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:41 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:45 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:45 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:49 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:49 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:59 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:19:59 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:08 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:08 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:20:08 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:12 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:12 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:16 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:17 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:20:17 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:20:21 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:21 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:25 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:25 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:29 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:29 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:33 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:33 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:38 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:38 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:42 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:42 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:47 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:20:47 | check | U0002 | allow | no file | b3945a94-d8db-4078-a344-d2ec1eae2b5b
+2026-11-09 16:20:47 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:47 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:52 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:52 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:57 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:20:57 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:01 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:01 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:06 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:06 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:11 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:11 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:15 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:19 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:19 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:32 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:32 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:37 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:44 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:46 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:50 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:52 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:52 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:21:55 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:03 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:22 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:22 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:25 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:25 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:30 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:30 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:31 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:31 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:35 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:39 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:39 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:40 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:40 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:42 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:42 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:43 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:44 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:22:50 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:22:50 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:23:18 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:23:18 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:23:34 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:23:34 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:23:56 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:23:57 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:24:06 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:24:15 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:24:50 | check | U0002 | allow | no file | 999f2590-05ee-429f-9e92-eba3fbe2e56d
+2026-11-09 16:26:39 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:26:39 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:26:43 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:26:43 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:26:47 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:26:47 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:26:48 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:26:48 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:26:53 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:26:53 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:02 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:02 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:12 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:12 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:14 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:14 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:22 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:27:22 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:28:05 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:28:05 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:28:51 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:28:51 | check | U0002 | allow | no file | c12a8b4b-5e4b-435e-9c78-457800b67c55
+2026-11-09 16:28:54 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:28:54 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:29:45 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:29:52 | check | U0002 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:29:53 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:31:10 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:31:38 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:31:38 | open | U0003 | deny | U0003: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:31:38 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:31:51 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:31:51 | open | U0003 | deny | U0003: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:31:51 | open | U0003 | deny | U0003: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:31:51 | open | U0003 | deny | U0003: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:31:51 | open | U0003 | deny | U0003: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:31:51 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:02 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:02 | open | U0003 | deny | U0003: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 16:32:02 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:18 | check | - | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:18 | open | U0003 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:18 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:23 | check | U0003 | allow | django/db/models/expressions.py in U0003 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:23 | check | U0003 | allow | django/db/models/expressions.py in U0003 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:27 | check | U0003 | allow | django/db/models/expressions.py in U0003 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:27 | check | U0003 | allow | django/db/models/expressions.py in U0003 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:31 | check | U0003 | allow | django/db/models/sql/where.py in U0003 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:31 | check | U0003 | allow | django/db/models/sql/where.py in U0003 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:34 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:35 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:43 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:43 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:52 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:52 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:56 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:32:56 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:33:09 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:33:09 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:33:10 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:10 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:11 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:11 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:22 | check | U0003 | allow | ../../../../../../tmp/u3base/django/db/models/expressions.py: outside the room | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:24 | check | U0003 | allow | ../../../../../../tmp/u3base/django/db/models/expressions.py: outside the room | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:37 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:33:38 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:01 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:01 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:23 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:24 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:25 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:25 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:53 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:34:58 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:35:28 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:35:28 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:35:35 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:35:35 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:35:47 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:35:47 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:36:06 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:36:07 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:36:21 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:36:21 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:37:20 | check | U0003 | allow | no file | 07628c90-cc0d-4df2-8723-86047ad8b22c
+2026-11-09 16:38:53 | check | U0003 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:38:53 | open | U0004 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:38:53 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:39:05 | check | U0004 | deny | U0004 mixes a test file with code | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:39:35 | check | U0004 | allow | ../../../../dj16263-scratch/check_prune.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:39:36 | check | U0004 | allow | ../../../../dj16263-scratch/check_prune.py: outside the room | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:39:50 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:39:50 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:00 | check | U0004 | allow | django/db/models/sql/query.py in U0004 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:00 | check | U0004 | allow | django/db/models/sql/query.py in U0004 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:07 | check | U0004 | allow | django/db/models/sql/query.py in U0004 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:07 | check | U0004 | allow | django/db/models/sql/query.py in U0004 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:13 | check | U0004 | allow | django/db/models/sql/query.py in U0004 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:13 | check | U0004 | allow | django/db/models/sql/query.py in U0004 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:16 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:16 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:20 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:22 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:28 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:31 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:43 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:43 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:46 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:40:46 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:41:04 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:04 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:05 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:10 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:10 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:11 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:11 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:37 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:37 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:41 | check | U0004 | allow | ../../../../../../tmp/rev16263_query_now.py: outside the room | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:41:48 | check | U0004 | allow | ../../../../../../tmp/rev16263_query_now.py: outside the room | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:42:20 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:42:20 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:42:21 | check | U0004 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:42:31 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:42:34 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:00 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:03 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:07 | check | U0004 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:10 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:10 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:44 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:45 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:45 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:43:45 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:44:19 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:44:19 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:44:21 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:44:24 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:44:48 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:44:49 | check | U0004 | allow | no file | 88604a3f-6ae0-48fa-89a8-e811f3e460a3
+2026-11-09 16:46:07 | check | U0004 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:07 | open | U0005 | allow | on 251ded0 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:07 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:12 | check | U0005 | allow | tests/aggregation/tests.py in U0005 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:12 | check | U0005 | allow | tests/aggregation/tests.py in U0005 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:21 | check | U0005 | allow | tests/aggregation/tests.py in U0005 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:22 | check | U0005 | allow | tests/aggregation/tests.py in U0005 | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:25 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:25 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:30 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:32 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:38 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:40 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:51 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:51 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:55 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204
+2026-11-09 16:46:56 | check | U0005 | allow | no file | 81802e4a-01c7-4c5f-92a5-298a4512e204

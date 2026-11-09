@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 493232,
+ "stop_reason": "end_turn",
+ "session_id": "4ee53f22-9b70-454f-8a40-3f5b004c54d6",
+ "total_cost_usd": 5.483045000000002,
+ "usage": {
+  "input_tokens": 154,
+  "cache_creation_input_tokens": 124218,
+  "cache_read_input_tokens": 6539340,
+  "output_tokens": 38817,
+  "output_tokens_details": {
+   "thinking_tokens": 20877
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 124218,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1341,
+    "cache_read_input_tokens": 134930,
+    "cache_creation_input_tokens": 494,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 494
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 154,
+   "outputTokens": 38817,
+   "cacheReadInputTokens": 6539340,
+   "cacheCreationInputTokens": 124218,
+   "webSearchRequests": 0,
+   "costUSD": 5.483045000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 20877,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 124218,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 77,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "Implemented the feature from TASK.md: a direct ITRS\u2194Observed transformation path that stays within the ITRS.\n\n## What changed\n\n**`astropy/coordinates/builtin_frames/itrs.py`** \u2014 `ITRS` gains a `location` frame attribute (`EarthLocationAttribute`, default `EARTH_CENTER`), making *topocentric* ITRS frames possible. The class docstring explains when to use a topocentric ITRS frame versus letting `transform_to` go through CIRS (which changes stellar aberration), plus caveats for ILRS ephemeris users.\n\n**`astropy/coordinates/builtin_frames/itrs_observed_transforms.py`** (new) \u2014 direct `ITRS\u2194AltAz` and `ITRS\u2194HADec` transforms built from simple rotation matrices (`itrs_to_altaz_mat`, `itrs_to_hadec_mat`, `altaz_to_hadec_mat`), with optional refraction (`add_refraction` / `remove_refraction`, modelled on `erfa.atioq`/`atoiq`) applied when the observed frame has `pressure > 0`. If the input ITRS frame's `obstime`/`location` differ from the observed frame's, it first does a normal ITRS\u2192ITRS transform (through CIRS), so geocentric input still gets the aberration treatment \u2014 this is what keeps existing behaviour intact.\n\n**`astropy/coordinates/builtin_frames/intermediate_rotation_transforms.py`** \u2014 the CIRS\u2194ITRS and TETE\u2194ITRS transforms now carry `itrs_frame.location` instead of hard-coding `EARTH_CENTER`, so topocentric ITRS round-trips correctly (the now-unused `EARTH_CENTER` import was dropped).\n\n**`__init__.py`** registers the new transform module; docs updated (`common_errors.rst` now recommends topocentric ITRS instead of the nonintuitive CIRS workaround, `satellites.rst` gains an ITRS\u2192AltAz example for ILRS-style ephemerides, `spectralcoord.rst` reprs, a 5.2 whatsnew section, and a changelog fragment).\n\n**Tests** added to `astropy/coordinates/tests/test_intermediate_transformations.py`: `test_itrs_topo_to_altaz_with_refraction`, `test_itrs_topo_to_hadec_with_refraction`, `test_cirs_itrs_topo`, `test_itrs_straight_overhead`.\n\n## Verification\n\nThe repo shipped unbuilt with no usable Python environment, so I built astropy's C extensions in a throwaway venv inside the repo folder, ran the tests, then removed all build artifacts (`git status` is clean apart from the intended changes).\n\n- `astropy/coordinates/tests/test_intermediate_transformations.py`: **73 passed, 3 skipped** (includes the 4 new tests).\n- Full `astropy/coordinates` suite: identical failure set before and after my change (76 failures, all pre-existing and environment-caused \u2014 stale IERS/leap-second data, numpy-version mismatches in representation/solar-system tests). No regressions.\n- rst doctests for `common_errors.rst`, `satellites.rst`, `spectralcoord.rst`, `whatsnew/5.2.rst` all pass.\n\nOne caveat on how the tests had to be run: this environment's `filterwarnings=error` turns the \"leap-second file is expired\" warning into a failure for whichever test touches IERS polar motion *first* (it hits pre-existing tests like `test_cirs_to_altaz` too), so I ran with `-o filterwarnings=always`. The changes are uncommitted on the `work` branch.\n\nFIXED: yes",
+ "ttft_ms": 1717,
+ "type": "result",
+ "duration_ms": 991200,
+ "uuid": "7522b91c-aeb4-4dcc-8b5b-04ae70a38a88",
+ "ttft_stream_ms": 1281,
+ "time_to_request_ms": 234,
+ "first_content_frame_ms": 1281,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:55.545Z",
+ "wall_s": 991.8,
+ "timed_out": false,
+ "exit_code": 0
+}

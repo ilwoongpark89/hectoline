@@ -1,0 +1,275 @@
+2026-11-09 18:41:55 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:41:55 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:41:59 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:41:59 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:03 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:06 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:06 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:09 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:09 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:12 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:12 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:17 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:17 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:47 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:42:53 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:43:17 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:43:17 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 18:43:17 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:43:54 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:43:54 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:03 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:03 | open | U0002 | allow | on 9c43bf5 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:03 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:12 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:12 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:32 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:32 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:54 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:44:55 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:15 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:15 | open | U0003 | deny | U0003: no planned block | 
+2026-11-09 18:45:15 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:34 | check | U0002 | allow | PLAN.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:35 | check | U0002 | allow | PLAN.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:39 | check | U0002 | allow | PRODUCTS.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:39 | check | U0002 | allow | PRODUCTS.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:43 | check | U0002 | allow | OWNER.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:43 | check | U0002 | allow | OWNER.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:54 | check | U0002 | allow | UNITS.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:45:54 | check | U0002 | allow | UNITS.md in U0002 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:03 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:03 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:06 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:23 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:25 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:25 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:42 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:50 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:55 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:46:56 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:47:13 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:47:13 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:47:20 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:47:20 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:47:23 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:11 | close | U0002 | deny | U0002: review is fail, no closing verdict | 
+2026-11-09 18:49:11 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:25 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:25 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:30 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:30 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:32 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:34 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:34 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:36 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:36 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:49:50 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:51:15 | close | U0002 | deny | U0002: planned work is not eligible: S02 names no leaf move in its text, RULE §2 | 
+2026-11-09 18:51:15 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:51:30 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:51:30 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:51:32 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:51:33 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:51:35 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:52:49 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:53:05 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:53:05 | open | U0003 | deny | U0003: another unit is open | 
+2026-11-09 18:53:06 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:00 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:00 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:04 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:05 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:11 | check | U0002 | deny | git bypass flag | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:13 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:14 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:21 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:21 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:31 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:31 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:35 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:35 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:46 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:54:46 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:03 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:03 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:11 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:11 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:23 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:23 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:54 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:55:55 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:57:30 | check | U0002 | allow | ../../../../hecto-probe/bin/apply.py: outside the room | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:57:30 | check | U0002 | allow | ../../../../hecto-probe/bin/apply.py: outside the room | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:57:38 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:57:38 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:57:47 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:57:57 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:58:40 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:58:40 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:58:47 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:58:47 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:58:56 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:58:57 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:59:04 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:59:04 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:59:21 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:59:21 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:59:42 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 18:59:43 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:05 | check | U0002 | allow | ../../../../hecto-probe/bin/apply.py: outside the room | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:05 | check | U0002 | allow | ../../../../hecto-probe/bin/apply.py: outside the room | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:29 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:29 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:42 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:47 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:51 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:51 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:55 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:56 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:00:58 | check | U0002 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:02:40 | close | U0002 | allow | failed 9746cb4 | 
+2026-11-09 19:02:40 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:02:56 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:02:56 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:03:26 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:03:26 | open | U0004 | deny | U0004: no planned block | 
+2026-11-09 19:03:26 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:03:44 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:03:44 | open | U0003 | deny | U0003: base U0002, not final | 
+2026-11-09 19:03:44 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:03:55 | check | - | deny | UNITS.md: no open unit | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:04:25 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:04:26 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:04:39 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:04:39 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:04:47 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:04:47 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:13 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:13 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:18 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:18 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:27 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:27 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:41 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:05:41 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:06:51 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:06:51 | open | U0003 | allow | on 9746cb4 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:06:51 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:42 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:42 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:50 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:51 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:56 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:56 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:07:58 | check | U0003 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:10:44 | close | U0003 | allow | closed 61ff0b6 | 
+2026-11-09 19:10:44 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:10:55 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:10:55 | open | U0004 | allow | on 61ff0b6 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:10:55 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:11:00 | check | U0004 | allow | measures.py in U0004 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:11:00 | check | U0004 | allow | measures.py in U0004 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:11:02 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:11:09 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:11:27 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:11:44 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:12:01 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:12:01 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:12:13 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:12:13 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:12:27 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:15:48 | close | U0004 | deny | U0004: review is fail, no closing verdict | 
+2026-11-09 19:15:48 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:15:59 | check | U0004 | allow | measures.py in U0004 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:05 | check | U0004 | allow | measures.py in U0004 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:08 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:08 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:15 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:15 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:19 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:19 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:16:23 | check | U0004 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:18:54 | close | U0004 | allow | closed 59a2498 | 
+2026-11-09 19:18:54 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:19:17 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:19:17 | open | U0005 | allow | on 59a2498 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:19:17 | check | U0005 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:20 | check | U0005 | allow | ../../../../../../tmp/d_PLAN.md: outside the room | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:21 | check | U0005 | allow | ../../../../../../tmp/d_PLAN.md: outside the room | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:26 | check | U0005 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:26 | check | U0005 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:37 | check | U0005 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:37 | check | U0005 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:21:41 | check | U0005 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:27 | close | U0005 | allow | closed db526f5 | 
+2026-11-09 19:23:27 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:41 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:41 | open | U0006 | allow | on db526f5 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:41 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:47 | check | U0006 | allow | xarray/core/dataarray.py in U0006 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:47 | check | U0006 | allow | xarray/core/dataarray.py in U0006 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:53 | check | U0006 | allow | xarray/core/dataarray.py in U0006 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:53 | check | U0006 | allow | xarray/core/dataarray.py in U0006 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:55 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:23:55 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:01 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:01 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:05 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:05 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:08 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:08 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:13 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:13 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:16 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:31 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:35 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:35 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:38 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:44 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:47 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:47 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:53 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:24:54 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:25:00 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:25:14 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:25:19 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:25:19 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:25:24 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:25:24 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:20 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:20 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:25 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:32 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:37 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:44 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:52 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:26:52 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:27:04 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:27:11 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:27:30 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:27:31 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:27:41 | check | U0006 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:29:58 | close | U0006 | allow | closed 9a63705 | 
+2026-11-09 19:29:58 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:06 | check | - | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:06 | open | U0007 | allow | on 9a63705 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:06 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:11 | check | U0007 | allow | xarray/tests/test_dataset.py in U0007 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:11 | check | U0007 | allow | xarray/tests/test_dataset.py in U0007 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:14 | check | U0007 | allow | xarray/tests/test_units.py in U0007 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:14 | check | U0007 | allow | xarray/tests/test_units.py in U0007 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:17 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:17 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:25 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:30:26 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:11 | check | U0007 | allow | xarray/tests/test_dataset.py in U0007 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:11 | check | U0007 | allow | xarray/tests/test_dataset.py in U0007 | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:15 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:17 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:26 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:30 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:46 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:31:47 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:32:09 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe
+2026-11-09 19:32:09 | check | U0007 | allow | no file | fd8da028-e477-43f2-80c0-36b2adcbbffe

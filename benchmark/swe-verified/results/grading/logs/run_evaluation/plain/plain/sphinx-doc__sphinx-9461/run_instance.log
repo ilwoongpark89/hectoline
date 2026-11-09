@@ -1,0 +1,533 @@
+2026-11-09 18:03:14,827 - INFO - Creating container for sphinx-doc__sphinx-9461...
+2026-11-09 18:03:14,860 - INFO - Container for sphinx-doc__sphinx-9461 created: 89a3c68e3bbf5a1c1677c0b57f6b8892a41fee42f1985e6deee9f56853e40e5a
+2026-11-09 18:03:14,920 - INFO - Container for sphinx-doc__sphinx-9461 started: 89a3c68e3bbf5a1c1677c0b57f6b8892a41fee42f1985e6deee9f56853e40e5a
+2026-11-09 18:03:14,921 - INFO - Intermediate patch for sphinx-doc__sphinx-9461 written to logs/run_evaluation/plain/plain/sphinx-doc__sphinx-9461/patch.diff, now applying to container...
+2026-11-09 18:03:15,008 - INFO - >>>>> Applied Patch:
+Checking patch CHANGES...
+Checking patch doc/usage/restructuredtext/domains.rst...
+Checking patch sphinx/domains/python.py...
+Checking patch sphinx/ext/autodoc/__init__.py...
+Checking patch sphinx/util/inspect.py...
+Checking patch tests/roots/test-ext-autodoc/target/properties.py...
+Checking patch tests/test_domain_py.py...
+Checking patch tests/test_ext_autodoc_autoclass.py...
+Checking patch tests/test_ext_autodoc_autoproperty.py...
+Applied patch CHANGES cleanly.
+Applied patch doc/usage/restructuredtext/domains.rst cleanly.
+Applied patch sphinx/domains/python.py cleanly.
+Applied patch sphinx/ext/autodoc/__init__.py cleanly.
+Applied patch sphinx/util/inspect.py cleanly.
+Applied patch tests/roots/test-ext-autodoc/target/properties.py cleanly.
+Applied patch tests/test_domain_py.py cleanly.
+Applied patch tests/test_ext_autodoc_autoclass.py cleanly.
+Applied patch tests/test_ext_autodoc_autoproperty.py cleanly.
+
+2026-11-09 18:03:15,253 - INFO - Git diff before:
+diff --git a/CHANGES b/CHANGES
+index 5658cc43f..6fbdf0685 100644
+--- a/CHANGES
++++ b/CHANGES
+@@ -13,6 +13,11 @@ Deprecated
+ Features added
+ --------------
+ 
++* #9447: autodoc: Support class properties (a method decorated by both
++  ``@classmethod`` and ``@property``; python 3.9 or above)
++* #9447: py:property directive supports ``:classmethod:`` option to describe
++  the property is a class property
++
+ Bugs fixed
+ ----------
+ 
+diff --git a/doc/usage/restructuredtext/domains.rst b/doc/usage/restructuredtext/domains.rst
+index 23844886e..79b6d6380 100644
+--- a/doc/usage/restructuredtext/domains.rst
++++ b/doc/usage/restructuredtext/domains.rst
+@@ -329,6 +329,13 @@ The following directives are provided for module and class contents:
+ 
+       Indicate the property is abstract.
+ 
++   .. rst:directive:option:: classmethod
++      :type: no value
++
++      Indicate the property is a classmethod.
++
++      .. versionadded: 4.2
++
+    .. rst:directive:option:: type: type of the property
+       :type: text
+ 
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index d79de154e..81dcd2626 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -852,6 +852,7 @@ class PyProperty(PyObject):
+     option_spec = PyObject.option_spec.copy()
+     option_spec.update({
+         'abstractmethod': directives.flag,
++        'classmethod': directives.flag,
+         'type': directives.unchanged,
+     })
+ 
+@@ -865,9 +866,12 @@ class PyProperty(PyObject):
+         return fullname, prefix
+ 
+     def get_signature_prefix(self, sig: str) -> str:
+-        prefix = ['property']
++        prefix = []
+         if 'abstractmethod' in self.options:
+-            prefix.insert(0, 'abstract')
++            prefix.append('abstract')
++        if 'classmethod' in self.options:
++            prefix.append('class')
++        prefix.append('property')
+ 
+         return ' '.join(prefix) + ' '
+ 
+diff --git a/sphinx/ext/autodoc/__init__.py b/sphinx/ext/autodoc/__init__.py
+index 1cecb1f79..ea471e291 100644
+--- a/sphinx/ext/autodoc/__init__.py
++++ b/sphinx/ext/autodoc/__init__.py
+@@ -718,7 +718,7 @@ class Documenter:
+                 isattr = False
+ 
+             doc = getdoc(member, self.get_attr, self.config.autodoc_inherit_docstrings,
+-                         self.parent, self.object_name)
++                         self.object, membername)
+             if not isinstance(doc, str):
+                 # Ignore non-string __doc__
+                 doc = None
+@@ -2648,6 +2648,28 @@ class AttributeDocumenter(GenericAliasMixin, NewTypeMixin, SlotsMixin,  # type:
+         super().add_content(more_content, no_docstring)
+ 
+ 
++def get_class_property(cls: Any, name: str) -> Optional[Any]:
++    """Get the property object for the class property *name* of the class *cls*.
++
++    A class property is a method decorated by both ``@classmethod`` and
++    ``@property`` (python 3.9 or above).  Since it behaves like a class
++    attribute, it can't be detected by ``getattr()``.  Therefore the class and
++    its base classes are scanned directly.
++
++    Returns None if *name* is not a class property.
++    """
++    for basecls in inspect.getmro(cls):
++        obj = safe_getattr(basecls, '__dict__', {}).get(name)
++        if obj is not None:
++            if isinstance(obj, classmethod) and inspect.isproperty(obj.__func__):
++                return obj.__func__
++            else:
++                # the member is overridden by something not a class property
++                return None
++
++    return None
++
++
+ class PropertyDocumenter(DocstringStripSignatureMixin, ClassLevelDocumenter):  # type: ignore
+     """
+     Specialized Documenter subclass for properties.
+@@ -2661,7 +2683,31 @@ class PropertyDocumenter(DocstringStripSignatureMixin, ClassLevelDocumenter):  #
+     @classmethod
+     def can_document_member(cls, member: Any, membername: str, isattr: bool, parent: Any
+                             ) -> bool:
+-        return inspect.isproperty(member) and isinstance(parent, ClassDocumenter)
++        if isinstance(parent, ClassDocumenter):
++            if inspect.isproperty(member):
++                return True
++            else:
++                # a class property (classmethod + property) behaves like a class
++                # attribute.  So it has to be detected via the class itself.
++                return get_class_property(parent.object, membername) is not None
++        else:
++            return False
++
++    def import_object(self, raiseerror: bool = False) -> bool:
++        """Check the existence of a class property (classmethod + property) when
++        the imported object is not a property."""
++        ret = super().import_object(raiseerror)
++        if ret and not inspect.isproperty(self.object):
++            obj = get_class_property(self.parent, self.objpath[-1])
++            if obj is not None:
++                self.object = obj
++                self.isclassmethod = True
++                return True
++            else:
++                return False
++
++        self.isclassmethod = False
++        return ret
+ 
+     def document_members(self, all_members: bool = False) -> None:
+         pass
+@@ -2675,6 +2721,8 @@ class PropertyDocumenter(DocstringStripSignatureMixin, ClassLevelDocumenter):  #
+         sourcename = self.get_sourcename()
+         if inspect.isabstractmethod(self.object):
+             self.add_line('   :abstractmethod:', sourcename)
++        if self.isclassmethod:
++            self.add_line('   :classmethod:', sourcename)
+ 
+         if safe_getattr(self.object, 'fget', None) and self.config.autodoc_typehints != 'none':
+             try:
+diff --git a/sphinx/util/inspect.py b/sphinx/util/inspect.py
+index 23dd9e930..4410972e9 100644
+--- a/sphinx/util/inspect.py
++++ b/sphinx/util/inspect.py
+@@ -245,12 +245,18 @@ def ispartial(obj: Any) -> bool:
+     return isinstance(obj, (partial, partialmethod))
+ 
+ 
+-def isclassmethod(obj: Any) -> bool:
++def isclassmethod(obj: Any, cls: Any = None, name: str = None) -> bool:
+     """Check if the object is classmethod."""
+     if isinstance(obj, classmethod):
+         return True
+     elif inspect.ismethod(obj) and obj.__self__ is not None and isclass(obj.__self__):
+         return True
++    elif cls and name:
++        placeholder = object()
++        for basecls in getmro(cls):
++            meth = basecls.__dict__.get(name, placeholder)
++            if meth is not placeholder:
++                return isinstance(meth, classmethod)
+ 
+     return False
+ 
+@@ -837,6 +843,17 @@ def getdoc(obj: Any, attrgetter: Callable = safe_getattr,
+     * inherited docstring
+     * inherited decorated methods
+     """
++    if cls and name and isclassmethod(obj, cls, name):
++        # the docstring of a classmethod is not accessible via the class itself
++        # if it wraps another descriptor (ex. classmethod + property).
++        # So the original function is looked up from the class directly.
++        for basecls in getmro(cls):
++            meth = basecls.__dict__.get(name)
++            if meth and hasattr(meth, '__func__'):
++                func_doc = getdoc(meth.__func__)
++                if func_doc is not None or not allow_inherited:
++                    return func_doc
++
+     doc = attrgetter(obj, '__doc__', None)
+     if ispartial(obj) and doc == obj.__class__.__doc__:
+         return getdoc(obj.func)
+diff --git a/tests/roots/test-ext-autodoc/target/properties.py b/tests/roots/test-ext-autodoc/target/properties.py
+index 409fc2b5d..561daefb8 100644
+--- a/tests/roots/test-ext-autodoc/target/properties.py
++++ b/tests/roots/test-ext-autodoc/target/properties.py
+@@ -2,5 +2,10 @@ class Foo:
+     """docstring"""
+ 
+     @property
+-    def prop(self) -> int:
++    def prop1(self) -> int:
++        """docstring"""
++
++    @classmethod
++    @property
++    def prop2(self) -> int:
+         """docstring"""
+diff --git a/tests/test_domain_py.py b/tests/test_domain_py.py
+index e4fb08155..77bcb3abe 100644
+--- a/tests/test_domain_py.py
++++ b/tests/test_domain_py.py
+@@ -833,6 +833,29 @@ def test_pyproperty(app):
+     assert domain.objects['Class.prop'] == ('index', 'Class.prop', 'property', False)
+ 
+ 
++def test_pyclassproperty(app):
++    text = (".. py:class:: Class\n"
++            "\n"
++            "   .. py:property:: prop\n"
++            "      :classmethod:\n"
++            "      :type: str\n")
++    domain = app.env.get_domain('py')
++    doctree = restructuredtext.parse(app, text)
++    assert_node(doctree, (addnodes.index,
++                          [desc, ([desc_signature, ([desc_annotation, "class "],
++                                                    [desc_name, "Class"])],
++                                  [desc_content, (addnodes.index,
++                                                  desc)])]))
++    assert_node(doctree[1][1][0], addnodes.index,
++                entries=[('single', 'prop (Class property)', 'Class.prop', '', None)])
++    assert_node(doctree[1][1][1], ([desc_signature, ([desc_annotation, "class property "],
++                                                     [desc_name, "prop"],
++                                                     [desc_annotation, ": str"])],
++                                   [desc_content, ()]))
++    assert 'Class.prop' in domain.objects
++    assert domain.objects['Class.prop'] == ('index', 'Class.prop', 'property', False)
++
++
+ def test_pydecorator_signature(app):
+     text = ".. py:decorator:: deco"
+     domain = app.env.get_domain('py')
+diff --git a/tests/test_ext_autodoc_autoclass.py b/tests/test_ext_autodoc_autoclass.py
+index 59ee1a948..b098393fa 100644
+--- a/tests/test_ext_autodoc_autoclass.py
++++ b/tests/test_ext_autodoc_autoclass.py
+@@ -212,13 +212,22 @@ def test_properties(app):
+         '   docstring',
+         '',
+         '',
+-        '   .. py:property:: Foo.prop',
++        '   .. py:property:: Foo.prop1',
+         '      :module: target.properties',
+         '      :type: int',
+         '',
+         '      docstring',
+         '',
+-    ]
++    ] + ([
++        '',
++        '   .. py:property:: Foo.prop2',
++        '      :module: target.properties',
++        '      :classmethod:',
++        '      :type: int',
++        '',
++        '      docstring',
++        '',
++    ] if sys.version_info >= (3, 9) else [])
+ 
+ 
+ @pytest.mark.sphinx('html', testroot='ext-autodoc')
+diff --git a/tests/test_ext_autodoc_autoproperty.py b/tests/test_ext_autodoc_autoproperty.py
+index ee25aa8b7..a556da9ab 100644
+--- a/tests/test_ext_autodoc_autoproperty.py
++++ b/tests/test_ext_autodoc_autoproperty.py
+@@ -9,6 +9,8 @@
+     :license: BSD, see LICENSE for details.
+ """
+ 
++import sys
++
+ import pytest
+ 
+ from .test_ext_autodoc import do_autodoc
+@@ -16,11 +18,27 @@ from .test_ext_autodoc import do_autodoc
+ 
+ @pytest.mark.sphinx('html', testroot='ext-autodoc')
+ def test_properties(app):
+-    actual = do_autodoc(app, 'property', 'target.properties.Foo.prop')
++    actual = do_autodoc(app, 'property', 'target.properties.Foo.prop1')
++    assert list(actual) == [
++        '',
++        '.. py:property:: Foo.prop1',
++        '   :module: target.properties',
++        '   :type: int',
++        '',
++        '   docstring',
++        '',
++    ]
++
++
++@pytest.mark.skipif(sys.version_info < (3, 9), reason='python 3.9+ is required.')
++@pytest.mark.sphinx('html', testroot='ext-autodoc')
++def test_class_properties(app):
++    actual = do_autodoc(app, 'property', 'target.properties.Foo.prop2')
+     assert list(actual) == [
+         '',
+-        '.. py:property:: Foo.prop',
++        '.. py:property:: Foo.prop2',
+         '   :module: target.properties',
++        '   :classmethod:',
+         '   :type: int',
+         '',
+         '   docstring',
+2026-11-09 18:03:15,253 - INFO - Eval script for sphinx-doc__sphinx-9461 written to logs/run_evaluation/plain/plain/sphinx-doc__sphinx-9461/eval.sh; copying to container...
+2026-11-09 18:03:20,797 - INFO - Test runtime: 5.51 seconds
+2026-11-09 18:03:20,797 - INFO - Test output for sphinx-doc__sphinx-9461 written to logs/run_evaluation/plain/plain/sphinx-doc__sphinx-9461/test_output.txt
+2026-11-09 18:03:20,852 - INFO - Git diff after:
+diff --git a/CHANGES b/CHANGES
+index 5658cc43f..6fbdf0685 100644
+--- a/CHANGES
++++ b/CHANGES
+@@ -13,6 +13,11 @@ Deprecated
+ Features added
+ --------------
+ 
++* #9447: autodoc: Support class properties (a method decorated by both
++  ``@classmethod`` and ``@property``; python 3.9 or above)
++* #9447: py:property directive supports ``:classmethod:`` option to describe
++  the property is a class property
++
+ Bugs fixed
+ ----------
+ 
+diff --git a/doc/usage/restructuredtext/domains.rst b/doc/usage/restructuredtext/domains.rst
+index 23844886e..79b6d6380 100644
+--- a/doc/usage/restructuredtext/domains.rst
++++ b/doc/usage/restructuredtext/domains.rst
+@@ -329,6 +329,13 @@ The following directives are provided for module and class contents:
+ 
+       Indicate the property is abstract.
+ 
++   .. rst:directive:option:: classmethod
++      :type: no value
++
++      Indicate the property is a classmethod.
++
++      .. versionadded: 4.2
++
+    .. rst:directive:option:: type: type of the property
+       :type: text
+ 
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index d79de154e..81dcd2626 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -852,6 +852,7 @@ class PyProperty(PyObject):
+     option_spec = PyObject.option_spec.copy()
+     option_spec.update({
+         'abstractmethod': directives.flag,
++        'classmethod': directives.flag,
+         'type': directives.unchanged,
+     })
+ 
+@@ -865,9 +866,12 @@ class PyProperty(PyObject):
+         return fullname, prefix
+ 
+     def get_signature_prefix(self, sig: str) -> str:
+-        prefix = ['property']
++        prefix = []
+         if 'abstractmethod' in self.options:
+-            prefix.insert(0, 'abstract')
++            prefix.append('abstract')
++        if 'classmethod' in self.options:
++            prefix.append('class')
++        prefix.append('property')
+ 
+         return ' '.join(prefix) + ' '
+ 
+diff --git a/sphinx/ext/autodoc/__init__.py b/sphinx/ext/autodoc/__init__.py
+index 1cecb1f79..ea471e291 100644
+--- a/sphinx/ext/autodoc/__init__.py
++++ b/sphinx/ext/autodoc/__init__.py
+@@ -718,7 +718,7 @@ class Documenter:
+                 isattr = False
+ 
+             doc = getdoc(member, self.get_attr, self.config.autodoc_inherit_docstrings,
+-                         self.parent, self.object_name)
++                         self.object, membername)
+             if not isinstance(doc, str):
+                 # Ignore non-string __doc__
+                 doc = None
+@@ -2648,6 +2648,28 @@ class AttributeDocumenter(GenericAliasMixin, NewTypeMixin, SlotsMixin,  # type:
+         super().add_content(more_content, no_docstring)
+ 
+ 
++def get_class_property(cls: Any, name: str) -> Optional[Any]:
++    """Get the property object for the class property *name* of the class *cls*.
++
++    A class property is a method decorated by both ``@classmethod`` and
++    ``@property`` (python 3.9 or above).  Since it behaves like a class
++    attribute, it can't be detected by ``getattr()``.  Therefore the class and
++    its base classes are scanned directly.
++
++    Returns None if *name* is not a class property.
++    """
++    for basecls in inspect.getmro(cls):
++        obj = safe_getattr(basecls, '__dict__', {}).get(name)
++        if obj is not None:
++            if isinstance(obj, classmethod) and inspect.isproperty(obj.__func__):
++                return obj.__func__
++            else:
++                # the member is overridden by something not a class property
++                return None
++
++    return None
++
++
+ class PropertyDocumenter(DocstringStripSignatureMixin, ClassLevelDocumenter):  # type: ignore
+     """
+     Specialized Documenter subclass for properties.
+@@ -2661,7 +2683,31 @@ class PropertyDocumenter(DocstringStripSignatureMixin, ClassLevelDocumenter):  #
+     @classmethod
+     def can_document_member(cls, member: Any, membername: str, isattr: bool, parent: Any
+                             ) -> bool:
+-        return inspect.isproperty(member) and isinstance(parent, ClassDocumenter)
++        if isinstance(parent, ClassDocumenter):
++            if inspect.isproperty(member):
++                return True
++            else:
++                # a class property (classmethod + property) behaves like a class
++                # attribute.  So it has to be detected via the class itself.
++                return get_class_property(parent.object, membername) is not None
++        else:
++            return False
++
++    def import_object(self, raiseerror: bool = False) -> bool:
++        """Check the existence of a class property (classmethod + property) when
++        the imported object is not a property."""
++        ret = super().import_object(raiseerror)
++        if ret and not inspect.isproperty(self.object):
++            obj = get_class_property(self.parent, self.objpath[-1])
++            if obj is not None:
++                self.object = obj
++                self.isclassmethod = True
++                return True
++            else:
++                return False
++
++        self.isclassmethod = False
++        return ret
+ 
+     def document_members(self, all_members: bool = False) -> None:
+         pass
+@@ -2675,6 +2721,8 @@ class PropertyDocumenter(DocstringStripSignatureMixin, ClassLevelDocumenter):  #
+         sourcename = self.get_sourcename()
+         if inspect.isabstractmethod(self.object):
+             self.add_line('   :abstractmethod:', sourcename)
++        if self.isclassmethod:
++            self.add_line('   :classmethod:', sourcename)
+ 
+         if safe_getattr(self.object, 'fget', None) and self.config.autodoc_typehints != 'none':
+             try:
+diff --git a/sphinx/util/inspect.py b/sphinx/util/inspect.py
+index 23dd9e930..4410972e9 100644
+--- a/sphinx/util/inspect.py
++++ b/sphinx/util/inspect.py
+@@ -245,12 +245,18 @@ def ispartial(obj: Any) -> bool:
+     return isinstance(obj, (partial, partialmethod))
+ 
+ 
+-def isclassmethod(obj: Any) -> bool:
++def isclassmethod(obj: Any, cls: Any = None, name: str = None) -> bool:
+     """Check if the object is classmethod."""
+     if isinstance(obj, classmethod):
+         return True
+     elif inspect.ismethod(obj) and obj.__self__ is not None and isclass(obj.__self__):
+         return True
++    elif cls and name:
++        placeholder = object()
++        for basecls in getmro(cls):
++            meth = basecls.__dict__.get(name, placeholder)
++            if meth is not placeholder:
++                return isinstance(meth, classmethod)
+ 
+     return False
+ 
+@@ -837,6 +843,17 @@ def getdoc(obj: Any, attrgetter: Callable = safe_getattr,
+     * inherited docstring
+     * inherited decorated methods
+     """
++    if cls and name and isclassmethod(obj, cls, name):
++        # the docstring of a classmethod is not accessible via the class itself
++        # if it wraps another descriptor (ex. classmethod + property).
++        # So the original function is looked up from the class directly.
++        for basecls in getmro(cls):
++            meth = basecls.__dict__.get(name)
++            if meth and hasattr(meth, '__func__'):
++                func_doc = getdoc(meth.__func__)
++                if func_doc is not None or not allow_inherited:
++                    return func_doc
++
+     doc = attrgetter(obj, '__doc__', None)
+     if ispartial(obj) and doc == obj.__class__.__doc__:
+         return getdoc(obj.func)
+2026-11-09 18:03:20,852 - INFO - Git diff changed after running eval script
+2026-11-09 18:03:20,852 - INFO - Grading answer for sphinx-doc__sphinx-9461...
+2026-11-09 18:03:20,855 - INFO - report: {'sphinx-doc__sphinx-9461': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_domain_py.py::test_pyproperty', 'tests/test_ext_autodoc_autoclass.py::test_properties', 'tests/test_ext_autodoc_autoproperty.py::test_class_properties'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_domain_py.py::test_function_signatures', 'tests/test_domain_py.py::test_domain_py_xrefs', 'tests/test_domain_py.py::test_domain_py_xrefs_abbreviations', 'tests/test_domain_py.py::test_domain_py_objects', 'tests/test_domain_py.py::test_resolve_xref_for_properties', 'tests/test_domain_py.py::test_domain_py_find_obj', 'tests/test_domain_py.py::test_domain_py_canonical', 'tests/test_domain_py.py::test_get_full_qualified_name', 'tests/test_domain_py.py::test_parse_annotation', 'tests/test_domain_py.py::test_pyfunction_signature', 'tests/test_domain_py.py::test_pyfunction_signature_full', 'tests/test_domain_py.py::test_pyfunction_signature_full_py38', 'tests/test_domain_py.py::test_pyfunction_with_number_literals', 'tests/test_domain_py.py::test_pyfunction_with_union_type_operator', 'tests/test_domain_py.py::test_optional_pyfunction_signature', 'tests/test_domain_py.py::test_pyexception_signature', 'tests/test_domain_py.py::test_pydata_signature', 'tests/test_domain_py.py::test_pydata_signature_old', 'tests/test_domain_py.py::test_pydata_with_union_type_operator', 'tests/test_domain_py.py::test_pyobject_prefix', 'tests/test_domain_py.py::test_pydata', 'tests/test_domain_py.py::test_pyfunction', 'tests/test_domain_py.py::test_pyclass_options', 'tests/test_domain_py.py::test_pymethod_options', 'tests/test_domain_py.py::test_pyclassmethod', 'tests/test_domain_py.py::test_pystaticmethod', 'tests/test_domain_py.py::test_pyattribute', 'tests/test_domain_py.py::test_pydecorator_signature', 'tests/test_domain_py.py::test_pydecoratormethod_signature', 'tests/test_domain_py.py::test_canonical', 'tests/test_domain_py.py::test_canonical_definition_overrides', 'tests/test_domain_py.py::test_canonical_definition_skip', 'tests/test_domain_py.py::test_canonical_duplicated', 'tests/test_domain_py.py::test_info_field_list', 'tests/test_domain_py.py::test_info_field_list_piped_type', 'tests/test_domain_py.py::test_info_field_list_var', 'tests/test_domain_py.py::test_module_index', 'tests/test_domain_py.py::test_module_index_submodule', 'tests/test_domain_py.py::test_module_index_not_collapsed', 'tests/test_domain_py.py::test_modindex_common_prefix', 'tests/test_domain_py.py::test_noindexentry', 'tests/test_domain_py.py::test_python_python_use_unqualified_type_names', 'tests/test_domain_py.py::test_python_python_use_unqualified_type_names_disabled', 'tests/test_domain_py.py::test_warn_missing_reference', 'tests/test_ext_autodoc_autoclass.py::test_classes', 'tests/test_ext_autodoc_autoclass.py::test_instance_variable', 'tests/test_ext_autodoc_autoclass.py::test_inherited_instance_variable', 'tests/test_ext_autodoc_autoclass.py::test_uninitialized_attributes', 'tests/test_ext_autodoc_autoclass.py::test_undocumented_uninitialized_attributes', 'tests/test_ext_autodoc_autoclass.py::test_decorators', 'tests/test_ext_autodoc_autoclass.py::test_slots_attribute', 'tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_subclass_of_generic_type', 'tests/test_ext_autodoc_autoclass.py::test_autodoc_process_bases', 'tests/test_ext_autodoc_autoclass.py::test_class_doc_from_class', 'tests/test_ext_autodoc_autoclass.py::test_class_doc_from_init', 'tests/test_ext_autodoc_autoclass.py::test_class_doc_from_both', 'tests/test_ext_autodoc_autoclass.py::test_class_alias', 'tests/test_ext_autodoc_autoclass.py::test_class_alias_having_doccomment', 'tests/test_ext_autodoc_autoproperty.py::test_properties'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-9461: resolved: True
+2026-11-09 18:03:20,855 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-9461.plain...
+2026-11-09 18:03:36,049 - INFO - Container sweb.eval.sphinx-doc__sphinx-9461.plain stopped successfully.
+2026-11-09 18:03:36,050 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-9461.plain...
+2026-11-09 18:03:36,077 - INFO - Container sweb.eval.sphinx-doc__sphinx-9461.plain removed successfully.

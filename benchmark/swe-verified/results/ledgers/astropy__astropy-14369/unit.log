@@ -1,0 +1,433 @@
+2026-11-09 12:26:06 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:06 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:09 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:09 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:12 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:12 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:15 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:17 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:17 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:19 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:19 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:25 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:25 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:28 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:26:28 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:04 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:04 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:06 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:06 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:11 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:11 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:13 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:54 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:59 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:27:59 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:02 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:02 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:05 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:08 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:08 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:10 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:11 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:14 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:14 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:17 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:20 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:20 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:40 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:40 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:42 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:42 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:49 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:49 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:52 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:28:52 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:02 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:03 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:09 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:12 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:15 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:15 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:22 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:27 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:30 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:30 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:33 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:34 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:41 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:55 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:58 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:29:59 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:03 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:03 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:17 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:17 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:19 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:19 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:55 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:30:55 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:26 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:30 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:30 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:32 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:32 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:41 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:42 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:44 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:31:44 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:32:07 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:32:07 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:33:16 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:33:17 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:33:35 | check | - | deny | .venv/probe_template.py: no open unit | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:33:58 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:33:58 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:40 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:40 | open | U0002 | allow | on ddd56a5 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:40 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:49 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:49 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:57 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:35:57 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:16 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:16 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:24 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:24 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:30 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:30 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:35 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:35 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:41 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:44 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:44 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:47 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:57 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:57 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:36:59 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:08 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:08 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:30 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:30 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:43 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:43 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:47 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:54 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:37:55 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:06 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:06 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:14 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:14 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:21 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:21 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:32 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:32 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:34 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:34 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:38:54 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:01 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:02 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:05 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:05 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:11 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:11 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:14 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:15 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:27 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:28 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:34 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:34 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:36 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:39:44 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:44 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:46 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:47 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:55 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:56 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:57 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:39:57 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:27 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:27 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:28 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:28 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:41 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:41 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:51 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:51 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:40:54 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:41:32 | check | U0002 | allow | no file | 410555f8-65c1-4d2d-bb9c-322353bb4b6a
+2026-11-09 12:41:53 | close | U0002 | deny | U0002: review is fail, no closing verdict | 
+2026-11-09 12:41:53 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:42:08 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:42:08 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:42:35 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:43:13 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:43:43 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:43:43 | check | U0002 | allow | PLAN.md in U0002 | 
+2026-11-09 12:43:44 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:43:56 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:43:56 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:33 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:34 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:41 | check | U0002 | allow | GOAL.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:41 | check | U0002 | allow | GOAL.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:46 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:47 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:50 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:50 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:58 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:44:58 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:05 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:05 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:09 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:09 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:14 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:14 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:18 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:18 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:21 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:45:30 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:30 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:31 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:31 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:37 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:37 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:38 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:38 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:55 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:55 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:56 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:45:57 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:46:01 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:46:01 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:46:01 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:46:40 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:03 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:03 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:04 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:05 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:18 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:22 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:22 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:59 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:47:59 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:48:10 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:48:10 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:48:42 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:48:42 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:48:47 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:48:47 | check | U0002 | allow | no file | b485dd10-a02b-4f47-af8e-9c571ff7a643
+2026-11-09 12:49:08 | close | U0002 | deny | U0002: check exits [0, 0, 0, 2, 2] | 
+2026-11-09 12:49:09 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:25 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:25 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:30 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:31 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:35 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:35 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:37 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:49:42 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:42 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:44 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:44 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:52 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:52 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:53 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:53 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:57 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:57 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:58 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:49:59 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:12 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:13 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:14 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:14 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:44 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:44 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:45 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:45 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:50 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:50 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:57:51 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:58:40 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:58:40 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:58:48 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:58:49 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:58:50 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:58:50 | check | U0002 | allow | no file | f7721215-3173-4e65-a815-645de0d3f24c
+2026-11-09 12:59:22 | close | U0002 | deny | U0002: planned work is not eligible: S02 names no leaf move in its text, RULE §2 | 
+2026-11-09 12:59:22 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:59:44 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:59:44 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:59:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 12:59:46 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:00:26 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:00:26 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:05 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:05 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:11 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:12 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:15 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:15 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:18 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:01:24 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:24 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:25 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:25 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:33 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:33 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:37 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:37 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:38 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:38 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:54 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:54 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:55 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:01:55 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:08 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:08 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:23 | check | U0002 | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:25 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:25 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:26 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:26 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:30 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:30 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:37 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:37 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:02:57 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:03:07 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:03:07 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:03:10 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:03:10 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:03:14 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:03:50 | check | U0002 | allow | no file | 3b4dd439-2a3c-4cf4-873b-a0dab1e3e078
+2026-11-09 13:04:20 | close | U0002 | deny | U0002: planned work is not eligible: S02 names no leaf move in its text, RULE §2 | 
+2026-11-09 13:04:20 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:04:55 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:04:55 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:12 | check | U0002 | allow | GOAL.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:12 | check | U0002 | allow | GOAL.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:19 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:20 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:24 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:24 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:59 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:07:59 | check | U0002 | allow | PRODUCTS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:03 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:03 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:20 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:20 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:28 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:28 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:33 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:34 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:38 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:08:43 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:44 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:47 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:47 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:55 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:55 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:57 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:08:57 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:09:15 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:09:17 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:09:17 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:09:28 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:10:06 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:10:06 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:10:06 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:10:47 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:10:47 | check | U0002 | allow | no file | e51165d0-c745-4d26-874b-d3405a3263f2
+2026-11-09 13:11:03 | close | U0002 | deny | U0002: planned work is not eligible: G1 is unmeasured, only its measure step opens under it, RULE §1 | 
+2026-11-09 13:11:03 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:12 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:12 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:16 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:16 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:19 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:19 | check | U0002 | allow | PLAN.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:22 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:22 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:28 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:28 | check | U0002 | allow | UNITS.md in U0002 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:33 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:33 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:36 | check | U0002 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:11:46 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:46 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:48 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:48 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:56 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:56 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:57 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:11:58 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:10 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:10 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:12 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:12 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:24 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:24 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:28 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:29 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:38 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:39 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:12:39 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:13:18 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:13:31 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:13:31 | check | U0002 | allow | no file | e81eee95-3811-43e8-bf2c-dfc133a3d532
+2026-11-09 13:13:56 | close | U0002 | allow | closed b2c2bdf | 
+2026-11-09 13:13:56 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:14:10 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:14:45 | open | U0003 | deny | U0003: base U0002, not final | 
+2026-11-09 13:14:45 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:14:49 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:14:49 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:14:59 | check | - | deny | UNITS.md: no open unit | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:09 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:09 | open | U0003 | deny | U0003: base U0002, not final | 
+2026-11-09 13:15:09 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:16 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:16 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:44 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:44 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:57 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:15:57 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:16:40 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:16:41 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:16:45 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:16:45 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:17:43 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:17:43 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:17:50 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:17:50 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:17:54 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:17:54 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:18:09 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:18:10 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:18:28 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:18:28 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:18:46 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:18:47 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:15 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:15 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:21 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:21 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:24 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:24 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:27 | check | - | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:27 | open | U0003 | allow | on b2c2bdf | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:19:27 | check | U0003 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:20:04 | check | U0003 | allow | measures.py in U0003 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:20:05 | check | U0003 | allow | measures.py in U0003 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:20:08 | check | U0003 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:20:47 | check | U0003 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:21:02 | check | U0003 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:21:02 | check | U0003 | allow | no file | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df
+2026-11-09 13:21:13 | check | U0003 | deny | UNITS.md: not in the files key of U0003 | 2b1b6953-31dd-4ae1-b95b-e38b7d03a6df

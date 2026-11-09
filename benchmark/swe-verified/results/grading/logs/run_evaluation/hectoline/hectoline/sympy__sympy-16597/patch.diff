@@ -1,0 +1,44 @@
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..f19c2e2
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,25 @@
++#!/usr/bin/env python3
++"""measures.py — the measure of this room, RULE §5: one number per goal leaf, read by measure.py inside its confined worker. g1 counts the probes of G1, the even symbol of TASK.md and the two facts beside it. `python3 -I -B unit.py status .` prints the count."""
++import subprocess
++
++PYTHON = '/usr/bin/python3'
++IMPORT = 'from sympy import Symbol, Integer'
++PROBES = (
++    'assert Symbol("m", even=True).is_finite is True',
++    'assert Integer(0).is_finite is True',
++    'assert Symbol("x").is_finite is None',
++)
++
++
++def probe(room, line):
++    """True when one assertion holds in the sympy tree of the room."""
++    code = IMPORT + '\n' + line
++    args = [PYTHON, '-B', '-c', code]
++    done = subprocess.run(args, cwd=room, capture_output=True)
++    return done.returncode == 0
++
++
++def g1(room, bl):
++    """The passing probes of G1, the number of that goal leaf."""
++    passing = [p for p in PROBES if probe(room, p)]
++    return '%d of %d' % (len(passing), len(PROBES))
+diff --git a/sympy/core/assumptions.py b/sympy/core/assumptions.py
+index ce4dd30..31abc19 100644
+--- a/sympy/core/assumptions.py
++++ b/sympy/core/assumptions.py
+@@ -175,6 +175,8 @@
+     'odd            ==  integer & !even',
+     'even           ==  integer & !odd',
+ 
++    'even           ->  finite',
++
+     'real           ==  negative | zero | positive',
+     'transcendental ==  complex & !algebraic',
+ 

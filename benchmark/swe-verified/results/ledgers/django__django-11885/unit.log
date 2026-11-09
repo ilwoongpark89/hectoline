@@ -1,0 +1,307 @@
+2026-11-09 13:41:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:50 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:51 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:56 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:56 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:59 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:41:59 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:01 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 13:42:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:43 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:43 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:53 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:53 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:42:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:06 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:06 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:08 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:08 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:11 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:13 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:13 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:43:16 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:06 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:07 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:11 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:11 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:14 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:15 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:20 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:20 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:37 | check | - | deny | .tdeps/distutils/__init__.py: no open unit | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:52 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:52 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:44:59 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:45:00 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:45:18 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:47:18 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:47:25 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:47:25 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:47:28 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:48:28 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:48:40 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:48:40 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:48:40 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:48:53 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:48:54 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:48:54 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:11 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:12 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:12 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:12 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:12 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:24 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:35 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:35 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:35 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:35 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:35 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:35 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:49:35 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:49:46 | check | - | deny | UNITS.md: no open unit | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:05 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:06 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:08 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:08 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:22 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:37 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:37 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:37 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:37 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:37 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:37 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:37 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:50:37 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:59 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:50:59 | check | - | deny | django/db/models/deletion.py: no open unit | 
+2026-11-09 13:50:59 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:51:11 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:51:11 | open | U0001 | deny | U0001: no planned block | 
+2026-11-09 13:51:11 | open | U0003 | deny | U0003: no planned block | 
+2026-11-09 13:51:11 | open | P0001 | deny | P0001: no planned block | 
+2026-11-09 13:51:11 | open | U0002p | deny | U0002p: no planned block | 
+2026-11-09 13:51:11 | open | plan | deny | plan: no planned block | 
+2026-11-09 13:51:11 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:51:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:51:44 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:51:44 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 13:51:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:51:56 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:51:56 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 13:51:56 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 13:51:56 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 13:51:56 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:16 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:24 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:24 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:52:24 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:34 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:34 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 13:52:34 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:54 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:52:54 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:00 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:13 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:13 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:36 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:36 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:53:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:20 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:20 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:39 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:39 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:44 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:44 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:44 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:44 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:44 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 13:54:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:52 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:54:55 | check | - | deny | pile.diff: no open unit | 
+2026-11-09 13:54:55 | check | - | deny | .pile: no open unit | 
+2026-11-09 13:54:56 | check | - | deny | PILE.md: no open unit | 
+2026-11-09 13:54:56 | check | - | deny | unit.diff: no open unit | 
+2026-11-09 13:54:56 | check | - | deny | pile.md: no open unit | 
+2026-11-09 13:54:56 | check | - | deny | scratch.txt: no open unit | 
+2026-11-09 13:54:56 | check | - | deny | .hectoline/pile: no open unit | 
+2026-11-09 13:54:56 | check | - | deny | tests/x.py: no open unit | 
+2026-11-09 13:54:56 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:15 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:15 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:19 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:20 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:32 | check | - | allow | ../probe/01_task/PLAN.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:32 | check | - | allow | ../probe/01_task/PLAN.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:43 | check | - | allow | ../probe/01_task/PLAN.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:43 | check | - | allow | ../probe/01_task/PLAN.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:50 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:55:51 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:56:12 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:56:13 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:56:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:56:23 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:56:42 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:56:43 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:02 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 13:57:02 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 13:57:02 | check | - | deny | PLAN.md: no open unit | 
+2026-11-09 13:57:02 | check | - | deny | PLAN.md: no open unit | 
+2026-11-09 13:57:02 | check | - | deny | GOAL.md: no open unit | 
+2026-11-09 13:57:02 | check | - | deny | GOAL.md: no open unit | 
+2026-11-09 13:57:03 | check | - | deny | PRODUCTS.md: no open unit | 
+2026-11-09 13:57:03 | check | - | deny | PRODUCTS.md: no open unit | 
+2026-11-09 13:57:03 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:14 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:14 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:24 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:24 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:32 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:32 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:40 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:40 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:51 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:57:51 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:58:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:58:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:58:50 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:58:50 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:58:57 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:58:58 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:59:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:59:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 13:59:27 | check | - | deny | UNITS.md: no open unit | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:00:02 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:00:03 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:01:15 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:01:16 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:01:43 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:01:43 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:01:55 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:01:55 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:02:11 | check | - | deny | UNITS.md: no open unit | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:03:08 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:03:08 | check | - | allow | no file | 
+2026-11-09 14:03:08 | check | - | allow | no file | 
+2026-11-09 14:03:08 | check | - | allow | no file | 
+2026-11-09 14:03:08 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:03:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:03:29 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:03:29 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:04:54 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:04:54 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:09 | check | - | allow | ../../../../../../tmp/harness.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:09 | check | - | allow | ../../../../../../tmp/harness.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:14 | check | - | allow | ../../../../../../tmp/harness.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:14 | check | - | allow | ../../../../../../tmp/harness.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:18 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:18 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:44 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:45 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:05:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:06:12 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:06:43 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:06:43 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:02 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:02 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:10 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:10 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:24 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:24 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:36 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:37 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:53 | check | - | allow | ../../../../../../tmp/tr.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:07:53 | check | - | allow | ../../../../../../tmp/tr.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:03 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:03 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:14 | check | - | allow | ../../../../../../tmp/tr2.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:15 | check | - | allow | ../../../../../../tmp/tr2.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:38 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:38 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:57 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:08:57 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:09:13 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:09:13 | check | - | allow | ../probe/01_task/UNITS.md: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:09:43 | check | - | allow | ../../../../../../tmp/tr3.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:09:43 | check | - | allow | ../../../../../../tmp/tr3.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:10:00 | check | - | allow | ../../../../../../tmp/tr4.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:10:00 | check | - | allow | ../../../../../../tmp/tr4.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:10:37 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:10:37 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:10:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:10:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:11:19 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:11:19 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:11:39 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:11:55 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:12:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:12:01 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:12:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:12:22 | check | - | allow | no file | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:12:52 | check | - | allow | ../../../../../../tmp/tr.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003
+2026-11-09 14:12:52 | check | - | allow | ../../../../../../tmp/tr.py: outside the room | 344792ec-7cdb-4fb8-b90d-3b7e97f77003

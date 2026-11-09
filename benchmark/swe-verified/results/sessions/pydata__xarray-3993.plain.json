@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 142581,
+ "stop_reason": "end_turn",
+ "session_id": "14da96a6-f699-4be2-99b0-504084433d59",
+ "total_cost_usd": 1.0951205000000002,
+ "usage": {
+  "input_tokens": 68,
+  "cache_creation_input_tokens": 30211,
+  "cache_read_input_tokens": 1055941,
+  "output_tokens": 10588,
+  "output_tokens_details": {
+   "thinking_tokens": 2626
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 30211,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 860,
+    "cache_read_input_tokens": 40786,
+    "cache_creation_input_tokens": 631,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 631
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 68,
+   "outputTokens": 10588,
+   "cacheReadInputTokens": 1055941,
+   "cacheCreationInputTokens": 30211,
+   "webSearchRequests": 0,
+   "costUSD": 1.0951205000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 2626,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 30211,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 34,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "## Changes\n\n`DataArray.integrate` now takes `coord` as its first argument, matching `Dataset.integrate`/`differentiate`, with a deprecation cycle for `dim`:\n\n**`xarray/core/dataarray.py:3483`**\n- Signature is now `integrate(coord=None, datetime_unit=None, *, dim=None)` \u2014 `dim` is keyword-only.\n- Passing `dim` still works but emits a `FutureWarning` naming `coord` as the replacement and announcing removal in 0.19.0.\n- Passing both raises `ValueError: Cannot pass both 'dim' and 'coord'...`.\n- Docstring documents `coord` and marks `dim` deprecated.\n\n**Tests** \u2014 added `test_deprecated_integrate_arg` in `xarray/tests/test_dataset.py` (asserts the warning, equivalence of `integrate(\"x\")`/`integrate(coord=\"x\")`/`integrate(dim=\"x\")`, and the both-args error), and updated `xarray/tests/test_units.py:3684` from `method(\"integrate\", dim=\"x\")` to `coord=\"x\"`.\n\n**`doc/whats-new.rst`** \u2014 new Deprecations section for v0.17.0.\n\n## Verification\n\nCreated a venv (numpy 1.26.4 / pandas 2.1.4 \u2014 nothing was installed in this repo's own environment) and ran the suite. `pytest xarray/tests/test_dataset.py -k \"integrate or trapz or differentiate\"`: 12 passed, 4 skipped (dask not installed). Full `test_dataset.py` + `test_dataarray.py`: 52 failed / 1534 passed; the baseline with my changes stashed gives the identical 52 failures / 1532 passed, so those failures are pre-existing environment mismatches (pandas 2.x vs. this 2020-era xarray) and my change adds only the 2 new passing tests. Also manually confirmed the warning text, the positional/`coord`/`dim` equivalence, and the both-args `ValueError`.\n\nFIXED: yes",
+ "ttft_ms": 2212,
+ "type": "result",
+ "duration_ms": 206927,
+ "uuid": "36ce4793-ad6d-4dae-b2ce-93a41a70b9fe",
+ "ttft_stream_ms": 1665,
+ "time_to_request_ms": 446,
+ "first_content_frame_ms": 1665,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:54.548Z",
+ "wall_s": 207.6,
+ "timed_out": false,
+ "exit_code": 0
+}

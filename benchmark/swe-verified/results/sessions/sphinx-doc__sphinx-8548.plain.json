@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 930269,
+ "stop_reason": "end_turn",
+ "session_id": "658bc0cd-87d7-4429-af7f-a5803aac5790",
+ "total_cost_usd": 9.149304999999996,
+ "usage": {
+  "input_tokens": 234,
+  "cache_creation_input_tokens": 152837,
+  "cache_read_input_tokens": 11682430,
+  "output_tokens": 71142,
+  "output_tokens_details": {
+   "thinking_tokens": 39686
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 152837,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1106,
+    "cache_read_input_tokens": 163727,
+    "cache_creation_input_tokens": 316,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 316
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 234,
+   "outputTokens": 71142,
+   "cacheReadInputTokens": 11682430,
+   "cacheCreationInputTokens": 152837,
+   "webSearchRequests": 0,
+   "costUSD": 9.149304999999996,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 39686,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 152837,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 122,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "Fixed. The root cause was exactly as the issue describes: autodoc looked up comment-based docstrings with `(namespace, attrname)` keyed only on the documented class, never on base-class namespaces.\n\n## Changes\n\n**`sphinx/ext/autodoc/importer.py` \u2014 `get_class_members()`**\n- Now walks the MRO, and for each class in it runs `ModuleAnalyzer` on *that class's* module, so instance attributes defined in a super class's `__init__` (`self.attr = None  #: doc`) are discovered at all (previously they existed only for the documented class's own namespace).\n- When an attribute is already known from `dir()` (a plain class variable) but has no docstring yet, its doc-comment is filled in from the defining super class \u2014 this is what made the issue's `Base.ham` appear as \"undocumented\". Gated on `autodoc_inherit_docstrings`.\n- Dropped the now-unused `analyzer` argument; added `inherit_docstrings`.\n\n**`sphinx/ext/autodoc/__init__.py`**\n- `AttributeDocumenter.get_attribute_comment(parent, attrname)` searches the doc-comment across the MRO and is used by `get_doc()`, so `autoattribute` on an inherited attribute renders the base's comment. `add_content()` clears `self.analyzer` so the comment is emitted once, from one place.\n- `ObjectMember` carries `class_`, and `filter_members()`'s `is_filtered_inherited_member()` uses it. Without this the fix worked only in tests: the real directive converts `:inherited-members:` to `'object'`, and inherited instance attributes (absent from every `cls.__dict__`) were then filtered out as members of `object`.\n- Option converters accept `True` as well as `None` (`:members:`, `:inherited-members:`, `:exclude-members:`, `:member-order:`, `:annotation:`), matching how directives pass flag options.\n\n## Verification\n- New tests: `test_instance_variable`, `test_inherited_instance_variable`, `test_class_variable`, `test_inherited_class_variable` (autoclass) and three autoattribute tests, with fixtures `target/instance_variable.py` and `target/class_variable.py`.\n- End-to-end build of the issue's example project with this checkout now documents `ham`, `spam` and the inherited `self.inst` under `.. autoclass:: example.Inherited :inherited-members:` \u2014 output identical to current upstream Sphinx 9.1.1.\n- Full suite: failure set identical to the pre-change baseline (34 failures + 1 error, all pre-existing Python 3.12/dependency-version issues; `tests/test_util_inspect.py` can't be collected here because `_testcapi` is missing). flake8/isort clean on changed files.\n\nTwo notes: `tests/test_ext_autodoc.py::test_autodoc_typed_instance_variables` fails when run in certain orders both before and after my change (`AttributeDocumenter.update_annotations` mutates a class's live `__annotations__`) \u2014 a separate pre-existing bug I left alone. Test deps aren't installed in the default interpreter, so I used a throwaway venv at `/tmp/s8548venv`; run pytest from the repo root so the local `sphinx/` wins.\n\nFIXED: yes",
+ "ttft_ms": 2563,
+ "type": "result",
+ "duration_ms": 1433469,
+ "uuid": "4dd0df84-88a4-4ade-882a-c4e7184475a7",
+ "ttft_stream_ms": 2066,
+ "time_to_request_ms": 322,
+ "first_content_frame_ms": 2066,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:54.548Z",
+ "wall_s": 1434.1,
+ "timed_out": false,
+ "exit_code": 0
+}

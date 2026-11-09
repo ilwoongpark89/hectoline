@@ -1,0 +1,50 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "uid": "U0002",
+   "round": 1,
+   "session": "0887646d-db08-4790-a028-bf8da0990b97",
+   "wall_s": 212.0,
+   "turns": 15,
+   "exit_code": 0,
+   "log": "PILOT/work/astropy__astropy-14369/hectoline/reviews/agent-review-u0002-r1.md",
+   "verdict": "pass",
+   "reason": "every check clause fails at 9d9307e and passes now, and every key fact, quote and cross-file claim of the block holds."
+  },
+  {
+   "uid": "U0002",
+   "round": 2,
+   "session": "4e36b575-5340-4a3c-8566-62dc3f6d0377",
+   "wall_s": 138.7,
+   "turns": 16,
+   "exit_code": 0,
+   "log": "PILOT/work/astropy__astropy-14369/hectoline/reviews/agent-review-u0002-r2.md",
+   "verdict": "pass",
+   "reason": "every check clause fails at 9d9307e and passes now, the r1 budget finding is fixed, and every key fact, quote and cross-file claim of the block holds."
+  },
+  {
+   "uid": "U0002",
+   "round": 3,
+   "session": "fb311b1c-6f2f-4fbd-9ac3-d76f6aaaf90a",
+   "wall_s": 86.1,
+   "turns": 11,
+   "exit_code": 0,
+   "log": "PILOT/work/astropy__astropy-14369/hectoline/reviews/agent-review-u0002-r3.md",
+   "verdict": "fail",
+   "reason": "the first check clause exits 1 on the working tree because PLAN.md S03 names unit U0004 and UNITS.md holds no U0004 block."
+  },
+  {
+   "uid": "U0002",
+   "round": 4,
+   "session": "2e7f6187-bdac-4057-b0ee-e1949e309389",
+   "wall_s": 142.8,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "PILOT/work/astropy__astropy-14369/hectoline/reviews/agent-review-u0002-r4.md",
+   "verdict": "pass",
+   "reason": "every check clause fails at the base and passes now, the r3 finding does not reproduce, and every field, quote and cross-file claim of the block holds."
+  }
+ ],
+ "no_verdict": []
+}

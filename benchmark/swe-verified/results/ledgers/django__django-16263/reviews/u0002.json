@@ -1,0 +1,51 @@
+{
+ "uid": "U0002",
+ "rounds": [],
+ "no_verdict": [
+  {
+   "uid": "U0002",
+   "session": "3595a87f-33a8-46fb-bdb0-1edbb1584153",
+   "wall_s": 255.4,
+   "turns": 19,
+   "exit_code": 0,
+   "log": "WORK/django__django-16263/hectoline/reviews/agent-review-u0002-none1.md",
+   "verdict": "none"
+  },
+  {
+   "uid": "U0002",
+   "session": "0d48cc70-24bf-42a9-aac8-8e040cb68048",
+   "wall_s": 226.3,
+   "turns": 25,
+   "exit_code": 0,
+   "log": "WORK/django__django-16263/hectoline/reviews/agent-review-u0002-none2.md",
+   "verdict": "none"
+  },
+  {
+   "uid": "U0002",
+   "session": "b3945a94-d8db-4078-a344-d2ec1eae2b5b",
+   "wall_s": 300.6,
+   "turns": 26,
+   "exit_code": 0,
+   "log": "WORK/django__django-16263/hectoline/reviews/agent-review-u0002-none3.md",
+   "verdict": "none"
+  },
+  {
+   "uid": "U0002",
+   "session": "999f2590-05ee-429f-9e92-eba3fbe2e56d",
+   "wall_s": 223.0,
+   "turns": 24,
+   "exit_code": 0,
+   "log": "WORK/django__django-16263/hectoline/reviews/agent-review-u0002-none4.md",
+   "verdict": "none"
+  },
+  {
+   "uid": "U0002",
+   "session": "c12a8b4b-5e4b-435e-9c78-457800b67c55",
+   "wall_s": 165.6,
+   "turns": 20,
+   "exit_code": 0,
+   "log": "WORK/django__django-16263/hectoline/reviews/agent-review-u0002-none5.md",
+   "verdict": "none"
+  }
+ ]
+}

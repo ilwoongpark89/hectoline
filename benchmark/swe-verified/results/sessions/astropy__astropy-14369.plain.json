@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 659234,
+ "stop_reason": "end_turn",
+ "session_id": "7acdd5f6-f09f-4b51-a579-707b555b77cc",
+ "total_cost_usd": 5.2536215,
+ "usage": {
+  "input_tokens": 154,
+  "cache_creation_input_tokens": 113462,
+  "cache_read_input_tokens": 5607563,
+  "output_tokens": 52578,
+  "output_tokens_details": {
+   "thinking_tokens": 23817
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 113462,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1112,
+    "cache_read_input_tokens": 124354,
+    "cache_creation_input_tokens": 314,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 314
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 154,
+   "outputTokens": 52578,
+   "cacheReadInputTokens": 5607563,
+   "cacheCreationInputTokens": 113462,
+   "webSearchRequests": 0,
+   "costUSD": 5.2536215,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 23817,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 113462,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 77,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "## What was wrong\n\n`astropy/units/format/cds.py` had a right-recursive division rule:\n\n```\ndivision_of_units : DIVISION unit_expression\n                  | unit_expression DIVISION combined_units\n```\n\nso `10+3J/m/s/kpc2` parsed as `J/(m/(s/kpc2))` = `1000 J s / (kpc2 m)` \u2014 exactly the jumbled result in the report.\n\n## Fix\n\n`astropy/units/format/cds.py:171` \u2014 made repeated division left-associative (and the product rule stay within products so it doesn't re-introduce the nesting):\n\n```\nproduct_of_units  : unit_expression PRODUCT product_of_units\n                  | unit_expression\ndivision_of_units : DIVISION unit_expression\n                  | division_of_units DIVISION product_of_units\n                  | product_of_units DIVISION product_of_units\n```\n\n`10+3J/m/s/kpc2` \u2192 `1000 J / (kpc2 m s)`, `10-7J/s/kpc2` \u2192 `1e-07 J / (kpc2 s)`.\n\nAlso regenerated `astropy/units/format/cds_parsetab.py`. This mattered: astropy's committed ply tables are loaded with `optimize=True`, which makes ply *skip* the grammar-signature check, so a stale table would have silently kept the old grammar in use. The header comment block and the `cds.py` line references in the table are intact/updated; `cds_lextab.py` is untouched (the lexer didn't change).\n\nTests added: four CDS grammar cases in `astropy/units/tests/test_format.py` (including both units from the report) and `test_read_composite_units` in `astropy/io/ascii/tests/test_cds.py`, which reads an MRT table through `format=\"ascii.mrt\"` and checks the column units. Plus a changelog fragment at `docs/changes/units/14369.bugfix.rst`.\n\n## Verification \u2014 and its limit\n\nNo Python on this machine has numpy (no venv/pyenv/conda/uv, pip unavailable), so **I could not run astropy's pytest suite**, including the two tests I added. Instead I executed the real `cds.py` source against stub unit objects (bundled `astropy/extern/ply`, real `astropy/utils/parsing.py`, symbolic units tracking scale and base powers), driven by the actual committed parse table:\n\n- All 9 issue/regression cases correct (`10+3J/m/s/kpc2`, `10-7J/s/kpc2`, `km/s/Mpc`, `erg/s/cm2`, \u2026).\n- Every existing `test_cds_grammar` string still parses to the same value, and every `test_cds_grammar_fail` string still raises `ValueError`.\n- Previously-valid mixed forms unchanged: `J.m/s` \u2192 `J m/s`, `J/(m.s)` \u2192 `J/(m s)`, `J/m.s` \u2192 `J/(m s)`, `mW/(m2)`, `km.s-1`, `[cm/s2]`.\n- Grammar still has exactly one shift/reduce conflict \u2014 the pre-existing `UINT`-in-state-0 one; no new conflicts.\n\nRemaining risk is only that the two new tests have a typo-level problem I couldn't execute, and that `Table.read` plumbing behaves as the reader code reads it.\n\nFIXED: yes",
+ "ttft_ms": 1978,
+ "type": "result",
+ "duration_ms": 784619,
+ "uuid": "08f1e32f-edf0-49b6-b95a-be8b52d98fc6",
+ "ttft_stream_ms": 1483,
+ "time_to_request_ms": 261,
+ "first_content_frame_ms": 1483,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:55.545Z",
+ "wall_s": 785.1,
+ "timed_out": false,
+ "exit_code": 0
+}

@@ -1,0 +1,39 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "uid": "U0002",
+   "round": 1,
+   "session": "a305eed2-31de-473e-bf6a-c6c49dbb6255",
+   "wall_s": 56.8,
+   "turns": 8,
+   "exit_code": 0,
+   "log": "WORK/pylint-dev__pylint-4551/hectoline/reviews/agent-review-u0002-r1.md",
+   "verdict": "fail",
+   "reason": "the check only proves the file runs, and measures.py prints the typed literal  0 of 1  instead of counting anything, so the change is not what the sentence says."
+  },
+  {
+   "uid": "U0002",
+   "round": 2,
+   "session": "2aa0a10c-5fd5-4fb7-8ba8-3ebe685124b5",
+   "wall_s": 134.7,
+   "turns": 9,
+   "exit_code": 0,
+   "log": "WORK/pylint-dev__pylint-4551/hectoline/reviews/agent-review-u0002-r2.md",
+   "verdict": "fail",
+   "reason": "the diff carries planning work beyond its sentence (the S02 step, the P11 product row, the planned U0003 block, admitted in  result  as hand-written before the block existed), and the  split?  and  modify?  fields are false against it."
+  },
+  {
+   "uid": "U0002",
+   "round": 3,
+   "session": "2bf8d22b-8ee4-4822-b0bf-0ab2f6995559",
+   "wall_s": 154.8,
+   "turns": 8,
+   "exit_code": 0,
+   "log": "WORK/pylint-dev__pylint-4551/hectoline/reviews/agent-review-u0002-r3.md",
+   "verdict": "fail",
+   "reason": "the check greps only the added G1 goal row and never the plan, while the room's own measure still reports \"no pilot step 1\" and the diff touches no product of the S02 step it claims."
+  }
+ ],
+ "no_verdict": []
+}

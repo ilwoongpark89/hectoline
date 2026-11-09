@@ -1,0 +1,55 @@
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..575591a
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,49 @@
++#!/usr/bin/env python3
++"""measures.py — the measures of the room 01_task, RULE §5. One function per goal leaf, named after it, run by measure.py inside its confined worker. g1 counts the CDS unit strings of GOAL.md that parse to the unit the goal page names for them."""
++import json
++import os
++import re
++import subprocess
++
++PAIR = r'`([^`\s]+)` names `([^`]+)`'
++READ = """
++import json, sys
++from astropy.units import Unit
++out = []
++for s in json.load(sys.stdin):
++    out.append(str(Unit(s, format='cds', parse_strict='silent')))
++print(json.dumps(out))
++"""
++
++
++def pairs(room):
++    """The string pairs of the goal page, read, never typed."""
++    page = open(os.path.join(room, 'GOAL.md')).read()
++    return re.findall(PAIR, page)
++
++
++def parsed(room, strings):
++    """The CDS grammar of this room reads each string once."""
++    python = os.path.join(room, '.venv', 'bin', 'python')
++    if not os.path.exists(python):
++        return None
++    args = [python, '-B', '-c', READ]
++    kw = dict(capture_output=True, text=True, timeout=25)
++    done = subprocess.run(args, input=json.dumps(strings), cwd=room, **kw)
++    if done.returncode:
++        return None
++    return json.loads(done.stdout)
++
++
++def g1(room, bl):
++    """Count the unit strings that parse to the unit GOAL.md names."""
++    want = pairs(room)
++    if not want:
++        return 'no value: GOAL.md names no pair'
++    read = parsed(room, [s for s, _ in want])
++    if read is None:
++        return 'no value: the interpreter of GOAL.md failed'
++    hits = 0
++    for (string, named), got in zip(want, read):
++        hits += got == named
++    return f'{hits} of {len(want)}'

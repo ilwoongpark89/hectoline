@@ -1,0 +1,148 @@
+diff --git a/accept.py b/accept.py
+new file mode 100644
+index 0000000..3b84457
+--- /dev/null
++++ b/accept.py
+@@ -0,0 +1,113 @@
++"""accept.py — the four acceptance checks of goal leaf G1, GOAL.md of this room.
++Each check prints one line, «pass NAME number» or «fail NAME number», and measures.py g1
++counts the passes. It runs against the astropy of this room, never an installed one."""
++import numpy as np
++
++from astropy import units as u
++from astropy.coordinates import AltAz, CIRS, EarthLocation, HADec, ICRS, ITRS
++from astropy.coordinates.angle_utilities import golden_spiral_grid
++from astropy.time import Time
++
++TIME = Time('2014-08-01T10:00')
++LAT = 28.3 * u.deg
++LON = -16.5 * u.deg
++SITE = EarthLocation(lat=LAT, lon=LON, height=2390 * u.m)
++OVER = 10.0 * u.km
++PRESSURE = 1000.0 * u.hPa
++COUNT = 1000
++
++
++def report(name, ok, number):
++    print(('pass ' if ok else 'fail ') + name + ' ' + str(number))
++    return ok
++
++
++def overhead():
++    # the ITRS position OVER the site, the zenith of the site
++    target = EarthLocation(lat=LAT, lon=LON, height=OVER)
++    return target.get_itrs(TIME)
++
++
++def overhead_altaz():
++    # check 1, the zenith reads alt 90 deg
++    altaz = overhead().transform_to(AltAz(obstime=TIME, location=SITE))
++    gap = abs(altaz.alt - 90 * u.deg).to(u.uas)
++    return report('overhead-altaz', gap < 1 * u.uas, gap)
++
++
++def overhead_hadec():
++    # check 2, the zenith reads ha 0, dec the geodetic latitude
++    hadec = overhead().transform_to(HADec(obstime=TIME, location=SITE))
++    ha_gap = abs(hadec.ha).to(u.uas)
++    dec_gap = abs(hadec.dec - LAT).to(u.uas)
++    worst = max(ha_gap, dec_gap)
++    return report('overhead-hadec', worst < 1 * u.uas, worst)
++
++
++def satellites():
++    # COUNT ITRS positions, 7000 km to 42000 km from the geocentre
++    usph = golden_spiral_grid(COUNT)
++    far = np.linspace(7000.0, 42000.0, COUNT) * u.km
++    icrs = ICRS(ra=usph.lon, dec=usph.lat, distance=far)
++    return ITRS(obstime=TIME).realize_frame(icrs.data)
++
++
++def gap_mm(observed, itrs_coo):
++    # the distance between the way back and the position it started from
++    back = observed.transform_to(ITRS(obstime=TIME))
++    gap = (back.cartesian - itrs_coo.cartesian).norm()
++    return gap.to_value(u.mm).max()
++
++
++def round_trip():
++    # check 3, the way back returns every satellite position
++    itrs_coo = satellites()
++    altaz = itrs_coo.transform_to(AltAz(obstime=TIME, location=SITE))
++    hadec = itrs_coo.transform_to(HADec(obstime=TIME, location=SITE))
++    worst = max(gap_mm(altaz, itrs_coo), gap_mm(hadec, itrs_coo))
++    return report('round-trip', worst < 1.0, worst)
++
++
++def refraction():
++    # check 4, the pressure of the observed frame bends the elevation
++    itrs_coo = satellites()
++    dry = AltAz(obstime=TIME, location=SITE)
++    wet = AltAz(obstime=TIME, location=SITE, pressure=PRESSURE)
++    hadec_wet = HADec(obstime=TIME, location=SITE, pressure=PRESSURE)
++    plain = itrs_coo.transform_to(dry)
++    bent = itrs_coo.transform_to(wet)
++    up = plain.alt > 20 * u.deg
++    az_shift = (bent.az - plain.az).to_value(u.uas)
++    az_gap = abs(az_shift[up]).max()
++    bend = (bent.alt - plain.alt).to_value(u.mas)
++    cirs = itrs_coo.transform_to(CIRS(obstime=TIME, location=SITE))
++    cirs_wet = cirs.transform_to(wet).alt
++    cirs_dry = cirs.transform_to(dry).alt
++    cirs_bend = (cirs_wet - cirs_dry).to_value(u.mas)
++    bend_gap = abs(bend - cirs_bend)[up].max()
++    hadec_itrs = itrs_coo.transform_to(hadec_wet).transform_to(ITRS(obstime=TIME))
++    hadec_shift = (hadec_itrs.transform_to(wet).alt - bent.alt).to_value(u.mas)
++    hadec_gap = abs(hadec_shift[up]).max()
++    topo = (itrs_coo.cartesian - SITE.get_itrs(TIME).cartesian).norm()
++    range_shift = (bent.distance - topo).to_value(u.mm)
++    range_gap = abs(range_shift[up]).max()
++    ok = az_gap < 1.0 and bend_gap < 20.0 and hadec_gap < 1.0 and range_gap < 1.0
++    return report('refraction', ok, (az_gap, bend_gap, hadec_gap, range_gap))
++
++
++CHECKS = (overhead_altaz, overhead_hadec, round_trip, refraction)
++
++
++def main():
++    # one line per check, the exit code counts the checks that fail
++    passes = 0
++    for check in CHECKS:
++        try:
++            passes += 1 if check() else 0
++        except Exception as error:
++            print('fail ' + check.__name__.replace('_', '-') + ' ' + repr(error))
++    return len(CHECKS) - passes
++
++
++if __name__ == '__main__':
++    raise SystemExit(main())
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..71f5590
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,23 @@
++"""measures.py — the measure of goal leaf G1 of this room, RULE §5. g1 runs accept.py
++against the astropy of the room, counts the acceptance checks that pass. measure.py of
++hectoline calls it inside its confined worker, so g1 writes nothing."""
++import os
++import subprocess
++
++CHECKS = ('overhead-altaz', 'overhead-hadec', 'round-trip', 'refraction')
++TIMEOUT = 25
++
++
++def g1(room, bl):
++    # the acceptance checks of GOAL.md that pass, «N of 4»
++    python = os.path.join(room, '.venv', 'bin', 'python')
++    script = os.path.join(room, 'accept.py')
++    if not os.path.exists(python):
++        return 'no value: the room venv is absent'
++    if not os.path.exists(script):
++        return 'no value: accept.py is absent'
++    env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1')
++    kw = dict(capture_output=True, text=True, cwd=room)
++    done = subprocess.run([python, '-B', script], env=env, timeout=TIMEOUT, **kw)
++    passed = [name for name in CHECKS if 'pass ' + name in done.stdout]
++    return str(len(passed)) + ' of 4'

@@ -1,0 +1,256 @@
+diff --git a/django/db/models/expressions.py b/django/db/models/expressions.py
+index 86a3a92..581df7d 100644
+--- a/django/db/models/expressions.py
++++ b/django/db/models/expressions.py
+@@ -428,6 +428,13 @@ class BaseExpression:
+             cols.extend(source.get_group_by_cols())
+         return cols
+ 
++    def get_refs(self):
++        refs = set()
++        for expr in self.get_source_expressions():
++            if expr is not None:
++                refs |= expr.get_refs()
++        return refs
++
+     def get_source_fields(self):
+         """Return the underlying field types used by this aggregate."""
+         return [e._output_field_or_none for e in self.get_source_expressions()]
+@@ -1176,6 +1183,9 @@ class Ref(Expression):
+     def get_group_by_cols(self):
+         return [self]
+ 
++    def get_refs(self):
++        return {self.refs}
++
+ 
+ class ExpressionList(Func):
+     """
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 9735ce1..88d10f5 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -441,17 +441,26 @@ class Query(BaseExpression):
+         """
+         if not self.annotation_select:
+             return {}
+-        existing_annotations = [
+-            annotation
++        existing_annotations = {
++            alias: annotation
+             for alias, annotation in self.annotations.items()
+             if alias not in added_aggregate_names
+-        ]
++        }
++        # Existing usage of aggregation can be determined by the presence of
++        # selected aggregates but also by filters against aliased aggregates.
++        _, having, qualify = self.where.split_having_qualify()
++        has_existing_aggregation = (
++            any(
++                getattr(annotation, "contains_aggregate", True)
++                for annotation in existing_annotations.values()
++            )
++            or having
++        )
+         # Decide if we need to use a subquery.
+         #
+-        # Existing annotations would cause incorrect results as get_aggregation()
+-        # must produce just one result and thus must not use GROUP BY. But we
+-        # aren't smart enough to remove the existing annotations from the
+-        # query, so those would force us to use GROUP BY.
++        # Existing aggregations would cause incorrect results as
++        # get_aggregation() must produce just one result and thus must not use
++        # GROUP BY.
+         #
+         # If the query has limit or distinct, or uses set operations, then
+         # those operations must be done in a subquery so that the query
+@@ -460,7 +469,8 @@ class Query(BaseExpression):
+         if (
+             isinstance(self.group_by, tuple)
+             or self.is_sliced
+-            or existing_annotations
++            or has_existing_aggregation
++            or qualify
+             or self.distinct
+             or self.combinator
+         ):
+@@ -482,16 +492,23 @@ class Query(BaseExpression):
+                 # query is grouped by the main model's primary key. However,
+                 # clearing the select clause can alter results if distinct is
+                 # used.
+-                has_existing_aggregate_annotations = any(
+-                    annotation
+-                    for annotation in existing_annotations
+-                    if getattr(annotation, "contains_aggregate", True)
+-                )
+-                if inner_query.default_cols and has_existing_aggregate_annotations:
++                if inner_query.default_cols and has_existing_aggregation:
+                     inner_query.group_by = (
+                         self.model._meta.pk.get_col(inner_query.get_initial_alias()),
+                     )
+                 inner_query.default_cols = False
++                if not qualify:
++                    # Mask existing annotations that are not referenced by
++                    # aggregates to be pushed to the outer query unless
++                    # filtering against window functions is involved as it
++                    # requires complex realising.
++                    annotation_mask = set(added_aggregate_names)
++                    if isinstance(self.group_by, tuple):
++                        for expr in self.group_by:
++                            annotation_mask |= expr.get_refs()
++                    for aggregate_name in added_aggregate_names:
++                        annotation_mask |= self.annotations[aggregate_name].get_refs()
++                    inner_query.set_annotation_mask(annotation_mask)
+ 
+             relabels = {t: "subquery" for t in inner_query.alias_map}
+             relabels[None] = "subquery"
+@@ -525,6 +542,19 @@ class Query(BaseExpression):
+             self.select = ()
+             self.default_cols = False
+             self.extra = {}
++            if existing_annotations:
++                # Inline reference to existing annotations and mask them as
++                # they are unnecessary given only the summarized aggregations
++                # are requested.
++                replacements = {
++                    Ref(alias, annotation): annotation
++                    for alias, annotation in existing_annotations.items()
++                }
++                for name in added_aggregate_names:
++                    self.annotations[name] = self.annotations[
++                        name
++                    ].replace_expressions(replacements)
++                self.set_annotation_mask(added_aggregate_names)
+ 
+         empty_set_result = [
+             expression.empty_result_set_value
+diff --git a/django/db/models/sql/where.py b/django/db/models/sql/where.py
+index 1928ba9..e7c5af5 100644
+--- a/django/db/models/sql/where.py
++++ b/django/db/models/sql/where.py
+@@ -187,6 +187,15 @@ class WhereNode(tree.Node):
+             cols.extend(child.get_group_by_cols())
+         return cols
+ 
++    def get_refs(self):
++        refs = set()
++        for child in self.children:
++            # Nodes such as NothingNode and ExtraWhere are not expressions and
++            # cannot name an annotation alias.
++            if hasattr(child, "get_refs"):
++                refs |= child.get_refs()
++        return refs
++
+     def get_source_expressions(self):
+         return self.children[:]
+ 
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..6de490d
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,50 @@
++"""measures.py — one measure per goal leaf of this room, RULE §1.
++
++G1 counts the pruning tests of tests/aggregation that pass. The django test
++runner needs asgiref and sqlparse; in this room they sit in DEPS, outside the
++repository, so the measure puts DEPS on the path of the child process.
++"""
++import os
++import re
++import subprocess
++import sys
++
++ROOM = os.path.dirname(os.path.abspath(__file__))
++DEPS = "/private/tmp/dj16263-deps"
++PRUNING_TESTS = (
++    "aggregation.tests.AggregateTestCase.test_unreferenced_aggregate_annotation_pruned",
++    "aggregation.tests.AggregateTestCase.test_non_aggregate_annotation_pruned",
++    "aggregation.tests.AggregateTestCase.test_referenced_aggregate_annotation_kept",
++    "aggregation.tests.AggregateTestCase.test_referenced_group_by_annotation_kept",
++)
++
++
++def G1(room=ROOM):
++    """Pruning tests of tests/aggregation that pass, now of total."""
++    env = dict(os.environ, PYTHONPATH=os.pathsep.join([room, DEPS]))
++    run = subprocess.run(
++        [
++            sys.executable,
++            "-B",
++            "runtests.py",
++            "--settings=test_sqlite",
++            "--verbosity=1",
++            *PRUNING_TESTS,
++        ],
++        cwd=os.path.join(room, "tests"),
++        env=env,
++        capture_output=True,
++        text=True,
++    )
++    report = run.stdout + run.stderr
++    ran = re.search(r"Ran (\d+) test", report)
++    bad = len(re.findall(r"^(?:FAIL|ERROR):", report, re.MULTILINE))
++    return (max(int(ran.group(1)) - bad, 0) if ran else 0), len(PRUNING_TESTS)
++
++
++MEASURES = {"G1": G1}
++
++
++def measure(leaf="G1", room=ROOM):
++    """Now of total for one goal leaf."""
++    return MEASURES[leaf](room)
+diff --git a/tests/aggregation/tests.py b/tests/aggregation/tests.py
+index 39c8a45..32a3a49 100644
+--- a/tests/aggregation/tests.py
++++ b/tests/aggregation/tests.py
+@@ -34,6 +34,8 @@ from django.db.models.functions import (
+     Cast,
+     Coalesce,
+     Greatest,
++    Lower,
++    Mod,
+     Now,
+     Pi,
+     TruncDate,
+@@ -2084,3 +2086,40 @@ class AggregateTestCase(TestCase):
+             exists=Exists(Author.objects.extra(where=["1=0"])),
+         )
+         self.assertEqual(len(qs), 6)
++
++    def test_non_aggregate_annotation_pruned(self):
++        with CaptureQueriesContext(connection) as ctx:
++            Book.objects.annotate(
++                name_lower=Lower("name"),
++            ).count()
++        sql = ctx.captured_queries[0]["sql"].lower()
++        self.assertEqual(sql.count("select"), 1, "No subquery wrapping required")
++        self.assertNotIn("name_lower", sql)
++
++    def test_unreferenced_aggregate_annotation_pruned(self):
++        with CaptureQueriesContext(connection) as ctx:
++            cnt = Book.objects.annotate(
++                authors_count=Count("authors"),
++            ).count()
++        self.assertEqual(cnt, 6)
++        sql = ctx.captured_queries[0]["sql"].lower()
++        self.assertEqual(sql.count("select"), 2, "Subquery wrapping required")
++        self.assertNotIn("authors_count", sql)
++
++    def test_referenced_aggregate_annotation_kept(self):
++        with CaptureQueriesContext(connection) as ctx:
++            Book.objects.annotate(
++                authors_count=Count("authors"),
++            ).aggregate(Avg("authors_count"))
++        sql = ctx.captured_queries[0]["sql"].lower()
++        self.assertEqual(sql.count("select"), 2, "Subquery wrapping required")
++        self.assertEqual(sql.count("authors_count"), 2)
++
++    def test_referenced_group_by_annotation_kept(self):
++        with CaptureQueriesContext(connection) as ctx:
++            Book.objects.values(pages_mod=Mod("pages", 10)).annotate(
++                mod_count=Count("*")
++            ).count()
++        sql = ctx.captured_queries[0]["sql"].lower()
++        self.assertEqual(sql.count("select"), 2, "Subquery wrapping required")
++        self.assertIn("pages_mod", sql)

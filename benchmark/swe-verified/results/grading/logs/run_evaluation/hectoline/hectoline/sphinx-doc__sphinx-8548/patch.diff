@@ -1,0 +1,53 @@
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..51391fc
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,47 @@
++#!/usr/bin/env python3
++"""measures.py — the leaf numbers of 01_task, RULE §5. measure.py runs it in the confined worker, so it reads the files of the room, writes nothing and opens no socket. It calls g1 by the lowercase name of the goal row."""
++import ast
++import os
++import re
++
++
++def text_of(room, path):
++    """The text of one file of the room, empty while that file is absent."""
++    full = os.path.join(room, path)
++    if not os.path.exists(full):
++        return ''
++    with open(full, encoding='utf-8') as handle:
++        return handle.read()
++
++
++def mro_analyzer(room):
++    """1 while get_class_members reads one module analyzer per class of the mro."""
++    source = text_of(room, 'sphinx/ext/autodoc/importer.py')
++    for node in ast.walk(ast.parse(source)):
++        if not isinstance(node, ast.FunctionDef):
++            continue
++        if node.name != 'get_class_members':
++            continue
++        for loop in ast.walk(node):
++            if not isinstance(loop, ast.For):
++                continue
++            head = ast.dump(loop.iter)
++            dumps = [ast.dump(stmt) for stmt in loop.body]
++            body = ''.join(dumps)
++            if 'getmro' in head and 'for_module' in body:
++                return 1
++    return 0
++
++
++def regression_cases(room):
++    """1 while the autoclass suite holds two cases over the fixture of the pilot."""
++    suite = text_of(room, 'tests/test_ext_autodoc_autoclass.py')
++    cases = re.findall(r'^def (test_\w*instance_variable)\(', suite, re.M)
++    fixture = text_of(room, 'tests/roots/test-ext-autodoc/target/instance_variable.py')
++    inherited = 'class Bar(Foo)' in fixture and 'self.attr1' in fixture
++    return 1 if len(cases) > 1 and inherited else 0
++
++
++def g1(room, bl):
++    """The acceptance checks of G1 that hold, RULE §5. bl stays unread, no check reads the ledger."""
++    return '%d of 2' % (mro_analyzer(room) + regression_cases(room))

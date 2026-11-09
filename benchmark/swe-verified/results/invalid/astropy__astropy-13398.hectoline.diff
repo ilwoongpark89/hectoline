@@ -1,0 +1,179 @@
+diff --git a/astropy/coordinates/builtin_frames/__init__.py b/astropy/coordinates/builtin_frames/__init__.py
+index 6fd688c..17b5244 100644
+--- a/astropy/coordinates/builtin_frames/__init__.py
++++ b/astropy/coordinates/builtin_frames/__init__.py
+@@ -48,6 +48,7 @@ from . import supergalactic_transforms
+ from . import icrs_cirs_transforms
+ from . import cirs_observed_transforms
+ from . import icrs_observed_transforms
++from . import itrs_observed_transforms
+ from . import intermediate_rotation_transforms
+ from . import ecliptic_transforms
+ 
+diff --git a/astropy/coordinates/builtin_frames/itrs_observed_transforms.py b/astropy/coordinates/builtin_frames/itrs_observed_transforms.py
+new file mode 100644
+index 0000000..a9d6ff7
+--- /dev/null
++++ b/astropy/coordinates/builtin_frames/itrs_observed_transforms.py
+@@ -0,0 +1,80 @@
++# Licensed under a 3-clause BSD style license - see LICENSE.rst
++"""Direct transformations between `~astropy.coordinates.ITRS` and the observed
++frames `~astropy.coordinates.AltAz` and `~astropy.coordinates.HADec`.
++
++These transformations stay inside the ITRS.  They subtract the ITRS position of
++the observing site from the ITRS position of the target and rotate the
++resulting topocentric vector into the observed frame, so the topocentric
++parallax of a nearby target comes out right without the detour through the
++GCRS.  That detour is what makes a satellite, an aircraft or a mountain top
++appear in the wrong place when it is transformed through ``ITRS -> GCRS ->
++AltAz``: the GCRS route applies the stellar aberration of a geocentric
++observer, which is meaningless for a target that moves with the Earth.
++
++Two consequences follow from staying inside the ITRS.
++
++* The ITRS position is treated as time invariant, so the ``obstime`` of the
++  output frame is simply adopted.  An ``ITRS -> ITRS`` transform between two
++  times refers the position to the solar system barycentre, which would leave a
++  nearby target millions of kilometres from where it was meant to be.
++* No aberration is applied.  A target whose coordinates already carry the
++  stellar aberration of a geocentric observer, as the ILRS ephemerides do, must
++  be transformed through ``ITRS -> ICRS -> AltAz`` instead.
++"""
++
++import numpy as np
++from astropy import units as u
++from astropy.coordinates.baseframe import frame_transform_graph
++from astropy.coordinates.matrix_utilities import matrix_transpose, rotation_matrix
++from astropy.coordinates.transformations import FunctionTransformWithFiniteDifference
++
++from .altaz import AltAz
++from .hadec import HADec
++from .itrs import ITRS
++from .utils import PIOVER2
++
++__all__ = []
++
++
++def itrs_to_altaz_mat(lon, lat):
++    """The matrix from topocentric ITRS to AltAz, angles in radians."""
++    # the AltAz frame is left handed
++    minus_x = np.eye(3)
++    minus_x[0][0] = -1.0
++    return (minus_x
++            @ rotation_matrix(PIOVER2 - lat, 'y', unit=u.radian)
++            @ rotation_matrix(lon, 'z', unit=u.radian))
++
++
++def itrs_to_hadec_mat(lon):
++    """The matrix from topocentric ITRS to HADec, the angle in radians."""
++    # the HADec frame is left handed
++    minus_y = np.eye(3)
++    minus_y[1][1] = -1.0
++    return minus_y @ rotation_matrix(lon, 'z', unit=u.radian)
++
++
++def itrs_to_observed_mat(observed_frame):
++    """The matrix from topocentric ITRS to the frame given."""
++    lon, lat, height = observed_frame.location.to_geodetic('WGS84')
++    if isinstance(observed_frame, AltAz):
++        return itrs_to_altaz_mat(lon.to_value(u.radian), lat.to_value(u.radian))
++    return itrs_to_hadec_mat(lon.to_value(u.radian))
++
++
++@frame_transform_graph.transform(FunctionTransformWithFiniteDifference, ITRS, AltAz)
++@frame_transform_graph.transform(FunctionTransformWithFiniteDifference, ITRS, HADec)
++def itrs_to_observed(itrs_coo, observed_frame):
++    topocentric_itrs_repr = (itrs_coo.cartesian
++                             - observed_frame.location.get_itrs().cartesian)
++    rep = topocentric_itrs_repr.transform(itrs_to_observed_mat(observed_frame))
++    return observed_frame.realize_frame(rep)
++
++
++@frame_transform_graph.transform(FunctionTransformWithFiniteDifference, AltAz, ITRS)
++@frame_transform_graph.transform(FunctionTransformWithFiniteDifference, HADec, ITRS)
++def observed_to_itrs(observed_coo, itrs_frame):
++    topocentric_itrs_repr = observed_coo.cartesian.transform(
++        matrix_transpose(itrs_to_observed_mat(observed_coo)))
++    rep = topocentric_itrs_repr + observed_coo.location.get_itrs().cartesian
++    return itrs_frame.realize_frame(rep)
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..cd4d42b
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,75 @@
++#!/usr/bin/env python3
++"""measures.py — the measure of 01_task, RULE §5. g1 = acceptance cases of the direct ITRS to Observed transforms that fail.
++The six cases, for a site at 1 deg west, 52 deg north, on the WGS84 geoid:
++1 a target 10 km over the site reads altitude 90 deg at distance 10 km.
++2 the same target reads hour angle 0 deg, declination 52 deg.
++3 the AltAz result returns the geocentric ITRS position within 1 mm.
++4 the HADec result returns the geocentric ITRS position within 1 mm.
++5 at 1000 hPa and 0 deg C refraction raises a 10 deg target by 5.0 to 5.8 arcmin, the textbook band of the A tan z model.
++6 the same air leaves a target in the zenith at altitude 90 deg.
++The cases need the built astropy of this room under .venv. Without it the measure reads no tool.
++Usage: measures.py g1 [ROOM]."""
++import os
++import subprocess
++import sys
++
++CASES = 6
++
++PROGRAM = '''import sys
++sys.path.insert(0, sys.argv[1])
++from astropy import units as u
++from astropy.coordinates import AltAz, EarthLocation, HADec, ITRS
++from astropy.time import Time
++
++when = Time('J2010')
++site = EarthLocation(-1 * u.deg, 52 * u.deg, height=0. * u.km)
++over = EarthLocation(-1 * u.deg, 52 * u.deg, height=10. * u.km)
++target = ITRS(over.get_itrs(when).cartesian, obstime=when)
++air = dict(obstime=when, location=site, pressure=1000 * u.hPa,
++           temperature=0 * u.deg_C, relative_humidity=0.5,
++           obswl=0.55 * u.micron)
++altaz = target.transform_to(AltAz(obstime=when, location=site))
++hadec = target.transform_to(HADec(obstime=when, location=site))
++low = AltAz(alt=10 * u.deg, az=30 * u.deg, distance=100 * u.km,
++            obstime=when, location=site)
++seen = low.transform_to(ITRS(obstime=when)).transform_to(AltAz(**air))
++zenith = target.transform_to(AltAz(**air))
++
++
++def gap(observed):
++    back = observed.transform_to(ITRS(obstime=when)).cartesian
++    return (back - target.cartesian).norm().to_value(u.mm)
++
++cases = [
++    [(altaz.alt.to_value(u.deg), 90.0, 1e-9),
++     (altaz.distance.to_value(u.km), 10.0, 1e-6)],
++    [(hadec.ha.to_value(u.deg), 0.0, 1e-9),
++     (hadec.dec.to_value(u.deg), 52.0, 1e-9)],
++    [(gap(altaz), 0.0, 1.0)],
++    [(gap(hadec), 0.0, 1.0)],
++    [((seen.alt - 10 * u.deg).to_value(u.arcmin), 5.4, 0.4),
++     (seen.distance.to_value(u.km), 100.0, 1e-3)],
++    [(zenith.alt.to_value(u.deg), 90.0, 1e-9)],
++]
++off = lambda case: any(abs(got - want) > tol for got, want, tol in case)
++print(sum(1 for case in cases if off(case)))'''
++
++
++def g1(room=None, bl=None):
++    """Acceptance cases of the direct ITRS to Observed transforms that fail."""
++    room = room or os.path.dirname(os.path.abspath(__file__))
++    python = os.path.join(room, '.venv', 'bin', 'python')
++    if not os.path.isfile(python):
++        return 'no tool: the built astropy of this room is absent'
++    run = subprocess.run([python, '-B', '-c', PROGRAM, room],
++                         capture_output=True, text=True, cwd=room)
++    tail = run.stdout.strip().splitlines()
++    try:
++        return int(tail[-1])
++    except (IndexError, ValueError):
++        return f'no value: the cases did not run, exit {run.returncode}'
++
++
++if __name__ == '__main__':
++    name = sys.argv[1] if len(sys.argv) > 1 else 'g1'
++    print(name, globals()[name](sys.argv[2] if len(sys.argv) > 2 else None))

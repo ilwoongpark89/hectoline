@@ -1,0 +1,265 @@
+2026-11-09 14:14:15 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:15 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:21 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:21 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:23 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:23 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:26 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:26 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:14:28 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:16:28 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:11 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:13 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:13 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:29 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:29 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:36 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:36 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:17:58 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:02 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:05 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:05 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:08 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:08 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:11 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:13 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:13 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:15 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:15 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:20 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:20 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:26 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:27 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:38 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:38 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:40 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:40 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:44 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:18:45 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:25 | check | - | deny | PLAN.md: no open unit | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:27 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:28 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 14:19:28 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:30 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:30 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:19:30 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:49 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:51 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:19:51 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:11 | check | - | deny | UNITS.md: no open unit | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:17 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:17 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:20:18 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:20:18 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:28 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:40 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:20:40 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:20:41 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:01 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:01 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:01 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:12 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:13 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:34 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:35 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:48 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:21:48 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:48 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:48 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:48 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:48 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:21:49 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:22:17 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:22:17 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:22:17 | check | - | deny | GOAL.md: no open unit | 
+2026-11-09 14:22:17 | check | - | deny | PLAN.md: no open unit | 
+2026-11-09 14:22:17 | check | - | deny | django/db/models/constraints.py: no open unit | 
+2026-11-09 14:22:17 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:22:23 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:22:23 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 14:22:23 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 14:22:23 | open | U0002 | deny | U0002: no planned block | 
+2026-11-09 14:22:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:22:23 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:22:23 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:22:52 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:22:52 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:23:02 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:23:02 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:23:04 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:23:04 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:04 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:07 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:07 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:10 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:25 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:24:42 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:24:42 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:24:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:47 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:47 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:53 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:25:53 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:26:25 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:26:25 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:26:43 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:26:43 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:26:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:26:57 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:27:18 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:27:18 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:27:30 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:27:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:28:07 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:28:07 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:28:29 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:28:29 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:28:52 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:28:52 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:29:21 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:29:21 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:29:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:14 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:14 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:30:14 | check | - | deny | PLAN.md: no open unit | 
+2026-11-09 14:30:14 | check | - | allow | no file | 
+2026-11-09 14:30:14 | check | - | allow | no file | 
+2026-11-09 14:30:14 | check | - | allow | no file | 
+2026-11-09 14:30:14 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:38 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:39 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:48 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:48 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:55 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:30:55 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:31:19 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:31:19 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:31:44 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:31:44 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:32:03 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:32:03 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:32:20 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:32:20 | open | U0001 | deny | U0001: no planned block | 
+2026-11-09 14:32:20 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:32:20 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:32:37 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:32:41 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:32:41 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:32:46 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:32:46 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:32:51 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:32:51 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:03 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:04 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:19 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:19 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:41 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:41 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:33:59 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:34:01 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:34:01 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:34:12 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:34:12 | check | - | allow | no file | 96613bd7-9d9f-470e-8514-6cc40aa7594e
+2026-11-09 14:34:36 | close | U0001 | deny | U0001: not open or waiting | 
+2026-11-09 14:34:36 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:35:08 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:35:08 | check | - | allow | no file | 
+2026-11-09 14:35:08 | check | - | deny | django/db/models/constraints.py: no open unit | 
+2026-11-09 14:35:08 | check | - | allow | no file | 
+2026-11-09 14:35:08 | check | - | allow | no file | 
+2026-11-09 14:35:08 | check | - | allow | no file | 
+2026-11-09 14:35:08 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:35:32 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:35:33 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:35:46 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:35:46 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:05 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:05 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:10 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:10 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:31 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:36:31 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:36:31 | check | - | deny | PLAN.md: no open unit | 
+2026-11-09 14:36:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:36:57 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:37:39 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:37:39 | check | - | deny | NOTES.md: no open unit | 
+2026-11-09 14:37:39 | check | - | deny | tests/constraints/tests.py: no open unit | 
+2026-11-09 14:37:39 | check | - | deny | docs/ref/models/constraints.txt: no open unit | 
+2026-11-09 14:37:39 | check | - | allow | ../../../../../../tmp/x-scratch/a.txt: outside the room | 
+2026-11-09 14:37:39 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:24 | check | - | deny | unit.py: no open unit | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:28 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:28 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:41 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:38:41 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:38:41 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:38:42 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:12 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:13 | check | - | deny | UNITS.md: no open unit | 
+2026-11-09 14:39:13 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:42 | check | - | deny | RULE.md: no open unit | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:45 | check | - | deny | unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:49 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:51 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:39:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:40:51 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:40:51 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:40:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:40:56 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:10 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:10 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:20 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:20 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:22 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:22 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:24 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:25 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:31 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:33 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:35 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:37 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:40 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:40 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:54 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:55 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:41:58 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:00 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:06 | check | - | allow | ../../../../../../tmp/x-keep-constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:08 | check | - | allow | ../../../../../../tmp/x-keep-constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:12 | check | - | allow | ../../../../../../tmp/x-keep-constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:13 | check | - | allow | ../../../../../../tmp/x-keep-constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:17 | check | - | allow | ../../../../../../tmp/x-dj16560-verify/django/db/models/constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:18 | check | - | allow | ../../../../../../tmp/x-dj16560-verify/django/db/models/constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:34 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:35 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:42:55 | check | - | allow | ../../../../../../tmp/x-keep-constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:44:56 | check | - | allow | ../../../../../../tmp/x-keep-constraints.py: outside the room | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:44:58 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:44:58 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:45:00 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:45:01 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:45:37 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:45:37 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:46:06 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:46:06 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:46:12 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b
+2026-11-09 14:46:12 | open | U0002 | deny | U0002: the planned queue is empty, a planning unit comes first | 
+2026-11-09 14:46:12 | check | - | allow | no file | 67f358c4-054c-4020-824e-20dba8a3ed8b

@@ -1,0 +1,28 @@
+{
+ "uid": "U0004",
+ "rounds": [
+  {
+   "uid": "U0004",
+   "round": 1,
+   "session": "4baebc0b-8e5d-4433-8d33-46a1982ecf2e",
+   "wall_s": 61.6,
+   "turns": 7,
+   "exit_code": 0,
+   "log": "PILOT/work/astropy__astropy-14369/hectoline/reviews/agent-review-u0004-r1.md",
+   "verdict": "fail",
+   "reason": "the first check clause can never pass because its own text puts the literal  ## U0005  into UNITS.md, so the split lands inside the check line and both of its asserts fail on the working tree."
+  },
+  {
+   "uid": "U0004",
+   "round": 2,
+   "session": "42eb9bb5-cd48-40eb-b483-76721e8e2f24",
+   "wall_s": 114.4,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "PILOT/work/astropy__astropy-14369/hectoline/reviews/agent-review-u0004-r2.md",
+   "verdict": "pass",
+   "reason": "both check clauses exit 0 on the working tree and non-zero at base 0c40533, r1's finding is fixed, and every field of the block holds against OWNER.md, PLAN.md, measures.py and the budgets."
+  }
+ ],
+ "no_verdict": []
+}

@@ -1,0 +1,15 @@
+{
+ "uid": "U0004",
+ "rounds": [],
+ "no_verdict": [
+  {
+   "uid": "U0004",
+   "session": "88604a3f-6ae0-48fa-89a8-e811f3e460a3",
+   "wall_s": 309.6,
+   "turns": 29,
+   "exit_code": 0,
+   "log": "WORK/django__django-16263/hectoline/reviews/agent-review-u0004-none1.md",
+   "verdict": "none"
+  }
+ ]
+}

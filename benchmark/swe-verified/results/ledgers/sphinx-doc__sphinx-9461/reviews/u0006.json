@@ -1,0 +1,50 @@
+{
+ "uid": "U0006",
+ "rounds": [
+  {
+   "uid": "U0006",
+   "round": 1,
+   "session": "517bd683-ee54-4b50-9437-cd9d6c377e87",
+   "wall_s": 53.5,
+   "turns": 6,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0006-r1.md",
+   "verdict": "fail",
+   "reason": "the plan key cites a nonexistent A0013, the sole check clause  test -f stray.md  only proves a pile file exists, and the diff re-points no planned block at all, so the unit's sentence, check and parent row are each false."
+  },
+  {
+   "uid": "U0006",
+   "round": 2,
+   "session": "0827ca45-13e4-432f-961e-99ad612dc9b5",
+   "wall_s": 212.3,
+   "turns": 12,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0006-r2.md",
+   "verdict": "pass",
+   "reason": "every clause runs, fails at the base and passes now while proving the planned row and its serving block together, and each field matches the files I read."
+  },
+  {
+   "uid": "U0006",
+   "round": 3,
+   "session": "efc8a1f1-cc2e-41f8-a9d8-7e854345964d",
+   "wall_s": 155.5,
+   "turns": 11,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0006-r3.md",
+   "verdict": "pass",
+   "reason": "every clause runs, fails at the base and passes now while proving the five rows against the blocks they serve, the repair stays inside OWNER.md, PLAN.md and its own block, and each field matches the files I read."
+  },
+  {
+   "uid": "U0006",
+   "round": 4,
+   "session": "a1769f02-cb49-4ed0-ba87-1701e80a9325",
+   "wall_s": 119.9,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "WORK/sphinx-doc__sphinx-9461/hectoline/reviews/agent-review-u0006-r4.md",
+   "verdict": "fail",
+   "reason": "the review key passes a diff that does not exist, S05's units cell names a U0007 block absent from UNITS.md, and the sole clause only reads back the row the unit wrote while S02\u2013S04 remain cited by planned blocks and absent from PLAN.md."
+  }
+ ],
+ "no_verdict": []
+}

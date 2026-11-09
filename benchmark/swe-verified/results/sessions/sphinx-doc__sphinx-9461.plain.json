@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 675890,
+ "stop_reason": "end_turn",
+ "session_id": "10bc7b26-0813-4d14-976f-8b58023c6942",
+ "total_cost_usd": 5.108624999999999,
+ "usage": {
+  "input_tokens": 180,
+  "cache_creation_input_tokens": 96798,
+  "cache_read_input_tokens": 5792540,
+  "output_tokens": 49739,
+  "output_tokens_details": {
+   "thinking_tokens": 25088
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 96798,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1569,
+    "cache_read_input_tokens": 107334,
+    "cache_creation_input_tokens": 670,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 670
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 180,
+   "outputTokens": 49739,
+   "cacheReadInputTokens": 5792540,
+   "cacheCreationInputTokens": 96798,
+   "webSearchRequests": 0,
+   "costUSD": 5.108624999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 25088,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 96798,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 90,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "## What I changed\n\n**`sphinx/util/inspect.py`**\n- `isclassmethod(obj, cls=None, name=None)` \u2014 with the optional `cls`/`name`, it finds the `classmethod` in the class MRO. Needed because `@classmethod @property` behaves like a class attribute: `getattr(Cls, name)` returns the *evaluated value*, so the member itself gives no hint.\n- `getdoc()` \u2014 when the member is a classmethod of `cls`, the docstring is taken from the original function in the class `__dict__` (falling through base classes when inherited docstrings are allowed).\n\n**`sphinx/ext/autodoc/__init__.py`**\n- `Documenter.filter_members()` now passes `self.object, membername` (the owner class + member name) to `getdoc()` instead of `self.parent, self.object_name`. This is what made class properties disappear: their doc resolved to `int.__doc__`-style class docs, was nulled out, and the member was dropped as undocumented.\n- New helper `get_class_property()` (scans the class and its bases for a `classmethod` wrapping a `property`).\n- `PropertyDocumenter`: `can_document_member()` accepts class properties, `import_object()` resolves them to the underlying property and sets `isclassmethod`, `add_directive_header()` emits `:classmethod:` (so `:abstractmethod:` keeps working for `@classmethod @property @abstractmethod`). Inherited class properties are handled too, otherwise they would now surface as bare `:value:` attributes.\n\n**`sphinx/domains/python.py`** \u2014 `py:property` gains a `:classmethod:` flag, rendering \"class property\" / \"abstract class property\". Documented in `doc/usage/restructuredtext/domains.rst`, plus a `CHANGES` entry.\n\n**Tests** \u2014 `tests/roots/test-ext-autodoc/target/properties.py` now has `prop1` (plain) and `prop2` (classmethod property); the existing fixture member `prop` was renamed to `prop1`, so the autoproperty/autoclass tests referencing it were updated. Added `test_class_properties` (autoproperty), the `prop2` expectations in the autoclass members test (guarded for Python \u2265 3.9), and `test_pyclassproperty` in `tests/test_domain_py.py`.\n\n## Verification\n- Built a doc project mirroring the reporter's demo (metaclass / base class / subclass, each with class property and abstract class property): all six previously-missing members are now documented, rendered as `class property` / `abstract class property`, with their docstrings, and the build is warning-free under `-W`.\n- Full suite on Python 3.9.6 (`/usr/bin/python3`, deps in a throwaway venv, since the repo isn't 3.12-compatible): 1679 passed, 6 failures \u2014 `test_needs_sphinx`, `test_viewcode`, two `test_intl` ones, `test_theme_api`, `test_format_date` \u2014 all of which fail identically on the pristine base (dependency-version/environment issues), plus linkcheck deselected as it needs network. flake8 is clean on every file I touched.\n\nOne side note: I temporarily installed packages into the ambient Python 3.12 environment before switching to a venv; both that environment and the scratch directory have been restored/removed, so the only changes left are the nine files above.\n\nFIXED: yes",
+ "ttft_ms": 2063,
+ "type": "result",
+ "duration_ms": 977598,
+ "uuid": "1027fc28-973f-4db2-9c86-066a3363b80c",
+ "ttft_stream_ms": 1428,
+ "time_to_request_ms": 355,
+ "first_content_frame_ms": 1428,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:54.548Z",
+ "wall_s": 978.2,
+ "timed_out": false,
+ "exit_code": 0
+}

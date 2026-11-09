@@ -1,0 +1,113 @@
+{
+ "duration_api_ms": 390635,
+ "stop_reason": "end_turn",
+ "session_id": "3042fba8-a053-4e27-87bf-20c9c0213f2a",
+ "total_cost_usd": 3.597593,
+ "usage": {
+  "input_tokens": 146,
+  "cache_creation_input_tokens": 80108,
+  "cache_read_input_tokens": 4112916,
+  "output_tokens": 29573,
+  "output_tokens_details": {
+   "thinking_tokens": 11677
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 80108,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1022,
+    "cache_read_input_tokens": 90837,
+    "cache_creation_input_tokens": 477,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 477
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 146,
+   "outputTokens": 29573,
+   "cacheReadInputTokens": 4112916,
+   "cacheCreationInputTokens": 80108,
+   "webSearchRequests": 0,
+   "costUSD": 3.597593,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 11677,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 80108,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [
+  {
+   "tool_name": "Bash",
+   "tool_use_id": "toolu_01Tt7Z3AvzBFcz538xqRz6gW",
+   "tool_input": {
+    "command": "rm -f tests/_129. tests/_130. && git status --short"
+   }
+  }
+ ],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 73,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "Done. Summary of the change:\n\n**`django/db/models/deletion.py`**\n- `collect()` now groups fast-deletable cascade relations by related model (`model_fast_deletes`) and emits **one** queryset per related model covering all its FK fields, instead of one per relation.\n- `related_objects(related_model, related_fields, objs)` builds the filter as `reduce(operator.or_, Q(field__in=objs) ...)`, producing `WHERE a_id IN (...) OR b_id IN (...)`.\n- `get_del_batches(objs, fields)` takes the full field list so `bulk_batch_size()` scales the batch down by the number of OR'd columns (no parameter-limit regressions).\n- `can_fast_delete()` accepts a model class (`objs._meta.model` instead of `type(objs)`), so the decision is made before building the queryset.\n- `data`/`field_updates`/`dependencies` switched to `defaultdict` for the new access patterns.\n\n**`django/contrib/admin/utils.py`** \u2014 `NestedObjects.related_objects()` updated to the new signature and `select_related(*field_names)`.\n\n**Tests/docs** \u2014 added `FastDeleteTests.test_fast_delete_combined_relationships` and a 3.1 release note.\n\nVerification:\n- The issue's exact models now produce `DELETE FROM person_friends WHERE from_person_id IN (1) OR to_person_id IN (1)` + `DELETE FROM person ...`, and `DELETE FROM entry WHERE created_by_id IN (1) OR updated_by_id IN (1)` + `DELETE FROM user ...` (confirmed by capturing SQL in a scratch app).\n- Large-batch deletes still split correctly (1200 parents \u2192 3 combined fast-delete queries on SQLite, all rows removed).\n- `delete`, `delete_regress`, `admin_utils`, `admin_views`, `contenttypes_tests`, `generic_relations*`, `many_to_*`, `one_to_one`, `model_inheritance*`, `proxy_models`, `queries`, `m2m_*`, `signals`, `fixtures`: 1285 tests, all pass.\n- Full suite run before vs. after the patch: **identical** failure sets (195 failures / 6 errors, all pre-existing in this environment \u2014 Django 3.1-alpha on Python 3.12), with my one new test added and passing. flake8 clean.\n\nOne note: two empty leftover files, `tests/_129.` and `tests/_130.`, were created by a crashed parallel test-runner invocation; `rm` was denied in this mode, so they remain untracked in the working tree \u2014 safe to delete.\n\nFIXED: yes",
+ "ttft_ms": 2254,
+ "type": "result",
+ "duration_ms": 849991,
+ "uuid": "a75c3ba6-491a-4978-abdd-17efe160ddd8",
+ "ttft_stream_ms": 1714,
+ "time_to_request_ms": 200,
+ "first_content_frame_ms": 1714,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-08T19:43:55.545Z",
+ "wall_s": 850.5,
+ "timed_out": false,
+ "exit_code": 0
+}

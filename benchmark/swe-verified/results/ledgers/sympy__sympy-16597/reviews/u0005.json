@@ -1,0 +1,17 @@
+{
+ "uid": "U0005",
+ "rounds": [
+  {
+   "uid": "U0005",
+   "round": 1,
+   "session": "b6003273-3e2d-4a4a-ba26-76529a945ed6",
+   "wall_s": 253.7,
+   "turns": 22,
+   "exit_code": 0,
+   "log": "WORK/sympy__sympy-16597/hectoline/reviews/agent-review-u0005-r1.md",
+   "verdict": "fail",
+   "reason": "the  rejected  key states that  integer -> finite  moves no probe, but that rule alone makes  measures.g1  print  3 of 3 , so the key is a false field under RULE \u00a74."
+  }
+ ],
+ "no_verdict": []
+}
