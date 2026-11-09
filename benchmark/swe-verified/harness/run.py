@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """run.py TASKS.json WORK RESULTS [--task ID]... [--arm plain|hectoline] [--setup-only] [--pybin DIR]
-       [--pause-after N --worklog FILE [--pause-minutes M]]
+       [--pause-after N --worklog FILE [--pause-minutes M]] [--chain N --label NAME]
+
+--chain N: when a session ends without a FIXED line, a new session starts in the same folder with the same task text
+plus one paragraph that names the earlier sessions and the ledgers, up to N sessions; the run line then holds the
+session list and the sums. --label names the prediction, the patch and the session files when the arm name is not enough.
 
 One run = one task × one arm: a fresh folder with the repository fetched at base_commit and a TASK.md,
 one headless Claude Code session with the caps of design.json, then the prediction (the diff of the
@@ -152,15 +156,28 @@ def make_room(task, folder, run, env):
     return git('rev-parse', 'HEAD').strip(), validate, pile
 
 
-def prompt_of(arm):
+def prompt_of(arm, k=1):
     text = CONFIG['task_text']
     if arm == 'hectoline':
         text += '\n\n' + CONFIG['hectoline_text']
+    if k > 1:
+        text += f'\n\nThis is session {k} on this task. Earlier sessions worked in this folder and ended at their turn or time cap. Their state is in the ledgers UNITS.md, PLAN.md, GOAL.md, OWNER.md and the log unit.log, and in the working tree. Continue from them; do not start over.'
     return text
 
 
-def session(folder, arm, env, out_path):
-    cmd = ['claude', '-p', prompt_of(arm), '--model', CONFIG['model'], '--max-turns', str(CONFIG['max_turns']),
+def transcript_claim(folder, session_id):
+    """The last FIXED line of the session transcript, for a session that returned no final message."""
+    sys.path.insert(0, HERE)
+    from claims import project_dir, last_fixed
+    pdir = project_dir(folder)
+    path = os.path.join(pdir, f'{session_id}.jsonl') if pdir and session_id else ''
+    if not os.path.exists(path):
+        return None
+    return last_fixed(path)
+
+
+def session(folder, arm, env, out_path, k=1):
+    cmd = ['claude', '-p', prompt_of(arm, k), '--model', CONFIG['model'], '--max-turns', str(CONFIG['max_turns']),
            '--output-format', 'json', '--permission-mode', 'dontAsk',
            '--allowedTools', *CONFIG['allowed_tools'], '--disallowedTools', *CONFIG['disallowed_tools'],
            '--setting-sources', 'project']
@@ -241,8 +258,8 @@ def room_measures(folder, run):
     return out
 
 
-def run_one(task, arm, work, results, env, setup_only=False):
-    run = os.path.join(work, task['instance_id'], arm)
+def run_one(task, arm, work, results, env, setup_only=False, chain=1, label=None):
+    run = os.path.join(work, task['instance_id'], label or arm)
     folder = os.path.join(run, 'repo')
     if os.path.exists(run):
         shutil.rmtree(run)
@@ -262,16 +279,31 @@ def run_one(task, arm, work, results, env, setup_only=False):
     if setup_only:
         line['ended'] = now()
         return line
-    out_path = os.path.join(results, 'sessions', f'{task["instance_id"]}.{arm}.json')
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    log(results, f'{task["instance_id"]} {arm}: session start')
-    data = session(folder, arm, env, out_path)
-    patch = prediction(folder, base, arm, task, results)
-    line.update(ended=now(), wall_s=data.get('wall_s'), timed_out=data.get('timed_out'), exit_code=data.get('exit_code'),
-                turns=data.get('num_turns'), session_id=data.get('session_id'), cost_usd=data.get('total_cost_usd'),
-                claimed=claimed_of(data.get('result', '')), result_tail=str(data.get('result', '')).strip()[-300:],
+    label = label or arm
+    sessions = []
+    for k in range(1, chain + 1):
+        out_path = os.path.join(results, 'sessions', f'{task["instance_id"]}.{label}.json' if chain == 1 else f'{task["instance_id"]}.{label}.s{k}.json')
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
+        log(results, f'{task["instance_id"]} {label}: session {k} start')
+        data = session(folder, arm, env, out_path, k)
+        claimed, source = claimed_of(data.get('result', '')), 'result'
+        if claimed == 'none':
+            found = transcript_claim(folder, data.get('session_id'))
+            if found:
+                claimed, source = found, 'transcript'
+        sessions.append(dict(k=k, wall_s=data.get('wall_s'), turns=data.get('num_turns'), timed_out=data.get('timed_out'), exit_code=data.get('exit_code'),
+                             session_id=data.get('session_id'), terminal_reason=data.get('terminal_reason'), claimed=claimed, claimed_source=source))
+        log(results, f'{task["instance_id"]} {label}: session {k} end, claimed {claimed}, turns {data.get("num_turns")}, wall {data.get("wall_s")} s')
+        if claimed in ('yes', 'no'):
+            break
+    patch = prediction(folder, base, label, task, results)
+    line.update(ended=now(), wall_s=round(sum(s['wall_s'] or 0 for s in sessions), 1), timed_out=sessions[-1]['timed_out'], exit_code=sessions[-1]['exit_code'],
+                turns=sum(s['turns'] or 0 for s in sessions) if any(s['turns'] for s in sessions) else None, session_id=sessions[-1]['session_id'], cost_usd=data.get('total_cost_usd'),
+                claimed=sessions[-1]['claimed'], claimed_source=sessions[-1]['claimed_source'], result_tail=str(data.get('result', '')).strip()[-300:],
                 patch_lines=len(patch.splitlines()), patch_files=len(re.findall(r'^diff --git ', patch, re.M)),
-                is_error=data.get('is_error'), terminal_reason=data.get('terminal_reason'))
+                is_error=data.get('is_error'), terminal_reason=sessions[-1]['terminal_reason'], sessions=len(sessions), chain=chain, label=label)
+    if chain > 1:
+        line['session_list'] = sessions
     if arm == 'hectoline':
         line.update(room_measures(folder, run))
         events = os.path.join(results, 'review-events.jsonl')
@@ -331,6 +363,8 @@ def main(argv):
     arms = [rest[i + 1] for i, a in enumerate(rest) if a == '--arm'] or ['plain', 'hectoline']
     setup_only = '--setup-only' in rest
     given = next((rest[i + 1] for i, a in enumerate(rest) if a == '--pybin'), None)
+    chain = int(next((rest[i + 1] for i, a in enumerate(rest) if a == '--chain'), 1))
+    label = next((rest[i + 1] for i, a in enumerate(rest) if a == '--label'), None)
     pause_after = int(next((rest[i + 1] for i, a in enumerate(rest) if a == '--pause-after'), 0))
     pause_minutes = int(next((rest[i + 1] for i, a in enumerate(rest) if a == '--pause-minutes'), 10))
     worklog = next((rest[i + 1] for i, a in enumerate(rest) if a == '--worklog'), None)
@@ -355,7 +389,7 @@ def main(argv):
 
         def go(arm):
             try:
-                run_one(task, arm, work, results, env, setup_only)
+                run_one(task, arm, work, results, env, setup_only, chain, label)
             except Exception as e:  # one failed run never stops its pair
                 errors.append((arm, repr(e)))
                 log(results, f'{task["instance_id"]} {arm}: ERROR {e!r}')

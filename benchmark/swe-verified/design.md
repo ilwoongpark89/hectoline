@@ -93,6 +93,10 @@ The official leaderboard at swebench.com carries no Claude 5 model on the Verifi
 8. The FIXED line of a refused stop. The same Stop hook refused the author's own stop in arm B, so a session could end at its turn cap with an empty result although its last message held the line. `harness/claims.py` reads the session transcript for runs whose result was empty and records `claimed_source` = transcript; it recovered one line, «FIXED: no» for django__django-16560. Runs killed at the wall cap hold no final message in either arm.
 9. Arm B patches may carry the room's `measures.py`, the measure the method asks for; it is a new standalone file and the grader applied every such patch.
 
+## Second run: one task to the end, chained sessions
+
+Owner, 2026-11-09: «핵토라인은 정해진 시간동안 하는게 아니고 시간을 많이 주고 틀리지 않는건데?» and «2번 먼저 해». The first run capped both arms alike, which measured the method's entry cost and not its promise. The second run measures the promise on one task, astropy__astropy-13398, the largest gold patch of the ten, where arm B closed one planning unit in 70 minutes: arm B runs in the same room through sessions of 150 turns and 3600 s each; when a session ends without a FIXED line, the next session starts in the same folder with the same task text plus one paragraph that names the earlier sessions and the ledgers, up to 6 sessions. The run ends at the first FIXED line. Measures: resolved by the grader, claimed, sessions used, total wall-clock and turns, units closed, reviewer rounds, and whether each later session continued from the ledgers rather than starting over, read from its transcript. Results go to `results/long/`, label `hectoline-long`, so the 20-run table stays as it is. `harness/run.py --chain 6 --label hectoline-long`.
+
 ## Size
 
 A first pass of 10 tasks, no held-out set, one run per cell. The table reports counts, not rates with intervals. The selection rule and the harness are written so that the next 20 tasks follow the same rule.
