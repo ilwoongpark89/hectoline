@@ -3,7 +3,7 @@
 room.py makes the room with its acceptance check, so the first call is `unit.py open U0002 ROOM`.
 Every later change enters through `unit.py open` and `unit.py close`, so each commit is one unit,
 each block is written by the tool, and the pre-commit hook judges every commit.
-Five units: the bootstrap with the leaf G1, the measure, a planning unit, the calculator, one audit.
+Six units: the bootstrap with the leaf G1, the measure, a planning unit, the formula, its command line, one audit.
 Each review file stands outside the room, under TOP/reviews, and the review key holds its sha256.
 --snapshot copies the finished room into example/01_pressure-drop without .git, the log and the caches.
 Needs macOS with sandbox-exec, git with a user name and email, Python 3.11 or later."""
@@ -54,16 +54,18 @@ if __name__ == '__main__':
     print(name, globals()[name](sys.argv[2] if len(sys.argv) > 2 else None))
 '''
 
-CALC = '''#!/usr/bin/env python3
-"""calc.py MU L D Q — the pressure drop of laminar pipe flow by Hagen-Poiseuille, in Pa.
+FORMULA = '''#!/usr/bin/env python3
+"""calc.py — the pressure drop of laminar pipe flow by Hagen-Poiseuille, in Pa.
 MU viscosity in Pa s, L length in m, D inner diameter in m, Q volume flow in m3/s."""
-import math, sys
+import math
 
 
 def pressure_drop(mu, length, diameter, flow):
     """128 mu L Q / (pi D^4), the laminar relation."""
     return 128 * mu * length * flow / (math.pi * diameter ** 4)
+'''
 
+COMMAND = '''
 
 if __name__ == '__main__':
     mu, length, diameter, flow = map(float, sys.argv[1:5])
@@ -152,37 +154,51 @@ def build(top):
 
     def plan1():
         edit(plan, '| S03 | G1 | the product, named by its planning unit | the pilot, one instance of the final product end to end, G1 from its first number to its target | the first passing instance · its parts | | todo |',
-             '| S03 | G1 | calc.py | the pilot, the calculator by Hagen-Poiseuille end to end, G1 from 1 to 0 | the pressure drop from four inputs · the formula | U0004 | todo |')
+             '| S03 | G1 | calc.py | the pilot, the calculator by Hagen-Poiseuille end to end, G1 from 1 to 0 | the pressure drop from four inputs · the formula | U0004 U0005 | todo |')
+        edit(plan, '| S01 | G0 | the six ledgers |', '| S01 | G0 | P01, the six ledgers |')
         with open(prods, 'a', encoding='utf8') as f:
             f.write('| P11 | the calculator | — | result | calc.py | — |\n| P12 | the audit records | — | result | audits/ | — |\n')
         with open(units, 'a', encoding='utf8') as f:
-            f.write(planned('U0004', 'behavioral', 'calc.py prints the laminar pressure drop of a pipe from four inputs', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', 'U0003', '+≤40'))
-            f.write(planned('U0005', 'audit', 'the audit of the first four units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4', 'audits/audit-05.txt · UNITS.md', 'U0004', '+≤40'))
-    unit(room, top, 'U0003', 'the planning unit: G1 reads 1, so the pilot step S03 names calc.py with its unit, then the first audit',
+            f.write(planned('U0004', 'behavioral', 'calc.py holds the laminar pressure drop of a pipe as one function', 'A0001 · S03', 'calc.py · UNITS.md', 'U0003', '+≤40'))
+            f.write(planned('U0005', 'behavioral', 'calc.py prints the pressure drop from four inputs on its command line', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', 'U0004', '+≤40'))
+            f.write(planned('U0006', 'audit', 'the audit of the first five units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4', 'audits/audit-06.txt · UNITS.md', 'U0005', '+≤40'))
+    unit(room, top, 'U0003', 'the planning unit: G1 reads 1, so the pilot step S03 names calc.py with its two units, then the first audit',
          'A0001 · S none, the planning unit of RULE §3 over an empty queue', 'PLAN.md · PRODUCTS.md · UNITS.md', '+≤40', plan1,
-         "grep -qE '^## U0005 . [0-9-]+ . audit . ' UNITS.md · grep -q '| U0004 | todo |$' PLAN.md · grep -q '^| P11 | the calculator |' PRODUCTS.md",
-         'inputs layer of inputs → rules → state → result → view: the queue is empty after U0002, G1 reads 1 by measures.py, so the work unit of S03 and the audit after it are planned, RULE §3',
-         'S03 names calc.py and U0004 · P11 and P12 · the planned blocks U0004 under S03 and U0005 the audit',
+         "grep -qE '^## U0006 . [0-9-]+ . audit . ' UNITS.md · grep -q '| U0004 U0005 | todo |$' PLAN.md · grep -q '^| S01 | G0 | P01, ' PLAN.md · grep -q '^| P11 | the calculator |' PRODUCTS.md",
+         'inputs layer of inputs → rules → state → result → view: the queue is empty after U0002, G1 reads 1 by measures.py, so the two work units of S03 and the audit after them are planned, RULE §3',
+         'S03 names calc.py with U0004 and U0005 · S01 names its product P01 · P11 and P12 · the planned blocks U0004 and U0005 under S03 and U0006 the audit',
          'a redesign of measures.py: g1 reads 1 as the plan says · a second leaf for the Reynolds number: the reference case holds it')
 
-    def calc():
+    def formula():
         with open(os.path.join(room, 'calc.py'), 'w', encoding='utf8') as f:
-            f.write(CALC)
-        edit(plan, '| U0004 | todo |', '| U0004 | done |')
-    unit(room, top, 'U0004', 'calc.py prints the laminar pressure drop of a pipe from four inputs', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', '+≤40', calc,
-         'test "$(python3 -I -B measures.py g1)" = "g1 0" · test "$(python3 -I -B calc.py 1.0e-3 2 0.01 1e-5)" = "81.487" · grep -q "^| S03 | .* | U0004 | done |$" PLAN.md',
-         'result layer: the formula enters as one function, the command line prints it, G1 moves from 1 to 0, RULE §1 one behavior',
-         'calc.py with pressure_drop and its command line · S03 done · G1 at 0', 'a turbulent branch: the reference case is laminar, a second case would carry it · input checks: the measure covers the one case')
+            f.write(FORMULA)
+    probe = "import sys; sys.path.insert(0, '.'); import calc; print(round(calc.pressure_drop(1.0e-3, 2, 0.01, 1e-5), 3))"
+    unit(room, top, 'U0004', 'calc.py holds the laminar pressure drop of a pipe as one function', 'A0001 · S03', 'calc.py · UNITS.md', '+≤40', formula,
+         f'test "$(python3 -B -c "{probe}")" = "81.487"',
+         'result layer: the formula enters as one function before any caller exists, RULE §1 one behavior',
+         'calc.py with pressure_drop · G1 still at 1, the measure calls the command line of the next unit', 'the command line in this unit: a second behavior, the next unit holds it')
+
+    def command():
+        path = os.path.join(room, 'calc.py')
+        edit(path, '"""calc.py — the pressure drop', '"""calc.py MU L D Q — the pressure drop')
+        edit(path, 'import math\n', 'import math, sys\n')
+        with open(path, 'a', encoding='utf8') as f:
+            f.write(COMMAND)
+        edit(plan, '| U0004 U0005 | todo |', '| U0004 U0005 | done |')
+    unit(room, top, 'U0005', 'calc.py prints the pressure drop from four inputs on its command line', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', '+≤40', command,
+         'test "$(python3 -I -B measures.py g1)" = "g1 0" · test "$(python3 -I -B calc.py 1.0e-3 2 0.01 1e-5)" = "81.487" · grep -q "^| S03 | .* | U0004 U0005 | done |$" PLAN.md',
+         'result layer: the command line calls the one function, G1 moves from 1 to 0, RULE §1 one behavior',
+         'the command line of calc.py with its usage line · S03 done · G1 at 0', 'a turbulent branch: the reference case is laminar, a second case would carry it · input checks: the measure covers the one case')
 
     def audit():
         os.makedirs(os.path.join(room, 'audits'), exist_ok=True)
-        out = sh(*PY, 'audit.py', '5', '.', cwd=room)
-        with open(os.path.join(room, 'audits', 'audit-05.txt'), 'w', encoding='utf8') as f:
+        out = sh(*PY, 'audit.py', '6', '.', cwd=room)
+        with open(os.path.join(room, 'audits', 'audit-06.txt'), 'w', encoding='utf8') as f:
             f.write(out)
-    unit(room, top, 'U0005', 'the audit of the first four units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4',
-         'audits/audit-05.txt · UNITS.md', '+≤40', audit, "grep -q '^## piles: 0' audits/audit-05.txt · grep -q '^## check rerun on a copy: ' audits/audit-05.txt",
+    unit(room, top, 'U0006', 'the audit of the first five units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4',
+         'audits/audit-06.txt · UNITS.md', '+≤40', audit, "grep -q '^## piles: 0' audits/audit-06.txt · grep -q '^## check rerun on a copy: ' audits/audit-06.txt",
          'result layer: audit.py runs on a copy of the room, its output is the record, RULE §4 «Audit every 10 units», here once at the end of the pilot',
-         'audits/audit-05.txt: the check rerun, the piles, the duplicates, the unused definitions, the measures', 'a fix inside the audit: an audit lists, a later unit fixes')
+         'audits/audit-06.txt: the check rerun, the piles, the duplicates, the unused definitions, the measures', 'a fix inside the audit: an audit lists, a later unit fixes')
     return room
 
 

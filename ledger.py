@@ -284,12 +284,17 @@ def unit_span(text, uid):
 
 
 def set_key(text, uid, key, value):
-    """UNITS.md text with one key of one block set to value."""
-    head, rest = text.split(f'## {uid} ·', 1)
+    """Change one existing field within its unit only."""
+    if '\n' in value or '\r' in value:
+        raise ValueError('field value must be one line')
+    start, end = unit_span(text, uid)
     pattern = r'^(' + re.escape(key) + r' *:).*$'
-    fill = lambda m: m.group(1) + ' ' + value
-    rest = re.compile(pattern, re.M).sub(fill, rest, 1)
-    return head + f'## {uid} ·' + rest
+    fill = lambda match: match.group(1) + ' ' + value
+    expression = re.compile(pattern, re.M)
+    block, count = expression.subn(fill, text[start:end])
+    if count != 1:
+        raise KeyError(key)
+    return text[:start] + block + text[end:]
 
 
 def open_record(text, uid, base):

@@ -6,6 +6,7 @@ sys.path.insert(0, HERE)
 from pile import line_map
 from ledger import read, TABLES, LEDGERS, rows_of, load
 from policy import at_target, binary, leaf_goals
+from policy import measurement_missing
 
 
 def measures(room, bl, goals=None, fresh=False):
@@ -47,7 +48,8 @@ def method_counts(room, bl, fresh=False):
         message += f' raised {type(error).__name__}, every leaf reads unmeasured'
         print(message, file=sys.stderr)
     g_rows = leaf_goals(rows_of(room, 'GOAL.md', 'G'))
-    unmeasured = sum(1 for g in g_rows if str(m.get(g[0], 'no tool')).startswith('no '))
+    unmeasured = sum(
+        measurement_missing(m.get(goal[0])) for goal in g_rows)
     at = {g[0] for g in g_rows if g[0] in m and met(m[g[0]], g[4])}
     steps = rows_of(room, 'PLAN.md', 'S'); at_target = sum(1 for s in steps if s[-1] in ('todo', 'open') and s[1] in at)
     ledgers = {'UNITS.md', 'OWNER.md', 'PLAN.md', 'GOAL.md', 'PRODUCTS.md', 'RESEARCH.md', 'PROMPT.md', 'unit.log'}

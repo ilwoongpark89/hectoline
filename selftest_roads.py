@@ -143,3 +143,29 @@ def third_fail_case(tmp):
     subject = run(*git, 'log', '-1', '--format=%s').stdout
     kept = subject.startswith('U0002 ') and not os.path.exists(product)
     return failed and named and kept
+
+
+def temp_clean_case(copy, opened, base, tmp):
+    """A refused close that reached the baseline clone leaves no temp folder, S110."""
+    import tempfile
+    def count():
+        names = os.listdir(tempfile.gettempdir())
+        return sum(name.startswith('hectoline-') for name in names)
+    text = set_key(base, opened, 'review', review_key(tmp, opened, 'R1 PASS'))
+    for key, value in (('rejected', 'x'), ('added', 'x')):
+        text = set_key(text, opened, key, value)
+    write(copy, set_key(text, opened, 'check', 'test -f stray.md'))
+    stray = os.path.join(copy, 'stray.md')
+    kept = os.path.exists(stray)
+    with open(stray, 'a') as handle:
+        handle.write('' if kept else 'x\n')
+    before = count()
+    args = [sys.executable, '-I', '-B', os.path.join(copy, 'unit.py')]
+    done = subprocess.run(args + ['close', opened, copy], capture_output=True, text=True)
+    if not kept:
+        os.remove(stray)
+    last = read(os.path.join(copy, 'unit' + '.log')).splitlines()[-1]
+    write(copy, base)
+    reached = 'refused by the git hook' in last
+    return done.returncode == 1 and reached and count() == before
+

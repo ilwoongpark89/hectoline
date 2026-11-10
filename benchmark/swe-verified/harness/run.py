@@ -33,6 +33,7 @@ import os, subprocess, sys
 HECTOLINE = {hectoline!r}
 REVIEW = {review!r}
 RUN = {run!r}
+os.environ['HECTOLINE_EVENTS'] = {events!r}  # the reviewer record of this run's results folder
 args = sys.argv[1:]
 if len(args) >= 2 and args[0] == 'close':
     room = os.path.dirname(os.path.abspath(__file__))
@@ -122,7 +123,7 @@ def fetch(task, folder, subject):
     return git('rev-parse', 'HEAD').strip()
 
 
-def make_room(task, folder, run, env):
+def make_room(task, folder, run, env, results):
     """The ledgers of room.py, written into the repository folder, the links, the wrapper, the hooks, one bootstrap commit.
     room.py takes the acceptance check, so the first commit holds the leaf G1, its measure step, its pilot step and the
     planned block U0002: the first call of a candidate is `python3 -B unit.py open U0002 .`."""
@@ -141,7 +142,7 @@ def make_room(task, folder, run, env):
     for name in ('RULE.md', 'measure.py', 'audit.py'):
         os.symlink(os.path.join(HECTOLINE, name), os.path.join(folder, name))
     with open(os.path.join(folder, 'unit.py'), 'w', encoding='utf8') as f:
-        f.write(WRAPPER.format(hectoline=HECTOLINE, review=os.path.join(HERE, 'review.py'), run=run))
+        f.write(WRAPPER.format(hectoline=HECTOLINE, review=os.path.join(HERE, 'review.py'), run=run, events=os.path.join(results, 'review-events.jsonl')))
     os.chmod(os.path.join(folder, 'unit.py'), 0o755)
     settings = os.path.join(folder, '.claude', 'settings.json')
     os.makedirs(os.path.dirname(settings), exist_ok=True)
@@ -275,7 +276,7 @@ def run_one(task, arm, work, results, env, setup_only=False, chain=1, label=None
         os.makedirs(os.path.dirname(settings), exist_ok=True)
         json.dump({'hooks': {'PreToolUse': [{'matcher': 'Bash|Read|Edit|Write|MultiEdit|NotebookEdit|Glob|Grep', 'hooks': [{'type': 'command', 'command': f'python3 -I -B {os.path.join(HERE, "review.py")} hook', 'timeout': 30}]}]}}, open(settings, 'w'), indent=2)
     if arm == 'hectoline':
-        base, validate, pile = make_room(task, folder, run, env)
+        base, validate, pile = make_room(task, folder, run, env, results)
         line.update(room_validate=validate, room_pile=pile)
         log(results, f'{task["instance_id"]} {arm}: room at {base[:10]}, {validate}, {pile}')
     line['base'] = base

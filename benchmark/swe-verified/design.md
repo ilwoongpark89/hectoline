@@ -101,11 +101,18 @@ Result, 2026-11-10 04:24: resolved by the grader, all 4 FAIL_TO_PASS tests pass 
 
 ## Third run: the re-test of version 1.1
 
-Written before the run. Version 1.1 is the cut of the private room at its unit U0561. The first run showed where the minutes went. Of 525.2 session-minutes in the ten hectoline runs, 191.1 were refusals and the retries after them, 141.4 were waits for the reviewer, 92.0 were planning units. 394 of 459 gate refusals repeated a text the run had already shown. In one run three units stood closed with no reviewer pass.
+Written before the run. Version 1.1 is the cut of the private room at its unit U0561. The first run showed what the method cost. The ten hectoline runs took 525.2 session-minutes. Their room logs hold 473 refusals. 357 of them repeat a text that the same run had already shown, with unit numbers and digits masked. The reviewer sessions of those runs took 188.6 minutes in 58 rounds. `python3 -I -B harness/repeats.py` prints these four counts from `results/`. In one run three units stood closed with no reviewer pass, by `results/ledger-audit.md`.
 
 What changed for a candidate. The three queue refusals name the call or the text that passes. `room.py --accept` writes the leaf G1, its measure step, the pilot step and the planned block U0002 into the first commit, so the first call is `unit.py open U0002`. Close reads the verdict from the reviewer's file by path and sha256. The pre-commit hook judges the commit of a final unit itself, so a status word turned closed by hand does not commit. No change touches the reviewer wait.
 
-Tasks. Five, in `tasks-retest.json`. Three are the tasks that failed fastest in the first run: django__django-11885, django__django-16560, pylint-dev__pylint-4551. Their logs were read to design the changes. Two were never read by anyone before the run: scikit-learn__scikit-learn-25102 and sympy__sympy-14248, ranks 11 and 12 of `harness/select.py`, picked by that rule before any task text was opened. The hectoline arm runs all five with `--chain 3`. The plain arm runs the two unread tasks in one session each. The plain numbers of the three read tasks are those of the first run.
+Tasks. Five of the 13 in `tasks-retest.json`, named to the harness by `--task`. Three ran in the first run: django__django-11885 and django__django-16560, the two shortest failed runs, and pylint-dev__pylint-4551, with 102 refusals and 0 units closed. Their logs were read to design the changes. Two were never read by anyone before the run: scikit-learn__scikit-learn-25102 and sympy__sympy-14248, ranks 11 and 12 of `harness/select.py`, picked by that rule before any task text was opened. The hectoline arm runs all five with `--chain 3`. The plain arm runs the two unread tasks in one session each. The two commands, with WORK a folder outside this repository:
+
+```sh
+python -B harness/run.py tasks-retest.json WORK/hecto results/retest --task django__django-11885 --task django__django-16560 --task pylint-dev__pylint-4551 --task scikit-learn__scikit-learn-25102 --task sympy__sympy-14248 --arm hectoline --chain 3 --label hectoline-retest
+python -B harness/run.py tasks-retest.json WORK/plain results/retest --task scikit-learn__scikit-learn-25102 --task sympy__sympy-14248 --arm plain --label plain-retest
+```
+
+The reviewer record of the re-test goes to `results/retest/review-events.jsonl`. The harness hook denies every git commit typed in a room and every write or command that names a review file. The plain numbers of the three read tasks are those of the first run.
 
 Measures per task: minutes to the first closed code unit, refusals per closed unit, refusals that repeat an earlier text, units closed, units closed with no reviewer pass, resolved by the official grader, claimed, sessions used. The model and the caps per session equal the first run. The command-line client is a later version, recorded in the run folder.
 

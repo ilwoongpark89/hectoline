@@ -13,9 +13,11 @@ review.py review U#### ROOM RUN   the room's unit.py calls this at each close re
                                   the review key is rebuilt from that record, so an edit of the state file by the
                                   author changes nothing and is reported as a tamper event.
 review.py hook                    a Claude Code PreToolUse hook for both arms: denies a Bash line that runs unit.py
-                                  close by a path other than the room's own unit.py, a git commit outside unit.py
-                                  close, and any read or write of a path under the pilot folder that is not the
-                                  session's own folder, which keeps the harness and the reviewer record out of reach.
+                                  close by a path other than the room's own unit.py, every git commit typed in a
+                                  room, since unit.py close commits there, every write or command that names a
+                                  review file, since the reviewer of this harness writes those, and any read or
+                                  write of a path under the pilot folder that is not the session's own folder,
+                                  which keeps the harness and the reviewer record out of reach.
                                   Exit 2 denies. Every other call passes.
 The harness never shows the reviewer the gold patch or the hidden tests; it holds neither."""
 import hashlib, json, os, re, subprocess, sys, time
@@ -25,7 +27,7 @@ BENCH = os.path.dirname(HERE)
 CONFIG = json.load(open(os.path.join(BENCH, 'design.json')))
 HECTOLINE = os.path.dirname(os.path.dirname(BENCH))
 PILOT = os.path.dirname(HECTOLINE)
-EVENTS = os.path.join(BENCH, 'results', 'review-events.jsonl')
+EVENTS = os.environ.get('HECTOLINE_EVENTS') or os.path.join(BENCH, 'results', 'review-events.jsonl')  # the room wrapper names the events file of its results folder
 sys.path.insert(0, HECTOLINE)
 from ledger import load, set_key, write  # noqa: E402
 
@@ -191,6 +193,9 @@ def hook():
     if tool in ('Read', 'Edit', 'Write', 'MultiEdit', 'NotebookEdit', 'Glob', 'Grep'):
         for key in ('file_path', 'path', 'notebook_path'):
             p = inp.get(key)
+            if p and tool not in ('Read', 'Glob', 'Grep') and 'agent-review-' in p:
+                print('deny: a review file is written by the harness reviewer alone', file=sys.stderr)
+                return 2
             if p and outside(os.path.realpath(os.path.join(room, os.path.expanduser(p)))):
                 print(f'deny: {p} is outside this folder, the task text says so', file=sys.stderr)
                 return 2
@@ -198,6 +203,9 @@ def hook():
     if tool != 'Bash':
         return 0
     cmd = inp.get('command', '')
+    if 'agent-review-' in cmd:
+        print('deny: a review file is written by the harness reviewer alone, a command does not name one', file=sys.stderr)
+        return 2
     for m in re.finditer(re.escape(PILOT) + r'\S*', cmd):
         if outside(os.path.realpath(m.group(0).rstrip('/\'"`;)'))):
             print(f'deny: {m.group(0)} is outside this folder, the task text says so', file=sys.stderr)
@@ -205,7 +213,7 @@ def hook():
     if re.search(r'\S*/\S*unit\.py\s+close\b', cmd):
         print('deny: unit.py close runs only as the room\'s own «python3 -B unit.py close U#### .», the harness reviewer answers there', file=sys.stderr)
         return 2
-    if re.search(r'\bgit\b[^|;&\n]*\bcommit\b', cmd) and 'unit.py' not in cmd and os.path.exists(os.path.join(room, 'UNITS.md')):
+    if re.search(r'\bgit\b[^|;&\n]*\bcommit\b', cmd) and os.path.exists(os.path.join(room, 'UNITS.md')):
         print('deny: only unit.py close commits in this room, RULE §4', file=sys.stderr)
         return 2
     return 0
