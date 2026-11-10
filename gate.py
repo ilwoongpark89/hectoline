@@ -258,7 +258,7 @@ def live(bl, rel, editable):
     return out
 
 
-REVIEW_FILE = r'agent-review-(?:\w+-)?(u\d{4})\b'
+from review_evidence import REVIEW_FILE
 
 
 def opener(room, uid):

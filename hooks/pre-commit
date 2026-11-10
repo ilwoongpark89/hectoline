@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""hooks/pre-commit — the git gate of a hectoline room. Refuses with exit 1 when the ledgers do not validate, a pile exists,
+"""hooks/pre-commit — the git gate of a hectoline room, a folder that holds UNITS.md in its tree or at HEAD. It runs the tools beside its own real file, a copied hook runs the unit.py of its room, S233. Refuses with exit 1 when the ledgers do not validate, a pile exists,
 or not exactly one block turns final in the index against HEAD, or the block that turns closed holds no passing review file, a failing check in the working tree or a check that is not red on HEAD, or its index differs from the tree on a path of its files key, or a block that turns failed stages a product path or leaves a path of its files key changed in the tree, S233. Chains to .husky/pre-commit when present."""
 import os, re, subprocess, sys
 
 ROOM = subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True).stdout.strip()
-UNIT = os.path.join(ROOM, 'unit.py')
+HERE = os.path.dirname(os.path.realpath(__file__))
+UNIT = os.path.join(os.path.dirname(HERE), 'unit.py')
+if not os.path.exists(UNIT):
+    UNIT = os.path.join(ROOM, 'unit.py')
 
 
 def refuse(reason):
@@ -69,12 +72,17 @@ def check_flaw(check):
 
 
 def main():
-    if not os.path.exists(UNIT):
+    head = ['git', 'cat-file', '-e', 'HEAD:UNITS.md']
+    held = not subprocess.run(head, cwd=ROOM, capture_output=True).returncode
+    here = os.path.exists(os.path.join(ROOM, 'UNITS.md'))
+    if not held and not here:
         return 0
     for cmd in ('validate', 'pile'):
         res = subprocess.run([sys.executable, '-I', '-B', UNIT, cmd, ROOM], capture_output=True, text=True)
         if res.returncode:
-            return refuse(res.stdout.strip().splitlines()[-1] if res.stdout.strip() else cmd + ' failed')
+            said = res.stdout.strip().splitlines()[-1:]
+            lost = [] if os.path.exists(UNIT) else ['unit.py is missing, restore its link']
+            return refuse((lost + said + [cmd + ' failed'])[0])
     staged = subprocess.run(['git', 'show', ':UNITS.md'], capture_output=True, text=True, cwd=ROOM).stdout
     before = dict(re.findall(r'^## (U\d{4}) · \S+ · \w+ · (\w+)$', subprocess.run(['git', 'show', 'HEAD:UNITS.md'], capture_output=True, text=True, cwd=ROOM).stdout, re.M))
     moved = [u for u, s in re.findall(r'^## (U\d{4}) · \S+ · \w+ · (\w+)$', staged, re.M) if s in ('closed', 'failed') and before.get(u) not in ('closed', 'failed')]

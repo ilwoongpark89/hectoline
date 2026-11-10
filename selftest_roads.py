@@ -1,4 +1,5 @@
 """selftest_roads.py — the selftest cases that walk a road on a fresh room of room.py, P35, S237."""
+import hashlib
 import os
 import subprocess
 import sys
@@ -169,3 +170,65 @@ def temp_clean_case(copy, opened, base, tmp):
     reached = 'refused by the git hook' in last
     return done.returncode == 1 and reached and count() == before
 
+
+def tool_away_case(tmp):
+    """The hook judges a room whose unit.py or UNITS.md was moved away, S233."""
+    made, top, room, run, own, git = fresh(tmp, 'away')
+    plan = 'A0001 · S none, the planning unit'
+    run(*own, 'U0002', room, 'Plan x', plan, 'UNITS.md:≤30', '≤30')
+    text = read(os.path.join(room, 'UNITS.md'))
+    for key in KEYS[2:9] + KEYS[12:]:
+        text = set_key(text, 'U0002', key, 'x')
+    write(room, set_status(text, 'U0002', 'open', 'closed'))
+    link = os.path.join(room, 'unit.py')
+    os.rename(link, os.path.join(top, 'unit.py'))
+    run(*git, 'add', 'UNITS.md')
+    hand = run(*git, 'commit', '-qm', 'U0002 by hand')
+    run(*git, 'rm', '-q', '--cached', 'UNITS.md')
+    gone = run(*git, 'commit', '-qm', 'no ledger')
+    said = 'commit through unit.py close' in hand.stderr
+    made, top, room, run, own, git = fresh(tmp, 'copy')
+    hook = os.path.join(room, '.git', 'hooks', 'pre-commit')
+    body = read(os.path.realpath(hook))
+    os.unlink(hook)
+    with open(hook, 'w', encoding='utf8') as handle:
+        handle.write(body)
+    os.chmod(hook, 0o755)
+    run(*own, 'U0002', room, 'Plan x', plan, 'UNITS.md:≤30', '≤30')
+    text = read(os.path.join(room, 'UNITS.md'))
+    for key in KEYS[2:8] + KEYS[12:]:
+        text = set_key(text, 'U0002', key, 'x')
+    text = set_key(text, 'U0002', 'check', 'grep -q U0002 UNITS.md')
+    proof = review_key(top, 'U0002', 'R1 PASS')
+    write(room, set_key(text, 'U0002', 'review', proof))
+    real = run(*own[:-1], 'close', 'U0002', room).returncode
+    link = os.path.join(room, 'unit.py')
+    os.rename(link, os.path.join(top, 'unit.py'))
+    lost = run(*git, 'commit', '-qam', 'x').stderr
+    held = not real and 'unit.py is missing, restore its link' in lost
+    held = held and hand.returncode == 1
+    return said and held and gone.returncode == 1
+
+
+def alias_case(tmp):
+    """Close reads a review file only under the name of its unit, S233."""
+    made, top, room, run, own, git = fresh(tmp, 'alias')
+    plan = 'A0001 · S none, the planning unit'
+    run(*own, 'U0002', room, 'Plan x', plan, 'UNITS.md:≤30', '≤30')
+    text = read(os.path.join(room, 'UNITS.md'))
+    for key in KEYS[2:8] + KEYS[12:]:
+        text = set_key(text, 'U0002', key, 'x')
+    text = set_key(text, 'U0002', 'check', 'grep -q U0002 UNITS.md')
+    codes = []
+    for name in ('agent-review-u0000-r1.md', 'agent-review-hub-u0002.md'):
+        path = os.path.join(top, name)
+        with open(path, 'w', encoding='utf8') as handle:
+            handle.write('# U0002 r1' + chr(10) + 'R1 PASS' + chr(10))
+        digest = hashlib.sha256(read(path).encode()).hexdigest()
+        key = f'r1 pass, x, {path} sha256={digest}'
+        write(room, set_key(text, 'U0002', 'review', key))
+        done = run(*own[:-1], 'close', 'U0002', room)
+        codes.append((done.returncode, done.stderr))
+    said = 'not named for its unit, name it agent-review-u0002-rN.md' in codes[0][1]
+    kept = codes[0][0] == 1 and codes[1][0] == 0
+    return said and kept

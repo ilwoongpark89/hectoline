@@ -88,7 +88,8 @@ def blocked_queue(copy, opened, audit):
 
 def review_key(folder, uid, body):
     """Write one review file, return the key that names it."""
-    path = os.path.join(folder, 'agent-review-case-r1.md')
+    name = 'agent-review-' + uid.lower() + '-r1.md'
+    path = os.path.join(folder, name)
     with open(path, 'w') as handle:
         handle.write(f'# {uid} r1\n{body}\n')
     with open(path, 'rb') as handle:
@@ -101,13 +102,14 @@ def review_file_case(copy, opened, tmp):
     good = review_key(tmp, opened, 'R1 PASS')
     passed = review_file_error(good, opened, copy) == ''
     other = review_file_error(good, 'U0000', copy)
-    absent = good.replace('case-r1', 'none-r1')
+    absent = good.replace('-r1.md', '-r9.md')
     bare = 'r1 pass, x, agent-review-case-r1.md'
     failed = review_key(tmp, opened, 'R1 FAIL')
     inside = review_key(copy, opened, 'R1 PASS')
     keys = (absent, bare, good, failed, inside)
     errors = [review_file_error(k, opened, copy) for k in keys]
-    os.remove(os.path.join(copy, 'agent-review-case-r1.md'))
+    name = 'agent-review-' + opened.lower() + '-r1.md'
+    os.remove(os.path.join(copy, name))
     return passed and bool(other) and all(errors)
 
 
@@ -130,7 +132,7 @@ def review_close_case(copy, opened, tmp):
     """Close refuses a key whose review file no reviewer wrote, S225."""
     units = read(os.path.join(copy, 'UNITS.md'))
     good = review_key(tmp, opened, 'R1 PASS')
-    forged = good.replace('case-r1', 'none-r1')
+    forged = good.replace('-r1.md', '-r9.md')
     text = set_key(units, opened, 'review', forged)
     for key, value in FILLED:
         text = set_key(text, opened, key, value)

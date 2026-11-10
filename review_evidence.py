@@ -135,6 +135,9 @@ ARTIFACT = r'(/[^\s,;`"]*agent-review-[^\s,;`"]*\.md)'
 DIGEST = r'\bsha256=([0-9a-f]{64})(?![0-9a-f])'
 
 
+REVIEW_FILE = r'agent-review-(?:\w+-)?(u\d{4})\b'
+
+
 def review_file_error(text, uid, room):
     """Read the pass of the highest round from its file outside the room."""
     rounds = sorted(review_record(text)['rounds'])
@@ -149,6 +152,10 @@ def review_file_error(text, uid, room):
     inside = path.is_relative_to(Path(room).resolve())
     if inside or not path.is_file():
         return 'the review file is missing or stands inside the room'
+    named = re.findall(REVIEW_FILE, path.name.lower())
+    if uid.lower() not in named:
+        form = 'agent-review-' + uid.lower() + '-rN.md'
+        return 'the review file is not named for its unit, name it ' + form
     data = path.read_bytes()
     if hashlib.sha256(data).hexdigest() != digests[0]:
         return 'the review file differs from its sha256'

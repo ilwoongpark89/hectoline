@@ -190,6 +190,8 @@ def selftest(room):
         from selftest_roads import entry_case
         from selftest_roads import leaf_text_case
         from selftest_roads import third_fail_case
+        from selftest_roads import tool_away_case
+        from selftest_roads import alias_case
         fixture_review()
         write(copy, expand_plans(text))
         text, bl = load(copy)
@@ -296,6 +298,8 @@ def selftest(room):
         expect(entry_case(tmp))  # a room made with its acceptance check holds its leaf, two steps with a planned measure unit in a clean first commit, the measure unit opens in one call, the pilot before it is refused, a room without the check keeps the old road, S228
         expect(leaf_text_case(tmp))  # the refusal «names no leaf move» gives the text that passes, a step row that holds that text opens its unit, S227
         expect(third_fail_case(tmp))  # three failed rounds end a unit of a fresh room: status failed, the result names the count, its product reverted, the commit carries the unit, RULE §4, S79
+        expect(tool_away_case(tmp))  # with unit.py renamed away the hook still refuses a hand close, a commit that drops UNITS.md from the index is refused, S233
+        expect(alias_case(tmp))  # a review file under the name of another unit is refused though its first line names the unit, a file named for the unit with a room infix with no round closes it, S233
         done = re.sub(r'^(## U\d{4} · \S+ · \w+ · )planned$', r'\1closed', set_status(base, opened, 'open', 'closed'), flags=re.M); nxt = f'U{int(bl[-1][0][1:]) + 1:04d}'  # every block final, the queue empty
         done = set_key(done, opened, 'plan', 'A0001 · S01')  # the done state gives the block a work plan, a closed «S none» block would read as a planning unit, S99
         argv, sys.argv = sys.argv, sys.argv[:1] + ['open', nxt, copy, 'x', 'A0001 · S01', 'UNITS.md', '+1']  # a work unit on an empty queue, S75
