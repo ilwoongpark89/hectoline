@@ -51,7 +51,7 @@ Each run is one fresh folder: the repository fetched at `base_commit` with depth
 | model | `claude-opus-5` |
 | max turns per session | 150 |
 | wall-clock per session | 3600 s, then the process group is ended and the run is recorded as timed out |
-| reviewer | the same model, 20 turns, 600 s per round |
+| reviewer | the same model, 40 turns, 900 s per round, as `design.json` holds. This row read 20 turns and 600 s until version 1.1. Every counted run used 40 and 900 |
 | sessions at once | 2, the two arms of one task |
 | load gate before each pair | CPU sum under 600 % of 1000 %, free memory over 20 %, by `ps` and `memory_pressure` |
 | disk floor | 150 GB free on `/`, by `diskutil info /`, checked before each grading batch |
@@ -98,6 +98,18 @@ The official leaderboard at swebench.com carries no Claude 5 model on the Verifi
 Owner, 2026-11-09: «핵토라인은 정해진 시간동안 하는게 아니고 시간을 많이 주고 틀리지 않는건데?» and «2번 먼저 해». The first run capped both arms alike, which measured the method's entry cost and not its promise. The second run measures the promise on one task, astropy__astropy-13398, the largest gold patch of the ten, where arm B closed one planning unit in 70 minutes: arm B runs in the same room through sessions of 150 turns and 3600 s each; when a session ends without a FIXED line, the next session starts in the same folder with the same task text plus one paragraph that names the earlier sessions and the ledgers, up to 6 sessions. The run ends at the first FIXED line. Measures: resolved by the grader, claimed, sessions used, total wall-clock and turns, units closed, reviewer rounds, and whether each later session continued from the ledgers rather than starting over, read from its transcript. Results go to `results/long/`, label `hectoline-long`, so the 20-run table stays as it is. `harness/run.py --chain 6 --label hectoline-long`.
 
 Result, 2026-11-10 04:24: resolved by the grader, all 4 FAIL_TO_PASS tests pass and no PASS_TO_PASS test broke. Six sessions, 5 h 52 min of session time, five ended at the wall cap and one at its turn cap; no FIXED line, the sixth session was inside the second audit unit when the cap fell. Units: 13 work units and 1 audit closed, 0 failed, 1 audit open at the end, 16 blocks in the ledger. Reviewer rounds 23, 18 pass 5 fail 0 without a verdict, 89 reviewer-minutes. Hook denies 20. Patch 567 lines over 11 files, among them a new frame module, its tests, four documentation pages and the room's `measures.py`; the gold patch has 4 files. Every later session opened by reading the six ledgers, the log tail and `git status` before its first edit. The plain agent resolved the same task in one session of 16.5 minutes and 77 turns. One task, one run: the method reached a correct end through chained sessions at about 21 times the plain agent's session time.
+
+## Third run: the re-test of version 1.1
+
+Written before the run. Version 1.1 is the cut of the private room at its unit U0561. The first run showed where the minutes went. Of 525.2 session-minutes in the ten hectoline runs, 191.1 were refusals and the retries after them, 141.4 were waits for the reviewer, 92.0 were planning units. 394 of 459 gate refusals repeated a text the run had already shown. In one run three units stood closed with no reviewer pass.
+
+What changed for a candidate. The three queue refusals name the call or the text that passes. `room.py --accept` writes the leaf G1, its measure step, the pilot step and the planned block U0002 into the first commit, so the first call is `unit.py open U0002`. Close reads the verdict from the reviewer's file by path and sha256. The pre-commit hook judges the commit of a final unit itself, so a status word turned closed by hand does not commit. No change touches the reviewer wait.
+
+Tasks. Five, in `tasks-retest.json`. Three are the tasks that failed fastest in the first run: django__django-11885, django__django-16560, pylint-dev__pylint-4551. Their logs were read to design the changes. Two were never read by anyone before the run: scikit-learn__scikit-learn-25102 and sympy__sympy-14248, ranks 11 and 12 of `harness/select.py`, picked by that rule before any task text was opened. The hectoline arm runs all five with `--chain 3`. The plain arm runs the two unread tasks in one session each. The plain numbers of the three read tasks are those of the first run.
+
+Measures per task: minutes to the first closed code unit, refusals per closed unit, refusals that repeat an earlier text, units closed, units closed with no reviewer pass, resolved by the official grader, claimed, sessions used. The model and the caps per session equal the first run. The command-line client is a later version, recorded in the run folder.
+
+Verdict rule, fixed here. One unit closed with no reviewer pass fails the re-test. A change counts as an effect only where the two unread tasks move the same way as the three read tasks. Minutes and refusals are compared with the first session of the first run. A resolution in a second or third session is reported with its session count, since the first run gave these three tasks one session.
 
 ## Size
 
