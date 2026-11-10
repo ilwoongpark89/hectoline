@@ -13,6 +13,6 @@ One P row per product, RULE §0. Hand columns: name, parent, layer, files, uses.
 | P07 | the research claims | P01 | state | RESEARCH.md | — |
 | P08 | the rule, the hectoline file by link | — | rules | RULE.md | — |
 | P09 | the gate, the measures and the audit, hectoline files by links | — | result | unit.py, measure.py, audit.py | P02 P08 |
-| P10 | the measure of G1 | — | result | measures.py | P05 |
+| P10 | the measure of this room | — | result | measures.py | P05 |
 | P11 | the calculator | — | result | calc.py | — |
 | P12 | the audit records | — | result | audits/ | — |

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""lines.py — the line measure of a hectoline room, P23, G11, A0110.
+"""lines.py — the line measure of a hectoline room, P23, G11.
 A code line is one statement of at most 10 words, RULE §1.
 Words are the name, number and string tokens of tokenize.
 `lines.py FILE...` prints each failing line, exit 1 when any fails.

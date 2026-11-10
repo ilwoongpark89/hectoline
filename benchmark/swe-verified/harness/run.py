@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.join(HECTOLINE, 'hooks'))
 
 G0 = 'the issue in TASK.md is fixed in this repository'
 QUOTE = 'Fix the issue in TASK.md in this repository'
+ACCEPT = 'the tests that reproduce the issue in TASK.md pass'
 WRAPPER = '''#!/usr/bin/env python3
 """unit.py — the gate entry of this room. close asks the independent reviewer of the harness first, then runs hectoline unit.py close.
 Every other command passes through to hectoline unit.py unchanged."""
@@ -122,9 +123,11 @@ def fetch(task, folder, subject):
 
 
 def make_room(task, folder, run, env):
-    """The ledgers of room.py, written into the repository folder, the links, the wrapper, the hooks, one bootstrap commit."""
+    """The ledgers of room.py, written into the repository folder, the links, the wrapper, the hooks, one bootstrap commit.
+    room.py takes the acceptance check, so the first commit holds the leaf G1, its measure step, its pilot step and the
+    planned block U0002: the first call of a candidate is `python3 -B unit.py open U0002 .`."""
     top = os.path.join(run, 'roomsrc')
-    sh([sys.executable, '-I', '-B', os.path.join(HECTOLINE, 'room.py'), '01_task', G0, QUOTE, '--top', top], env=env)
+    sh([sys.executable, '-I', '-B', os.path.join(HECTOLINE, 'room.py'), '01_task', G0, QUOTE, '--top', top, '--accept', ACCEPT], env=env)
     src = os.path.join(top, '01_task')
     for name in ('GOAL.md', 'OWNER.md', 'PLAN.md', 'PRODUCTS.md', 'RESEARCH.md', 'UNITS.md', 'unit.log'):
         if os.path.exists(os.path.join(folder, name)):
@@ -231,7 +234,7 @@ def prediction(folder, base, arm, task, results):
 
 def room_measures(folder, run):
     """Units closed, units failed, audits closed, failed review rounds, hook denies, from the ledgers and the log alone."""
-    from ledger import load, review_record
+    from ledger import load
     text, bl = load(folder)
     types = dict(re.findall(r'^## (U\d{4}) · \S+ · (\w+) ·', text, re.M))
     out = {'units_closed': 0, 'units_failed': 0, 'audits_closed': 0, 'units_open': 0, 'reviews_pass': 0, 'reviews_fail': 0, 'reviews_none': 0}

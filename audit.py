@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 """audit.py — the audit of a hectoline room from its ledgers, RULE §4 line 71. `python3 -I -B audit.py N ROOM` prints the audit N, each section with its count or its list. The reruns walk a copy of the room, the room itself does not change."""
 import atexit, os, re, shutil, subprocess, sys, tempfile
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # python -I drops the script folder, the room links unit.py and measure.py beside this file
-from unit import line_map
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))  # python -I drops the script folder, a room reaches this file by its link, the modules stand beside the real file
+from pile import line_map
 from ledger import read, load, rows_of, files_of
 from measure import measures, composition
 
 
 def rerun(copy, clause):
-    try:
-        return subprocess.run(clause.strip(), shell=True, capture_output=True, timeout=60, stdin=subprocess.DEVNULL, cwd=copy, env={**os.environ, 'HECTOLINE_AUDIT': '1'}).returncode  # an audit inside a rerun reruns nothing
-    except subprocess.TimeoutExpired:
-        return 124
+    """Run one audit clause with bounded descendants and native confinement."""
+    from transition import confined_clause
+    parent = os.path.realpath(os.path.dirname(copy))
+    env = dict(os.environ)
+    args = ['git', '-C', copy, 'rev-parse', '--local-env-vars']
+    local = subprocess.check_output(args).decode().splitlines()
+    for name in local:
+        env.pop(name, None)
+    with tempfile.TemporaryDirectory(dir=parent) as scratch:
+        marker = os.path.join(scratch, 'entered')
+        try:
+            return confined_clause(parent, copy, clause.strip(), env, marker)
+        except subprocess.TimeoutExpired:
+            return 124
 
 
 def audit(room, n):

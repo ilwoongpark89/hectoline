@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """hooks/pre-commit — the git gate of a hectoline room. Refuses with exit 1 when the ledgers do not validate, a pile exists,
-or not exactly one block turns final in the index against HEAD, so only unit.py close commits. Chains to .husky/pre-commit when present."""
+or not exactly one block turns final in the index against HEAD, or the block that turns closed holds no passing review file, a failing check in the working tree or a check that is not red on HEAD, or its index differs from the tree on a path of its files key, or a block that turns failed stages a product path or leaves a path of its files key changed in the tree, S233. Chains to .husky/pre-commit when present."""
 import os, re, subprocess, sys
 
 ROOM = subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True).stdout.strip()
@@ -10,6 +10,62 @@ UNIT = os.path.join(ROOM, 'unit.py')
 def refuse(reason):
     print(f'pre-commit: {reason}', file=sys.stderr)
     return 1
+
+
+def review_flaw(staged, uid):
+    """The fault of the review file of a unit that turns closed, S233."""
+    code = os.path.dirname(os.path.realpath(UNIT))
+    if not os.path.isfile(os.path.join(code, 'ledger.py')):  # a room whose unit.py is a wrapper file, the tools stand beside this hook's folder
+        code = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    sys.path.insert(0, code)
+    import ledger, review_evidence
+    found = [b for b in ledger.blocks(staged) if b[0] == uid]
+    status, values = found[0][1], found[0][3]
+    if status != 'closed':
+        return index_flaw(status, ledger.files_of(values))
+    key = values.get('review', '')
+    flaw = review_evidence.review_file_error(key, uid, ROOM)
+    flaw = flaw or index_flaw(status, ledger.files_of(values))
+    return flaw or check_flaw(values.get('check', ''))
+
+
+def index_flaw(status, paths):
+    """The fault of the index against the files of a final block, S233."""
+    run = dict(cwd=ROOM, capture_output=True, text=True)
+    kept = {'UNITS.md', 'unit.log'}
+    cmd = ['git', 'diff', '--cached', '--name-only']
+    staged = subprocess.run(cmd, **run).stdout.split()
+    extra = sorted(set(staged) - kept)
+    late = status == 'failed'
+    if late and extra:
+        return f'{extra[0]} is staged with a failed unit'
+    home = os.path.realpath(ROOM) + os.sep
+    full = lambda p: os.path.realpath(os.path.join(ROOM, p))
+    own = sorted(set(paths) - (kept if late else {'unit.log'}))
+    own = [p for p in own if full(p).startswith(home)]
+    cmd = ['git', 'status', '--porcelain', '--', *own]
+    done = subprocess.run(cmd, **run)
+    if done.returncode:
+        return 'git status fails on the files key'
+    rows = done.stdout.splitlines() if own else []
+    if late and rows:
+        return f'{rows[0][3:]} of a failed unit differs from HEAD'
+    loose = [row[3:] for row in rows if row[1] != ' ']
+    if loose:
+        return f'{loose[0]} differs between the tree with the index'
+    return ''
+
+
+def check_flaw(check):
+    """The fault of the check of a closing unit, in the room with on HEAD, S233."""
+    import transition
+    exits = transition.clause_exits(ROOM, check)
+    if any(exits):
+        return f'check exits {exits}'
+    held, broken = transition.baseline_state(ROOM, check)
+    if held or broken:
+        return f'clauses {held} {broken} are not red on a copy of HEAD'
+    return ''
 
 
 def main():
@@ -22,8 +78,11 @@ def main():
     staged = subprocess.run(['git', 'show', ':UNITS.md'], capture_output=True, text=True, cwd=ROOM).stdout
     before = dict(re.findall(r'^## (U\d{4}) · \S+ · \w+ · (\w+)$', subprocess.run(['git', 'show', 'HEAD:UNITS.md'], capture_output=True, text=True, cwd=ROOM).stdout, re.M))
     moved = [u for u, s in re.findall(r'^## (U\d{4}) · \S+ · \w+ · (\w+)$', staged, re.M) if s in ('closed', 'failed') and before.get(u) not in ('closed', 'failed')]
-    if len(moved) != 1:
-        return refuse(f'{len(moved)} units turn final in the index, commit through unit.py close')
+    reason = f'{len(moved)} units turn final in the index'
+    if len(moved) == 1:
+        reason = review_flaw(staged, moved[0]) if before else ''
+    if reason:
+        return refuse(f'{reason}, commit through unit.py close')
     husky = os.path.join(ROOM, '.husky', 'pre-commit')
     if os.path.exists(husky):
         return subprocess.run([husky], cwd=ROOM).returncode

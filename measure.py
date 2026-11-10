@@ -3,14 +3,16 @@
 import importlib.util, json, os, re, subprocess, sys, tempfile
 HERE = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, HERE)
-from unit import line_map
+from pile import line_map
 from ledger import read, TABLES, LEDGERS, rows_of, load
 from policy import at_target, binary, leaf_goals
 
 
-def measures(room, bl, goals=None):
-    """Compute requested goals once per room snapshot. Omission requests all goals."""
+def measures(room, bl, goals=None, fresh=False):
+    """Return requested goals, optionally bypassing caches for a fresh phase."""
     selected = tuple(goals) if goals is not None else tuple(g[0] for g in rows_of(room, 'GOAL.md', 'G') if g[0] != 'G0')
+    if fresh:
+        return _measures(room, bl, selected, fresh=True)
     cached = _MEASURES.setdefault(os.path.realpath(room), {})
     missing = set(selected) - cached.keys()
     if missing:
@@ -18,7 +20,7 @@ def measures(room, bl, goals=None):
     return {g: cached[g] for g in selected}
 
 
-def _measures(room, bl, goals=None):
+def _measures(room, bl, goals=None, fresh=False):
     """The adapter of the room computes each leaf. A room without measures.py reads «no tool»."""
     selected = tuple(goals) if goals is not None else tuple(g[0] for g in rows_of(room, 'GOAL.md', 'G') if g[0] != 'G0')
     own = os.path.join(room, 'measures.py')
@@ -32,11 +34,18 @@ def met(value, target):
     return at_target(value, target)
 
 
-def method_counts(room, bl):
+def method_counts(room, bl, fresh=False):
     """The method counts of a room, RULE §5, S143: unmeasured leaves, open or todo steps under a leaf at target, final units whose files key names ledgers alone, R rows no non-ledger file cites, no pilot step, 100 levels overdue."""
-    if os.path.realpath(room) in _COUNTS: return _COUNTS[os.path.realpath(room)]  # one count per room per process, the status reads it twice, S143
-    try: m = measures(room, bl)
-    except Exception as e: m = {}; print(f'measures of {os.path.basename(room)} raised {type(e).__name__}, every leaf reads unmeasured', file=sys.stderr)  # a measures.py that fails is no tool
+    key = os.path.realpath(room)
+    if not fresh and key in _COUNTS:
+        return _COUNTS[key]
+    try:
+        m = measures(room, bl, fresh=fresh)
+    except Exception as error:
+        m = {}
+        message = f'measures of {os.path.basename(room)}'
+        message += f' raised {type(error).__name__}, every leaf reads unmeasured'
+        print(message, file=sys.stderr)
     g_rows = leaf_goals(rows_of(room, 'GOAL.md', 'G'))
     unmeasured = sum(1 for g in g_rows if str(m.get(g[0], 'no tool')).startswith('no '))
     at = {g[0] for g in g_rows if g[0] in m and met(m[g[0]], g[4])}
@@ -50,8 +59,17 @@ def method_counts(room, bl):
     types = unit_types(room)
     n_final = [u for u, s, _, _ in bl if s in ('closed', 'failed') and types.get(u) != 'audit']
     hundred = sum(1 for k in range(100, len(n_final) + 1, 100) if not any(types.get(u) == 'audit' and s == 'closed' and re.search(r'100 level|full inspection', v.get('sentence', '') + v.get('added', '')) for u, s, _, v in bl[bl.index(next(b for b in bl if b[0] == n_final[k - 1])):]))
-    _COUNTS[os.path.realpath(room)] = {'unmeasured leaves': unmeasured, 'steps under a leaf at target': at_target, 'ledger-only units': ledger_only, 'uncited R rows': uncited, 'no pilot step': pilot, '100 levels overdue': hundred}
-    return _COUNTS[os.path.realpath(room)]
+    counts = {
+        'unmeasured leaves': unmeasured,
+        'steps under a leaf at target': at_target,
+        'ledger-only units': ledger_only,
+        'uncited R rows': uncited,
+        'no pilot step': pilot,
+        '100 levels overdue': hundred,
+    }
+    if not fresh:
+        _COUNTS[key] = counts
+    return counts
 
 
 _COUNTS, _MEASURES = {}, {}

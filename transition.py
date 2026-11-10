@@ -85,17 +85,109 @@ def hunks(room, paths):
         fields.append(f'{path}:{",".join(spans)}')
     return ' · '.join(fields)
 
-def baseline_passes(room, check):
-    """Return clauses that pass on isolated HEAD, with external writes forbidden."""
+SANDBOX = '/usr/bin/sandbox-exec'
+
+
+def writable(folder):
+    """Create one probe file in a folder, then remove it."""
+    import os
+    path = os.path.join(folder, f'.hectoline-probe-{os.getpid()}')
+    try:
+        os.close(os.open(path, os.O_CREAT | os.O_EXCL))
+    except OSError:
+        return False
+    os.remove(path)
+    return True
+
+
+def outer_confinement(parent):
+    """True when an outer confinement bounds writes to the temp folder, S226.
+    Else sandbox-exec must work, or the caller stops."""
+    import os
+    import tempfile
+    probe = [SANDBOX, '-p', '(version 1)(allow default)', '/usr/bin/true']
+    if subprocess.run(probe, capture_output=True).returncode != 71:
+        return False
+    scratch = os.path.realpath(tempfile.gettempdir())
+    def inside(path):
+        real = os.path.realpath(path)
+        return real.startswith(scratch + os.sep)
+    samples = [os.path.expanduser('~'), os.getcwd()]
+    samples.append(os.path.dirname(scratch))
+    samples.append(os.path.dirname(os.path.realpath(__file__)))
+    outside = [s for s in samples if not inside(s)]
+    leaks = [s for s in outside if writable(s)]
+    if leaks or not inside(parent):
+        raise RuntimeError('no temp-bound outer confinement, sandbox-exec fails')
+    return True
+
+
+def confined_clause(parent, target, clause, env, marker, timeout=60):
+    """Run one clause inside its caller-owned scratch boundary."""
     import json
     import os
-    import shutil
     import signal
-    import tempfile
+    profile = '(version 1)(allow default)(deny network*)'
+    profile += '(deny file-write*)(allow file-write*'
+    profile += ' (subpath ' + json.dumps(parent) + ')'
+    profile += ' (literal "/dev/null"))'
+    if not os.path.isfile(SANDBOX):
+        raise RuntimeError('baseline write confinement is unavailable')
+    env.update(TMPDIR=parent, HECTOLINE_AUDIT='1')
+    env['PYTHONDONTWRITEBYTECODE'] = '1'
+    launch = ': > "$1" || exit 125\nexec /bin/sh -c "$2"'
+    args = [SANDBOX, '-p', profile, '/bin/sh', '-c', launch]
+    if outer_confinement(parent):
+        args = ['/bin/sh', '-c', launch]
+    args += ['baseline', marker, clause]
+    proc = subprocess.Popen(
+        args, cwd=target, env=env, stdin=subprocess.DEVNULL,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        start_new_session=True)
+    try:
+        proc.communicate(timeout=timeout)
+    finally:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        proc.wait()
+    if not os.path.isfile(marker):
+        raise RuntimeError('baseline sandbox did not start the clause')
+    return proc.returncode
+
+def baseline_passes(room, check):
+    """Return clauses that pass on isolated HEAD."""
+    return baseline_state(room, check)[0]
+
+
+def clean_env(room):
+    """The environment without the names git sets for a hook."""
+    import os
     env = dict(os.environ)
     local = git_bytes(room, 'rev-parse', '--local-env-vars')
     for name in local.decode().splitlines():
         env.pop(name, None)
+    return env
+
+
+def clause_exits(room, check):
+    """The exit code of each check clause run in the room, S233."""
+    how = dict(shell=True, cwd=room, capture_output=True)
+    how['env'] = clean_env(room)
+    exits = []
+    for clause in check.split(' · '):
+        done = subprocess.run(clause.strip(), **how)
+        exits.append(done.returncode)
+    return exits
+
+
+def baseline_state(room, check, timeout=60):
+    """Return held and broken clauses on isolated HEAD, external writes forbidden.
+    A clause that exits 127 or 124 there is broken, no red baseline, S226."""
+    import os
+    import tempfile
+    env = clean_env(room)
     with tempfile.TemporaryDirectory(prefix='hectoline-baseline-') as parent:
         parent = os.path.realpath(parent)
         target = os.path.join(parent, 'room')
@@ -103,38 +195,19 @@ def baseline_passes(room, check):
         git_bytes(room, 'clone', '--quiet', '--no-hardlinks',
                   '--no-checkout', '--', source, target, env=env)
         git_bytes(target, 'reset', '--hard', 'HEAD', env=env)
-        profile = '(version 1)(allow default)(deny network*)'
-        profile += '(deny file-write*)(allow file-write*'
-        profile += ' (subpath ' + json.dumps(parent) + ')'
-        profile += ' (literal "/dev/null"))'
-        sandbox = shutil.which('sandbox-exec')
-        if not sandbox:
-            raise RuntimeError('baseline write confinement is unavailable')
-        env.update(TMPDIR=parent, HECTOLINE_AUDIT='1')
-        env['PYTHONDONTWRITEBYTECODE'] = '1'
-        held = []
+        held, broken = [], []
         for number, clause in enumerate(check.split(' · '), 1):
             marker = os.path.join(parent, f'entered-{number}')
-            launch = ': > "$1" || exit 125\nexec /bin/sh -c "$2"'
-            args = [sandbox, '-p', profile, '/bin/sh', '-c', launch]
-            args += ['baseline', marker, clause]
-            proc = subprocess.Popen(
-                args, cwd=target, env=env, stdin=subprocess.DEVNULL,
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                start_new_session=True)
+            run = parent, target, clause, env, marker, timeout
             try:
-                proc.communicate(timeout=60)
-            finally:
-                try:
-                    os.killpg(proc.pid, signal.SIGKILL)
-                except ProcessLookupError:
-                    pass
-                proc.wait()
-            if not os.path.isfile(marker):
-                raise RuntimeError('baseline sandbox did not start the clause')
-            if proc.returncode == 0:
+                code = confined_clause(*run)
+            except subprocess.TimeoutExpired:
+                code = 124
+            if code == 0:
                 held.append(number)
-        return held
+            if code in (124, 127):
+                broken.append((number, code))
+        return held, broken
 
 
 def prepare_rollback(room, paths, temporary, backups):

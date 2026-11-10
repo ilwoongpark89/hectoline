@@ -7,5 +7,5 @@ One S row per step, RULE §2. A step makes or changes one product. The interface
 | S | parent | product | step | interface: exposes · hides | units | status |
 |---|---|---|---|---|---|---|
 | S01 | G0 | the six ledgers | this room with its ledgers, links and bootstrap block | the ledger files · the links | U0001 | done |
-| S02 | G1 | measures.py | the measure of G1, G1 from no tool to 1: one reference case with its analytic answer | the number g1 · the case data | U0003 | done |
-| S03 | G1 | calc.py | the calculator, G1 from 1 to 0: laminar pipe pressure drop by Hagen-Poiseuille | the pressure drop from four inputs · the formula | U0005 | done |
+| S02 | G1 | P10 | the measure tool of this room, G1 from no tool to its first number | the count of G1 · the probe commands | U0002 | done |
+| S03 | G1 | calc.py | the pilot, the calculator by Hagen-Poiseuille end to end, G1 from 1 to 0 | the pressure drop from four inputs · the formula | U0004 | done |

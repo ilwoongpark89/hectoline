@@ -4,6 +4,7 @@ import json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 from gate import WRITES, legacy_room, legacy_writes, ROOMS
+from gate import review_calls
 from ledger import read
 from hooks.install import rooms
 WORKSPACE = ROOMS
@@ -39,6 +40,15 @@ def deny(event, reason):
     return 0
 
 
+def checked(room, one):
+    """The refusal of one room for one call, empty when the room allows."""
+    tool = os.path.join(room, 'unit.py')
+    args = [sys.executable, '-I', '-B', tool, 'check', room]
+    quiet = dict(capture_output=True, text=True)
+    done = subprocess.run(args, input=json.dumps(one), **quiet)
+    return done.stdout.strip() if done.returncode else ''
+
+
 def stop_rooms(cwd, session):
     """Use the current room or rooms already recorded for this workspace session."""
     room = room_of(cwd)
@@ -66,6 +76,13 @@ def main():
     ones = payloads(payload, cwd)
     if not ones and room_of(cwd) and payload.get('tool_name') == 'apply_patch':
         return deny(event, 'deny: apply_patch names no file')
+    routed = []
+    for one in ones:
+        routed += review_calls(one, cwd)
+    for room, call in routed:
+        flaw = checked(room, call)
+        if flaw:
+            return deny(event, flaw)
     for one in ones:
         fp = one.get('tool_input', {}).get('file_path'); room = room_of(fp or cwd) or (fp and legacy_room(fp))
         if not room:

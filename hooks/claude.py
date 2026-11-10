@@ -5,6 +5,7 @@ import json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 from gate import WRITES, legacy_room, legacy_writes
+from gate import review_calls
 
 
 def room_of(path):
@@ -40,6 +41,7 @@ def main():
         return 0
     if event in ('PreToolUse', 'PostToolUse') and payload.get('tool_name') in ('Edit', 'Write', 'MultiEdit', 'NotebookEdit', 'Bash', 'WebSearch', 'WebFetch', 'Agent'):
         writes = [(r, dict(payload, tool_name='Write', tool_input={'file_path': p})) for r, p in (legacy_writes(payload.get('tool_input', {}).get('command', ''), cwd) if payload.get('tool_name') == 'Bash' else [])]  # a shell write of any file type under a legacy target meets that room's gate as a Write, S118
+        writes += review_calls(payload, cwd)
         for room, one in [(r, payload) for r in rooms_of(payload, cwd)] + writes:  # each room checks its own targets, a call that touches no room passes
             res = subprocess.run([sys.executable, '-I', '-B', os.path.join(room, 'unit.py'), 'check', room], input=json.dumps(one), capture_output=True, text=True)
             if res.returncode:

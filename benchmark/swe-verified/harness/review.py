@@ -3,8 +3,10 @@
 
 review.py review U#### ROOM RUN   the room's unit.py calls this at each close request. It starts a second
                                   Claude Code session that reads the diff, the nine keys and RULE.md, runs the
-                                  check, and answers pass or fail with one reason. The verdict enters the review
-                                  key of the block as round r<n>; the reviewer log goes to RUN/reviews/. Exit 0
+                                  check, and answers pass or fail with one reason. The reviewer log goes to
+                                  RUN/reviews/agent-review-u####-r<n>.md, outside the room: its first line names the
+                                  unit, its last line reads «R<n> PASS» or «R<n> FAIL». The review key of the block
+                                  names that file by its path with its sha256, the form unit.py close reads. Exit 0
                                   when a verdict was recorded, 3 when the reviewer did not answer. A session that
                                   ends without a verdict is kept under no_verdict and takes no round number.
                                   Every event also goes to RESULTS/review-events.jsonl, outside the run folder;
@@ -16,7 +18,7 @@ review.py hook                    a Claude Code PreToolUse hook for both arms: d
                                   session's own folder, which keeps the harness and the reviewer record out of reach.
                                   Exit 2 denies. Every other call passes.
 The harness never shows the reviewer the gold patch or the hidden tests; it holds neither."""
-import json, os, re, subprocess, sys, time
+import hashlib, json, os, re, subprocess, sys, time
 
 HERE = os.path.dirname(os.path.realpath(__file__))
 BENCH = os.path.dirname(HERE)
@@ -149,7 +151,8 @@ def review(uid, room, run):
     tag = f'r{n}' if found else f'none{len(none) + 1}'
     log = os.path.join(run, 'reviews', f'agent-review-{uid.lower()}-{tag}.md')
     with open(log, 'w', encoding='utf8') as f:
-        f.write(f'# agent-review-{uid.lower()} {tag}\n\nmodel {CONFIG["model"]} · session {data.get("session_id", "?")} · turns {data.get("num_turns", "?")} · wall {data.get("wall_s")} s · exit {data.get("exit_code")}\n\n## Answer\n\n{result}\n')
+        last = f'R{n} {found.group(1).upper()}' if found else 'NO VERDICT'  # unit.py close and the pre-commit read the verdict from this last line
+        f.write(f'# {uid} {tag}\n\nmodel {CONFIG["model"]} · session {data.get("session_id", "?")} · turns {data.get("num_turns", "?")} · wall {data.get("wall_s")} s · exit {data.get("exit_code")}\n\n## Answer\n\n{result}\n\n{last}\n')
     entry = dict(kind='round', run=run, uid=uid, round=n if found else None, session=data.get('session_id'), wall_s=data.get('wall_s'), turns=data.get('num_turns'), exit_code=data.get('exit_code'), log=log)
     if not found:
         entry['verdict'] = 'none'
@@ -161,12 +164,13 @@ def review(uid, room, run):
         print(f'review: the reviewer session ended without a verdict ({len(none)} so far), close refused, ask again', file=sys.stderr)
         return 3
     entry['verdict'] = found.group(1).lower()
-    entry['reason'] = re.sub(r'[«»`\n]+', ' ', found.group(2)).strip()[:300] or 'no reason given'
+    entry['reason'] = re.sub(r'[«»`\n]+', ' ', found.group(2)).replace('sha256=', 'sha256 ').replace('agent-review', 'agent review').strip()[:300] or 'no reason given'
+    entry['sha256'] = hashlib.sha256(open(log, 'rb').read()).hexdigest()
     event(**entry)
     rounds.append(entry)
     json.dump({'uid': uid, 'rounds': [strip(r) for r in rounds], 'no_verdict': [strip(r) for r in none]}, open(state_path, 'w'), indent=1)
     # the review key is rebuilt from the harness record alone, so an author-written verdict never counts
-    key = ' · '.join(f'r{r["round"]} {r["verdict"]}, «{r.get("reason", "no reason")}», model {CONFIG["model"]}, session {r.get("session")}, {os.path.relpath(r["log"], room)}' for r in rounds)
+    key = ' · '.join(f'r{r["round"]} {r["verdict"]}, «{r.get("reason", "no reason")}», model {CONFIG["model"]}, session {r.get("session")}, {os.path.realpath(r["log"])} sha256={r.get("sha256") or hashlib.sha256(open(r["log"], "rb").read()).hexdigest()}' for r in rounds)
     write(room, set_key(load(room)[0], uid, 'review', key))
     print(f'review: round {n} {entry["verdict"]}, {entry["reason"]}')
     return 0

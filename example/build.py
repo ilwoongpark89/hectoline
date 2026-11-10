@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """example/build.py TOP [--snapshot] — build the sample room 01_pressure-drop under TOP with the real gate.
-room.py makes the room. Every later change enters through `unit.py open` and `unit.py close`, so each
-commit is one unit, each block is written by the tool, and the pre-commit hook runs on every commit.
-Six units: the bootstrap, a planning unit, the measure, a second planning unit, the calculator, one audit.
+room.py makes the room with its acceptance check, so the first call is `unit.py open U0002 ROOM`.
+Every later change enters through `unit.py open` and `unit.py close`, so each commit is one unit,
+each block is written by the tool, and the pre-commit hook judges every commit.
+Five units: the bootstrap with the leaf G1, the measure, a planning unit, the calculator, one audit.
+Each review file stands outside the room, under TOP/reviews, and the review key holds its sha256.
 --snapshot copies the finished room into example/01_pressure-drop without .git, the log and the caches.
 Needs macOS with sandbox-exec, git with a user name and email, Python 3.11 or later."""
-import datetime, os, re, shutil, subprocess, sys
+import datetime, hashlib, os, re, shutil, subprocess, sys
 
 HERE = os.path.dirname(os.path.realpath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -15,7 +17,8 @@ from ledger import KEYS, load, read, set_key, write
 NAME = '01_pressure-drop'
 G0 = 'a laminar pipe pressure-drop calculator answers its reference case within 1 percent'
 QUOTE = 'Build a laminar pipe pressure-drop calculator that reproduces the reference case'
-REVIEW = 'pass r1, the diff and the nine verdict keys read, example/reviews/agent-review-{u}.md'
+ACCEPT = 'the calculator answers the reference case within 1 percent'
+REVIEW = 'r1 pass, the build session, {path} sha256={digest}'
 APPROVAL = f'«{QUOTE}», the A0001 row'
 PY = [sys.executable, '-I', '-B']
 
@@ -67,13 +70,14 @@ if __name__ == '__main__':
     print(f'{pressure_drop(mu, length, diameter, flow):.3f}')
 '''
 
-REVIEW_NOTE = '''# agent-review-{u} — {sentence}
+REVIEW_NOTE = '''# {uid} r1 — {sentence}
 
 Reviewer: the same session that built the room through example/build.py. This log shows the form of a review. It is not an independent review.
 
 - check: {check}
 - read: the diff of the files key, the nine verdict keys, RULE §1 §2 §4
-- verdict: pass r1
+
+R1 PASS
 '''
 
 
@@ -99,9 +103,11 @@ def planned(uid, kind, sentence, plan, files, base, lines):
 def review(top, uid, sentence, check):
     folder = os.path.join(top, 'reviews')
     os.makedirs(folder, exist_ok=True)
-    with open(os.path.join(folder, f'agent-review-{uid.lower()}.md'), 'w', encoding='utf8') as f:
-        f.write(REVIEW_NOTE.format(u=uid.lower(), sentence=sentence, check=check))
-    return REVIEW.format(u=uid.lower())
+    path = os.path.join(os.path.realpath(folder), f'agent-review-{uid.lower()}-r1.md')
+    note = REVIEW_NOTE.format(uid=uid, sentence=sentence, check=check)
+    with open(path, 'w', encoding='utf8') as f:
+        f.write(note)
+    return REVIEW.format(path=path, digest=hashlib.sha256(note.encode('utf8')).hexdigest())
 
 
 def edit(path, old, new):
@@ -129,64 +135,54 @@ def unit(room, top, uid, sentence, plan, files, lines, body, check, cause, added
 def build(top):
     os.makedirs(top, exist_ok=True)
     room = os.path.join(top, NAME)
-    print(sh(*PY, os.path.join(ROOT, 'room.py'), NAME, G0, QUOTE, '--top', top).strip())
+    print(sh(*PY, os.path.join(ROOT, 'room.py'), NAME, G0, QUOTE, '--top', top, '--accept', ACCEPT).strip())
     goal, plan, prods, units = (os.path.join(room, f) for f in ('GOAL.md', 'PLAN.md', 'PRODUCTS.md', 'UNITS.md'))
-
-    def plan1():
-        edit(goal, '| G0 | ' + G0 + ' | — | leaves at target | 0 of 0 | 0 of 0 |\n',
-             '| G0 | ' + G0 + ' | — | leaves at target | 1 of 1 | 0 of 1 |\n'
-             '| G1 | the calculator answers the reference case within 1 percent | G0 | reference cases that calc.py misses by over 1 percent, by measures.py g1 | 0 | no tool |\n')
-        with open(plan, 'a', encoding='utf8') as f:
-            f.write('| S02 | G1 | measures.py | the measure of G1, G1 from no tool to 1: one reference case with its analytic answer | the number g1 · the case data | U0003 | todo |\n'
-                    '| S03 | G1 | calc.py | the calculator, G1 from 1 to 0: laminar pipe pressure drop by Hagen-Poiseuille | the pressure drop from four inputs · the formula | | todo |\n')
-        with open(prods, 'a', encoding='utf8') as f:
-            f.write('| P10 | the measure of G1 | — | result | measures.py | P05 |\n| P11 | the calculator | — | result | calc.py | — |\n| P12 | the audit records | — | result | audits/ | — |\n')
-        with open(units, 'a', encoding='utf8') as f:
-            f.write(planned('U0003', 'behavioral', 'measures.py computes g1, the reference cases the calculator misses', 'A0001 · S02', 'measures.py · PLAN.md · UNITS.md', 'U0002', '+≤40'))
-    unit(room, top, 'U0002', 'the planning unit: G1 with its measure, the steps S02 S03, the products P10 to P12, the planned measure unit',
-         'A0001 · S none, the planning unit of RULE §3', 'GOAL.md · PLAN.md · PRODUCTS.md · UNITS.md', '+≤40', plan1,
-         "grep -q '^| G1 |' GOAL.md · grep -q '^| S03 | G1 | calc.py |' PLAN.md · grep -q '^| P11 | the calculator |' PRODUCTS.md",
-         'inputs layer of inputs → rules → state → result → view: the A0001 order becomes one leaf, two steps and three products, RULE §3',
-         'G1 and its target, S02 the measure step and S03 the calculator, P10 to P12, the planned block U0003 under S02',
-         'a planned block for S03 now: G1 is unmeasured until S02 closes, so only its measure step may open, RULE §1 · a second leaf for the Reynolds number: the reference case holds it')
 
     def measure():
         with open(os.path.join(room, 'measures.py'), 'w', encoding='utf8') as f:
             f.write(MEASURES)
-        edit(plan, '| U0003 | todo |', '| U0003 | done |')
-    unit(room, top, 'U0003', 'measures.py computes g1, the reference cases the calculator misses', 'A0001 · S02', 'measures.py · PLAN.md · UNITS.md', '+≤40', measure,
-         'test "$(python3 -I -B measures.py g1)" = "g1 1" · grep -q "^| S02 | .* | U0003 | done |$" PLAN.md',
+        edit(goal, '| acceptance checks passing in measures.py | all | no tool |',
+             '| reference cases that calc.py misses by over 1 percent, by measures.py g1 | 0 | no tool |')
+        edit(plan, '| U0002 | todo |', '| U0002 | done |')
+    unit(room, top, 'U0002', 'measures.py computes the count of G1', 'A0001 · S02', 'measures.py · GOAL.md · PLAN.md · UNITS.md', '+≤70', measure,
+         'test "$(python3 -I -B measures.py g1)" = "g1 1" · grep -q "^| S02 | .* | U0002 | done |$" PLAN.md',
          'result layer: the reference case and its analytic answer enter as data, the measure counts the misses, RULE §5',
-         'measures.py with one reference case, 81.487 Pa, and g1 · S02 done', 'a tolerance below 1 percent: the target of G1 is the 1 percent of the owner line · a second case: one case is the pilot')
+         'measures.py with one reference case, 81.487 Pa, and g1 · the measure and the target 0 of G1 · S02 done',
+         'a tolerance below 1 percent: the target of G1 is the 1 percent of the owner line · a second case: one case is the pilot')
 
-    def plan2():
-        edit(plan, '| the pressure drop from four inputs · the formula | | todo |', '| the pressure drop from four inputs · the formula | U0005 | todo |')
+    def plan1():
+        edit(plan, '| S03 | G1 | the product, named by its planning unit | the pilot, one instance of the final product end to end, G1 from its first number to its target | the first passing instance · its parts | | todo |',
+             '| S03 | G1 | calc.py | the pilot, the calculator by Hagen-Poiseuille end to end, G1 from 1 to 0 | the pressure drop from four inputs · the formula | U0004 | todo |')
+        with open(prods, 'a', encoding='utf8') as f:
+            f.write('| P11 | the calculator | — | result | calc.py | — |\n| P12 | the audit records | — | result | audits/ | — |\n')
         with open(units, 'a', encoding='utf8') as f:
-            f.write(planned('U0005', 'behavioral', 'calc.py prints the laminar pressure drop of a pipe from four inputs', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', 'U0004', '+≤40'))
-            f.write(planned('U0006', 'audit', 'the audit of the first five units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4', 'audits/audit-06.txt · UNITS.md', 'U0005', '+≤40'))
-    unit(room, top, 'U0004', 'the second planning unit: G1 is measured at 1, so S03 gets its unit, then the first audit', 'A0001 · S none, the planning unit of RULE §3 over an empty queue',
-         'PLAN.md · UNITS.md', '+≤40', plan2, "grep -qE '^## U0006 . [0-9-]+ . audit . ' UNITS.md · grep -q '| U0005 | todo |$' PLAN.md",
-         'inputs layer: the queue is empty after U0003, G1 reads 1 by measures.py, so the work unit of S03 and the audit after it are planned, RULE §3',
-         'the planned blocks U0005 under S03 and U0006 the audit · S03 names U0005', 'a redesign of measures.py: g1 reads 1 as the plan says · a third step: G1 has two steps and one leaf')
+            f.write(planned('U0004', 'behavioral', 'calc.py prints the laminar pressure drop of a pipe from four inputs', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', 'U0003', '+≤40'))
+            f.write(planned('U0005', 'audit', 'the audit of the first four units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4', 'audits/audit-05.txt · UNITS.md', 'U0004', '+≤40'))
+    unit(room, top, 'U0003', 'the planning unit: G1 reads 1, so the pilot step S03 names calc.py with its unit, then the first audit',
+         'A0001 · S none, the planning unit of RULE §3 over an empty queue', 'PLAN.md · PRODUCTS.md · UNITS.md', '+≤40', plan1,
+         "grep -qE '^## U0005 . [0-9-]+ . audit . ' UNITS.md · grep -q '| U0004 | todo |$' PLAN.md · grep -q '^| P11 | the calculator |' PRODUCTS.md",
+         'inputs layer of inputs → rules → state → result → view: the queue is empty after U0002, G1 reads 1 by measures.py, so the work unit of S03 and the audit after it are planned, RULE §3',
+         'S03 names calc.py and U0004 · P11 and P12 · the planned blocks U0004 under S03 and U0005 the audit',
+         'a redesign of measures.py: g1 reads 1 as the plan says · a second leaf for the Reynolds number: the reference case holds it')
 
     def calc():
         with open(os.path.join(room, 'calc.py'), 'w', encoding='utf8') as f:
             f.write(CALC)
-        edit(plan, '| U0005 | todo |', '| U0005 | done |')
-    unit(room, top, 'U0005', 'calc.py prints the laminar pressure drop of a pipe from four inputs', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', '+≤40', calc,
-         'test "$(python3 -I -B measures.py g1)" = "g1 0" · test "$(python3 -I -B calc.py 1.0e-3 2 0.01 1e-5)" = "81.487" · grep -q "^| S03 | .* | U0005 | done |$" PLAN.md',
+        edit(plan, '| U0004 | todo |', '| U0004 | done |')
+    unit(room, top, 'U0004', 'calc.py prints the laminar pressure drop of a pipe from four inputs', 'A0001 · S03', 'calc.py · PLAN.md · UNITS.md', '+≤40', calc,
+         'test "$(python3 -I -B measures.py g1)" = "g1 0" · test "$(python3 -I -B calc.py 1.0e-3 2 0.01 1e-5)" = "81.487" · grep -q "^| S03 | .* | U0004 | done |$" PLAN.md',
          'result layer: the formula enters as one function, the command line prints it, G1 moves from 1 to 0, RULE §1 one behavior',
          'calc.py with pressure_drop and its command line · S03 done · G1 at 0', 'a turbulent branch: the reference case is laminar, a second case would carry it · input checks: the measure covers the one case')
 
     def audit():
         os.makedirs(os.path.join(room, 'audits'), exist_ok=True)
-        out = sh(*PY, 'audit.py', '6', '.', cwd=room)
-        with open(os.path.join(room, 'audits', 'audit-06.txt'), 'w', encoding='utf8') as f:
+        out = sh(*PY, 'audit.py', '5', '.', cwd=room)
+        with open(os.path.join(room, 'audits', 'audit-05.txt'), 'w', encoding='utf8') as f:
             f.write(out)
-    unit(room, top, 'U0006', 'the audit of the first five units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4',
-         'audits/audit-06.txt · UNITS.md', '+≤40', audit, "grep -q '^## piles: 0' audits/audit-06.txt · grep -q '^## check rerun on a copy: ' audits/audit-06.txt",
+    unit(room, top, 'U0005', 'the audit of the first four units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4',
+         'audits/audit-05.txt · UNITS.md', '+≤40', audit, "grep -q '^## piles: 0' audits/audit-05.txt · grep -q '^## check rerun on a copy: ' audits/audit-05.txt",
          'result layer: audit.py runs on a copy of the room, its output is the record, RULE §4 «Audit every 10 units», here once at the end of the pilot',
-         'audits/audit-06.txt: the check rerun, the piles, the duplicates, the unused definitions, the measures', 'a fix inside the audit: an audit lists, a later unit fixes')
+         'audits/audit-05.txt: the check rerun, the piles, the duplicates, the unused definitions, the measures', 'a fix inside the audit: an audit lists, a later unit fixes')
     return room
 
 

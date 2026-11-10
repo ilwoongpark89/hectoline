@@ -47,7 +47,11 @@ def step_request(vals, steps, goals, marker):
             leaves.update(g[0] for g in goals if g[2] in leaves)
         leaves -= {g[2] for g in goals} | {'G0'}
     if marker and int(row[0][1:]) >= int(marker[1]) and not any(re.search(rf'\b{g}\b.* from .* to ', row[3]) for g in leaves):
-        return f'{row[0]} names no leaf move in its text, RULE §2', None
+        leaf = ' or '.join(sorted(leaves))
+        way = f': write «{leaf} from its number to its number» in the step text'
+        if not leaves:
+            way = f': GOAL.md holds no leaf under {row[1]}, add its row, then name its move in the step text'
+        return f'{row[0]} names no leaf move in its text, RULE §2' + way, None
     return '', row[1] if row[1] != 'G0' and 'measure' not in row[2] + row[3] else None
 
 
@@ -159,3 +163,24 @@ def leaf_goals(goals):
     parents = {g[2] for g in goals}
     return [g for g in goals if g[0] != 'G0' and g[0] not in parents]
 
+
+def replacement_chain(bl, units):
+    """Follow all declared predecessor edges without changing historical records."""
+    token = r'U\d{4}\b'
+    group = token + r'(?:[\s,]+' + token + r')*'
+    pattern = r'\breplaces\s+(' + group + ')'
+    parents = {}
+    for uid, _, _, vals in bl:
+        note = vals.get('deleted', '')
+        groups = re.findall(pattern, note, re.I)
+        names = re.findall(token, ' '.join(groups), re.I)
+        parents[uid] = {name.upper() for name in names}
+    chain = set(units)
+    pending = list(units)
+    while pending:
+        uid = pending.pop()
+        for parent in parents.get(uid, ()):
+            if parent not in chain:
+                chain.add(parent)
+                pending.append(parent)
+    return sorted(chain)

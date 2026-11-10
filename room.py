@@ -28,7 +28,49 @@ def ledgers(name, g0, quote, hub):
     return texts
 
 
+def entry(texts, accept):
+    """The first goal leaf, its measure step, its pilot step, its planned measure unit, RULE §3, S228."""
+    if not accept:
+        return texts
+    today = datetime.date.today().isoformat()
+    goal = texts['GOAL.md'].replace('| 0 of 0 | 0 of 0 |', '| 1 of 1 | 0 of 1 |')
+    leaf = f'| G1 | {accept} | G0 | acceptance checks passing in measures.py | all | no tool |\n'
+    texts['GOAL.md'] = goal.replace('| 0 of 1 |\n', '| 0 of 1 |\n' + leaf)
+    step = '| S02 | G1 | P10 | the measure tool of this room, G1 from no tool to its first number'
+    step += ' | the count of G1 · the probe commands | U0002 | todo |\n'
+    step += '| S03 | G1 | the product, named by its planning unit | the pilot, one instance of the final product end to end'
+    step += ', G1 from its first number to its target | the first passing instance · its parts | | todo |\n'
+    texts['PLAN.md'] += step
+    texts['PRODUCTS.md'] += '| P10 | the measure of this room | — | result | measures.py | P05 |\n'
+    block = f'\n## U0002 · {today} · behavioral · planned\n'
+    block += 'sentence   : measures.py computes the count of G1\n'
+    block += 'plan       : A0001 · S02\n'
+    block += 'files      : measures.py:≤40 · GOAL.md:≤2 · PLAN.md:≤2 · UNITS.md:≤24\n'
+    block += 'base       : U0001\nlines      : ≤70\n'
+    units = texts['UNITS.md']
+    old = int(re.search(r'lines      : \+(\d+) ', units).group(1))
+    units = units.replace(f'lines      : +{old} ', f'lines      : +{old + 11} ')
+    unread = ', the leaf G1 with S02, S03, the planned U0002, unread until the review of U0002, a pipe sign of the check reads ¦ in the leaf'
+    units = units.replace('the bootstrap commit\nrejected', 'the bootstrap commit' + unread + '\nrejected')
+    texts['UNITS.md'] = units + block
+    return texts
+
+
 def main(argv):
+    accept = ''
+    for i, word in enumerate(argv):
+        if word.startswith('--accept='):
+            argv = argv[:i] + ['--accept', word[9:]] + argv[i + 1:]
+    if '--accept' in argv:
+        at = argv.index('--accept')
+        value = argv[at + 1:at + 2]
+        accept = ' '.join(value[0].split()) if value else ''
+        argv = argv[:at] + argv[at + 2:]
+        flag = accept.startswith('--') or '--accept' in argv
+        if flag or not accept:
+            print('room.py: --accept takes the text of the acceptance check', file=sys.stderr)
+            return 2
+        accept = accept.replace('|', '¦')
     top = argv[argv.index('--top') + 1] if '--top' in argv else ROOMS
     args = [a for i, a in enumerate(argv) if a != '--top' and (i == 0 or argv[i - 1] != '--top')]
     if len(args) < 3 or not re.fullmatch(r'\d\d(_\d\d)*_[A-Za-z][\w-]*', args[0]):
@@ -42,7 +84,8 @@ def main(argv):
         os.symlink(os.path.join(HERE, f), os.path.join(room, f))  # the rule and the tools stay in the rule room, RULE §0
     if hub:
         os.symlink(os.path.abspath(hub), os.path.join(room, 'hub'))
-    for f, text in ledgers(name, g0, quote, hub).items():
+    made = entry(ledgers(name, g0, quote, hub), accept)
+    for f, text in made.items():
         open(os.path.join(room, f), 'w', encoding='utf8').write(text)
     git = lambda *a: subprocess.run(['git', '-C', room, *a], capture_output=True, text=True)
     git('init', '-q'); os.symlink(os.path.join(HERE, 'hooks', 'pre-commit'), os.path.join(room, '.git', 'hooks', 'pre-commit'))  # the git gate, RULE §4, before the first commit, S115

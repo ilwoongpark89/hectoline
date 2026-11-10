@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""base.py — the structural base of a hectoline room, A0096, RULE §4 «The block exists before the first edit». `python3 -I -B base.py map ROOM` prints the room map from the ledgers at each call and never stores it, S160. `base.py pack U#### ROOM` prints the unit pack, S161. `base.py impact ROOM` prints the impact list, S162."""
+"""base.py — the structural base of a hectoline room, RULE §4 «The block exists before the first edit». `python3 -I -B base.py map ROOM` prints the room map from the ledgers at each call and never stores it, S160. `base.py pack U#### ROOM` prints the unit pack, S161. `base.py impact ROOM` prints the impact list, S162."""
 import os, re, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 from ledger import read, files_of, git, load, rows_of
@@ -68,66 +68,86 @@ def impact(room, rev='HEAD'):
 
 
 
-def addon_rows(room, bl):
+def addon_rows(room, bl, values=None):
     """Reject new unapproved steps under goals that already meet their targets."""
-    old = set(re.findall(r'^\| (S\d+) ', git(room, 'show', 'HEAD:PLAN.md'), re.M))
-    new = [l[1:] for l in git(room, 'diff', '-U0', 'HEAD', '--', 'PLAN.md').splitlines() if l.startswith('+| S') and l.split('|')[1].strip() not in old]
-    rows = [[x.strip() for x in r.strip().strip('|').split('|')] for r in new]
-    candidates = [c for c in rows if len(c) > 6 and c[-1] == 'todo' and not re.search(r'\bA\d{4}\b', c[3])]
+    from eligibility import addon_candidates
+    candidates = addon_candidates(room)
     if not candidates:
         return []
     import measure
     leaves = {g[0]: g for g in measure.leaf_goals(rows_of(room, 'GOAL.md', 'G'))}
     needed = {c[1] for c in candidates} & leaves.keys()
-    values = measure.measures(room, bl, needed)
+    if values is None:
+        values = measure.measures(room, bl, needed)
     return [c[0] for c in candidates if c[1] in needed and measure.met(values.get(c[1]), leaves[c[1]][4])]
 
 
-def step_error(room, vals, bl):
-    """Read room inputs for the shared step policy."""
-    import policy
-    marker = re.search(r'^## rule 1\.1 from S(\d+)', read(os.path.join(room, 'PLAN.md')), re.M)
-    error, leaf = policy.step_request(vals, rows_of(room, 'PLAN.md', 'S'), rows_of(room, 'GOAL.md', 'G'), marker)
+def step_error(room, vals, bl, values=None):
+    """Supply values to the shared step eligibility owner."""
+    from eligibility import step_input, step_error as decide
+    error, leaf = step_input(room, vals)
     if error or not leaf:
         return error
-    try:
-        value = __import__('measure').measures(room, bl, [leaf]).get(leaf, 'no tool')
-    except Exception:
-        value = 'no tool'
-    return policy.measurement_error(leaf, value)
+    if values is None:
+        try:
+            values = __import__('measure').measures(room, bl, [leaf])
+        except Exception:
+            values = {}
+    return decide(room, vals, values)
 
 
-def stuck(room, bl):
+def stuck(room, bl, values=None):
     """Compute only measures needed by the blocked-leaf policy."""
     import policy
     steps = {r[0]: r for r in rows_of(room, 'PLAN.md', 'S')}
     needed = policy.blocked_leaves(steps, bl, {})
     if not needed:
         return set()
-    try:
-        values = __import__('measure').measures(room, bl, needed)
-    except Exception:
-        values = {}
+    if values is None:
+        try:
+            values = __import__('measure').measures(room, bl, needed)
+        except Exception:
+            values = {}
     return policy.blocked_leaves(steps, bl, values)
 
-def planned_errors(room, bl, uid=None):
-    """Check each newly planned block after the closing planning unit."""
-    head = subprocess.run(['git', '-C', room, 'show', 'HEAD:UNITS.md'], capture_output=True, text=True).stdout
-    at = next((k for k, b in enumerate(bl) if b[0] == uid), -1)
-    new = [v for u, s, _, v in bl[at + 1:] if s == 'planned' and f'## {u} ·' not in head]
-    return [error for v in new if (error := step_error(room, v, bl))]
+def planned_inputs(room, bl, uid=None):
+    """Select newly planned blocks after the closing planning unit."""
+    head = git(room, 'show', 'HEAD:UNITS.md')
+    positions = {block[0]:index for index,block in enumerate(bl)}
+    at = positions.get(uid, -1)
+    planned = []
+    for other, status, _, candidate in bl[at + 1:]:
+        if status != 'planned' or f'## {other} ·' in head:
+            continue
+        planned.append(candidate)
+    return planned
+
+
+def planned_errors(room, bl, uid=None, values=None):
+    """Check the shared selection of newly planned blocks."""
+    errors = []
+    for candidate in planned_inputs(room, bl, uid):
+        error = step_error(room, candidate, bl, values)
+        if error:
+            errors.append(error)
+    return errors
 
 
 from policy import REPAIR_FILES  # keep the existing caller interface
 
 
-def repair_ready(room, bl, since, args):
+def repair_ready(room, bl, since, args, values=None):
     """Read candidate errors for the pure repair admission boundary."""
     from policy import repair_candidates
     if len(args) < 8 or 'S none, queue repair' not in args[5]:
         return False
     ready = repair_candidates(bl, since, files_of({'files': args[6]}))
-    return bool(ready) and all(step_error(room, v, bl) for v in ready)
+    if not ready:
+        return False
+    for candidate in ready:
+        if not step_error(room, candidate, bl, values):
+            return False
+    return True
 
 
 def repair_baseline(room, uid):
@@ -136,13 +156,14 @@ def repair_baseline(room, uid):
     return found[1] if found else ''
 
 
-def repair_error(room, uid, bl):
-    """Preserve the admitted repair boundary before terminal rollback."""
-    from ledger import review_record, verification_failures
+def repair_input(room, uid, bl):
+    """Check repair invariants before returning required eligibility inputs."""
+    from ledger import verification_failures
+    from review_evidence import review_record
     from policy import repair_invariant, review_decision
     baseline = repair_baseline(room, uid)
     if not baseline:
-        return ''
+        return '', []
     old = git(room, 'show', f'{baseline}:UNITS.md')
     path = os.path.join(room, 'UNITS.md')
     prior = read(path).split(f'## {uid} ·', 1)[0].rstrip()
@@ -157,16 +178,26 @@ def repair_error(room, uid, bl):
     error = repair_invariant(
         old, prior, uid, bl, files_of(vals), changed)
     if error:
-        return error
+        return error, []
     record = review_record(vals.get('review', ''))
     failures = verification_failures(room, uid)
     verdict, _ = review_decision(record, failures)
     if verdict in ('limit', 'withdrawn'):
-        return ''
-    for _, status, _, planned in bl:
-        if status != 'planned':
-            continue
-        error = step_error(room, planned, bl)
+        return '', []
+    pending = []
+    for _,status,_,vals in bl:
+        if status == 'planned':
+            pending.append(vals)
+    return '', pending
+
+
+def repair_error(room, uid, bl, values=None):
+    """Supply values only after the repair boundary permits eligibility."""
+    error, pending = repair_input(room, uid, bl)
+    if error:
+        return error
+    for candidate in pending:
+        error = step_error(room, candidate, bl, values)
         if error:
             return error
     return ''

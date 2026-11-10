@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """gate.py — the edit gate of a hectoline room, P25, the rules boundary.
-unit.py held these names until S195 moved them here, A0110."""
+unit.py held these names until S195 moved them here."""
 import os
 import re
 from ledger import rows_of, files_of, git, read, load, LEDGERS
-from ledger import review_record, verification_failures
-from policy import review_decision
+from ledger import verification_failures
+from review_evidence import review_record
+from policy import review_decision, replacement_chain
 
 HERE = os.path.dirname(os.path.realpath(__file__))
 # the folder that holds the rooms: the parent of this folder, or HECTOLINE_ROOMS
@@ -83,8 +84,11 @@ def gate_path(room, path, old, text, bl, delete=False):
         return False, 'queue repair owns ledger paths only'
     if not owns_path(vals, rel):
         return False, f'{rel}: not in the files key of {uid}'
+    target = os.path.realpath(os.path.join(room, rel))
+    canonical = room_key(room, target) if not delete else rel
     protected = any(
-        rel == prefix.rstrip('/') or rel.startswith(prefix)
+        key == prefix.rstrip('/') or key.startswith(prefix)
+        for key in (rel, canonical)
         for prefix in PROTECTED)
     if protected:
         approved = names_unit(room, uid, vals.get('approval', ''))
@@ -203,9 +207,10 @@ def legacy_writes(cmd, cwd):
 
 
 HOME = os.path.expanduser('~')
-# the protected paths of RULE §4
+# The ten protected paths declared in RULE §4.
 PROTECTED = (
     'RULE.md', 'unit.py', 'ledger.py', 'gate.py', 'selftest.py', 'hooks/', '.git/hooks/',
+    'review_evidence.py',
     f'{HOME}/.claude/settings.json', f'{HOME}/.codex/config.toml',
 )
 # the HOME files a unit must name: the agent rule files, S72
@@ -251,6 +256,66 @@ def live(bl, rel, editable):
         elif status == 'waiting' and (rel == 'UNITS.md' or uid in editable):
             out.append((uid, vals))
     return out
+
+
+REVIEW_FILE = r'agent-review-(?:\w+-)?(u\d{4})\b'
+
+
+def opener(room, uid):
+    """The session of the last allowed open of a unit, from the log."""
+    session = ''
+    for line in read(os.path.join(room, 'unit.log')).splitlines():
+        cells = [c.strip() for c in line.split('|')]
+        if cells[1:4] == ['open', uid, 'allow']:
+            session = cells[-1]
+    return session
+
+
+def review_write_error(room, payload, bl, path):
+    """Deny the author of a live unit a write to its review file, S225."""
+    real = os.path.realpath(path)
+    name = os.path.basename(path) + ' ' + os.path.basename(real)
+    found = re.findall(REVIEW_FILE, name, re.I)
+    units = {u.upper() for u in found}
+    session = payload.get('session_id', '')
+    if payload.get('agent_id') or not session:
+        return ''
+    for uid, status, _, _ in bl:
+        named = uid in units and status in ('open', 'waiting')
+        if named and opener(room, uid) == session:
+            return f'{name}: the reviewer writes it, the session that opened {uid} cannot'
+    return ''
+
+
+def live_named(room, text):
+    """The open or waiting units of a room that a file name carries."""
+    found = re.findall(REVIEW_FILE, text, re.I)
+    units = {u.upper() for u in found}
+    out = []
+    for uid, status, _, _ in load(room)[1]:
+        if uid in units and status in ('open', 'waiting'):
+            out.append(uid)
+    return out
+
+
+def review_calls(payload, cwd):
+    """One Write call per room whose live unit a written review file names."""
+    inp = payload.get('tool_input', {})
+    paths = [inp.get('file_path') or '']
+    for match in WRITES.findall(inp.get('command') or ''):
+        paths.extend(match.split())
+    calls = []
+    for path in filter(None, paths):
+        full = os.path.join(cwd, os.path.expanduser(path))
+        real = os.path.basename(os.path.realpath(full))
+        both = os.path.basename(full) + ' ' + real
+        if not re.search(REVIEW_FILE, both, re.I):
+            continue
+        one = dict(payload, tool_name='Write', tool_input={'file_path': full})
+        for room in numbered_rooms(ledger=True):
+            if live_named(room, both):
+                calls.append((room, one))
+    return calls
 
 
 def names_unit(room, uid, approval):
@@ -308,28 +373,6 @@ def blame_units(room, blame):
         if re.match(r'U\d{4}$', uid):
             units.add(uid)
     return units
-
-
-def replacement_chain(bl, units):
-    """Follow all declared predecessor edges without changing historical records."""
-    token = r'U\d{4}\b'
-    group = token + r'(?:[\s,]+' + token + r')*'
-    pattern = r'\breplaces\s+(' + group + ')'
-    parents = {}
-    for uid, _, _, vals in bl:
-        note = vals.get('deleted', '')
-        groups = re.findall(pattern, note, re.I)
-        names = re.findall(token, ' '.join(groups), re.I)
-        parents[uid] = {name.upper() for name in names}
-    chain = set(units)
-    pending = list(units)
-    while pending:
-        uid = pending.pop()
-        for parent in parents.get(uid, ()):
-            if parent not in chain:
-                chain.add(parent)
-                pending.append(parent)
-    return sorted(chain)
 
 
 def owners(room, path, text, rev='', at=None):

@@ -77,7 +77,7 @@ python3 -I -B measures.py g2   # g2 5, files over 500 lines
 
 The target is 0. The count stands at 5,570 on 2026-11-08.
 
-## 3. The document built from a quarter of its 184 sources
+## 3. The document built from 23 % of its 184 sources
 
 The author's company room holds a wiki of source digests, one node file per source. On 2026-11-07 its unit U0525, commit bfbd685, recorded in its cause key: «all 184 node files match «# <id> · » at HEAD, 184 header ids sit in a row». Count on 2026-11-08:
 

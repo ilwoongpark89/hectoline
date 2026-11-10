@@ -1,10 +1,162 @@
 """selftest.py — the gate selftest of a hectoline room, P17. `python3 -I -B unit.py selftest ROOM` imports it. It replays every deny case of check on a scratch copy of the room, S85. The redesign of U0130: the total is counted, never typed, and the copy's own state cannot fail a case."""
 import os, re, sys
-from unit import check, close_unit, open_unit, pile_count
+from unit import check, close_unit
+from selftest_flow import settled_open as open_unit
+from pile import line_map, pile_count, pile_paths
 from gate import owners
 from gate import HOME
 from ledger import read, validate_units, files_of, load, log
 from ledger import set_key, set_status, write
+
+
+def queue_step_checks(repair=False):
+    """Exercise planning close and pilot eligibility on a disposable room."""
+    import contextlib, io, subprocess, tempfile
+    from unittest.mock import patch
+    import base, room as maker, unit
+    with tempfile.TemporaryDirectory() as folder:
+        texts = maker.ledgers('99_probe', 'A measured pilot', 'fixture', '')
+        texts['GOAL.md'] += '| G1 | child | G0 | count | 2 | 0 |\n'
+        texts['PLAN.md'] += '## rule 1.1 from S2\n| S2 | G1 | x.md | missing movement | x · y | U0003 | todo |\n'
+        for name, text in texts.items():
+            open(os.path.join(folder, name), 'w').write(text)
+        run = lambda *args: subprocess.run(['git', '-C', folder, *args], capture_output=True, check=True)
+        run('init', '-q')
+        run('add', '.')
+        run('-c', 'user.name=fixture', '-c', 'user.email=fixture@local', 'commit', '-qm', 'U0001 fixture')
+        run('config', 'user.name', 'fixture')
+        run('config', 'user.email', 'fixture@local')
+        open(os.path.join(folder, 'x.md'), 'w').write('fixture\n')
+        seed = load(folder)[1][0][3]
+        for uid, status, plan in [('U0002', 'open', 'A0001 · S none'), ('U0003', 'planned', 'A0001 · S2')]:
+            vals = dict(seed, sentence='plan the pilot', plan=plan, base='U0001', files='UNITS.md · PLAN.md · x.md', check='test -f x.md', review='pass agent-review-fixture.md')
+            block = f'\n## {uid} · 2026-11-05 · structural · {status}\n' + '\n'.join(f'{k}: {vals[k]}' for k in unit.KEYS)
+            open(os.path.join(folder, 'UNITS.md'), 'a').write(block + '\n')
+        with patch('measure.measures', return_value={'G1': 1}), contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            if repair:
+                write(folder, set_status(read(os.path.join(folder, 'UNITS.md')), 'U0002', 'open', 'closed'))
+                run('add', '.')
+                run('commit', '-qm', 'U0002 blocked queue fixture')
+                args = ['unit.py', 'open', 'U0004', folder, 'repair queue', 'A0001 · S none, queue repair', 'OWNER.md · PLAN.md · UNITS.md', '+≤100']
+                with patch.object(sys, 'argv', args):
+                    write(folder, read(os.path.join(folder, 'UNITS.md')).replace('· planned', '· closed'))
+                    assert open_unit(folder, 'U0004') == 1
+                    run('checkout', 'HEAD', '--', 'UNITS.md')
+                    assert open_unit(folder, 'U0004') == 0
+                raw = read(os.path.join(folder, 'UNITS.md'))
+                forged = unit.set_key(raw, 'U0004', 'files', args[6] + ' · x.md')
+                forged = unit.set_key(forged, 'U0004', 'plan', 'A0001 · S none')
+                write(folder, forged)
+                assert not unit.check(folder, {'tool_name': 'Edit', 'tool_input': {'file_path': 'x.md'}})[0]
+                path = os.path.join(folder, 'PLAN.md')
+                fixed = read(path).replace('missing movement', 'G1 from 1 to 2')
+                open(path, 'w').write(fixed)
+                fields = dict(seed, sentence='repair queue', plan=args[5], files=args[6], check="grep -q 'G1 from 1 to 2' PLAN.md", review='pass agent-review-fixture.md')
+                for key, value in fields.items():
+                    if key != 'base': raw = unit.set_key(raw, 'U0004', key, value)
+                write(folder, raw.replace('## U0001', '## U0099'))
+                assert close_unit(folder, 'U0004') == 1 and 'earlier block' in read(os.path.join(folder, 'unit' + '.log'))
+                write(folder, raw)
+                assert close_unit(folder, 'U0004') == 0, read(os.path.join(folder, 'unit' + '.log'))
+                assert open_unit(folder, 'U0003') == 0
+                return True
+            assert close_unit(folder, 'U0002') == 1
+            assert 'leaf move' in read(os.path.join(folder, 'unit.log'))
+            assert load(folder)[1][1][1] == 'open'
+            before = read(os.path.join(folder, 'PLAN.md'))
+            valid = before.replace('missing movement', 'G1 from 1 to 2')
+            write(folder, set_status(read(os.path.join(folder, 'UNITS.md')), 'U0002', 'open', 'closed'))
+            assert open_unit(folder, 'U0003') == 1
+            open(os.path.join(folder, 'PLAN.md'), 'w').write(valid.replace('| S2 | G1 |', '| S2 | G0 |'))
+            assert open_unit(folder, 'U0003') == 0
+            write(folder, set_status(read(os.path.join(folder, 'UNITS.md')), 'U0003', 'open', 'planned'))
+            open(os.path.join(folder, 'PLAN.md'), 'w').write(valid.replace('G1 from', 'G99 from'))
+            assert open_unit(folder, 'U0003') == 1
+    return True
+
+
+def ownership_paths_check(folder):
+    """Compare selective ownership with full blame after an unowned rename."""
+    import subprocess
+    def git(*args):
+        command = ['git','-C',folder,'-c','user.name=x']
+        command += ['-c','user.email=x@x',*args]
+        return subprocess.run(command,capture_output=True,check=True)
+    first = os.path.join(folder,'s1.md')
+    second = os.path.join(folder,'s2.md')
+    with open(first,'w') as handle:
+        handle.write('a\n')
+    git('add','s1.md')
+    git('commit','-qn','-m','stray')
+    git('mv','s1.md','s2.md')
+    git('commit','-qn','-m','U0001 x')
+    full = sum(1 for rows in line_map(folder).values()
+               for _,owner in rows if owner is None)
+    paths = pile_paths(folder)
+    valid = full > 0 and pile_count(folder) == full
+    valid = valid and 's2.md' in paths
+    valid = valid and 'RULE.md' not in paths
+    git('reset','-q','HEAD~2')
+    for path in [first,second]:
+        if os.path.exists(path):
+            os.remove(path)
+    return valid
+
+
+def binary_checks():
+    """Close a generated binary through the real hook, then detect unowned edits."""
+    import contextlib, io, subprocess, tempfile
+    from pathlib import Path
+    import unit, room as maker, measure
+    with tempfile.TemporaryDirectory() as folder:
+        root, source = Path(folder), Path(unit.__file__).resolve().parent
+        texts = maker.ledgers('99_binary', 'Govern generated artifacts', 'fixture', '')
+        texts['PRODUCTS.md'] += '| P10 | generated sample | — | result | output/sample.bin, output/alias.bin | — |\n'
+        for name, text in texts.items():
+            (root / name).write_text(text)
+        for name in ('RULE.md', 'unit.py', 'measure.py', 'audit.py'):
+            (root / name).symlink_to(source / name)
+        run = lambda *args: subprocess.run(['git', '-C', folder, *args], capture_output=True, check=True)
+        run('init', '-q')
+        run('config', 'user.name', 'fixture')
+        run('config', 'user.email', 'fixture@local')
+        run('add', '.')
+        run('commit', '-qm', 'U0001 fixture')
+        (root / '.git/hooks/pre-commit').symlink_to(source / 'hooks/pre-commit')
+        seed = unit.load(folder)[1][0][3]
+        vals = dict(seed, sentence='Generate one binary artifact', plan='A0001 · S none', base='U0001', files='UNITS.md · output/sample.bin · output/alias.bin', check='test -s output/sample.bin', review='pass agent-review-fixture.md')
+        block = '\n## U0002 · 2026-11-05 · behavioral · open\n' + '\n'.join(f'{k}: {vals[k]}' for k in unit.KEYS) + '\n'
+        unit.write(folder, unit.read(str(root / 'UNITS.md')) + block)
+        (root / 'output').mkdir()
+        artifact = root / 'output/sample.bin'
+        artifact.write_bytes(b'generated\0\n' + b'row\n' * 600)
+        (root / 'output/alias.bin').symlink_to('sample.bin')
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            assert unit.close_unit(folder, 'U0002') == 0
+            assert pile_count(folder) == 0
+        final = unit.load(folder)[1][-1][3]
+        assert 'output/sample.bin:binary' in final['files']
+        assert line_map(folder)['output/sample.bin'] == [(1, 'U0002')]
+        sizes = dict(measure.composition(folder, unit.load(folder)[1], piles=False))['product sizes against caps']
+        assert 'over: []' in sizes and 'binary bytes:' in sizes and 'output/sample.bin' in sizes
+        assert 'output/alias.bin' in sizes
+        assert line_map(folder)['output/alias.bin'] == [(1, 'U0002')]
+        artifact.write_bytes(b'changed\0\n')
+        assert line_map(folder)['output/sample.bin'] == [(1, None)]
+        (root / 'orphan.txt').write_text('unowned\n')
+        assert line_map(folder)['orphan.txt'] == [(1, None)]
+        (root / 'orphan.txt').unlink()
+        artifact.unlink()
+        (root / 'output/alias.bin').unlink()
+        vals.update(sentence='Remove the generated artifact', base='U0002', check='test ! -e output/sample.bin')
+        block = '\n## U0003 · 2026-11-05 · behavioral · open\n' + '\n'.join(f'{k}: {vals[k]}' for k in unit.KEYS) + '\n'
+        unit.write(folder, unit.read(str(root / 'UNITS.md')) + block)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            assert unit.close_unit(folder, 'U0003') == 0
+        artifact.write_bytes(b'recreated\0\n')
+        run('config', 'status.showUntrackedFiles', 'no')
+        assert line_map(folder)['output/sample.bin'] == [(1, None)]
+    return True
 
 
 def selftest(room):
@@ -20,6 +172,26 @@ def selftest(room):
     with tempfile.TemporaryDirectory() as tmp:
         copy = os.path.join(tmp, 'room')
         shutil.copytree(room, copy, symlinks=True, ignore=shutil.ignore_patterns('__pycache__'))  # the room links stay links, a leaf's hub link is a folder otherwise, S92
+        text, bl = load(copy)
+        from selftest_flow import expand_plans
+        from selftest_flow import blocked_queue
+        from selftest_flow import review_file_case
+        from selftest_flow import review_write_case
+        from selftest_flow import fixture_review, review_close_case
+        from selftest_flow import review_route_case
+        from selftest_flow import baseline_case
+        from selftest_flow import nested_case
+        from selftest_flow import history_case
+        from selftest_flow import hand_close_case
+        from selftest_flow import loose_open_case
+        from selftest_roads import door_check_case
+        from selftest_flow import index_case
+        from selftest_roads import queue_text_case
+        from selftest_roads import entry_case
+        from selftest_roads import leaf_text_case
+        from selftest_roads import third_fail_case
+        fixture_review()
+        write(copy, expand_plans(text))
         text, bl = load(copy)
         AUDIT = '\n\n## U9980 · 2026-01-01 · audit · closed\n' + '\n'.join(f'{k:<11}: x' for k in __import__('unit').KEYS) + '\n'  # an explicit audit state for the step-policy cases, the ten-count of the live room does not reach them, S179
         opened = next((u for u, s, _, _ in bl if s == 'open'), None)
@@ -63,7 +235,7 @@ def selftest(room):
         write(copy, base); log(copy, 'selftest', opened, 'allow', f'{len(cases) + len(variants)} check denies replayed')
         piles = pile_count(copy); open(os.path.join(copy, 'stray.md'), 'w').write('x\n'); expect(pile_count(copy) == piles + 1)
         piles = pile_count(copy); os.symlink(tmp, os.path.join(copy, 'dirlink')); expect(pile_count(copy) == piles + 1); os.remove(os.path.join(copy, 'dirlink'))  # an untracked directory link is one pile row by its target, not a read of the folder, S113
-        g = lambda *a: __import__('subprocess').run(['git', '-C', copy, '-c', 'user.name=x', '-c', 'user.email=x', *a], capture_output=True); open(os.path.join(copy, 's1.md'), 'w').write('a\n'); g('add', 's1.md'); g('commit', '-qn', '-m', 'stray'); g('mv', 's1.md', 's2.md'); g('commit', '-qn', '-m', 'U0001 x'); full = sum(1 for rows in __import__('unit').line_map(copy).values() for _, u in rows if u is None); paths = getattr(__import__('unit'), 'pile_paths', lambda r: set())(copy); expect(full > 0 and pile_count(copy) == full and 's2.md' in paths and 'RULE.md' not in paths); g('reset', '-q', 'HEAD~2'); [os.remove(os.path.join(copy, f)) for f in ('s1.md', 's2.md') if os.path.exists(os.path.join(copy, f))]  # a commit without a final unit and its rename count the same by the pile paths as by the full blame, a clean file is no pile path, S127
+        expect(ownership_paths_check(copy))  # S127
         made = not os.path.lexists(os.path.join(copy, 'legacy')) and (os.symlink(tmp, os.path.join(copy, 'legacy')) or True); f = os.path.join(os.path.realpath(os.path.join(copy, 'legacy')), 'frozen.md'); expect('is frozen' in check(copy, {'tool_name': 'Write', 'tool_input': {'file_path': f}})[1] and 'is frozen' not in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': 'r' + 'm ' + f}, 'cwd': copy})[1]); made and os.remove(os.path.join(copy, 'legacy'))  # a write under the legacy target is denied as frozen, a deletion is not, RULE §6, S117
         made = not os.path.lexists(os.path.join(copy, 'legacy')) and (os.symlink(tmp, os.path.join(copy, 'legacy')) or True); expect('no file' not in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': 'm' + 'v ' + os.path.join(os.path.realpath(os.path.join(copy, 'legacy')), 'sub') + ' documents/'}, 'cwd': copy})[1]); made and os.remove(os.path.join(copy, 'legacy'))  # a folder operand under the legacy target reaches the files key gate, not «no file», S119
         expect(validate_units(load(copy)[0].replace('tidy-first?:', 'tidyfirst?:', 1)))
@@ -81,7 +253,7 @@ def selftest(room):
         gp = os.path.join(copy, 'GOAL.md'); g0 = read(gp); g1 = next(l for l in g0.splitlines() if l.startswith('| G1 |')); open(gp, 'w').write(g0.replace(g1, g1.replace(' | G0 | ', ' x | G0 | ', 1))); open(os.path.join(copy, 'hidden.md'), 'w').write('a note that leans on G1\n'); im = __import__('base').impact(copy).splitlines(); open(gp, 'w').write(g0); os.remove(os.path.join(copy, 'hidden.md')); expect(im[0].startswith('# impact list. The ledgers win') and any(l.startswith('G1 · cited in ') and 'hidden.md' in l for l in im) and __import__('base').impact(copy).splitlines()[1:] != im[1:])  # the impact list names a changed G row with a hidden new file that cites it, S162
         u0 = read(os.path.join(copy, 'UNITS.md')); write(copy, set_status(u0, opened, 'open', 'planned')); ro = __import__('subprocess').run([sys.executable, '-I', '-B', os.path.join(copy, 'unit.py'), 'open', opened, copy], capture_output=True, text=True); write(copy, u0); expect(f'{opened} open on ' in ro.stdout and f'# unit pack of {opened}. The ledgers win over this pack.' in ro.stdout)  # open prints the unit pack after «open on», the U0261 weak line, S161
         gp9 = read(gp); open(gp, 'w').write(gp9.rstrip('\n') + '\n| G9 | a probe leaf | G0 | count | 0 | 1 |\n')  # a leaf without a tool for the two step-policy cases below, S172 S173
-        u0, p0, av = read(os.path.join(copy, 'UNITS.md')), read(os.path.join(copy, 'PLAN.md')), sys.argv; last = load(copy)[1][-1][0]; nx = f'U{int(last[1:]) + 2:04d}'; write(copy, re.sub(r'(?ms)^## U\d{4} · \S+ · \w+ · planned$.*?(?=^## |\Z)', '', set_status(u0, opened, 'open', 'closed')).rstrip('\n') + AUDIT.rstrip('\n') + f'\n\n## U{int(last[1:]) + 1:04d} · 2026-01-01 · behavioral · planned\nsentence   : x\nplan       : A0001 · S998\nfiles      : x.md\nbase       : {opened}\nlines      : +1\n'); open(os.path.join(copy, 'PLAN.md'), 'w').write(p0.rstrip('\n') + '\n| S998 | G9 | x.md | a step, G9 from 1 to 0 | a · b | | todo |\n| S997 | G9 | measures.py | the measure of G9, G9 from no tool to 1 | a · b | | todo |\n'); sk = __import__('unit').stuck(copy, load(copy)[1]); sys.argv = av[:1] + ['open', nx, copy, 'x', 'A0001 · S998', 'x.md', '+1']; r_no = open_unit(copy, nx); sys.argv = av[:1] + ['open', nx, copy, 'x', 'A0001 · S997 · S none, a planning unit', 'x.md', '+1']; r_pl = open_unit(copy, nx); sys.argv = av[:1] + ['open', nx, copy, 'x', 'A0001 · S997', 'x.md', '+1']; r_yes = open_unit(copy, nx); ty = dict((u, s) for u, s, _, _ in load(copy)[1]).get(nx); kd = re.search(rf'^## {nx} · \S+ · (\w+) · open$', read(os.path.join(copy, 'UNITS.md')), re.M); sys.argv = av; write(copy, u0); open(os.path.join(copy, 'PLAN.md'), 'w').write(p0); expect(sk == {'G9'} and r_no == 1 and r_pl == 1 and r_yes == 0 and ty == 'open' and kd and kd.group(1) == 'behavioral')  # a queue whose every planned block sits under a «no tool» leaf opens the measure step of that leaf by the four texts as behavioral, no other step and no planning unit, S172
+        expect(blocked_queue(copy, opened, AUDIT))  # a queue whose every planned block sits under a «no tool» leaf opens the measure step of that leaf by the four texts as behavioral, no other step and no planning unit, S172
         u1, p1 = read(os.path.join(copy, 'UNITS.md')), read(os.path.join(copy, 'PLAN.md')); open(os.path.join(copy, 'PLAN.md'), 'w').write(p1.rstrip('\n') + '\n| S998 | G9 | x.md | a step, G9 from 1 to 0 | a · b | | todo |\n| S997 | G9 | measures.py | the measure of G9, G9 from no tool to 1 | a · b | | todo |\n'); plant = lambda st: write(copy, u1.rstrip('\n') + f'\n\n## U9990 · 2026-01-01 · behavioral · planned\nsentence   : x\nplan       : A0001 · {st}\nfiles      : x.md\nbase       : {opened}\nlines      : +1\n') or (__import__('base').planned_errors(copy, load(copy)[1], opened), __import__('base').planned_errors(copy, load(copy)[1], 'U9990')); pw, pm = plant('S998'), plant('S997'); write(copy, u1); open(os.path.join(copy, 'PLAN.md'), 'w').write(p1); expect(any('unmeasured' in x for x in pw[0]) and pw[1] == [] and pm[0] == [])  # a new planned block under a «no tool» leaf is named for the close refusal, its measure step is not, S173
         open(gp, 'w').write(gp9)  # the probe leaf leaves
         mc = __import__('measure').method_counts(copy, load(copy)[1]); expect(set(mc) == {'unmeasured leaves', 'steps under a leaf at target', 'ledger-only units', 'uncited R rows', 'no pilot step', '100 levels overdue'} and all(isinstance(v, int) for v in mc.values()) and mc['ledger-only units'] > 0)  # the six method counts of a room are integers, S143
@@ -109,7 +281,21 @@ def selftest(room):
         write(copy, set_key(set_key(base, opened, 'files', vals.get('files', '') + ' · RESEARCH.md'), opened, 'sentence', 'which?')); expect(check(copy, {'tool_name': 'WebSearch', 'tool_input': {'query': 'x'}})[0])  # a research unit passes, S76
         write(copy, set_key(set_key(set_key(set_key(base, opened, 'review', 'pass, no log file named'), opened, 'rejected', 'x'), opened, 'added', 'x'), opened, 'check', 'true'))  # check true, so a broken refusal cannot recurse into this selftest
         expect(close_unit(copy, opened) == 1 and 'names no agent-review file' in read(os.path.join(copy, 'unit.log')).splitlines()[-1])  # close wants the review proof, S61
-        st = os.path.join(copy, 'stray.md'); os.rename(st, os.path.join(tmp, 'stray.md')); n7 = f'U{int(bl[-1][0][1:]) + 1:04d}'; seven = {'plan': 'A0001 · S none', 'files': 'UNITS.md · x.md', 'base': opened + ' closed, commit x', 'lines': '+1', 'review': 'r1 fail class 1, x · r2 fail · r3 fail', 'check': 'true'}; write(copy, set_status(base, opened, 'open', 'closed').rstrip('\n') + f'\n\n## {n7} · 2026-01-01 · structural · open\n' + '\n'.join(f'{k:<11}: ' + seven.get(k, 'x') for k in __import__('unit').KEYS) + '\n'); open(os.path.join(copy, 'x.md'), 'w').write('x\n'); close_unit(copy, n7); r7 = dict((u, v) for u, _, _, v in load(copy)[1]).get(n7, {}); expect(r7.get('result', '').startswith('failed after 3 failed verifications') and not os.path.exists(os.path.join(copy, 'x.md'))); os.rename(os.path.join(tmp, 'stray.md'), st); write(copy, base)  # three failed rounds end a fresh unit: status failed, the result names the count, its product reverted, the stray pile aside so the commit can run, RULE §4, S79
+        expect(history_case(tmp))  # the reconstruction history reads from its declared start, an unreadable revision before it passes, a start that disables an activated plan is refused, S234
+        expect(nested_case(copy, opened, tmp))  # the baseline test runs inside an outer confinement, a write outside the outer scratch stays denied, S226
+        expect(baseline_case(copy, opened, tmp))  # a clause that exits 127 or 124 on the clone of HEAD is refused as no red baseline, a timeout counts as 124, S226
+        expect(review_route_case(copy, opened, tmp))  # the Claude hook sends a review file write in a folder outside every room to the room of its unit, S225
+        expect(review_close_case(copy, opened, tmp))  # close refuses a review key whose file no reviewer wrote, the refusal ends with the key form, S225
+        expect(review_write_case(copy, opened, tmp))  # the edit gate denies the author of the open unit a write to its review file, a subagent call passes, S225
+        expect(review_file_case(copy, opened, tmp))  # the reader takes the pass from the review file alone, a key the author wrote gives an error, S225
+        expect(hand_close_case(tmp))  # a closed status written by hand is refused at the commit for its missing review file, a fresh room makes its first commit, unit.py close commits through the hook, S233
+        expect(loose_open_case(tmp))  # open reads a closed status that HEAD does not hold as an open unit, the refusal names the unit with unit.py close, no block is appended, S233
+        expect(door_check_case(tmp))  # a hand close under a true review file is refused at the commit for a failing check with for a check that passes on HEAD, a red check that turns green commits, S233
+        expect(index_case(tmp))  # a hand close that stages the ledger alone is refused for the path the index lacks, the whole commit passes, a failed block that stages a product path is refused, S233
+        expect(queue_text_case(tmp))  # the refusals «the planned queue is empty» with «no planned block» name the planning call, the call they name opens the unit, S227
+        expect(entry_case(tmp))  # a room made with its acceptance check holds its leaf, two steps with a planned measure unit in a clean first commit, the measure unit opens in one call, the pilot before it is refused, a room without the check keeps the old road, S228
+        expect(leaf_text_case(tmp))  # the refusal «names no leaf move» gives the text that passes, a step row that holds that text opens its unit, S227
+        expect(third_fail_case(tmp))  # three failed rounds end a unit of a fresh room: status failed, the result names the count, its product reverted, the commit carries the unit, RULE §4, S79
         done = re.sub(r'^(## U\d{4} · \S+ · \w+ · )planned$', r'\1closed', set_status(base, opened, 'open', 'closed'), flags=re.M); nxt = f'U{int(bl[-1][0][1:]) + 1:04d}'  # every block final, the queue empty
         done = set_key(done, opened, 'plan', 'A0001 · S01')  # the done state gives the block a work plan, a closed «S none» block would read as a planning unit, S99
         argv, sys.argv = sys.argv, sys.argv[:1] + ['open', nxt, copy, 'x', 'A0001 · S01', 'UNITS.md', '+1']  # a work unit on an empty queue, S75

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ledger.py — the ledger reads of a hectoline room, P24, the writers follow.
-unit.py imported these names until S194 moved them here, A0110.
+unit.py imported these names until S194 moved them here.
 The state boundary: the blocks of UNITS.md and the names of the five tables."""
 import datetime
 import os
@@ -119,7 +119,9 @@ def validate_units(text):
         if int(uid[1:]) <= last:
             faults.append(f'{uid}: number not increasing')
         last = int(uid[1:])
-        if keys != KEYS:
+        compact = [k for k in KEYS if k in PLANNED]
+        accepted = (KEYS, compact) if status == 'planned' else (KEYS,)
+        if keys not in accepted:
             faults.append(f'{uid}: {len(keys)} keys or wrong order')
         if ' and ' in vals.get('sentence', ''):
             faults.append(f'{uid}: sentence holds «and»')
@@ -192,6 +194,95 @@ def load(room):
     return text, list(blocks(text))
 
 
+def reconstruction_plan(text):
+    """Read the single reconstruction object from the existing plan."""
+    pattern = r'^## Reconstruction(?:\n|\Z)(.*?)(?=^## |\Z)'
+    sections = re.findall(pattern, text, re.M | re.S)
+    if not sections:
+        return None
+    if len(sections) != 1:
+        raise ValueError('multiple current reconstruction plans')
+    body = sections[0].strip()
+    found = re.fullmatch(r'```json\n(.*)\n```', body, re.S)
+    if not found:
+        raise ValueError('reconstruction plan needs one JSON block')
+    return strict_object(found[1])
+
+
+def strict_object(text):
+    """Decode one object without ambiguous keys or nonfinite values."""
+    import json
+    def pairs(items):
+        result = {}
+        for key, value in items:
+            if key in result:
+                raise ValueError('duplicate object key')
+            result[key] = value
+        return result
+    def constant(value):
+        raise ValueError('nonfinite JSON value')
+    def number(value):
+        parsed = float(value)
+        if abs(parsed) == float('inf'):
+            constant(value)
+        return parsed
+    if not isinstance(text, str):
+        raise ValueError('object source must be text')
+    value = json.loads(
+        text, object_pairs_hook=pairs,
+        parse_constant=constant, parse_float=number)
+    if type(value) is not dict:
+        raise ValueError('record must be an object')
+    return value
+
+
+def final_commit_order(room, blocks):
+    """Read final-state transitions along the canonical Git ancestry."""
+    current = {}
+    for uid, status, _, _ in blocks:
+        if status in ('closed', 'failed'):
+            current[uid] = status
+    history = git(
+        room, 'log', '--first-parent', '--reverse',
+        '--format=commit %H', '--diff-merges=first-parent',
+        '-p', '-U0', '--', 'UNITS.md')
+    order = {}
+    commit = ''
+    for line in history.splitlines():
+        found = re.fullmatch(r'commit ([0-9a-f]{40})', line)
+        if found:
+            commit = found[1]
+        if not line or line[0] not in '+-':
+            continue
+        header = HEADER.fullmatch(line[1:])
+        if not header or header[4] not in ('closed', 'failed'):
+            continue
+        uid = header[1]
+        if line[0] == '-' or uid in order:
+            raise ValueError('final unit history was rewritten')
+        if not commit or current.get(uid) != header[4]:
+            raise ValueError('final unit differs from committed state')
+        order[uid] = {'commit': commit, 'kind': header[3]}
+    if set(order) != set(current):
+        raise ValueError('final unit has no committed transition')
+    return order
+
+
+def unit_span(text, uid):
+    """Locate one unit without including the next section."""
+    pattern = r'(?m)^## ' + re.escape(uid)
+    pattern += r' ·[^\n]*(?:\n|$)'
+    matches = list(re.finditer(pattern, text))
+    if len(matches) != 1:
+        raise ValueError('unit header is missing or ambiguous')
+    header = matches[0]
+    following = re.search(r'(?m)^## ', text[header.end():])
+    end = len(text)
+    if following:
+        end = header.end() + following.start()
+    return header.start(), end
+
+
 def set_key(text, uid, key, value):
     """UNITS.md text with one key of one block set to value."""
     head, rest = text.split(f'## {uid} ·', 1)
@@ -199,6 +290,35 @@ def set_key(text, uid, key, value):
     fill = lambda m: m.group(1) + ' ' + value
     rest = re.compile(pattern, re.M).sub(fill, rest, 1)
     return head + f'## {uid} ·' + rest
+
+
+def open_record(text, uid, base):
+    """Expand one planned record without changing adjacent records."""
+    start, end = unit_span(text, uid)
+    body = text[start:end]
+    record = next(blocks(body))
+    found, status, keys, values = record
+    if found != uid or status != 'planned':
+        raise ValueError('record is not the requested planned unit')
+    compact = [key for key in KEYS if key in PLANNED]
+    if keys not in (KEYS, compact):
+        raise ValueError('planned fields are not canonical')
+    raw = body.splitlines()
+    fields = [line for line in raw[1:] if line.strip()]
+    if len(fields) != len(keys):
+        raise ValueError('record has unexpected content')
+    if any(not values.get(key) for key in PLANNED):
+        raise ValueError('required planned field is empty')
+    bad_base = not base.strip() or '\n' in base
+    if bad_base or '\r' in base:
+        raise ValueError('base must be one line')
+    values['base'] = base
+    header = raw[0].removesuffix('planned') + 'open'
+    rows = [header]
+    for key in KEYS:
+        rows.append(f'{key:<11}: {values.get(key, "")}')
+    expanded = '\n'.join(rows) + '\n\n'
+    return text[:start] + expanded + text[end:]
 
 
 def set_status(text, uid, old, new):
@@ -223,10 +343,12 @@ def write(room, text):
         handle.write(text)
 
 
-def rows_of(room, name, letter):
+def rows_of(room, name, letter, text=None):
     """The rows of one table as lists of stripped cells."""
+    if text is None:
+        text = read(os.path.join(room, name))
     rows = []
-    for row in read(os.path.join(room, name)).splitlines():
+    for row in text.splitlines():
         if re.match(r'\| ' + letter + r'\d', row):
             cells = row.strip().strip('|').split('|')
             rows.append([c.strip() for c in cells])
@@ -240,65 +362,6 @@ def files_of(vals):
         if item.strip():
             paths.append(os.path.expanduser(item.split(':')[0].strip()))
     return paths
-
-def round_number(token):
-    """Return a positive round, zero for malformed rounds, or no round."""
-    word = token.lower().removesuffix('.')
-    if not word.startswith('r'):
-        return None
-    tail = word[1:]
-    if tail.isalpha() and len(tail) > 1:
-        return None
-    return int(tail) if tail.isdecimal() else 0
-
-
-def review_record(text):
-    """Read complete neighboring tokens before interpreting round evidence."""
-    mask = lambda match: ' ' * len(match[0])
-    plain = re.sub(r'«[^»]*»|`[^`]*`', mask, text)
-    valid = text.count('«') == text.count('»')
-    valid = valid and text.count('`') % 2 == 0
-    tokens = list(re.finditer(r'[^\s,;:·]+', plain))
-    labels = []
-    for left, right in zip(tokens, tokens[1:]):
-        if labels and left.start() < labels[-1][1]:
-            continue
-        if not plain[left.end():right.start()].isspace():
-            continue
-        first = left[0].lower().removesuffix('.')
-        second = right[0].lower().removesuffix('.')
-        if first in ('pass', 'fail'):
-            number, verdict = round_number(right[0]), first
-        elif second in ('pass', 'fail'):
-            number, verdict = round_number(left[0]), second
-        else:
-            continue
-        if number is None:
-            continue
-        if number <= 0:
-            valid = False
-            continue
-        start, end = left.start(), right.end()
-        labels.append((start, end, number, verdict))
-    events = []
-    for index, (_, end, number, verdict) in enumerate(labels):
-        stop = len(text)
-        if index + 1 < len(labels):
-            stop = labels[index + 1][0]
-        note = text[end:stop].strip(' ,;·')
-        events.append((number, verdict, note))
-    withdrawn = re.match(r'^\s*fail,\s*withdrawn\b', plain, re.I)
-    if not labels and not withdrawn and valid:
-        legacy = re.match(r'^\s*(pass|fail)\b', plain, re.I)
-        if legacy:
-            verdict = legacy[1].lower()
-            events.append((1, verdict, text[legacy.end():].strip()))
-    return {
-        'rounds': events,
-        'valid': bool(valid),
-        'withdrawn': bool(withdrawn),
-    }
-
 
 def verification_failures(room, uid):
     """Count rejected result or baseline checks for one unit."""
