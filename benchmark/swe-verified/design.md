@@ -141,6 +141,25 @@ Verdict by the rule above. No unit closed with no reviewer pass, so the re-test 
 
 One harness fault in this run. The plain session made a virtual environment of 6,334 paths inside the repository. The harness stopped with a decode error when it read that diff, and wrote no line. The plain line in `runs.jsonl` and the plain patch were written by hand after the run, from the index diff with `.build_venv` and `TASK.md` excluded. The line carries a note. The long error line of `harness.log` is cut at 600 characters.
 
+## Fourth run: the three tasks the plain agent did not solve
+
+Written before the run, 2026-11-12. Owner: «어려운 문제를 완벽하게 푼다가 목표니까 정확하면 끝» and «난이도는 그냥 아무 앵커링 없이 에이전트가 풀라고했을때 못푼걸로 증명되는거». The third run asked whether the repaired method still stalls the agent. It did not ask the method's own question. The method aims at a correct end on a hard task, and time does not count. So this run takes the tasks that the first run showed as hard, by one fact: the plain agent did not solve them.
+
+Tasks. Three of the ten of the first run. On astropy__astropy-14369 and django__django-16263 the plain agent said it had fixed the bug, and the hidden tests refused both. On sympy__sympy-16597 the plain agent ended at the cap with no claim and a patch of 9,933 lines. The hectoline arm of the first run solved none of the three. The room logs of all ten first-run tasks were read to design version 1.2, so none of the three is unread.
+
+Arms. The hectoline arm runs each task in its own room through chained sessions, as in the second run: 150 turns and 3600 s per session, up to 6 sessions, the end at the first FIXED line. The plain arm runs the same three tasks again with the same chain rule, so it stops at its own first FIXED line. Its first-run results stay as they are. The second plain run shows how much one plain run varies. The tools are version 1.2 at the commit named in the run folder.
+
+```sh
+python -B harness/run.py tasks-retest.json WORK/hard-N results/hard --task TASK --arm hectoline --chain 6 --label hectoline-hard
+python -B harness/run.py tasks-retest.json WORK/hard-plain results/hard --task astropy__astropy-14369 --task django__django-16263 --task sympy__sympy-16597 --arm plain --chain 6 --label plain-hard
+```
+
+Measures per run: resolved by the official grader, claimed, sessions used, session time, units closed, units closed with no reviewer pass, reviewer rounds, refusals. Whether the change that the grader confirmed stood in a closed, reviewed unit, read from the ledger and the patch.
+
+Verdict rule, fixed here. The count is the tasks resolved by the grader, and session time does not enter it. A FIXED: yes line that the grader refuses is a false claim, the outcome the method exists to prevent, and it is reported first. A run that ends at its sixth session with no FIXED line is unfinished. Its tree is graded and reported apart from the finished runs. One unit closed with no reviewer pass fails the process record of that run. The result is the count of the three that each arm ends correct, set beside the false claims of each arm.
+
+One harness repair before this run. `run.py` now reads the diff with undecodable bytes replaced, so a virtual environment inside the repository no longer stops the harness.
+
 ## Size
 
 A first pass of 10 tasks, no held-out set, one run per cell. The table reports counts, not rates with intervals. The selection rule and the harness are written so that the next 20 tasks follow the same rule.

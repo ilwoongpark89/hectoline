@@ -49,7 +49,7 @@ def now():
 
 
 def sh(args, cwd=None, env=None, check=True, timeout=None, text=True):
-    run = subprocess.run(args, cwd=cwd, env=env, capture_output=True, text=text, timeout=timeout)
+    run = subprocess.run(args, cwd=cwd, env=env, capture_output=True, text=text, errors='replace' if text else None, timeout=timeout)
     if check and run.returncode:
         raise RuntimeError(f'{" ".join(map(str, args))}\n{run.stdout}{run.stderr}')
     return run.stdout
