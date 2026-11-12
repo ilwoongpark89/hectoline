@@ -1,0 +1,42 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "uid": "U0002",
+   "round": 1,
+   "session": "855d05dc-d397-4335-a3ad-9b0d43984f9a",
+   "wall_s": 322.4,
+   "turns": 24,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-retest-work/scikit-learn__scikit-learn-25102/hectoline-retest/reviews/agent-review-u0002-r1.md",
+   "verdict": "fail",
+   "reason": "measures.py:73  is not an accepted line under RULE \u00a71 ( lines.py diff .  exits 1 on this unit's own added code), caught here only because the linked-room escape makes close skip that gate.",
+   "sha256": "d0cc383bed536d72aeb4dba4c049a92fbde1d4e3f09d67d9cab625653b9c12ff"
+  },
+  {
+   "uid": "U0002",
+   "round": 2,
+   "session": "606a3fe1-18f6-4637-99f3-230e0dcadf85",
+   "wall_s": 255.2,
+   "turns": 22,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-retest-work/scikit-learn__scikit-learn-25102/hectoline-retest/reviews/agent-review-u0002-r2.md",
+   "verdict": "pass",
+   "reason": "the r1 line-cap grade is fixed ( lines.py diff .  exits 0), all three clauses exit 0 here and are red at f62b88d, and clause 2 proves the count the sentence claims.",
+   "sha256": "78d71da66b7cfe018ab39036e072e0ff37e7f348d19ea4f568a5ab5d47ac46be"
+  },
+  {
+   "uid": "U0002",
+   "round": 3,
+   "session": "1d2379c4-7aba-4b7c-998a-438764466a3a",
+   "wall_s": 235.6,
+   "turns": 19,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-retest-work/scikit-learn__scikit-learn-25102/hectoline-retest/reviews/agent-review-u0002-r3.md",
+   "verdict": "pass",
+   "reason": "all three clauses exit 0 here and are red at f62b88d, clause 2 proves the count the sentence claims and  unit.py status  reads the same  2 of 3  through the worker, and r1's line-cap grade is fixed with no new fail-grade fault.",
+   "sha256": "92f32f21f6dda325c1f8c7e918e7e716a619c3aa0afbf5b83ee1da2f383fdab6"
+  }
+ ],
+ "no_verdict": []
+}

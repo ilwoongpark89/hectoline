@@ -1,0 +1,174 @@
+2026-11-12 21:20:04 | log |  | allow | shadow made | 
+2026-11-12 21:20:05 | record |  | allow | history to ec02d49 taken as passed | 
+2026-11-12 21:20:05 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:20:05 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:20:05 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:20:05 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:20:19 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:20:19 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:20:29 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:22:29 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:23:00 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:23:00 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:23:22 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:23:23 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:23:59 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:23:59 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:04 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:04 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:11 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:11 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:14 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:14 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:20 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:20 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:23 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:24 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:33 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:33 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:44 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:44 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:53 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:24:54 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:25:01 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:25:04 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:25:05 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:27:26 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:27:26 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:28:32 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:28:32 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:28:54 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:28:55 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:29:35 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:29:36 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:29:42 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:29:44 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:31:21 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:31:21 | open | U0002 | allow | on ec02d49 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:31:21 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:31:24 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:31:24 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:21 | check | U0002 | allow | measures.py in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:21 | check | U0002 | allow | measures.py in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:23 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:32 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:40 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:44 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:32:54 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:03 | check | U0002 | allow | GOAL.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:03 | check | U0002 | allow | GOAL.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:07 | check | U0002 | allow | PLAN.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:07 | check | U0002 | allow | PLAN.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:20 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:27 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:33:33 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:34:23 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:34:23 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:01 | check | U0002 | allow | UNITS.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:01 | check | U0002 | allow | UNITS.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:08 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:09 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:16 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:16 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:29 | check | U0002 | allow | UNITS.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:29 | check | U0002 | allow | UNITS.md in U0002 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:35:32 | check | U0002 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:40:23 | close | U0002 | allow | closed 0d1f3d9 | 
+2026-11-12 21:40:23 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:31 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:32 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:43 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:43 | open | U0003 | allow | on 0d1f3d9 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:43 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:47 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:47 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:55 | check | U0003 | allow | PLAN.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:55 | check | U0003 | allow | PLAN.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:59 | check | U0003 | allow | PRODUCTS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:41:59 | check | U0003 | allow | PRODUCTS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:10 | check | U0003 | allow | PRODUCTS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:10 | check | U0003 | allow | PRODUCTS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:31 | check | U0003 | allow | UNITS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:32 | check | U0003 | allow | UNITS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:36 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:36 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:40 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:40 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:45 | check | U0003 | allow | UNITS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:46 | check | U0003 | allow | UNITS.md in U0003 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:42:49 | check | U0003 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:50:58 | close | U0003 | allow | closed 0c9c7d8 | 
+2026-11-12 21:50:58 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:09 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:21 | open | U0004 | allow | on 0c9c7d8 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:21 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:26 | check | U0004 | allow | tests/delete/test_combined_fast_delete.py in U0004 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:27 | check | U0004 | allow | tests/delete/test_combined_fast_delete.py in U0004 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:31 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:37 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:53:56 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:10 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:25 | check | U0004 | allow | UNITS.md in U0004 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:26 | check | U0004 | allow | UNITS.md in U0004 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:29 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:31 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:37 | check | U0004 | allow | UNITS.md in U0004 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:38 | check | U0004 | allow | UNITS.md in U0004 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:54:44 | check | U0004 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:03 | close | U0004 | allow | closed 7b4e2c6 | 
+2026-11-12 21:58:04 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:31 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:48 | open | U0005 | allow | on 7b4e2c6 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:48 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:53 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:54 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:59 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:58:59 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:05 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:05 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:10 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:11 | check | U0005 | allow | django/db/models/deletion.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:15 | check | U0005 | allow | django/contrib/admin/utils.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:16 | check | U0005 | allow | django/contrib/admin/utils.py in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:22 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 21:59:46 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:00:08 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:00:12 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:00:30 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:00:34 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:00:55 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:01:11 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:01:51 | check | U0005 | allow | UNITS.md in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:01:51 | check | U0005 | allow | UNITS.md in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:01:58 | check | U0005 | allow | UNITS.md in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:01:58 | check | U0005 | allow | UNITS.md in U0005 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:02:02 | check | U0005 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:07:02 | close | U0005 | allow | closed c139423 | 
+2026-11-12 22:07:03 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:07:18 | check | - | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:07:41 | open | U0006 | allow | on c139423 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:07:42 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:07:56 | check | U0006 | allow | django/db/models/deletion.py in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:07:57 | check | U0006 | allow | django/db/models/deletion.py in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:08:00 | check | U0006 | allow | django/db/models/deletion.py in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:08:01 | check | U0006 | allow | django/db/models/deletion.py in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:08:04 | check | U0006 | allow | django/db/models/deletion.py in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:08:05 | check | U0006 | allow | django/db/models/deletion.py in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:08:09 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:09:01 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:09:09 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:15:22 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:15:50 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:15:50 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:10 | check | U0006 | deny | PLAN.md: not in the files key of U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:28 | check | U0006 | allow | UNITS.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:28 | check | U0006 | allow | UNITS.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:31 | check | U0006 | allow | PLAN.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:31 | check | U0006 | allow | PLAN.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:36 | check | U0006 | allow | PLAN.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:36 | check | U0006 | allow | PLAN.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:40 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:45 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:51 | check | U0006 | allow | UNITS.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:52 | check | U0006 | allow | UNITS.md in U0006 | 1462edab-58e9-469f-b522-7870916166b2
+2026-11-12 22:16:55 | check | U0006 | allow | no file | 1462edab-58e9-469f-b522-7870916166b2

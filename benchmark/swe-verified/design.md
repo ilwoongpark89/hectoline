@@ -120,6 +120,27 @@ Measures per task: minutes to the first closed code unit, refusals per closed un
 
 Verdict rule, fixed here. One unit closed with no reviewer pass fails the re-test. A change counts as an effect only where the unread task moves the same way as the read task. Minutes and refusals of django__django-11885 are compared with its run of the first run, one session against one session.
 
+Result of the third run, 2026-11-12. `results/retest/table.md` and `results/retest/ledger-audit.md` hold the counts.
+
+| measure | django__django-11885, first run | django__django-11885, re-test | scikit-learn__scikit-learn-25102, re-test |
+|---|---|---|---|
+| refusals in the room log | 109 | 1 | 2 |
+| refusals that repeat an earlier text | 76 of one text | 0 | 0 |
+| units closed | 0 | 4 | 2 |
+| units closed with no reviewer pass | 0 | 0 | 0 |
+| minutes to the first closed unit | none | 20.5 | 33.4 |
+| minutes to the first closed code unit | none | 47.2 | none |
+| reviewer rounds, pass / fail | 0 / 0 | 4 / 0 | 3 / 1 |
+| reviewer time, s | 0 | 1149.6 | 973.2 |
+| session wall time, s | 1927.7 | 3601.2, cap | 3601.3, cap |
+| claimed | no | no | no |
+| patch lines | 0 | 224 | 172 |
+| resolved by the official grader | no | yes | yes |
+
+Verdict by the rule above. No unit closed with no reviewer pass, so the re-test does not fail. The refusals fell from 109 to 1 on the read task, and the unread task shows 2. So the fall in refusals counts as an effect. Part of it may come from the repair of the `RULE.md` read. The run shows no effect on time. Both hectoline sessions ended at the cap of one hour with one unit open and no claim. On the unread task the two closed units hold the measure and the plan. The graded patch of that task is the working tree of the open unit U0004, which no reviewer read. The plain arm solved the unread task with 181 patch lines, also at the cap and with no claim. The plain arm of the first run solved django__django-11885 in 850.5 s.
+
+One harness fault in this run. The plain session made a virtual environment of 6,334 paths inside the repository. The harness stopped with a decode error when it read that diff, and wrote no line. The plain line in `runs.jsonl` and the plain patch were written by hand after the run, from the index diff with `.build_venv` and `TASK.md` excluded. The line carries a note. The long error line of `harness.log` is cut at 600 characters.
+
 ## Size
 
 A first pass of 10 tasks, no held-out set, one run per cell. The table reports counts, not rates with intervals. The selection rule and the harness are written so that the next 20 tasks follow the same rule.

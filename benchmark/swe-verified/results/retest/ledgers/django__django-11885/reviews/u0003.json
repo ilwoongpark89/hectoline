@@ -1,0 +1,18 @@
+{
+ "uid": "U0003",
+ "rounds": [
+  {
+   "uid": "U0003",
+   "round": 1,
+   "session": "2ae0a8b4-813c-4e38-9f6f-318b8916f8bf",
+   "wall_s": 465.9,
+   "turns": 16,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-retest-work/django__django-11885/hectoline-retest/reviews/agent-review-u0003-r1.md",
+   "verdict": "pass",
+   "reason": "every check clause exits 0 at this tree and non-zero at the base, each key is true against the files it names, and the diff is exactly the planning move of \u00a73 with no product change.",
+   "sha256": "8251ab48657d60ede3ea68fe0aae6441f2b0aa79ff6653ea53a3538f0ba69671"
+  }
+ ],
+ "no_verdict": []
+}

@@ -1,0 +1,18 @@
+{
+ "uid": "U0004",
+ "rounds": [
+  {
+   "uid": "U0004",
+   "round": 1,
+   "session": "8df38a63-d721-40e3-91f0-b10981eec29f",
+   "wall_s": 168.3,
+   "turns": 15,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-retest-work/django__django-11885/hectoline-retest/reviews/agent-review-u0004-r1.md",
+   "verdict": "pass",
+   "reason": "every clause exits 0 at this tree and non-zero on the clone of 0c9c7d8, the running case proves the three-query cascade the sentence names, and each key is true against the files it cites.",
+   "sha256": "c86a0179a7211eb6f094eda61658694d7e581cea6bd913acab3ece4cb5a94c4f"
+  }
+ ],
+ "no_verdict": []
+}

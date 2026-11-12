@@ -1,0 +1,18 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "uid": "U0002",
+   "round": 1,
+   "session": "bf4b0c55-2df4-483d-a993-097e992287bb",
+   "wall_s": 272.0,
+   "turns": 12,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-retest-work/django__django-11885/hectoline-retest/reviews/agent-review-u0002-r1.md",
+   "verdict": "pass",
+   "reason": "every clause exits 0 at this tree and red at ec02d49, each field is true against the files, and the only defect is the  lines  count, a note-grade slip that one numstat command corrects.",
+   "sha256": "85ac0270c6cb6b5934827cee67c908d8da3555cdec0ea4fbe91a1b0e5b56f125"
+  }
+ ],
+ "no_verdict": []
+}
