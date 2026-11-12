@@ -47,43 +47,19 @@ A gate is any check that can refuse work. A hook rule, a tool refusal, a check c
 
 The method was audited on its own room between 2026-11-05 and 2026-11-07. The rule file held 104 lines, under its 500-line cap. One of those lines held 23 sentences. Four audits ran on schedule. Three of them changed 18 lines of their own ledger and one changed 21. No audit changed a rule or a tool. An audit of the rule text on 2026-11-07 found 14 rule lines with 29 quoted sentences that no tool or reviewer enforced. The counts, the commands and the ledger lines are in [docs/evidence.md](docs/evidence.md). The same page holds two larger cases. A landing page kept 5,570 dead lines of 6,487. A document used 23 % of its 184 sources.
 
-## The pilot and version 1.1
+## The pilot
 
-A pilot ran 10 SWE-bench Verified tasks with one model, under this method and without it. The record is in `benchmark/swe-verified/`. Without the method the agent claimed 9 fixes and the hidden tests confirmed 7. Under the method it claimed 0 and the tests confirmed 1. The room logs of those 10 runs hold 473 refusals. 191 of them read «the planned queue is empty, a planning unit comes first». 70 hold «no planned block» and 14 hold «names no leaf move». None of the three texts said what would pass. In 4 of the 10 runs no unit closed. In one run 3 units closed with no reviewer pass.
+A pilot ran 10 SWE-bench Verified tasks with one model, under this method and without it. The record is in `benchmark/swe-verified/`. Without the method the agent claimed 9 fixes and the hidden tests confirmed 7. Under the method it claimed 0 and the tests confirmed 1. The room logs of those 10 runs hold 473 refusals. 357 of them repeat a text that the same run had already shown. None of the three most frequent texts said what would pass. In 4 of the 10 runs no unit closed. In one run 3 units closed with no reviewer pass.
 
-Version 1.1 answers those counts with five changes.
-
-- Each of the three refusal texts ends with the call or the text that passes.
-- `room.py --accept` writes the first leaf, its measure step, its pilot step and the planned measure unit. The first call of a new author opens that unit.
-- Close reads the review verdict from the reviewer's file. The pre-commit judges a status word turned closed by hand as it judges a close. Such a commit needs a passing review file outside the room.
-- The baseline test refuses a clause that exits 127 or 124 on the clone of HEAD. A missing command or a timeout is no red baseline.
-- `RULE.md` §8 sets the entry of a gate, its six tests and the review of every gate at each 50-unit boundary.
-
-No task ran under version 1.1.
-
-## Version 1.2
-
-Version 1.2 is the cut of the private room at its unit U0615. It holds 49 more units of that room. Most of them removed things.
-
-- The reconstruction code left. No tool read it. Three modules went, 1,058 lines.
-- The tool code fell from 24 files with 5,300 lines to 21 files with 4,440 lines.
-- The refusal sites fell from 207 to 53, by `gates.py` on both trees.
-- Two text-match gates left, the bypass pattern on a commit line and the shell-line match on the log. A probe of 14 command lines had judged 6 wrongly. Structure took their place, the HEAD record and the shadow copy of the log.
-- A unit that changes or removes a refusal runs one list of cases on both trees.
-- A review reads the product first, whole, before the keys of the unit.
-- Failed rounds turn the eye to the receiving structure. The trigger is 2 failed rounds in one unit, or 3 over the last 5 units. The author then reads the structure that the change must enter, before the next change.
-- The rule says that a passed gate does not show a solved problem. A change by form alone is a fail grade of the review.
-- The 10-level audit reruns the checks of the units since the last audit. It adds each older clause that exited 0 or 124 there.
-
-The selftest reads 102 of 102 on the sample room. No task has run under version 1.2 at this commit.
+So the method was turned on its own gates. Each refusal now names the call or the text that passes. Every gate was asked where it came from and was tested with a planted fault. Text matches on command lines left, and structure took their place. The refusal sites fell from 207 to 53, by `gates.py` on the tags `v1.1` and `v1.2`. The tool code fell from 5,300 lines to 4,440. The sources behind the gate rules are in `docs/gates-research.md`. The selftest reads 102 of 102 on the sample room. No task has run under this version at this commit.
 
 ## Why
 
-The author works under this method every day. It keeps work in small, reviewed units and records what failed. It also shows where it falls short. Every failure in the record had one shape. The loop closed on a signal the agent had produced itself. A check that exits zero, a block marked closed, a report sent. Agents add checks nobody asked for. They bypass or game those checks, then report the work complete. One document was delivered with 23 % of its sources used. In the pilot the method's own refusals stalled the agent. One run met 109 refusals, and 76 of them repeated one text that never said what would pass. So version 1.1 keeps its gates to a reasoned minimum. Each refusal names the form that passes. Each gate must stop a planted fault, with a reference from outside the thing it tests. Every 50 units all gates take those tests again, and duplicates merge.
+The author works under this method every day. It keeps work in small, reviewed units and records what failed. It also shows where it falls short. Every failure in the record had one shape. The loop closed on a signal the agent had produced itself. A check that exits zero, a block marked closed, a report sent. Agents add checks nobody asked for. They bypass or game those checks, then report the work complete. One document was delivered with 23 % of its sources used. In the pilot the method's own refusals stalled the agent. One run met 109 refusals, and 76 of them repeated one text that never said what would pass. So the method keeps its gates to a reasoned minimum. Each refusal names the form that passes. Each gate must stop a planted fault, with a reference from outside the thing it tests. Every 50 units all gates take those tests again, and duplicates merge. A passed gate does not show a solved problem.
 
 ## Changes from the private folder
 
-Owner quotes, personal paths, references to other rooms, the report page and the owner ledgers of the rule room left. The internal name changed from unit100 to hectoline. `base.py` stays because `unit.py` imports it. Two never-called selftest functions left. Two selftest cases that compared against older close texts now compare against the current ones. The built-in self-measures of the private rule room left with its goal table. A room computes its leaves in its own `measures.py`. Version 1.1 is the cut of the private room at its unit U0561. Two later units of that room entered after the first review of this cut, U0563 and U0564. Eight modules entered with it: admission, eligibility, pile, reconstruction, reconstruction_flow, review_evidence, selftest_flow and selftest_roads. `gates.py` reads the tool code of its own folder. `audit.py` finds its modules through the room link. Two selftest cases bound to the private room left. The third-fail case runs on a fresh room. The pre-commit now refuses a block closed by hand with no passing review file. The temp-folder case closes under a real review file, so its close reaches the baseline clone before it is refused. Version 1.2 is the cut of the private room at its unit U0615. Three modules left with it: admission, reconstruction and reconstruction_flow. The private `gates.py` also prints the unit behind each site. The public one does not, since its tool folder is no room. The child-room selftest case sets the room root of this tree, not a home folder. The audit now refuses a room that does not validate. So the sample room fills the keys of its audit unit before the audit runs. The sample room splits the calculator into two units. So the four selftest cases that need two owners in one file run on it.
+This tree is a cut of a private room at its unit U0615. Owner quotes, personal paths, references to other rooms, the report page and the owner ledgers of that room left. The internal name changed to hectoline. The built-in self-measures of the private room left with its goal table. A room computes its leaves in its own `measures.py`. `gates.py` reads the tool code of its own folder. Selftest cases bound to the private room left or run on a fresh room. The git history holds the earlier cuts.
 
 ## License
 
