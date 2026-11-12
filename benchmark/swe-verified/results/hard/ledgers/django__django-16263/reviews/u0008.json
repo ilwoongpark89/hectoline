@@ -1,0 +1,18 @@
+{
+ "uid": "U0008",
+ "rounds": [
+  {
+   "uid": "U0008",
+   "round": 1,
+   "session": "e485d590-228f-48d2-8fed-9f0068d1efac",
+   "wall_s": 161.3,
+   "turns": 20,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0008-r1.md",
+   "verdict": "pass",
+   "reason": "both clauses are red at base aba6110 and green now, the change is exactly the two-term wrapping test the sentence names inside S06's interface, and every verdict key is true of the files I read.",
+   "sha256": "664b26446581a1f02616138030b57c7bf9fb696d65d7cebf01ec08d93ba22390"
+  }
+ ],
+ "no_verdict": []
+}

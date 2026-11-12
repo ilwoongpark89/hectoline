@@ -1,0 +1,50 @@
+{
+ "uid": "U0009",
+ "rounds": [
+  {
+   "uid": "U0009",
+   "round": 1,
+   "session": "facde72b-86ec-4c06-83a5-8022b07393c4",
+   "wall_s": 683.1,
+   "turns": 2,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0009-r1.md",
+   "verdict": "fail",
+   "reason": "the result key presents  ## check rerun on a copy: 4 of 8 closed units fail a clause now \u00b7 U0002[1, 1] \u2026  as the audit's output, but the run prints  \u00b7 cmd: unit.load + subprocess per clause in a copy \u00b7  in the middle of that line, so the quote is not verbatim.",
+   "sha256": "111301737e7fdcf15b314e1a067f2cab2d7d12a07333a8832087f83bf214a870"
+  },
+  {
+   "uid": "U0009",
+   "round": 2,
+   "session": "67a7ba9c-5031-487c-ae6c-05f062974f12",
+   "wall_s": 630.3,
+   "turns": 24,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0009-r2.md",
+   "verdict": "fail",
+   "reason": "as quoted.",
+   "sha256": "a4fd631dae8ecfba973eb7d5011a5dc5f82d57b27e00f7f1e8cf9c5d3a354f84"
+  },
+  {
+   "uid": "U0009",
+   "round": 3,
+   "session": "40a19198-c81f-4772-875c-1b8982a3dc88",
+   "wall_s": 860.1,
+   "turns": 25,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0009-r3.md",
+   "verdict": "pass",
+   "reason": "and a trailing  R2 FAIL , a same-round contradiction that RULE \u00a74 reads as unknown; recording it as a fail is the conservative reading and matches the tool's deny line. With two failed rounds the \u00a74 structure reading is now owed by the next unit's cause key.",
+   "sha256": "94a6d9998906d132af57e62f92cfab1adafd9d9272e9d2b605307fad4a7c61c1"
+  }
+ ],
+ "no_verdict": [
+  {
+   "uid": "U0009",
+   "wall_s": 900.0,
+   "exit_code": 124,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0009-none1.md",
+   "verdict": "none"
+  }
+ ]
+}

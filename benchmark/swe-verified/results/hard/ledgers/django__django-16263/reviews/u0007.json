@@ -1,0 +1,42 @@
+{
+ "uid": "U0007",
+ "rounds": [
+  {
+   "uid": "U0007",
+   "round": 1,
+   "session": "f91ad885-c5e0-4397-9280-a9a98459e83f",
+   "wall_s": 204.8,
+   "turns": 16,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0007-r1.md",
+   "verdict": "fail",
+   "reason": "the  Order  the unit rewrites puts the due goal-checks-met audit at rank two behind U0008, against RULE \u00a72 \"A due audit stands first\" and RULE \u00a73's rank two, with no A row or audit finding permitting the deviation.",
+   "sha256": "8fc5d2998680f7c8a4d8afd5cfc734228816cbccad91bf3864bb16313f24b242"
+  },
+  {
+   "uid": "U0007",
+   "round": 2,
+   "session": "d3f6cd44-2e9d-40e2-8d9e-44f48a7878a7",
+   "wall_s": 202.5,
+   "turns": 18,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0007-r2.md",
+   "verdict": "pass",
+   "reason": "the r1 finding is repaired with the due audit at rank one, and every check clause is red at base 78385cd and green now, with each verdict key true of the files I read.",
+   "sha256": "fbb5f9aa05c789298d21fc06ff585c203cdb5cda0491c915f5eb9bc0f1bfcad1"
+  },
+  {
+   "uid": "U0007",
+   "round": 3,
+   "session": "4d808cc3-f5bb-4835-94ef-f552737b7d47",
+   "wall_s": 151.9,
+   "turns": 15,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0007-r3.md",
+   "verdict": "pass",
+   "reason": "from a session distinct from r1 and from the author.",
+   "sha256": "1a122abcd1eed105c3321b87400bc7effd157740297f3c981cc406db5b651d79"
+  }
+ ],
+ "no_verdict": []
+}

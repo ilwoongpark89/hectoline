@@ -1,0 +1,105 @@
+{
+ "duration_api_ms": 374550,
+ "stop_reason": "end_turn",
+ "session_id": "408b96ea-1aef-42f9-8f27-ac8e09d145e0",
+ "total_cost_usd": 3.3748805000000006,
+ "usage": {
+  "input_tokens": 122,
+  "cache_creation_input_tokens": 104563,
+  "cache_read_input_tokens": 3294481,
+  "output_tokens": 27256,
+  "output_tokens_details": {
+   "thinking_tokens": 12423
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 104563,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 906,
+    "cache_read_input_tokens": 84439,
+    "cache_creation_input_tokens": 360,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 360
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 122,
+   "outputTokens": 27256,
+   "cacheReadInputTokens": 3294481,
+   "cacheCreationInputTokens": 104563,
+   "webSearchRequests": 0,
+   "costUSD": 3.3748805000000006,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 12423,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 104563,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 61,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "The fix is in place and verified.\n\n## What was wrong\n\nIn `astropy/units/format/cds.py`, the CDS grammar rule for division was right-recursive:\n\n```\ndivision_of_units : DIVISION unit_expression\n                  | unit_expression DIVISION combined_units\n```\n\nSo `10+3J/m/s/kpc2` parsed as `J/(m/(s/kpc2))` \u2014 each subsequent division flipped back into the numerator, producing `1e+3 J s / (kpc2 m)`.\n\n## The change\n\n`astropy/units/format/cds.py:182` \u2014 division is now left-associative, so everything after a `/` lands in the denominator:\n\n```\ndivision_of_units : DIVISION unit_expression\n                  | division_of_units DIVISION unit_expression\n                  | unit_expression DIVISION unit_expression\n```\n\nI also regenerated the cached LALR table `astropy/units/format/cds_parsetab.py` \u2014 required, because `parsing.yacc` runs ply with `optimize=True`, which loads the stored table without checking the grammar signature, so the stale table would have silently kept the old behaviour.\n\nNote one deliberate behaviour change: `m/s.kpc` (a product directly after a division) is now a syntax error instead of silently parsing as `m/(s\u00b7kpc)`. That form is ambiguous across readings of the CDS/VOUnit conventions; the unambiguous `m/(s.kpc)` and `m/s/kpc` both work.\n\n## Verification\n\n- Reading the MRT file from the issue now gives `1000 J / (kpc2 m s)` and `1e-07 J / (kpc2 s)`, matching the input.\n- Added tests: `km/s/Mpc`, `km/(s.Mpc)`, `10+3J/m/s/kpc2`, `10-7J/s/kpc2` in `astropy/units/tests/test_format.py`, and an end-to-end MRT read test in `astropy/io/ascii/tests/test_cds.py`. Plus a changelog fragment at `docs/changes/units/14369.bugfix.rst`.\n- `astropy/units`, `astropy/io/ascii`, `astropy/io/votable`: all tests pass except 18 pre-existing failures in `astropy/units` unrelated to this change (NumPy 1.26/Python 3.12 deprecations in `test_quantity_non_ufuncs.py`, `test_quantity_array_methods.py`, `test_structured_erfa_ufuncs.py`) \u2014 they fail identically without the patch.\n\nI built the extensions in a throwaway venv under `/tmp` to run the suite, then removed all build artifacts, so the repo contains only the four modified files and the new changelog fragment.\n\nFIXED: yes",
+ "ttft_ms": 1666,
+ "type": "result",
+ "duration_ms": 941099,
+ "uuid": "8198d4a7-e61a-4f37-96e8-84f4a4364ed1",
+ "ttft_stream_ms": 1126,
+ "time_to_request_ms": 88,
+ "first_content_frame_ms": 1126,
+ "queued_turn_count": 0,
+ "result_index": 0,
+ "credential_expires_at": "2026-12-12T03:02:33.556Z",
+ "wall_s": 943.7,
+ "timed_out": false,
+ "exit_code": 0
+}

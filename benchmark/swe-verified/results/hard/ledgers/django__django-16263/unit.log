@@ -1,0 +1,664 @@
+2026-11-12 23:53:43 | log |  | allow | shadow made | 
+2026-11-12 23:53:43 | record |  | allow | history to 49e854d taken as passed | 
+2026-11-12 23:53:43 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:43 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:45 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:46 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:52 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:52 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:55 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:55 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:59 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:53:59 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:54:02 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:54:08 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:54:09 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:54:51 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:54:51 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:55:55 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:55:55 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:18 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:18 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:33 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:33 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:36 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:36 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:44 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:44 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:50 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:57:50 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:58:02 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:58:03 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:59:52 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-12 23:59:52 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:00:37 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:00:38 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:00:50 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:00:51 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:00:54 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:01 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:02 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:14 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:14 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:19 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:19 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:22 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:23 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:36 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:37 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:42 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:42 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:45 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:46 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:50 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:01:53 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:22 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:22 | open | U0002 | allow | on 49e854d | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:22 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:41 | check | U0002 | allow | measures.py in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:41 | check | U0002 | allow | measures.py in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:44 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:47 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:58 | check | U0002 | allow | measures.py in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:02:58 | check | U0002 | allow | measures.py in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:02 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:09 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:21 | check | U0002 | allow | GOAL.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:21 | check | U0002 | allow | GOAL.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:25 | check | U0002 | allow | PLAN.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:26 | check | U0002 | allow | PLAN.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:42 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:44 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:48 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:48 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:59 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:03:59 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:04:07 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:04:08 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:04:11 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:09:11 | close | U0002 | deny | U0002: review is fail, no closing verdict | 
+2026-11-13 00:09:11 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:09:29 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:09:29 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:09:42 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:09:43 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:10:37 | check | U0002 | allow | measures.py in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:10:37 | check | U0002 | allow | measures.py in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:10:40 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:10:40 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:10:47 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:13:25 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:13:38 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:13:39 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:13:42 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:13:43 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:14:01 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:14:01 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:14:05 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:06 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:28 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:29 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:33 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:34 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:38 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:38 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:42 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:46 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:56 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:17:57 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:18:00 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:18:00 | check | U0002 | allow | UNITS.md in U0002 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:18:03 | check | U0002 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:20:45 | close | U0002 | allow | closed d144671 | 
+2026-11-13 00:20:46 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:21:37 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:21:37 | open | U0003 | allow | on d144671 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:21:38 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:24:36 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:24:36 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:24:39 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:24:39 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:05 | check | U0003 | allow | PLAN.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:05 | check | U0003 | allow | PLAN.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:10 | check | U0003 | allow | PRODUCTS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:10 | check | U0003 | allow | PRODUCTS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:28 | check | U0003 | allow | PRODUCTS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:29 | check | U0003 | allow | PRODUCTS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:36 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:37 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:59 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:25:59 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:03 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:04 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:14 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:14 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:19 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:20 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:25 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:25 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:26:28 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:04 | close | U0003 | deny | U0003: planned work is not eligible: S03 names no leaf move in its text, RULE §2: write «G1 from its number to its number» in the step text | 
+2026-11-13 00:29:04 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:14 | check | U0003 | allow | PLAN.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:14 | check | U0003 | allow | PLAN.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:18 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:19 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:23 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:24 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:29:27 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:31:59 | close | U0003 | deny | U0003: review is fail, no closing verdict | 
+2026-11-13 00:32:00 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:10 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:10 | check | U0003 | allow | UNITS.md in U0003 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:15 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:15 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:18 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:18 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:32:21 | check | U0003 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:30 | close | U0003 | allow | closed 0a3ea0e | 
+2026-11-13 00:35:30 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:36 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:37 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:41 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:41 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:45 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:35:45 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:14 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:14 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:20 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:23 | open | U0004 | allow | on 0a3ea0e | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:24 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:31 | check | U0004 | allow | tests/aggregation/tests.py in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:32 | check | U0004 | allow | tests/aggregation/tests.py in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:53 | check | U0004 | allow | tests/aggregation/tests.py in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:37:54 | check | U0004 | allow | tests/aggregation/tests.py in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:38:24 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:38:31 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:38:32 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:39:11 | check | U0004 | allow | tests/aggregation/tests.py in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:39:11 | check | U0004 | allow | tests/aggregation/tests.py in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:39:30 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:39:30 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:39:33 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:39:43 | check | U0004 | deny | PLAN.md: not in the files key of U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:00 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:00 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:06 | check | U0004 | allow | PLAN.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:06 | check | U0004 | allow | PLAN.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:16 | check | U0004 | allow | PLAN.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:16 | check | U0004 | allow | PLAN.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:20 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:20 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:23 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:24 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:27 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:27 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:34 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:34 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:43 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:43 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:47 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:49 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:54 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:54 | check | U0004 | allow | UNITS.md in U0004 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:40:58 | check | U0004 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:44:58 | close | U0004 | allow | closed 3eb3825 | 
+2026-11-13 00:44:58 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:15 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:15 | open | U0005 | allow | on 3eb3825 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:16 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:20 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:21 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:25 | check | U0005 | allow | django/db/models/expressions.py in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:26 | check | U0005 | allow | django/db/models/expressions.py in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:31 | check | U0005 | allow | django/db/models/expressions.py in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:32 | check | U0005 | allow | django/db/models/expressions.py in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:35 | check | U0005 | allow | django/db/models/sql/where.py in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:36 | check | U0005 | allow | django/db/models/sql/where.py in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:40 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:41 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:48 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:48 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:52 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:45:52 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:06 | check | U0005 | allow | UNITS.md in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:06 | check | U0005 | allow | UNITS.md in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:16 | check | U0005 | allow | UNITS.md in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:17 | check | U0005 | allow | UNITS.md in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:22 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:23 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:35 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:35 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:42 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:48 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:52 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:46:57 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:47:10 | check | U0005 | allow | UNITS.md in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:47:10 | check | U0005 | allow | UNITS.md in U0005 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:47:14 | check | U0005 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:50:04 | close | U0005 | allow | closed 44b319f | 
+2026-11-13 00:50:04 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:50:08 | check | - | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:50:10 | open | U0006 | allow | on 44b319f | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:50:10 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:50:54 | check | U0006 | allow | django/db/models/sql/query.py in U0006 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:50:54 | check | U0006 | allow | django/db/models/sql/query.py in U0006 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:04 | check | U0006 | allow | django/db/models/sql/query.py in U0006 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:04 | check | U0006 | allow | django/db/models/sql/query.py in U0006 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:11 | check | U0006 | allow | django/db/models/sql/query.py in U0006 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:12 | check | U0006 | allow | django/db/models/sql/query.py in U0006 | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:16 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:18 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:23 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:29 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:34 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:34 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:51:55 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:01 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:20 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:20 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:47 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:47 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:53 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:53 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:59 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:52:59 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:53:34 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:53:34 | check | U0006 | allow | no file | 58a5e3ae-70af-4a16-9e10-e194add2027f
+2026-11-13 00:53:42 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:42 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:44 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:45 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:53 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:53 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:56 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:56 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:59 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:53:59 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:54:07 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:54:07 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:54:10 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:54:11 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:54:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:54:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:55:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:55:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:55:54 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:55:54 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:55:58 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:00 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:05 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:16 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:21 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:21 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:40 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:41 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:44 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:48 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:48 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:56:51 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:02 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:02 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:12 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:48 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:48 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:55 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:55 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:58 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:57:58 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:12 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:18 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:21 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:29 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:29 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:32 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:33 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:35 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:36 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:43 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:58:43 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:59:58 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 00:59:59 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:04 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:04 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:09 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:09 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:14 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:14 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:17 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:17 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:27 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:27 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:47 | check | U0006 | allow | PLAN.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:47 | check | U0006 | allow | PLAN.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:53 | check | U0006 | allow | PLAN.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:00:54 | check | U0006 | allow | PLAN.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:01 | check | U0006 | allow | GOAL.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:01 | check | U0006 | allow | GOAL.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:41 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:42 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:49 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:54 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:56 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:59 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:01:59 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:24 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:24 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:29 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:29 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:33 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:33 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:40 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:40 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:47 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:02:47 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:05 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:05 | check | U0006 | allow | UNITS.md in U0006 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:08 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:08 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:11 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:11 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:03:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:15 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:19 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:19 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:25 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:25 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:34 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:35 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:05:50 | check | U0006 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:08:29 | close | U0006 | allow | closed 78385cd | 
+2026-11-13 01:08:29 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:08:37 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:08:37 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:08:40 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:12:17 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:12:23 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:12:23 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:12:31 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:13:42 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:13:46 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:23:46 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:23:53 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:23:53 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:10 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:10 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:15 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:15 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:21 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:21 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:46 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:24:47 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:25:39 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:25:40 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:26:43 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:26:44 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:07 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:08 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:12 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:13 | open | U0007 | allow | on 78385cd | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:13 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:24 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:24 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:30 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:27:30 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:16 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:16 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:22 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:22 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:32 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:32 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:45 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:45 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:50 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:51 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:28:54 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:32:20 | close | U0007 | deny | U0007: review is fail, no closing verdict | 
+2026-11-13 01:32:20 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:32:58 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:32:58 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:05 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:05 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:10 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:10 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:19 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:19 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:24 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:24 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:33:27 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:36:55 | close | U0007 | deny | U0007: S06 is a new todo row under a met leaf with no A row in its text, RULE §2 of 1.1 | 
+2026-11-13 01:36:55 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:08 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:08 | check | U0007 | allow | PLAN.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:11 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:12 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:18 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:19 | check | U0007 | allow | UNITS.md in U0007 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:37:22 | check | U0007 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:40:19 | close | U0007 | allow | closed aba6110 | 
+2026-11-13 01:40:19 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:40:58 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:40:58 | open | U0009 | deny | U0009: no planned block, the queue holds U0008: unit.py open U0008 ROOM | 
+2026-11-13 01:40:59 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:05 | check | - | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:05 | open | U0008 | allow | on aba6110 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:06 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:17 | check | U0008 | allow | django/db/models/sql/query.py in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:17 | check | U0008 | allow | django/db/models/sql/query.py in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:25 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:25 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:35 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:35 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:57 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:41:57 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:36 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:37 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:47 | check | U0008 | allow | django/db/models/sql/query.py in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:48 | check | U0008 | allow | django/db/models/sql/query.py in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:51 | check | U0008 | allow | django/db/models/sql/query.py in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:51 | check | U0008 | allow | django/db/models/sql/query.py in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:42:59 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:00 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:06 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:09 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:14 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:17 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:41 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:42 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:47 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:43:47 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:20 | check | U0008 | allow | UNITS.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:21 | check | U0008 | allow | UNITS.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:24 | check | U0008 | allow | PLAN.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:24 | check | U0008 | allow | PLAN.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:30 | check | U0008 | allow | PLAN.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:30 | check | U0008 | allow | PLAN.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:33 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:34 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:40 | check | U0008 | allow | PLAN.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:41 | check | U0008 | allow | PLAN.md in U0008 | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:44 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:45 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:49 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:50 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:57 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:44:57 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:45:00 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:45:00 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:45:09 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:45:10 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:45:26 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:46:41 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:46:51 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:46:51 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:46:59 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:46:59 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:47:10 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:47:10 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:47:27 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:47:28 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:47:44 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:50:44 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:51:00 | check | U0008 | allow | no file | b31290dc-71a9-476d-bdd3-3e810c7b189a
+2026-11-13 01:53:56 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:53:58 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:54:06 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:54:07 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:54:48 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:54:49 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:54:53 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:54:53 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:55:50 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:55:50 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:03 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:03 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:08 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:08 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:13 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:13 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:18 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:19 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:23 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:24 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:28 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:28 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:31 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:31 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:35 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:37 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:44 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:56:44 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:57:00 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:57:01 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:02 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:03 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:07 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:07 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:11 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:26 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:26 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 01:58:45 | check | U0008 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:01:38 | close | U0008 | allow | closed 3e4a796 | 
+2026-11-13 02:01:39 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:01:42 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:01:43 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:01:48 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:02:46 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:02:53 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:12:51 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:12:54 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:00 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:00 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:04 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:05 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:24 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:26 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:32 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:33 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:45 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:45 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:47 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:13:47 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:14:03 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:14:03 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:14:36 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:18:47 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:35 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:35 | open | U0009 | allow | on 3e4a796 | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:35 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:39 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:39 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:48 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:19:48 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:20:40 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:20:41 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:09 | check | U0009 | allow | UNITS.md in U0009 | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:09 | check | - | deny | UNITS.md: no open unit | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:17 | check | - | deny | UNITS.md: no open unit | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:25 | check | - | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:25 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:28 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:28 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:33 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:33 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:41 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:42 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:49 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:21:49 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:13 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:16 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:22 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:22 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:36 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:36 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:47 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:48 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:22:59 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:32:59 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:33:02 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:33:03 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:33:07 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:33:07 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:33:28 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:43:28 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:43:43 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:43:44 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:44:05 | check | U0009 | allow | no file | cdb2aec7-74d8-4137-b195-752ec52e232e
+2026-11-13 02:53:52 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:53:52 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:53:57 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:53:57 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:54:22 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:54:22 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:54:25 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:54:25 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:54:28 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:28 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:32 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:32 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:46 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:46 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:50 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:50 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:55 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:55 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:58 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:56:58 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:03 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:06 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:13 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:18 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:34 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:34 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:37 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:37 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:39 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:57:40 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:24 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:28 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:29 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:35 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:36 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:44 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:58:44 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:59:18 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:59:18 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:59:27 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 02:59:27 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:17 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:17 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:23 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:23 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:44 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:47 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:48 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:54 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2
+2026-11-13 03:00:54 | check | U0009 | allow | no file | d076ab05-04d9-483b-bd7e-09da0afbb2e2

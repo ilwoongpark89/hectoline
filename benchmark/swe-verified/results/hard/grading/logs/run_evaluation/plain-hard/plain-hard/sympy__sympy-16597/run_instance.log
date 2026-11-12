@@ -1,0 +1,204 @@
+2026-11-13 06:19:03,274 - INFO - Creating container for sympy__sympy-16597...
+2026-11-13 06:19:03,401 - INFO - Container for sympy__sympy-16597 created: 5f5b7c0f274ce81923cb0be45c362d642a4046231c4379b00381adeddd67dcd3
+2026-11-13 06:19:03,578 - INFO - Container for sympy__sympy-16597 started: 5f5b7c0f274ce81923cb0be45c362d642a4046231c4379b00381adeddd67dcd3
+2026-11-13 06:19:03,578 - INFO - Intermediate patch for sympy__sympy-16597 written to logs/run_evaluation/plain-hard/plain-hard/sympy__sympy-16597/patch.diff, now applying to container...
+2026-11-13 06:19:03,744 - INFO - >>>>> Applied Patch:
+Checking patch .baseline...
+Checking patch .runs/baseline.txt...
+Checking patch .runs/baseline2.txt...
+Checking patch .runs/baseline3.txt...
+Checking patch .runs/patched.txt...
+Checking patch .runs/patched2.txt...
+Checking patch .runs/patched3.txt...
+Checking patch sympy/core/assumptions.py...
+Checking patch sympy/core/tests/test_assumptions.py...
+Applied patch .baseline cleanly.
+Applied patch .runs/baseline.txt cleanly.
+Applied patch .runs/baseline2.txt cleanly.
+Applied patch .runs/baseline3.txt cleanly.
+Applied patch .runs/patched.txt cleanly.
+Applied patch .runs/patched2.txt cleanly.
+Applied patch .runs/patched3.txt cleanly.
+Applied patch sympy/core/assumptions.py cleanly.
+Applied patch sympy/core/tests/test_assumptions.py cleanly.
+
+2026-11-13 06:19:04,668 - INFO - Git diff before:
+diff --git a/sympy/core/assumptions.py b/sympy/core/assumptions.py
+index ce4dd30f2..945498627 100644
+--- a/sympy/core/assumptions.py
++++ b/sympy/core/assumptions.py
+@@ -165,6 +165,7 @@
+     'integer        ->  rational',
+     'rational       ->  real',
+     'rational       ->  algebraic',
++    'rational       ->  finite',
+     'algebraic      ->  complex',
+     'real           ->  complex',
+     'real           ->  hermitian',
+diff --git a/sympy/core/tests/test_assumptions.py b/sympy/core/tests/test_assumptions.py
+index 4db1c1c24..2cdc54154 100644
+--- a/sympy/core/tests/test_assumptions.py
++++ b/sympy/core/tests/test_assumptions.py
+@@ -98,26 +98,26 @@ def test_infinity():
+     oo = S.Infinity
+ 
+     assert oo.is_commutative is True
+-    assert oo.is_integer is None
+-    assert oo.is_rational is None
++    assert oo.is_integer is False
++    assert oo.is_rational is False
+     assert oo.is_algebraic is None
+     assert oo.is_transcendental is None
+     assert oo.is_real is True
+     assert oo.is_complex is True
+-    assert oo.is_noninteger is None
+-    assert oo.is_irrational is None
++    assert oo.is_noninteger is True
++    assert oo.is_irrational is True
+     assert oo.is_imaginary is False
+     assert oo.is_positive is True
+     assert oo.is_negative is False
+     assert oo.is_nonpositive is False
+     assert oo.is_nonnegative is True
+-    assert oo.is_even is None
+-    assert oo.is_odd is None
++    assert oo.is_even is False
++    assert oo.is_odd is False
+     assert oo.is_finite is False
+     assert oo.is_infinite is True
+     assert oo.is_comparable is True
+     assert oo.is_prime is False
+-    assert oo.is_composite is None
++    assert oo.is_composite is False
+     assert oo.is_number is True
+ 
+ 
+@@ -125,21 +125,21 @@ def test_neg_infinity():
+     mm = S.NegativeInfinity
+ 
+     assert mm.is_commutative is True
+-    assert mm.is_integer is None
+-    assert mm.is_rational is None
++    assert mm.is_integer is False
++    assert mm.is_rational is False
+     assert mm.is_algebraic is None
+     assert mm.is_transcendental is None
+     assert mm.is_real is True
+     assert mm.is_complex is True
+-    assert mm.is_noninteger is None
+-    assert mm.is_irrational is None
++    assert mm.is_noninteger is True
++    assert mm.is_irrational is True
+     assert mm.is_imaginary is False
+     assert mm.is_positive is False
+     assert mm.is_negative is True
+     assert mm.is_nonpositive is True
+     assert mm.is_nonnegative is False
+-    assert mm.is_even is None
+-    assert mm.is_odd is None
++    assert mm.is_even is False
++    assert mm.is_odd is False
+     assert mm.is_finite is False
+     assert mm.is_infinite is True
+     assert mm.is_comparable is True
+@@ -567,38 +567,45 @@ def test_other_symbol():
+     x = Symbol('x', integer=True)
+     assert x.is_integer is True
+     assert x.is_real is True
++    assert x.is_finite is True
+ 
+     x = Symbol('x', integer=True, nonnegative=True)
+     assert x.is_integer is True
+     assert x.is_nonnegative is True
+     assert x.is_negative is False
+     assert x.is_positive is None
++    assert x.is_finite is True
+ 
+     x = Symbol('x', integer=True, nonpositive=True)
+     assert x.is_integer is True
+     assert x.is_nonpositive is True
+     assert x.is_positive is False
+     assert x.is_negative is None
++    assert x.is_finite is True
+ 
+     x = Symbol('x', odd=True)
+     assert x.is_odd is True
+     assert x.is_even is False
+     assert x.is_integer is True
++    assert x.is_finite is True
+ 
+     x = Symbol('x', odd=False)
+     assert x.is_odd is False
+     assert x.is_even is None
+     assert x.is_integer is None
++    assert x.is_finite is None
+ 
+     x = Symbol('x', even=True)
+     assert x.is_even is True
+     assert x.is_odd is False
+     assert x.is_integer is True
++    assert x.is_finite is True
+ 
+     x = Symbol('x', even=False)
+     assert x.is_even is False
+     assert x.is_odd is None
+     assert x.is_integer is None
++    assert x.is_finite is None
+ 
+     x = Symbol('x', integer=True, nonnegative=True)
+     assert x.is_integer is True
+@@ -619,6 +626,30 @@ def test_other_symbol():
+     assert x.is_integer is False
+ 
+ 
++def test_issue_16597():
++    m = Symbol('m', even=True)
++    assert m.is_finite is True
++
++    i = Symbol('i', integer=True)
++    assert i.is_finite is True
++
++    r = Symbol('r', rational=True)
++    assert r.is_finite is True
++
++    # an infinite number cannot be rational (or integer/even/odd)
++    f = Symbol('f', infinite=True)
++    assert f.is_rational is False
++    assert f.is_integer is False
++    assert f.is_even is False
++    assert f.is_odd is False
++
++    # irrational and real symbols need not be finite
++    a = Symbol('a', irrational=True)
++    assert a.is_finite is None
++    b = Symbol('b', real=True)
++    assert b.is_finite is None
++
++
+ def test_issue_3825():
+     """catch: hash instability"""
+     x = Symbol("x")
+2026-11-13 06:19:04,668 - INFO - Eval script for sympy__sympy-16597 written to logs/run_evaluation/plain-hard/plain-hard/sympy__sympy-16597/eval.sh; copying to container...
+2026-11-13 06:19:21,982 - INFO - Test runtime: 17.24 seconds
+2026-11-13 06:19:21,982 - INFO - Test output for sympy__sympy-16597 written to logs/run_evaluation/plain-hard/plain-hard/sympy__sympy-16597/test_output.txt
+2026-11-13 06:19:22,079 - INFO - Git diff after:
+diff --git a/sympy/core/assumptions.py b/sympy/core/assumptions.py
+index ce4dd30f2..945498627 100644
+--- a/sympy/core/assumptions.py
++++ b/sympy/core/assumptions.py
+@@ -165,6 +165,7 @@
+     'integer        ->  rational',
+     'rational       ->  real',
+     'rational       ->  algebraic',
++    'rational       ->  finite',
+     'algebraic      ->  complex',
+     'real           ->  complex',
+     'real           ->  hermitian',
+2026-11-13 06:19:22,079 - INFO - Git diff changed after running eval script
+2026-11-13 06:19:22,079 - INFO - Grading answer for sympy__sympy-16597...
+2026-11-13 06:19:22,081 - INFO - report: {'sympy__sympy-16597': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'infra_failure': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_infinity', 'test_neg_infinity', 'test_other_symbol']}, 'PASS_TO_PASS': {'success': ['test_symbol_unset', 'test_zero', 'test_one', 'test_negativeone', 'test_zoo', 'test_nan', 'test_pos_rational', 'test_neg_rational', 'test_pi', 'test_E', 'test_I', 'test_symbol_real', 'test_symbol_imaginary', 'test_symbol_zero', 'test_symbol_positive', 'test_neg_symbol_positive', 'test_symbol_nonpositive', 'test_neg_symbol_nonpositive', 'test_symbol_falsepositive', 'test_symbol_falsepositive_mul', 'test_neg_symbol_falsepositive', 'test_neg_symbol_falsenegative', 'test_symbol_falsepositive_real', 'test_neg_symbol_falsepositive_real', 'test_symbol_falsenonnegative', 'test_symbol_falsenonnegative_real', 'test_neg_symbol_falsenonnegative_real', 'test_prime', 'test_composite', 'test_prime_symbol', 'test_symbol_noncommutative', 'test_issue_3825', 'test_issue_4822', 'test_hash_vs_typeinfo', 'test_hash_vs_typeinfo_2', 'test_hash_vs_eq', 'test_Add_is_pos_neg', 'test_Add_is_imaginary', 'test_Add_is_algebraic', 'test_Mul_is_algebraic', 'test_Pow_is_algebraic', 'test_Mul_is_prime_composite', 'test_Pow_is_pos_neg', 'test_Pow_is_prime_composite', 'test_Mul_is_infinite', 'test_special_is_rational', 'test_sanitize_assumptions', 'test_special_assumptions', 'test_inconsistent', 'test_issue_6631', 'test_issue_2730', 'test_issue_4149', 'test_issue_2920', 'test_issue_7899', 'test_issue_8075', 'test_issue_8642', 'test_issues_8632_8633_8638_8675_8992', 'test_issue_9115_9150', 'test_issue_9165', 'test_issue_10024', 'test_issue_10302', 'test_complex_reciprocal_imaginary', 'test_Min', 'test_Max', 'test_minmax_assumptions', 'test_issue_8413', 'test_root', 'test_real_root', 'test_rewrite_MaxMin_as_Heaviside', 'test_rewrite_MaxMin_as_Piecewise', 'test_issue_11099', 'test_issue_12638', 'test_instantiation_evaluation', 'test_rewrite_as_Abs'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-16597: resolved: False
+2026-11-13 06:19:22,081 - INFO - Attempting to stop container sweb.eval.sympy__sympy-16597.plain-hard...
+2026-11-13 06:19:37,255 - INFO - Container sweb.eval.sympy__sympy-16597.plain-hard stopped successfully.
+2026-11-13 06:19:37,255 - INFO - Attempting to remove container sweb.eval.sympy__sympy-16597.plain-hard...
+2026-11-13 06:19:37,307 - INFO - Container sweb.eval.sympy__sympy-16597.plain-hard removed successfully.

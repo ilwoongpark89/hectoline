@@ -1,0 +1,42 @@
+{
+ "uid": "U0003",
+ "rounds": [
+  {
+   "uid": "U0003",
+   "round": 1,
+   "session": "40608b14-47e7-4e6f-b982-a937737b243f",
+   "wall_s": 149.5,
+   "turns": 12,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0003-r1.md",
+   "verdict": "pass",
+   "reason": "every clause exits 0 with the unit and non-zero at d144671, and each verdict key is true of the files, with only a correctable off-by-one in the files ranges.",
+   "sha256": "f47c5d3840dead3237618eb67fd0b7020a1da461437c2f84a741c435e319127b"
+  },
+  {
+   "uid": "U0003",
+   "round": 2,
+   "session": "99459353-ff62-4967-bab7-018236c02613",
+   "wall_s": 152.0,
+   "turns": 12,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0003-r2.md",
+   "verdict": "fail",
+   "reason": "the S03 step text in PLAN.md was changed at 00:29:14 in answer to the close deny at 00:29:04, after the r1 pass line was written at 00:28:58, so the single review round in the review key read a plan that no longer stands and no check clause binds that row.",
+   "sha256": "4f7d6078cd2476e7c395c180997e92212f4a6174ab7560fe41d7254c35383cf5"
+  },
+  {
+   "uid": "U0003",
+   "round": 3,
+   "session": "39af3252-2c3e-4ba4-8545-e32337d6fa3d",
+   "wall_s": 177.1,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0003-r3.md",
+   "verdict": "pass",
+   "reason": "every clause exits 0 with the unit and non-zero at d144671 including the new clause that binds the S03 row r2 found unbound, and each verdict key is true of the files, leaving only a one-command undercount in the result key that \u00a74 calls a note.",
+   "sha256": "43ba25892d815ad4502c2d1cffa6baeddb59248b02cd282001da88e694d4708c"
+  }
+ ],
+ "no_verdict": []
+}

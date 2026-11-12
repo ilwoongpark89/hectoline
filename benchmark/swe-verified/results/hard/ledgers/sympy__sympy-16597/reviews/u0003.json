@@ -1,0 +1,30 @@
+{
+ "uid": "U0003",
+ "rounds": [
+  {
+   "uid": "U0003",
+   "round": 1,
+   "session": "a36a5851-d08e-4eea-bb25-afbab92d2b88",
+   "wall_s": 162.3,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0003-r1.md",
+   "verdict": "fail",
+   "reason": "the S04 row this unit wrote names  G1 from its target to its target , a step with no leaf move that can never satisfy the done condition of RULE \u00a72, and the files key names a nonexistent PLAN.md line 18 while omitting the changed line 12.",
+   "sha256": "9f51a59da4ac7a1e7f53b96b4f11db75170e49c89961baf5d32d868f27da1561"
+  },
+  {
+   "uid": "U0003",
+   "round": 2,
+   "session": "c8477bdb-c9cb-4faf-b787-fa244c8a7468",
+   "wall_s": 103.3,
+   "turns": 11,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0003-r2.md",
+   "verdict": "pass",
+   "reason": "both clauses are red at 294ade9 and green now, the r1 fail grades are repaired with S03 naming a real leaf move and a files key matching the actual lines, and every field I could run checks out against the files.",
+   "sha256": "7fae795b7b148ea417d4ea11fc3ec8dda63b91059ba7b6c191f89825584da260"
+  }
+ ],
+ "no_verdict": []
+}

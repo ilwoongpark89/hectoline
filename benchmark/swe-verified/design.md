@@ -160,6 +160,25 @@ Verdict rule, fixed here. The count is the tasks resolved by the grader, and ses
 
 One harness repair before this run. `run.py` now reads the diff with undecodable bytes replaced, so a virtual environment inside the repository no longer stops the harness.
 
+Result, 2026-11-13. Record: `results/hard/`, table `results/hard/table.md`, ledger audit `results/hard/ledger-audit.md`. Every cell is from `runs.jsonl` and the grader reports.
+
+| task | arm | claimed | hidden tests | sessions | closed units, all with a reviewer pass | refusals |
+|---|---|---|---|---|---|---|
+| astropy__astropy-14369 | plain | yes | resolved, 3 of 3 and 732 of 732 | 1 | — | — |
+| astropy__astropy-14369 | hectoline | yes | resolved, 3 of 3 and 732 of 732 | 1 | 3 | 2 |
+| django__django-16263 | plain | yes | resolved, 3 of 3 and 100 of 100 | 1 | — | — |
+| django__django-16263 | hectoline | yes | not resolved, 2 of 3 and 100 of 100 | 4 | 7 | 9 |
+| sympy__sympy-16597 | plain | yes | not resolved, 0 of 3 and 74 of 74 | 6 | — | — |
+| sympy__sympy-16597 | hectoline | none | not resolved, 0 of 3 and 74 of 74 | 6 | 7 | 7 |
+
+Verdict by the rule above. The grader refused one FIXED: yes line of each arm: hectoline on django__django-16263, plain on sympy__sympy-16597. The plain arm ended 2 of the 3 tasks correct. The hectoline arm ended 1 of the 3 correct, with 1 refused claim and 1 unfinished run. No unit closed with no reviewer pass: 17 of 17 closed units hold a pass in the record. On astropy__astropy-14369 the confirmed change stood in closed, reviewed units, and no unit was open at the end. By the grader the method did not reach its aim on these three tasks.
+
+The one test that refused the hectoline patch. `test_unused_aliased_aggregate_pruned` of the benchmark asserts that `Book.objects.alias(authors_count=Count("authors")).count()` runs with one SELECT, «No subquery wrapping required». That test came with Django commit 59bea9efd276, merged 2022-11-09. Django commit 10037130c123 of 2022-11-14 names that behavior a regression of 59bea9efd276: the query counts a book once per author. Since then the same test asserts two SELECTs, «Subquery wrapping required», and the true count. The hectoline patch gives two SELECTs. This was measured after the grading. The test class `AggregateAnnotationPruningTests` of commit 10037130c123 ran on both patches in the task image: the hectoline patch passed 4 of 4, the plain patch failed 1 of 4 with `AssertionError: 3 != 2`. The outputs are in `results/hard/corrected-test/`. The final text of the plain session names the hidden test, names commit 10037130c123, states that its patch returns 3 where 2 is true, and ends with FIXED: yes. The task text does not hold that test name. So on this task the benchmark's reference is the earlier, faulty state of Django, and the plain agent matched it from its memory of the project history.
+
+Counts by Django's corrected test on that one task, set beside the grader's counts and not in place of them: hectoline 2 of 3 correct and no claim on a wrong patch, plain 1 of 3 correct and 2 claims on wrong patches. The sympy task stays unsolved by both arms after 6 sessions each. The plain arm said FIXED there with 946 patch lines, and the hectoline arm made no claim.
+
+What the run shows about the method. On the first run the method claimed nothing on 10 tasks. Here it claimed on 2 of 3, each claim after reviewed units, and it made no claim on the task it had not solved. Its reviewer on django__django-16263 judged the patch against the author's own test. No reference from outside the work stood in that review. The upstream history gave the same answer here, but the review could not know that.
+
 ## Size
 
 A first pass of 10 tasks, no held-out set, one run per cell. The table reports counts, not rates with intervals. The selection rule and the harness are written so that the next 20 tasks follow the same rule.

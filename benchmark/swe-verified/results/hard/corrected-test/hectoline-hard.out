@@ -1,0 +1,30 @@
+  Apply all migrations: admin, sites
+Synchronizing apps without migrations:
+  Creating tables...
+    Creating table django_content_type
+    Creating table auth_permission
+    Creating table auth_group
+    Creating table auth_user
+    Creating table django_session
+    Creating table aggregation_author
+    Creating table aggregation_publisher
+    Creating table aggregation_book
+    Creating table aggregation_store
+    Running deferred SQL...
+Running migrations:
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying sites.0001_initial... OK
+  Applying sites.0002_alter_domain_unique... OK
+System check identified no issues (0 silenced).
+test_non_aggregate_annotation_pruned (aggregation.tests.AggregateAnnotationPruningTests) ... ok
+test_referenced_aggregate_annotation_kept (aggregation.tests.AggregateAnnotationPruningTests) ... ok
+test_unreferenced_aggregate_annotation_pruned (aggregation.tests.AggregateAnnotationPruningTests) ... ok
+test_unused_aliased_aggregate_pruned (aggregation.tests.AggregateAnnotationPruningTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.009s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...

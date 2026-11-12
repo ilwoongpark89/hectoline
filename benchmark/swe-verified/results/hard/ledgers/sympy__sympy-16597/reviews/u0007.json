@@ -1,0 +1,30 @@
+{
+ "uid": "U0007",
+ "rounds": [
+  {
+   "uid": "U0007",
+   "round": 1,
+   "session": "f2c25ba4-f924-453a-95cd-f0bfba0aad0f",
+   "wall_s": 321.0,
+   "turns": 23,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0007-r1.md",
+   "verdict": "fail",
+   "reason": "check clause 1 pins the S05 row to status  todo , which RULE \u00a72 forbids (\"A clause on an S row accepts open or done\") and which goes red as soon as U0008 moves that row, as the copy test shows.",
+   "sha256": "5f556ae3db8c7395d2d6f2edd55a35562c05b6b1db36f366edde84f9bce9bbca"
+  },
+  {
+   "uid": "U0007",
+   "round": 2,
+   "session": "f8c8d839-611b-467f-a45d-2c7317613ced",
+   "wall_s": 416.4,
+   "turns": 22,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-3/sympy__sympy-16597/hectoline-hard/reviews/agent-review-u0007-r2.md",
+   "verdict": "pass",
+   "reason": "both clauses are red at base  1c8811f  and green now, r1's pinned-status fault is genuinely repaired (the clause survives  open  and  done ), and every key of the block checks out against the plan, the ledgers and the sympy values the planned unit will move.",
+   "sha256": "7a2305e5d1161331e2260a2f426825bbe2ec2bfcb0d878c737d7f7b1e950b565"
+  }
+ ],
+ "no_verdict": []
+}

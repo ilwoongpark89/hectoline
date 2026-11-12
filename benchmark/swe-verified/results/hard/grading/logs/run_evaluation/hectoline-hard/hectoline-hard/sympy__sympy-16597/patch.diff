@@ -1,0 +1,153 @@
+diff --git a/measures.py b/measures.py
+new file mode 100644
+index 0000000..037bcc0
+--- /dev/null
++++ b/measures.py
+@@ -0,0 +1,68 @@
++"""measures.py — the measure of this room: g1 runs the probes of TASK.md
++against the sympy tree of the room and counts the ones that hold, g2 runs
++the cases of the sympy core tests that record the values of an infinity."""
++import os, subprocess, sys
++
++PROBES = ("Symbol('m', even=True).is_finite is True",
++          "Symbol('i', integer=True).is_finite is True",
++          "Symbol('r', rational=True).is_finite is True")
++SOURCE = ('import sys;sys.path.insert(0, sys.argv[1]);'
++          'from sympy import Symbol' + os.linesep +
++          'for probe in sys.argv[2:]: print(eval(probe))')
++CASES = ('test_infinity', 'test_neg_infinity')
++RECORD = '''import sys
++sys.path.insert(0, sys.argv[1])
++from sympy.core.tests import test_assumptions as cases
++for case in sys.argv[2:]:
++    try:
++        getattr(cases, case)()
++        print('True')
++    except AssertionError:
++        print('False')
++'''
++
++
++def interpreter():
++    """The first interpreter that imports mpmath, sympy asks for it."""
++    for path in (sys.executable, '/usr/bin/python3'):
++        probe = [path, '-B', '-c', 'import mpmath']
++        if not subprocess.run(probe, capture_output=True).returncode:
++            return path
++    return ''
++
++def readings(room):
++    """Each probe of TASK.md with its value in the tree of room."""
++    python = interpreter()
++    if not python:
++        return ['no interpreter carries mpmath']
++    args = [python, '-B', '-c', SOURCE, room] + list(PROBES)
++    done = subprocess.run(args, cwd=room, capture_output=True, text=True)
++    if done.returncode:
++        return ['the probe run failed']
++    return done.stdout.split()
++
++def g1(room, bl=None):
++    """The probes of TASK.md that hold, «a of b»."""
++    return '%d of %d' % (readings(room).count('True'), len(PROBES))
++
++def records(room):
++    """Each recorded-value case of the sympy core tests with its verdict."""
++    python = interpreter()
++    if not python:
++        return ['no interpreter carries mpmath']
++    args = [python, '-B', '-c', RECORD, room] + list(CASES)
++    done = subprocess.run(args, cwd=room, capture_output=True, text=True)
++    if done.returncode:
++        return ['the case run failed']
++    return done.stdout.split()
++
++def g2(room, bl=None):
++    """The recorded-value cases of the sympy core tests that hold, «a of b»."""
++    return '%d of %d' % (records(room).count('True'), len(CASES))
++
++if __name__ == '__main__':
++    here = os.path.dirname(os.path.abspath(__file__))
++    print(' '.join(readings(here)))
++    print(g1(here))
++    print(' '.join(records(here)))
++    print(g2(here))
+diff --git a/sympy/core/assumptions.py b/sympy/core/assumptions.py
+index ce4dd30..280cc6e 100644
+--- a/sympy/core/assumptions.py
++++ b/sympy/core/assumptions.py
+@@ -163,7 +163,7 @@
+ _assume_rules = FactRules([
+ 
+     'integer        ->  rational',
+-    'rational       ->  real',
++    'rational       ->  real & finite',
+     'rational       ->  algebraic',
+     'algebraic      ->  complex',
+     'real           ->  complex',
+diff --git a/sympy/core/tests/test_assumptions.py b/sympy/core/tests/test_assumptions.py
+index 4db1c1c..90f73da 100644
+--- a/sympy/core/tests/test_assumptions.py
++++ b/sympy/core/tests/test_assumptions.py
+@@ -98,26 +98,26 @@ def test_infinity():
+     oo = S.Infinity
+ 
+     assert oo.is_commutative is True
+-    assert oo.is_integer is None
+-    assert oo.is_rational is None
++    assert oo.is_integer is False
++    assert oo.is_rational is False
+     assert oo.is_algebraic is None
+     assert oo.is_transcendental is None
+     assert oo.is_real is True
+     assert oo.is_complex is True
+-    assert oo.is_noninteger is None
+-    assert oo.is_irrational is None
++    assert oo.is_noninteger is True
++    assert oo.is_irrational is True
+     assert oo.is_imaginary is False
+     assert oo.is_positive is True
+     assert oo.is_negative is False
+     assert oo.is_nonpositive is False
+     assert oo.is_nonnegative is True
+-    assert oo.is_even is None
+-    assert oo.is_odd is None
++    assert oo.is_even is False
++    assert oo.is_odd is False
+     assert oo.is_finite is False
+     assert oo.is_infinite is True
+     assert oo.is_comparable is True
+     assert oo.is_prime is False
+-    assert oo.is_composite is None
++    assert oo.is_composite is False
+     assert oo.is_number is True
+ 
+ 
+@@ -125,21 +125,21 @@ def test_neg_infinity():
+     mm = S.NegativeInfinity
+ 
+     assert mm.is_commutative is True
+-    assert mm.is_integer is None
+-    assert mm.is_rational is None
++    assert mm.is_integer is False
++    assert mm.is_rational is False
+     assert mm.is_algebraic is None
+     assert mm.is_transcendental is None
+     assert mm.is_real is True
+     assert mm.is_complex is True
+-    assert mm.is_noninteger is None
+-    assert mm.is_irrational is None
++    assert mm.is_noninteger is True
++    assert mm.is_irrational is True
+     assert mm.is_imaginary is False
+     assert mm.is_positive is False
+     assert mm.is_negative is True
+     assert mm.is_nonpositive is True
+     assert mm.is_nonnegative is False
+-    assert mm.is_even is None
+-    assert mm.is_odd is None
++    assert mm.is_even is False
++    assert mm.is_odd is False
+     assert mm.is_finite is False
+     assert mm.is_infinite is True
+     assert mm.is_comparable is True

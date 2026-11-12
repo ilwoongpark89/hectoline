@@ -1,0 +1,30 @@
+{
+ "uid": "U0002",
+ "rounds": [
+  {
+   "uid": "U0002",
+   "round": 1,
+   "session": "d013c5a9-4b58-4d98-84d2-c5693123d08e",
+   "wall_s": 299.2,
+   "turns": 10,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0002-r1.md",
+   "verdict": "fail",
+   "reason": "measures.py  defines  g1()  with no parameters and only prints, so the room's adapter ( measure.py , which calls  g1(room, bl)  and reads its return) reports G1 as  no value: TypeError  and the leaf stays unmeasured, leaving the step's named move undone while PLAN.md already marks S02 done.",
+   "sha256": "9b840a7307dea196e8b43bb245735e40059422f62772b5722bc0d1cd4d6a949c"
+  },
+  {
+   "uid": "U0002",
+   "round": 2,
+   "session": "9b0a33cc-cb34-40c4-848d-9d8d96acdc7e",
+   "wall_s": 145.3,
+   "turns": 14,
+   "exit_code": 0,
+   "log": "/private/tmp/hectoline-hard-work-2/django__django-16263/hectoline-hard/reviews/agent-review-u0002-r2.md",
+   "verdict": "pass",
+   "reason": "the adapter now returns the count ( measure.measures  reads  0 of 5 ), all three clauses exit 0 with the unit and 1 1 1 at 49e854d, and every verified key holds except the stale  PLAN.md:17  pointer, which RULE \u00a74 classes as a correctable note.",
+   "sha256": "4ca95aa5dac29621411bcceae236264e2b5d95742b8486b670f079400604b5e8"
+  }
+ ],
+ "no_verdict": []
+}

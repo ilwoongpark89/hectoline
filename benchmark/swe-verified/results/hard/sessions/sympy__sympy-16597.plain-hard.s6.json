@@ -1,0 +1,110 @@
+{
+ "duration_api_ms": 204912,
+ "stop_reason": "end_turn",
+ "session_id": "703dda9e-4410-4d10-b6c9-399ae6daa430",
+ "total_cost_usd": 1.6212885,
+ "usage": {
+  "input_tokens": 12,
+  "cache_creation_input_tokens": 3573,
+  "cache_read_input_tokens": 313914,
+  "output_tokens": 1607,
+  "output_tokens_details": {
+   "thinking_tokens": 458
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3573,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 451,
+    "cache_read_input_tokens": 53358,
+    "cache_creation_input_tokens": 656,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 656
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-opus-5": {
+   "inputTokens": 88,
+   "outputTokens": 14150,
+   "cacheReadInputTokens": 1733557,
+   "cacheCreationInputTokens": 40032,
+   "webSearchRequests": 0,
+   "costUSD": 1.6212885,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 64000,
+   "thinkingTokens": 4412,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 40032,
+   "canonicalModel": "claude-opus-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "sdk_opt_in_required",
+ "origin": {
+  "kind": "task-notification",
+  "producer": "session-task",
+  "runId": "0mwdzut99-57e59c2c"
+ },
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 6,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "Three workers are still at ~98% CPU grinding the slow tail tests, so the runs are progressing, not hung. The 2-hour waiter (`baefe8dsj`) is still armed and will re-invoke me when both suites print their summaries.\n\nNote on the two stopped helpers: the 10-minute waiters `bi3wazj09` and `bpufmhd0o` were stopped at their background time limits \u2014 they were only polling wrappers, and the pytest runs themselves are unaffected and still executing.\n\nCurrent evidence is unchanged from my last report:\n\n- `sympy/core/assumptions.py:168` \u2014 `'rational -> finite'` added.\n- Issue repro fixed: `even`/`integer`/`rational` symbols are now `is_finite is True`; `real`-only and `irrational` stay `None`.\n- `sympy/core/tests/test_assumptions.py` \u2014 67 passed, 3 failed, with those same 3 failing identically on the pristine baseline (`@XFAIL` tests that bare pytest reports as failures).\n- Full-suite failure-set diff still pending.\n\nFIXED: yes",
+ "ttft_ms": 2463,
+ "type": "result",
+ "duration_ms": 21818,
+ "uuid": "1ce647dc-17e6-4988-8b1e-2e6b9ecb3447",
+ "ttft_stream_ms": 1017,
+ "time_to_request_ms": 64,
+ "first_content_frame_ms": 1017,
+ "queued_turn_count": 0,
+ "result_index": 1,
+ "credential_expires_at": "2026-12-12T03:02:33.556Z",
+ "wall_s": 3601.0,
+ "timed_out": true,
+ "exit_code": 143
+}

@@ -1,0 +1,69 @@
+2026-11-12T23:51:31+09:00 harness start: 1 tasks, arms ['hectoline'], model claude-opus-5, max-turns 150, wall 3600 s, 0 runs already recorded
+2026-11-12T23:51:31+09:00 harness start: 1 tasks, arms ['hectoline'], model claude-opus-5, max-turns 150, wall 3600 s, 0 runs already recorded
+2026-11-12T23:51:31+09:00 harness start: 3 tasks, arms ['plain'], model claude-opus-5, max-turns 150, wall 3600 s, 0 runs already recorded
+2026-11-12T23:51:31+09:00 harness start: 1 tasks, arms ['hectoline'], model claude-opus-5, max-turns 150, wall 3600 s, 0 runs already recorded
+2026-11-12T23:51:31+09:00 load high: cpu 697 %, memory free 37 %, waiting 60 s
+2026-11-12T23:51:31+09:00 load high: cpu 694 %, memory free 37 %, waiting 60 s
+2026-11-12T23:51:31+09:00 load high: cpu 690 %, memory free 37 %, waiting 60 s
+2026-11-12T23:51:31+09:00 load high: cpu 680 %, memory free 37 %, waiting 60 s
+2026-11-12T23:52:31+09:00 load high: cpu 617 %, memory free 47 %, waiting 60 s
+2026-11-12T23:52:31+09:00 load high: cpu 617 %, memory free 47 %, waiting 60 s
+2026-11-12T23:52:31+09:00 load high: cpu 617 %, memory free 47 %, waiting 60 s
+2026-11-12T23:52:31+09:00 load high: cpu 617 %, memory free 47 %, waiting 60 s
+2026-11-12T23:53:31+09:00 load ok: cpu 463 % of 600, memory free 44 %
+2026-11-12T23:53:31+09:00 load ok: cpu 463 % of 600, memory free 44 %
+2026-11-12T23:53:31+09:00 load ok: cpu 463 % of 600, memory free 44 %
+2026-11-12T23:53:31+09:00 load ok: cpu 463 % of 600, memory free 44 %
+2026-11-12T23:53:37+09:00 astropy__astropy-14369 plain-hard: session 1 start
+2026-11-12T23:53:37+09:00 sympy__sympy-16597 hectoline: room at dc3e855721, validate: 0 faults, pile: 0 lines
+2026-11-12T23:53:37+09:00 sympy__sympy-16597 hectoline-hard: session 1 start
+2026-11-12T23:53:37+09:00 django__django-16263 hectoline: room at 49e854d794, validate: 0 faults, pile: 0 lines
+2026-11-12T23:53:37+09:00 django__django-16263 hectoline-hard: session 1 start
+2026-11-12T23:53:38+09:00 astropy__astropy-14369 hectoline: room at 6f3cd9a312, validate: 0 faults, pile: 0 lines
+2026-11-12T23:53:38+09:00 astropy__astropy-14369 hectoline-hard: session 1 start
+2026-11-13T00:09:20+09:00 astropy__astropy-14369 plain-hard: session 1 end, claimed yes, turns 61, wall 943.7 s
+2026-11-13T00:09:20+09:00 astropy__astropy-14369 plain: done, claimed yes, turns 61, wall 943.7 s, patch 164 lines
+2026-11-13T00:09:20+09:00 load ok: cpu 292 % of 600, memory free 59 %
+2026-11-13T00:09:24+09:00 sympy__sympy-16597 plain-hard: session 1 start
+2026-11-13T00:50:13+09:00 astropy__astropy-14369 hectoline-hard: session 1 end, claimed yes, turns 134, wall 3394.6 s
+2026-11-13T00:50:13+09:00 astropy__astropy-14369 hectoline: done, claimed yes, turns 134, wall 3394.6 s, patch 145 lines
+2026-11-13T00:50:13+09:00 harness end
+2026-11-13T00:53:38+09:00 sympy__sympy-16597 hectoline-hard: session 1 end, claimed none, turns None, wall 3600.8 s
+2026-11-13T00:53:38+09:00 sympy__sympy-16597 hectoline-hard: session 2 start
+2026-11-13T00:53:38+09:00 django__django-16263 hectoline-hard: session 1 end, claimed none, turns None, wall 3600.4 s
+2026-11-13T00:53:38+09:00 django__django-16263 hectoline-hard: session 2 start
+2026-11-13T01:09:25+09:00 sympy__sympy-16597 plain-hard: session 1 end, claimed none, turns None, wall 3600.8 s
+2026-11-13T01:09:25+09:00 sympy__sympy-16597 plain-hard: session 2 start
+2026-11-13T01:53:39+09:00 sympy__sympy-16597 hectoline-hard: session 2 end, claimed none, turns None, wall 3601.1 s
+2026-11-13T01:53:39+09:00 sympy__sympy-16597 hectoline-hard: session 3 start
+2026-11-13T01:53:40+09:00 django__django-16263 hectoline-hard: session 2 end, claimed none, turns None, wall 3602.4 s
+2026-11-13T01:53:40+09:00 django__django-16263 hectoline-hard: session 3 start
+2026-11-13T02:09:23+09:00 sympy__sympy-16597 plain-hard: session 2 end, claimed none, turns None, wall 3598.7 s
+2026-11-13T02:09:23+09:00 sympy__sympy-16597 plain-hard: session 3 start
+2026-11-13T02:53:40+09:00 sympy__sympy-16597 hectoline-hard: session 3 end, claimed none, turns None, wall 3600.8 s
+2026-11-13T02:53:40+09:00 sympy__sympy-16597 hectoline-hard: session 4 start
+2026-11-13T02:53:41+09:00 django__django-16263 hectoline-hard: session 3 end, claimed none, turns None, wall 3600.7 s
+2026-11-13T02:53:41+09:00 django__django-16263 hectoline-hard: session 4 start
+2026-11-13T03:09:26+09:00 sympy__sympy-16597 plain-hard: session 3 end, claimed none, turns None, wall 3603.1 s
+2026-11-13T03:09:26+09:00 sympy__sympy-16597 plain-hard: session 4 start
+2026-11-13T03:53:41+09:00 sympy__sympy-16597 hectoline-hard: session 4 end, claimed none, turns None, wall 3601.3 s
+2026-11-13T03:53:41+09:00 sympy__sympy-16597 hectoline-hard: session 5 start
+2026-11-13T03:53:42+09:00 django__django-16263 hectoline-hard: session 4 end, claimed yes, turns 37, wall 3600.7 s
+2026-11-13T03:53:42+09:00 django__django-16263 hectoline: done, claimed yes, turns 37, wall 14404.2 s, patch 314 lines
+2026-11-13T03:53:42+09:00 harness end
+2026-11-13T04:09:27+09:00 sympy__sympy-16597 plain-hard: session 4 end, claimed none, turns 10, wall 3601.1 s
+2026-11-13T04:09:27+09:00 sympy__sympy-16597 plain-hard: session 5 start
+2026-11-13T04:53:42+09:00 sympy__sympy-16597 hectoline-hard: session 5 end, claimed none, turns None, wall 3601.1 s
+2026-11-13T04:53:42+09:00 sympy__sympy-16597 hectoline-hard: session 6 start
+2026-11-13T05:09:28+09:00 sympy__sympy-16597 plain-hard: session 5 end, claimed none, turns None, wall 3600.7 s
+2026-11-13T05:09:28+09:00 sympy__sympy-16597 plain-hard: session 6 start
+2026-11-13T05:53:43+09:00 sympy__sympy-16597 hectoline-hard: session 6 end, claimed none, turns None, wall 3600.7 s
+2026-11-13T05:53:43+09:00 sympy__sympy-16597 hectoline: done, claimed none, turns None, wall 21605.8 s, patch 153 lines
+2026-11-13T05:53:43+09:00 harness end
+2026-11-13T06:09:29+09:00 sympy__sympy-16597 plain-hard: session 6 end, claimed yes, turns 6, wall 3601.0 s
+2026-11-13T06:09:29+09:00 sympy__sympy-16597 plain: done, claimed yes, turns 16, wall 21605.4 s, patch 946 lines
+2026-11-13T06:09:29+09:00 load ok: cpu 148 % of 600, memory free 74 %
+2026-11-13T06:09:34+09:00 django__django-16263 plain-hard: session 1 start
+2026-11-13T06:17:41+09:00 django__django-16263 plain-hard: session 1 end, claimed yes, turns 49, wall 486.9 s
+2026-11-13T06:17:41+09:00 django__django-16263 plain: done, claimed yes, turns 49, wall 486.9 s, patch 285 lines
+2026-11-13T06:17:41+09:00 harness end
