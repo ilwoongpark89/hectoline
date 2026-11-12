@@ -1,7 +1,7 @@
 # GOAL — 01_pressure-drop
 
 ## Question
-Owner, 2026-11-11: «Build a laminar pipe pressure-drop calculator that reproduces the reference case».
+Owner, 2026-11-12: «Build a laminar pipe pressure-drop calculator that reproduces the reference case».
 
 ## Stance
 a laminar pipe pressure-drop calculator answers its reference case within 1 percent. This room follows RULE.md of hectoline by its link.

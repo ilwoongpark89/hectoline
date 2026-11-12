@@ -126,11 +126,14 @@ def unit(room, top, uid, sentence, plan, files, lines, body, check, cause, added
         print(sh(*PY, 'unit.py', 'open', uid, room, sentence, plan, files, lines, cwd=room).splitlines()[0])
     else:
         print(sh(*PY, 'unit.py', 'open', uid, room, cwd=room).splitlines()[0])
-    body()
-    fill(room, uid, **{'delete?': 'no, nothing exists to delete', 'modify?': 'no, no earlier block covers it',
+    keys = {'delete?': 'no, nothing exists to delete', 'modify?': 'no, no earlier block covers it',
                        'duplicate': f'grep -c "{sentence.split(",")[0]}" UNITS.md before this block: 0', 'cause': cause,
                        'split?': 'no, one change', 'tidy-first?': 'no', 'check': check, 'added': added, 'rejected': rejected,
-                       'split': 'none', 'deleted': 'none', 'review': review(top, uid, sentence, check), 'approval': APPROVAL})
+                       'split': 'none', 'deleted': 'none', 'review': review(top, uid, sentence, check), 'approval': APPROVAL}
+    if kind == 'audit':  # the audit runner reads a room that validates, so the keys stand before it runs
+        fill(room, uid, **keys)
+    body()
+    fill(room, uid, **keys)
     print(sh(*PY, 'unit.py', 'close', uid, room, cwd=room).strip().splitlines()[-1])
 
 
@@ -198,7 +201,7 @@ def build(top):
     unit(room, top, 'U0006', 'the audit of the first five units: rerun every closed check on a copy, list piles, duplicates, unused definitions', 'A0001 · S none, the audit of RULE §4',
          'audits/audit-06.txt · UNITS.md', '+≤40', audit, "grep -q '^## piles: 0' audits/audit-06.txt · grep -q '^## check rerun on a copy: ' audits/audit-06.txt",
          'result layer: audit.py runs on a copy of the room, its output is the record, RULE §4 «Audit every 10 units», here once at the end of the pilot',
-         'audits/audit-06.txt: the check rerun, the piles, the duplicates, the unused definitions, the measures', 'a fix inside the audit: an audit lists, a later unit fixes')
+         'audits/audit-06.txt: the check rerun, the piles, the duplicates, the unused definitions, the measures', 'a fix inside the audit: an audit lists, a later unit fixes', kind='audit')
     return room
 
 

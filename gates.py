@@ -73,7 +73,8 @@ def main(argv):
         fired = len(hits) if len(text) > 7 else 0
         silent += not fired
         print(f'{name}:{line} · {found} · {fired} · {text[:60]}')
-    total = f'gates: {len(rows)} sites · {silent} never fired'
+    raises = [row for row in rows if row[2] == 'raise']
+    total = f'gates: {len(rows)} sites · {silent} with no deny line, {len(raises)} raise sites reach no log'
     print(total + f' · {len(reasons)} deny lines')
     return 0
 

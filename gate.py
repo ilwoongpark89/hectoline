@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """gate.py — the edit gate of a hectoline room, P25, the rules boundary.
 unit.py held these names until S195 moved them here."""
+import glob
 import os
 import re
 from ledger import rows_of, files_of, git, read, load, LEDGERS
@@ -61,7 +62,7 @@ def gate_path(room, path, old, text, bl, delete=False):
         return False, 'relative path leaves the room'
     rel = key or os.path.normpath(os.path.expanduser(path))
     if os.path.basename(rel) == 'unit.log':
-        return False, 'unit.log is append-only by unit.py, a read passes alone as one grep, tail, head, wc or cat line, or from Python'
+        return False, 'unit.log is append-only by ledger.py, a changed log is restored from its shadow copy'
     if key.startswith('legacy/') and not delete:
         return False, f'{key}: the legacy folder is frozen, RULE §6, import the item through a hub unit with an owner line'
     if not key and os.path.isabs(rel):
@@ -131,28 +132,20 @@ def gate_path(room, path, old, text, bl, delete=False):
 
 
 TEST = re.compile(r'(^|/)(tests/|test_[^/]*$|[^/]*_test\.[^/]*$)')
-# the one-line read pipelines a line that names the log may be, S57
-READ_VERBS = r'(grep|tail|head|wc|cat)'
-READ_TAIL = r'[^|;&<>`$()\n\r]*'
-READER = re.compile(rf'\s*{READ_VERBS}\b{READ_TAIL}(\|\s*(grep|tail|head|wc|cut)\b{READ_TAIL})*')
 # a write verb and its operands, flags dropped, S86; a heredoc body is no target, S55
 WRITE_VERBS = r'(?:>>?|\bsed -i\S*|\btee\b(?: -a)?|\bcp\b|\bmv\b|\brm\b)'
 WRITES = re.compile(WRITE_VERBS + r'(?:[ \t]|\\\n)+((?:[^\s|;&]+(?:[ \t]|\\\n)*)+)')
 
 
 def numbered_rooms(ledger=False):
-    """The numbered folders under ROOMS, sorted; with a ledger when asked."""
+    """The numbered folders under ROOMS with those one level inside each, sorted; with a ledger when asked."""
     top = ROOMS
-    names = []
-    if os.path.isdir(top):
-        names = sorted(os.listdir(top))
+    mark = '/[0-9][0-9]_*'
+    paths = glob.glob(top + mark) + glob.glob(top + mark + mark)
     rooms = []
-    for name in names:
-        if not re.match(r'\d\d_', name):
-            continue
-        path = os.path.join(top, name)
+    for path in sorted(paths):
         has = os.path.isfile(os.path.join(path, 'UNITS.md'))
-        if not ledger or has:
+        if os.path.isdir(path) and (has or not ledger):
             rooms.append(path)
     return rooms
 

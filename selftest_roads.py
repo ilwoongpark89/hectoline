@@ -232,3 +232,185 @@ def alias_case(tmp):
     said = 'not named for its unit, name it agent-review-u0002-rN.md' in codes[0][1]
     kept = codes[0][0] == 1 and codes[1][0] == 0
     return said and kept
+
+
+def log_heal_case(tmp):
+    """A write of the log by any spelling is undone at the next call, S243."""
+    import ledger
+    made, top, room, run, own, git = fresh(tmp, 'heal')
+    path = os.path.join(room, 'unit.log')
+    ledger.log(room, 'test', '', 'allow', 'seed')
+    writes = ['echo x >> L', ': > unit.lo?', 'sed -i "" 1d L', 'rm -f L', 'truncate -s 0 L']
+    writes += ['git checkout HEAD -- L', 'cat L > ./unit.l*', 'echo L | xargs rm', 'chmod 000 L']
+    writes += ["python3 -c \"open('L', 'a').write('x')\"", 'rm L; ln -s RULE.md L', 'rm L; mkdir L']
+    writes += ['rm L; ln -s /dev/null L', 'rm L; mkfifo L', 'rm L; mkdir L; chmod 000 L']
+    quiet = dict(shell=True, cwd=room, capture_output=True, executable='/bin/bash')
+    held = []
+    for line in writes:
+        before = ledger.read(path)
+        subprocess.run(line.replace('L', 'unit.log'), **quiet)
+        ledger.heal(room)
+        after = ledger.read(path)
+        notes = after[len(before):].count('restored')
+        held.append(after.startswith(before) and notes == 1)
+    line = 'sed -n 1p RULE.md; grep -c deny unit.log; awk 1 unit.log'
+    reads = dict(tool_name='Bash', tool_input=dict(command=line))
+    passed = __import__('unit').check(room, reads)[0]
+    copy = ledger.shadow(room)
+    os.remove(copy)
+    tool = os.path.join(room, 'unit.py')
+    run(sys.executable, '-I', '-B', tool, 'validate', room)
+    quiet = not os.path.exists(copy)  # a read-only command writes no shadow, audit520
+    return all(held) and passed and quiet
+
+
+def head_settle_case(tmp):
+    """A commit around the hook is undone at the next call, its change stays, S243."""
+    made, top, room, run, own, git = fresh(tmp, 'settle')
+    tool = [sys.executable, '-I', '-B', os.path.join(room, 'unit.py')]
+    ask = dict(input='{}')
+    subprocess.run(tool + ['check', room], text=True, capture_output=True, **ask)
+    head = run(*git, 'rev-parse', 'HEAD').stdout
+    with open(os.path.join(room, 'GOAL.md'), 'a') as page:
+        page.write('x\n')
+    run(*git, 'commit', '-n', '-qam', 'x')
+    moved = run(*git, 'rev-parse', 'HEAD').stdout != head
+    subprocess.run(tool + ['check', room], text=True, capture_output=True, **ask)
+    back = run(*git, 'rev-parse', 'HEAD').stdout == head
+    kept = run(*git, 'diff', '--cached', '--name-only').stdout
+    notes = read(os.path.join(room, 'unit.log')).count('passed no hook')
+    held = moved and back and 'GOAL.md' in kept
+    return held and notes == 1
+
+
+def child_room_case(tmp):
+    """The room list reads one level inside a numbered folder, no deeper."""
+    import gate
+    top = os.path.join(tmp, 'home', 'claude')
+    rooms = ['01_a', '01_a/01_02_b', '03_c/03_01_d']
+    other = ['03_c', '01_a/x_e', '01_a/01_02_b/01_02_03_z']
+    for name in rooms + other:
+        os.makedirs(os.path.join(top, name), exist_ok=True)
+    for name in rooms + other[1:]:
+        open(os.path.join(top, name, 'UNITS.md'), 'w').close()
+    open(os.path.join(top, '01_a', '01_note.html'), 'w').close()
+    kept = gate.ROOMS  # the public tree reads its rooms under ROOMS
+    gate.ROOMS = top
+    found = gate.numbered_rooms(True), gate.numbered_rooms()
+    gate.ROOMS = kept
+    rel = os.path.relpath
+    held = [rel(path, top) for path in found[0]]
+    every = [rel(path, top) for path in found[1]]
+    return held == rooms and every == sorted(rooms + other[:1])
+
+SHAPES = [  # name, the recorded history, the place to keep, the commits around the hook
+    ('one line', '', 'HEAD', 'new x'),
+    ('merge of a recorded branch with a newer tip', 'git checkout -qb s; ok a; git checkout -q -; ok b; git checkout -q s; sleep 1; ok c; git checkout -q -', 'HEAD', 'git merge -q --no-ff s -m m'),
+    ('merge made on a side branch', 'ok a; ok b', 'HEAD', 'git checkout -qb s HEAD~2; new c; git merge -q --no-ff - -m m; git checkout -q -; git reset -q --hard s'),
+    ('rebase onto a recorded branch', 'git checkout -qb s; ok a; git checkout -q -; ok b', 'HEAD', 'git rebase -q s'),
+    ('commit put on a second branch', 'git checkout -qb s; ok a; git checkout -q -', 's', 'put; git checkout -q s'),
+    ('detached HEAD', 'ok a', 'HEAD', 'git checkout -q --detach; new x'),
+    ('amend with a change', 'ok a', 'HEAD', 'echo y > a.txt; git commit -qn --amend -am y'),
+    ('branch named as a file', 'git checkout -qb RULE.md; ok a', 'HEAD', 'new x'),
+    ('new branch from a commit around the hook', 'ok a', 'HEAD', 'new x; git checkout -qb w'),
+    ('orphan branch', 'ok a', 'HEAD', 'git checkout -q --orphan o; new x'),
+]
+
+
+def shape_case(tmp):
+    """In each shape of history a commit around the hook is set back to the last passed place of its branch, S243."""
+    lead = 'git config user.name x; git config user.email x@x; '
+    lead += 'ok() { new $1; git write-tree >> .git/unit-trees; }; '  # a commit the hook passed
+    lead += 'new() { echo $1 > $1.txt; git add -A; git commit -qnm $1; }; '
+    lead += 'put() { export GIT_INDEX_FILE=.git/i; git read-tree s; '  # a tree of s with one more file
+    lead += 'git update-index --add --cacheinfo 100644,$(echo z | git hash-object -w --stdin),z.txt; '
+    lead += 't=$(git write-tree); unset GIT_INDEX_FILE; '
+    lead += 'git update-ref refs/heads/s $(git commit-tree -p s -m x $t); }; '
+    held = {}
+    for number, (name, past, keep, around) in enumerate(SHAPES):
+        made, top, room, run, own, git = fresh(tmp, f'shape{number}')
+        shell = dict(shell=True, cwd=room, capture_output=True, text=True)
+        tool = os.path.join(room, 'unit.py')
+        check = [sys.executable, '-I', '-B', tool, 'check', room]
+        subprocess.run(check, input='{}', **shell | dict(shell=False))
+        subprocess.run(lead + past, **shell)
+        want = run(*git, 'rev-parse', keep).stdout
+        subprocess.run(lead + around, **shell)
+        moved = run(*git, 'rev-parse', 'HEAD').stdout != want
+        subprocess.run(check, input='{}', **shell | dict(shell=False))
+        held[name] = moved and run(*git, 'rev-parse', 'HEAD').stdout == want
+    return held
+
+def urgent_case(tmp):
+    """A planning unit opens in front of a planned queue on the word urgent, not without it."""
+    extra = ['--accept', 'exit 0 | the tests pass']
+    made, top, room, run, own, git = fresh(tmp, 'urgent', *extra)
+    texts = ['Plan x', 'A0002 · S none, the planning unit', 'UNITS.md:≤30', '≤30']
+    plain = run(*own, 'U0003', room, *texts)
+    texts[1] = 'A0002 · S none, urgent, the owner line'
+    front = run(*own, 'U0003', room, *texts)
+    text = read(os.path.join(room, 'UNITS.md'))
+    born = '## U0003 · ' in text and ' · structural · open' in text
+    queued = ' · planned\n' in text  # the block of the queue stands
+    held = plain.returncode == 1 and not front.returncode
+    return held and born and queued
+
+
+def audit_copy_case(tmp):
+    """Each audit clause runs on its own copy: the next clause sees no file that one left, S229."""
+    import audit
+    import shutil
+    made, top, room, run, own, git = fresh(tmp, 'auditcopy')
+    copy = os.path.join(tmp, 'auditcopy-base', 'room')
+    shutil.copytree(room, copy, symlinks=True)
+    left = audit.rerun(copy, 'echo said > stray.txt; cat stray.txt; exit 3')
+    seen = audit.rerun(copy, 'test ! -e stray.txt')
+    return left == (3, 'said ') and seen[0] == 0
+
+
+def audit_pack_case(tmp):
+    """The packed baseline keeps each object with no loose file, the control holds, S229."""
+    import audit
+    import shutil
+    made, top, room, run, own, git = fresh(tmp, 'auditpack')
+    copy = os.path.join(tmp, 'auditpack-base', 'room')
+    shutil.copytree(room, copy, symlinks=True)
+    audit.pack(copy)
+    count = run('git', '-C', copy, 'count-objects').stdout
+    whole = run('git', '-C', copy, 'fsck', '--full').returncode == 0
+    inside = os.environ.get('HECTOLINE_AUDIT')  # inside an audit clause no finer confinement runs
+    held = bool(inside or audit.control(copy))
+    return count.startswith('0 objects') and whole and held
+
+
+def audit_cut_case(tmp):
+    """The cut carries the exit of a clause red at the last audit, it reruns 0, 124 with a new one, S229."""
+    import audit
+    vals = {'check': 'a · b · c · d'}
+    final = [('U0002', 'closed', vals), ('U0003', 'closed', {'check': 'e'})]
+    exits = enumerate((0, 1, 124, 127), 1)
+    old = {('U0002', k): code for k, code in exits}
+    every = audit.chosen(final, {}, old)
+    got = [c[:2] + c[3:] for c in every]
+    carries = enumerate((None, 1, None, 127), 1)
+    want = [('U0002', k, carry) for k, carry in carries]
+    want.append(('U0003', 1, None))
+    block = [('U0001', 'closed', None, {'added': 'sha256=none'})]
+    path = os.path.join(tmp, 'receipt-cut.txt')
+    open(path, 'w').write('clause 1 U0002 2: exit 1\n')
+    unbound = audit.last_exits(block, {'U0001': 'audit'}, path)
+    return got == want and unbound == {}
+
+
+def fixture(bl):
+    """The block the selftest turns open: the first planned block on a final base, else the newest."""
+    final = set()
+    for block in bl:
+        if block[1] in ('closed', 'failed'):
+            final.add(block[0])
+    for block in bl:
+        base = block[3].get('base', '').split()[:1]
+        ready = base and base[0] in final
+        if block[1] == 'planned' and ready:
+            return block
+    return bl[-1]

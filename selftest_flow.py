@@ -144,50 +144,6 @@ def review_close_case(copy, opened, tmp):
     return code == 1 and named
 
 
-def plan_room(folder, enforce):
-    """A git room whose second plan revision does not parse, S234."""
-    import subprocess
-    from ledger import TABLES
-    os.makedirs(folder)
-    git = ['git', '-C', folder, '-c', 'user.name=x', '-c', 'user.email=x@x']
-    quiet = dict(capture_output=True, text=True, check=True)
-    subprocess.run(git + ['init', '-q'], **quiet)
-    for name in set(TABLES) | {'UNITS.md'}:
-        open(os.path.join(folder, name), 'w').write('x\n')
-    head = '## Reconstruction\n```json\n'
-    good = head + '{"enforce": %s%s}\n```\n'
-    def commit(text):
-        open(os.path.join(folder, 'PLAN.md'), 'w').write(text)
-        subprocess.run(git + ['add', '-A'], **quiet)
-        subprocess.run(git + ['commit', '-qm', 'x'], **quiet)
-        rev = subprocess.run(git + ['rev-parse', 'HEAD'], **quiet)
-        return rev.stdout.strip()
-    commit(good % (enforce, ''))
-    commit(head + '{}\n```\n| S1 |\n')
-    start = commit(good % ('false', ''))
-    final = commit(good % ('false', ', "start": "%s"' % start))
-    return start, final
-
-
-def history_case(tmp):
-    """The history reads from its declared start, the activation holds, S234."""
-    from admission import reconstruction_history as history
-    room = os.path.join(tmp, 'plan-a')
-    start, final = plan_room(room, 'false')
-    states = [c for c, _ in history(room, final)]
-    read = states == [start, final]
-    armed = os.path.join(tmp, 'plan-b')
-    cases = [(room, start, 'JSON block')]
-    cases.append((armed, plan_room(armed, 'true')[1], 'disables'))
-    refused = []
-    for folder, revision, word in cases:
-        try:
-            history(folder, revision)
-        except ValueError as error:
-            refused.append(word in str(error))
-    return read and refused == [True, True]
-
-
 def nested_case(copy, opened, tmp):
     """The baseline test runs inside an outer confinement, S226."""
     from transition import confined_clause
@@ -351,6 +307,10 @@ def settled_open(folder, uid):
     quiet = dict(capture_output=True)
     subprocess.run(git + ['add', 'UNITS.md'], **quiet)
     subprocess.run(git + ['commit', '-qnm', 'fixture'], **quiet)
+    tree = subprocess.run(git + ['write-tree'], **quiet).stdout
+    record = os.path.join(folder, '.git', 'unit-trees')
+    if os.path.exists(record):  # the fixture commit stands as passed, S243
+        open(record, 'ab').write(tree)
     return unit.open_unit(folder, uid)
 
 

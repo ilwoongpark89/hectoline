@@ -91,6 +91,12 @@ def main():
         reason = review_flaw(staged, moved[0]) if before else ''
     if reason:
         return refuse(f'{reason}, commit through unit.py close')
+    run = dict(cwd=ROOM, capture_output=True, text=True)
+    tree = subprocess.run(['git', 'write-tree'], **run).stdout
+    folder = subprocess.run(['git', 'rev-parse', '--absolute-git-dir'], **run).stdout.strip()
+    record = os.path.join(folder, 'unit-trees')
+    if os.path.exists(record):  # the first call of the tool makes it, S243
+        open(record, 'a').write(tree)
     husky = os.path.join(ROOM, '.husky', 'pre-commit')
     if os.path.exists(husky):
         return subprocess.run([husky], cwd=ROOM).returncode

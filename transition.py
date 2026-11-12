@@ -2,7 +2,30 @@
 import subprocess
 import re
 from ledger import set_key, set_status, write, validate
-from ledger import git, log
+from ledger import git, log, read, put, aside
+
+
+def settle(room):
+    """Set HEAD back to the last commit whose tree the commit hook passed, S243."""
+    folder = git(room, 'rev-parse', '--absolute-git-dir')
+    tree = git(room, 'log', '-1', '--format=%T')  # empty before the first commit
+    record = folder + '/unit-trees'
+    aside(record, record)  # a record path that is no plain file leaves
+    passed = read(record).split()
+    if tree in passed or not tree:
+        return
+    head = git(room, 'log', '-1', '--format=%h')
+    name = git(room, 'symbolic-ref', '-q', 'HEAD') or 'HEAD'  # the full name, a short one can name a file
+    rows = git(room, 'log', '-g', '--format=%h %T', name).splitlines()  # where this branch stood, the newest first
+    rows += git(room, 'log', '-g', '--format=%h %T').splitlines()  # then where HEAD stood, for a branch with no passed place
+    trees = [row.split()[1] for row in rows]
+    known = [one in passed for one in trees]
+    if True not in known:  # this branch never stood on a passed tree, its history is taken once
+        put(record, git(room, 'log', '--all', '--format=%T') + '\n')
+        return log(room, 'record', '', 'allow', f'history to {head} taken as passed')
+    good = rows[known.index(True)].split()[0]  # the last place of the branch with a passed tree
+    git(room, 'reset', '--soft', good)
+    log(room, 'head', '', 'deny', f'HEAD {head} passed no hook, set back to {good}')
 
 
 def git_bytes(room, *args, env=None):
@@ -149,7 +172,7 @@ def confined_clause(parent, target, clause, env, marker, timeout=60):
     finally:
         try:
             os.killpg(proc.pid, signal.SIGKILL)
-        except ProcessLookupError:
+        except (ProcessLookupError, PermissionError):
             pass
         proc.wait()
     if not os.path.isfile(marker):

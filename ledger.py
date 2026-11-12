@@ -3,6 +3,7 @@
 unit.py imported these names until S194 moved them here.
 The state boundary: the blocks of UNITS.md and the names of the five tables."""
 import datetime
+import fcntl
 import os
 import re
 import subprocess
@@ -194,80 +195,6 @@ def load(room):
     return text, list(blocks(text))
 
 
-def reconstruction_plan(text):
-    """Read the single reconstruction object from the existing plan."""
-    pattern = r'^## Reconstruction(?:\n|\Z)(.*?)(?=^## |\Z)'
-    sections = re.findall(pattern, text, re.M | re.S)
-    if not sections:
-        return None
-    if len(sections) != 1:
-        raise ValueError('multiple current reconstruction plans')
-    body = sections[0].strip()
-    found = re.fullmatch(r'```json\n(.*)\n```', body, re.S)
-    if not found:
-        raise ValueError('reconstruction plan needs one JSON block')
-    return strict_object(found[1])
-
-
-def strict_object(text):
-    """Decode one object without ambiguous keys or nonfinite values."""
-    import json
-    def pairs(items):
-        result = {}
-        for key, value in items:
-            if key in result:
-                raise ValueError('duplicate object key')
-            result[key] = value
-        return result
-    def constant(value):
-        raise ValueError('nonfinite JSON value')
-    def number(value):
-        parsed = float(value)
-        if abs(parsed) == float('inf'):
-            constant(value)
-        return parsed
-    if not isinstance(text, str):
-        raise ValueError('object source must be text')
-    value = json.loads(
-        text, object_pairs_hook=pairs,
-        parse_constant=constant, parse_float=number)
-    if type(value) is not dict:
-        raise ValueError('record must be an object')
-    return value
-
-
-def final_commit_order(room, blocks):
-    """Read final-state transitions along the canonical Git ancestry."""
-    current = {}
-    for uid, status, _, _ in blocks:
-        if status in ('closed', 'failed'):
-            current[uid] = status
-    history = git(
-        room, 'log', '--first-parent', '--reverse',
-        '--format=commit %H', '--diff-merges=first-parent',
-        '-p', '-U0', '--', 'UNITS.md')
-    order = {}
-    commit = ''
-    for line in history.splitlines():
-        found = re.fullmatch(r'commit ([0-9a-f]{40})', line)
-        if found:
-            commit = found[1]
-        if not line or line[0] not in '+-':
-            continue
-        header = HEADER.fullmatch(line[1:])
-        if not header or header[4] not in ('closed', 'failed'):
-            continue
-        uid = header[1]
-        if line[0] == '-' or uid in order:
-            raise ValueError('final unit history was rewritten')
-        if not commit or current.get(uid) != header[4]:
-            raise ValueError('final unit differs from committed state')
-        order[uid] = {'commit': commit, 'kind': header[3]}
-    if set(order) != set(current):
-        raise ValueError('final unit has no committed transition')
-    return order
-
-
 def unit_span(text, uid):
     """Locate one unit without including the next section."""
     pattern = r'(?m)^## ' + re.escape(uid)
@@ -333,12 +260,65 @@ def set_status(text, uid, old, new):
     return re.compile(pattern, re.M).sub(swap, text, 1)
 
 
-def log(room, event, uid, verdict, reason, session=''):
-    """Append one line to the log: time, event, unit, verdict, reason, session."""
-    stamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+def shadow(room):
+    """The copy of the log under the git folder, empty where no git folder holds the room."""
+    folder = git(room, 'rev-parse', '--absolute-git-dir')
+    mark = 'unit-log' + os.path.realpath(room).replace('/', '-')[-60:]
+    return os.path.join(folder, mark) if folder else ''
+
+
+def put(path, text, mode='a'):
+    """Write or append one text."""
+    with open(path, mode, encoding='utf8') as handle:
+        handle.write(text)
+
+
+def stamp(event, uid, verdict, reason, session=''):
+    """One log line: time, event, unit, verdict, reason, session."""
+    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    return f'{now} | {event} | {uid} | {verdict} | {reason} | {session}\n'
+
+
+def aside(path, copy):
+    """Move a path that is no plain file with access out of the way, true when it moved, S243."""
+    link = os.path.islink(path)
+    plain = os.path.isfile(path) and os.access(path, 6)
+    gone = not os.path.lexists(path)
+    if gone or (plain and not link):
+        return False
+    if not link:  # a folder or a file moves only with its write bit
+        os.chmod(path, 0o700)
+    os.rename(path, copy + '.odd' + os.urandom(4).hex())
+    return True
+
+
+def heal(room, line=''):
+    """Under one lock, make the log equal to its shadow, then append the line to both, S243."""
     path = os.path.join(room, 'unit.log')
-    with open(path, 'a', encoding='utf8') as handle:
-        handle.write(f'{stamp} | {event} | {uid} | {verdict} | {reason} | {session}\n')
+    copy = shadow(room)
+    if not copy:
+        return put(path, line)
+    with open(copy + '.lock', 'w') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        aside(path, copy)
+        now = read(path)
+        if aside(copy, copy) or not os.path.exists(copy):  # no shadow stands at its path
+            head = git(room, 'show', 'HEAD:./unit.log')
+            start = now if now.startswith(head) else head + '\n'
+            put(copy, start, 'w')
+            line = stamp('log', '', 'allow', 'shadow made') + line
+        kept = read(copy)
+        if now != kept:
+            put(path, kept, 'w')
+            reason = 'unit.log differed from its shadow, restored'
+            line = stamp('log', '', 'deny', reason) + line
+        for name in (copy, path):
+            put(name, line)
+
+
+def log(room, event, uid, verdict, reason, session=''):
+    """Append one line to the log with its shadow."""
+    heal(room, stamp(event, uid, verdict, reason, session))
 
 
 def write(room, text):

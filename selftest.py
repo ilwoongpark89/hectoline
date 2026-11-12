@@ -181,7 +181,6 @@ def selftest(room):
         from selftest_flow import review_route_case
         from selftest_flow import baseline_case
         from selftest_flow import nested_case
-        from selftest_flow import history_case
         from selftest_flow import hand_close_case
         from selftest_flow import loose_open_case
         from selftest_roads import door_check_case
@@ -192,30 +191,34 @@ def selftest(room):
         from selftest_roads import third_fail_case
         from selftest_roads import tool_away_case
         from selftest_roads import alias_case
+        from selftest_roads import log_heal_case
+        from selftest_roads import head_settle_case
+        from selftest_roads import shape_case
+        from selftest_roads import urgent_case
+        from selftest_roads import fixture
+        from selftest_roads import child_room_case
+        from selftest_roads import audit_copy_case
+        from selftest_roads import audit_cut_case
+        from selftest_roads import audit_pack_case
         fixture_review()
         write(copy, expand_plans(text))
         text, bl = load(copy)
         AUDIT = '\n\n## U9980 · 2026-01-01 · audit · closed\n' + '\n'.join(f'{k:<11}: x' for k in __import__('unit').KEYS) + '\n'  # an explicit audit state for the step-policy cases, the ten-count of the live room does not reach them, S179
         opened = next((u for u, s, _, _ in bl if s == 'open'), None)
-        if not opened:  # the selftest needs an open unit, so it turns the newest block open on the copy
-            opened = bl[-1][0]
-            text = set_status(text, opened, bl[-1][1], 'open')
+        if not opened:  # the selftest needs an open unit, so it turns one block open on the copy
+            opened, was = fixture(bl)[:2]
+            text = set_status(text, opened, was, 'open')
         vals = dict((u, v) for u, _, _, v in bl)[opened]
         text = re.sub(r'^(## U\d{4} · \S+ · \w+ · )waiting$', r'\1closed', re.sub(rf'^(## {opened} · \S+ · )\w+( · open)$', r'\1structural\2', text, flags=re.M), flags=re.M)  # the copy's unit is structural, a redesign is exempt from the owner chain, and no waiting block locks files or the queue
         write(copy, set_key(set_key(text, opened, 'files', vals.get('files', '') + ' · RULE.md'), opened, 'approval', 'none'))
         write(copy, set_key(read(os.path.join(copy, 'UNITS.md')), opened, 'plan', 'A0013 · S none'))  # the opened block takes the plan of a waiting audit block, the shape the hub's U0061 had, S99
         other = next(f for f in ('GOAL.md', 'OWNER.md', 'PRODUCTS.md', 'RESEARCH.md') if f not in files_of(vals))
         cases = [
-            ({'tool_name': 'Bash', 'tool_input': {'command': 'git commit --no-verify -m x'}}, 'git bypass flag'),
-            ({'tool_name': 'Bash', 'tool_input': {'command': 'echo x >> unit.log'}}, 'unit.log is append-only'),
             ({'tool_name': 'Edit', 'tool_input': {'file_path': other}}, 'not in the files key'),
             ({'tool_name': 'Edit', 'tool_input': {'file_path': 'RULE.md'}}, 'is protected, no owner line'),
             ({'tool_name': 'Bash', 'tool_input': {'command': f'sed -i s/a/b/ {other}'}}, 'not in the files key'),
             ({'tool_name': 'Edit', 'tool_input': {'file_path': 'unit.log'}}, 'unit.log is append-only'),
             ({'tool_name': 'Bash', 'tool_input': {'command': f'cp a.txt \\\n {other}'}}, 'not in the files key'),  # a backslash continues the operands, S55
-            ({'tool_name': 'Bash', 'tool_input': {'command': 'python3 -c "open(\'unit.log\', \'a\').write(\'x\')"'}}, 'unit.log is append-only'),  # a python write to the log, S57
-            ({'tool_name': 'Bash', 'tool_input': {'command': 'git checkout HEAD -- unit.log'}}, 'unit.log is append-only'),  # a git write to the log, S57
-            ({'tool_name': 'Bash', 'tool_input': {'command': 'grep -c deny unit.log\nrm -f unit.log'}}, 'unit.log is append-only'),  # a read line followed by a write line, S57
             ({'tool_name': 'WebSearch', 'tool_input': {'query': 'x'}}, 'outside a research unit'),  # S76
             ({'tool_name': 'Agent', 'tool_input': {'prompt': 'x'}}, 'outside a research unit'),  # S76
             ({'tool_name': 'Edit', 'tool_input': {'file_path': f'{HOME}/.claude/CLAUDE.md'}}, 'not in the files key'),  # the common rules file stays gated, S72
@@ -246,8 +249,12 @@ def selftest(room):
         r = __import__('subprocess').run([sys.executable, '-I', '-B', os.path.join(copy, 'unit.py'), 'selftest', copy], capture_output=True, text=True); expect(r.returncode == 1 and 'nested, skipped' in r.stdout)  # a nested selftest stops at once, placed before the failed close at the first run, when HEAD had no guard yet, S107
         from selftest_roads import temp_clean_case; expect(temp_clean_case(copy, opened, base, tmp))  # a close refused after the baseline clone leaves no temp folder behind, S110
         expect(check(copy, {'tool_name': 'Bash', 'tool_input': {'command': f'cat > /tmp/x.txt <<EOF\n# files {other}\nEOF'}})[0])  # a heredoc body is no write target, S55
-        expect(all('git bypass flag' in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': c}})[1] for c in ('T=$(git commit-tree X -p HEAD)', 'git -C r update-ref refs/heads/main X', 'git cherry-pick side', 'git merge --no-ff side', 'git revert --no-edit HEAD', 'git am p.patch', 'git rebase main', 'git pull origin main', 'git fast-import')) and not any('git bypass flag' in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': c}})[1] for c in ('git merge-base HEAD side', 'git log --merges --grep=merge', 'git amend-check', 'git status', 'git fetch', 'git merge --abort', 'git rebase --abort')))  # a git command that writes a commit without the pre-commit hook is a bypass, a read or an abort is not, S134
-        expect('grep, tail' in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': 'echo x >> unit.log'}})[1] and 'cd DIR &&' in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': f'cd {tmp}; printf x >> {other}'}, 'cwd': copy})[1] and 'cd DIR &&' not in check(copy, {'tool_name': 'Bash', 'tool_input': {'command': f'cd {tmp} && printf x >> {other}'}, 'cwd': copy})[1])  # the deny texts name the read forms that pass and the «&&» form of cd, S133
+        semi = dict(command=f'cd {tmp}; printf x >> {other}')
+        amp = dict(command=f'cd {tmp} && printf x >> {other}')
+        bash = dict(tool_name='Bash', cwd=copy)
+        asks = [dict(bash, tool_input=one) for one in (semi, amp)]
+        said = [check(copy, ask)[1] for ask in asks]
+        expect(['cd DIR &&' in text for text in said] == [True, False])  # the deny text names the «&&» form of cd, S133
         r = os.path.join(tmp, 'applied'); os.makedirs(r); os.symlink(os.path.join(copy, 'RULE.md'), os.path.join(r, 'RULE.md')); open(os.path.join(r, 'GOAL.md'), 'w').write(read(os.path.join(copy, 'GOAL.md'))); m = __import__('measure').measures(r, []); mc0 = __import__('measure').measures(copy, load(copy)[1]); expect(m and set(m.values()) == {'no tool'} and mc0 and all(v != 'no tool' for v in mc0.values()))  # a room without measures.py reads «no tool» per leaf, a room with one computes each leaf, S152
         expect(__import__('measure').met(19, '≤ 19') and not __import__('measure').met(20, '≤ 19') and __import__('measure').met('6 of 6', '6 of 6') and not __import__('measure').met('no tool', '≤ 19'))  # a «≤ N» target holds up to N, a fraction target needs its fraction, «no tool» meets nothing, S158
         bm = __import__('base').map_text(copy); bn = len(bm.splitlines()) - 2; bs = __import__('base').map_text(copy, budget=bn).splitlines(); expect(bm.splitlines()[0].startswith('# the ledgers win over this map') and all(f'\n{g[0]} · ' in bm for g in __import__('unit').rows_of(copy, 'GOAL.md', 'G') if g[0] != 'G0') and len(bm.splitlines()) <= 300 and len(bs) <= bn and bs[-1].endswith('PLAN.md holds them') and ('\n    P' in bm and '\n    U' in bm) == any(s[-1] != 'done' for s in __import__('unit').rows_of(copy, 'PLAN.md', 'S')))  # the room map heads with «the ledgers win», holds every leaf, shows the P and U nodes of open and todo steps, keeps its budget by leaving out done steps, S160
@@ -282,8 +289,9 @@ def selftest(room):
         write(copy, set_key(base, opened, 'files', vals.get('files', '') + ' · RESEARCH.md')); expect(not check(copy, {'tool_name': 'WebSearch', 'tool_input': {'query': 'x'}})[0])  # R rows with a plain sentence stay denied, S76
         write(copy, set_key(set_key(base, opened, 'files', vals.get('files', '') + ' · RESEARCH.md'), opened, 'sentence', 'which?')); expect(check(copy, {'tool_name': 'WebSearch', 'tool_input': {'query': 'x'}})[0])  # a research unit passes, S76
         write(copy, set_key(set_key(set_key(set_key(base, opened, 'review', 'pass, no log file named'), opened, 'rejected', 'x'), opened, 'added', 'x'), opened, 'check', 'true'))  # check true, so a broken refusal cannot recurse into this selftest
-        expect(close_unit(copy, opened) == 1 and 'names no agent-review file' in read(os.path.join(copy, 'unit.log')).splitlines()[-1])  # close wants the review proof, S61
-        expect(history_case(tmp))  # the reconstruction history reads from its declared start, an unreadable revision before it passes, a start that disables an activated plan is refused, S234
+        rc61 = close_unit(copy, opened)
+        last61 = read(os.path.join(copy, 'unit' + '.log')).splitlines()[-1]
+        expect(rc61 == 1 and 'names no single file' in last61)  # close wants the review proof, the reader refuses a key that names no review file, S61
         expect(nested_case(copy, opened, tmp))  # the baseline test runs inside an outer confinement, a write outside the outer scratch stays denied, S226
         expect(baseline_case(copy, opened, tmp))  # a clause that exits 127 or 124 on the clone of HEAD is refused as no red baseline, a timeout counts as 124, S226
         expect(review_route_case(copy, opened, tmp))  # the Claude hook sends a review file write in a folder outside every room to the room of its unit, S225
@@ -300,6 +308,14 @@ def selftest(room):
         expect(third_fail_case(tmp))  # three failed rounds end a unit of a fresh room: status failed, the result names the count, its product reverted, the commit carries the unit, RULE §4, S79
         expect(tool_away_case(tmp))  # with unit.py renamed away the hook still refuses a hand close, a commit that drops UNITS.md from the index is refused, S233
         expect(alias_case(tmp))  # a review file under the name of another unit is refused though its first line names the unit, a file named for the unit with a room infix with no round closes it, S233
+        expect(log_heal_case(tmp))  # fifteen writes of the log are undone at the next call, a line of three reads passes, validate writes no shadow, S243
+        expect(head_settle_case(tmp))  # a commit around the hook is undone at the next call, S243
+        expect(all(shape_case(tmp).values()))  # ten shapes of history, each set back to the last passed place of its branch, S243
+        expect(urgent_case(tmp))  # a planning unit opens in front of a planned queue on the word urgent
+        expect(audit_pack_case(tmp))  # the audit packs its baseline with no object lost, its paired control holds, S229
+        expect(audit_cut_case(tmp))  # the 10 level leaves out a clause red at the last audit, an unbound receipt gives a full run, S229
+        expect(audit_copy_case(tmp))  # each audit clause runs on its own confined copy, the exit with the output tail, S229
+        expect(child_room_case(tmp))  # the room list holds a numbered room one level inside a numbered folder
         done = re.sub(r'^(## U\d{4} · \S+ · \w+ · )planned$', r'\1closed', set_status(base, opened, 'open', 'closed'), flags=re.M); nxt = f'U{int(bl[-1][0][1:]) + 1:04d}'  # every block final, the queue empty
         done = set_key(done, opened, 'plan', 'A0001 · S01')  # the done state gives the block a work plan, a closed «S none» block would read as a planning unit, S99
         argv, sys.argv = sys.argv, sys.argv[:1] + ['open', nxt, copy, 'x', 'A0001 · S01', 'UNITS.md', '+1']  # a work unit on an empty queue, S75

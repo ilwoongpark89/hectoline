@@ -1,10 +1,30 @@
+validate: 0 faults
+fingerprints: {"./.gitignore": "32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b", "./GOAL.md": "1e7502ba5b96b201fea4a30b6c95eef3cda929fc28628ff3ce16a19a484bc1d7", "./OWNER.md": "194c2dd3e33dedf3ed577354fe8c7631fdb8343205daa933ee9644ce4b2fe1bd", "./PLAN.md": "643ae86491728c240f9b027570191bfa9cbf2817578d7e0e3f5ee99f5fe43118", "./PRODUCTS.md": "dd1711f61ea7be9a44adace6a271b3b7682763132448ce10cb798d5e6e03c0c2", "./RESEARCH.md": "71b79c9b7cd131433ccc8adbb7c111b0c75d0ae37d58833d0d76821c361b82b3", "./RULE.md": "7ef8fe093f35c3a74b9c9ae20a1df0854b4829011dba547476d86af8da057049", "./UNITS.md": "7faf87257ac695f15079e854c78306bb74c0c94d11b3a11a3d792c98e8fce273", "./audit.py": "7b68354e857202c58429b358c448fc173901a30b0546e3db416f976a185635f3", "./calc.py": "9c1a7f31ce348ed3efd42076823a5b02c6825516fcd2105656686afb8ed01f17", "./measure.py": "b4f315e1c16f3b953855b868410fa6ee47e864327585ffb760737e1af3cdc5db", "./measures.py": "44da1428fdf995412659824ef9bef7ccdd1f752b2cae90b463385e0113cd263a", "./unit.py": "5ae54ace59b96ebae9ade2419c734b40d97d93a5bbd3bc9e8a931faddb09d893"}
 # audit 6 · 6 blocks · 5 final · 0 failed
+## clauses rerun: 13 of 13
+## confinement control: 4 of 4 writes outside a clause copy denied · a write inside exits 0
+clause 1 U0001 1: exit 0
+clause 2 U0001 2: exit 0
+clause 3 U0001 3: exit 0
+clause 4 U0002 1: exit 1
+detail: 
+clause 5 U0002 2: exit 0
+clause 6 U0003 1: exit 0
+clause 7 U0003 2: exit 1
+detail: 
+clause 8 U0003 3: exit 0
+clause 9 U0003 4: exit 0
+clause 10 U0004 1: exit 0
+clause 11 U0005 1: exit 0
+clause 12 U0005 2: exit 0
+clause 13 U0005 3: exit 0
+total clauses: 13
 
-## check rerun on a copy: 3 of 5 closed units fail a clause now · cmd: unit.load + subprocess per clause in a copy · U0001[1, 0, 0] U0002[1, 0] U0003[0, 1, 0, 0]
+## check rerun on a copy: 2 of 5 closed units fail a clause now · cmd: unit.load + subprocess per clause in a copy · U0002[1, 0] U0003[0, 1, 0, 0]
 ## clauses that hold the separator by the split heuristic: 0 ·  · the validate guard is the rule
 ## tracked files no files key names: 0 · cmd: git ls-files minus files keys
 ## goal measures by unit.py status: G1 0
-## composition: hooks active 3 Claude Code groups, 0 Codex block, pre-commit link True · product sizes against caps RULE.md 113/500 unit.py 341/500 measure.py 246/500 audit.py 69/500 measures.py 30/500 calc.py 14/500 · over: [] · not found: [] · binary bytes: {} · units over 100 lines 0 · missing generation markers 0 final blocks since the tool · failed units 0 · review rounds 4 over 5 final units · denies 0 in the log · piles 0 · audits 0 of 5 final
+## composition: hooks active 3 Claude Code groups, 0 Codex block, pre-commit link True · product sizes against caps RULE.md 117/500 unit.py 345/500 measure.py 246/500 audit.py 215/500 measures.py 30/500 calc.py 14/500 · over: [] · not found: [] · binary bytes: {} · units over 100 lines 0 · missing generation markers 0 final blocks since the tool · failed units 0 · review rounds 4 over 5 final units · denies 0 in the log · piles 0 · audits 0 of 5 final
 ## active A rows that name no RULE §, U or S: 0
 ## steps open with every unit final: 0
 ## steps with no unit: 0
@@ -12,3 +32,5 @@
 ## duplicate lines over 60 characters in two or more .py files: 0  · unused defs, named once in every .py: 0  · cmd: a count over git ls-files *.py
 ## piles: 0 · cmd: unit.py pile
 ## non-audit final units: 5 · audits: 
+live fingerprint changes: 0 of 13 files
+elapsed seconds: 1.7
