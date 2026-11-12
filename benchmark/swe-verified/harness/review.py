@@ -196,7 +196,10 @@ def hook():
             if p and tool not in ('Read', 'Glob', 'Grep') and 'agent-review-' in p:
                 print('deny: a review file is written by the harness reviewer alone', file=sys.stderr)
                 return 2
-            if p and outside(os.path.realpath(os.path.join(room, os.path.expanduser(p)))):
+            real = os.path.realpath(os.path.join(room, os.path.expanduser(p))) if p else ''
+            if p and tool in ('Read', 'Glob', 'Grep') and real in {os.path.realpath(os.path.join(room, n)) for n in ('RULE.md', 'measure.py', 'audit.py')}:
+                continue  # the rule and the two linked tools of the room are read by its author
+            if p and outside(real):
                 print(f'deny: {p} is outside this folder, the task text says so', file=sys.stderr)
                 return 2
         return 0
